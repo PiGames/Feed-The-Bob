@@ -18,7 +18,6 @@ export default class Game extends Phaser.State {
     new FoodSpawner( this.game );
     this.initUI();
 
-
     this.camera.resetFX();
     this.camera.flash( 0x000000, 500, false );
 
@@ -69,7 +68,7 @@ export default class Game extends Phaser.State {
     this.screenGameoverBack.anchor.set( 0, 1 );
     this.screenGameoverRestart = this.add.button( this.world.width - 150, this.world.height - 100, 'button-restart', this.stateRestart, this, 1, 0, 2 );
     this.screenGameoverRestart.anchor.set( 1, 1 );
-    this.screenGameoverScore = this.add.text( this.world.width * 0.5, 300, 'Score: ' + this._score, fontScoreWhite );
+    this.screenGameoverScore = this.add.text( this.world.width * 0.5, 300, 'Score: ' + this.score, fontScoreWhite );
     this.screenGameoverScore.anchor.set( 0.5, 0.5 );
     this.screenGameoverGroup.add( this.screenGameoverBg );
     this.screenGameoverGroup.add( this.screenGameoverText );
@@ -119,7 +118,7 @@ export default class Game extends Phaser.State {
     this.screenGameoverGroup.visible = true;
 		// this.screenGameoverScore.setText('Score: '+this._score);
     this.gameoverScoreTween();
-    getStorage().setHighscore( 'EPT-highscore', this._score );
+    getStorage().setHighscore( 'EPT-highscore', this.score );
   }
 
   handlePoints() {
@@ -141,15 +140,15 @@ export default class Game extends Phaser.State {
 
   gameoverScoreTween() {
     this.screenGameoverScore.setText( 'Score: 0' );
-    if ( this._score ) {
+    if ( this.score ) {
       this.tweenedPoints = 0;
       const pointsTween = this.add.tween( this );
-      pointsTween.to( { tweenedPoints: this._score }, 1000, Phaser.Easing.Linear.None, true, 500 );
+      pointsTween.to( { tweenedPoints: this.score }, 1000, Phaser.Easing.Linear.None, true, 500 );
       pointsTween.onUpdateCallback( () => {
         this.screenGameoverScore.setText( 'Score: ' + Math.floor( this.tweenedPoints ) );
       }, this );
       pointsTween.onComplete.addOnce( () => {
-        this.screenGameoverScore.setText( 'Score: ' + this._score );
+        this.screenGameoverScore.setText( 'Score: ' + this.score );
         this.spawnEmitter( this.screenGameoverScore, 'particle', 20, 300 );
       }, this );
       pointsTween.start();
