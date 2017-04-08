@@ -1,6 +1,6 @@
 import { playAudio } from '../utils/AudioManager';
 
-export default class Achievements extends Phaser.State {
+export default class Wiki extends Phaser.State {
   create() {
     var fontAchievements = { font: '32px Arial', fill: '#000' };
     this.add.text( 100, 75, 'Achievements screen', fontAchievements );

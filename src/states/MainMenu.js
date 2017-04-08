@@ -59,6 +59,6 @@ export default class MainMenu extends Phaser.State {
   }
   clickAchievements() {
     playAudio( 'click' );
-    this.game.state.start( 'Achievements' );
+    this.game.state.start( 'Wiki' );
   }
 }
