@@ -14,6 +14,26 @@ export default class Food extends Phaser.Sprite {
     this.body.velocity.y = directionY * ( Math.floor(
       Math.random() * MAX_FOOD_VELOCITY - MIN_FOOD_VELOCITY ) + MIN_FOOD_VELOCITY );
 
+    this.inputEnabled = true;
+    this.events.onInputDown.add( this.handleClick, this );
+
+    this.events.onInputOver.add( () => {
+      game.canvas.style.cursor = 'pointer';
+    }, this );
+
+    this.events.onInputOut.add( () => {
+      game.canvas.style.cursor = 'default';
+    }, this );
+
+
     this.game.world.add( this );
+  }
+
+  handleClick() {
+    const tween = this.game.add.tween( this );
+    tween.to( { x: this.game.world.centerX - 50, y: this.game.world.height - 250 }, 2400, Phaser.Easing.Cubic.InOut, true );
+    tween.onComplete.add( () => {
+      this.destroy();
+    } );
   }
 }
