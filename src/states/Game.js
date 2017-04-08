@@ -14,7 +14,7 @@ export default class Game extends Phaser.State {
     this.runOnce = false;
 
     this.fatty = new Fatty( this.game, this.world.width / 2, this.world.height, 'fatty' );
-    new Food( this.game, 'fruit', true );
+    new Food( this.game, 800, 10, 'fruit' );
     this.initUI();
 
     this.camera.resetFX();
