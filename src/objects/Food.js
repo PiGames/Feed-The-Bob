@@ -1,4 +1,4 @@
-import { MIN_FRUIT_VELOCITY, MAX_FRUIT_VELOCITY } from '../constants/FoodConstants';
+import { MIN_FOOD_VELOCITY, MAX_FOOD_VELOCITY } from '../constants/FoodConstants';
 
 export default class Food extends Phaser.Sprite {
   constructor( game, x, y, key ) {
@@ -10,10 +10,9 @@ export default class Food extends Phaser.Sprite {
     const directionY = y > this.game.world.centerY ? -1 : 1;
 
     this.body.velocity.x = directionX * ( Math.floor(
-      Math.random() * MAX_FRUIT_VELOCITY - MIN_FRUIT_VELOCITY ) + MIN_FRUIT_VELOCITY );
-    console.log( directionX );
+      Math.random() * MAX_FOOD_VELOCITY - MIN_FOOD_VELOCITY ) + MIN_FOOD_VELOCITY );
     this.body.velocity.y = directionY * ( Math.floor(
-      Math.random() * MAX_FRUIT_VELOCITY - MIN_FRUIT_VELOCITY ) + MIN_FRUIT_VELOCITY );
+      Math.random() * MAX_FOOD_VELOCITY - MIN_FOOD_VELOCITY ) + MIN_FOOD_VELOCITY );
 
     this.game.world.add( this );
   }

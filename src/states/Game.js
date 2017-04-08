@@ -1,7 +1,7 @@
 import { playAudio, manageAudio, getAudioOffset } from '../utils/AudioManager';
 import { getStorage } from '../utils/StorageManager';
 
-import Food from '../objects/Food';
+import FoodSpawner from '../objects/FoodSpawner';
 import Fatty from '../objects/Fatty';
 
 import NutritionManager from '../objects/NutritionManager';
@@ -14,7 +14,7 @@ export default class Game extends Phaser.State {
     this.runOnce = false;
 
     this.fatty = new Fatty( this.game, this.world.width / 2, this.world.height, 'fatty' );
-    new Food( this.game, 800, 10, 'fruit' );
+    new FoodSpawner( this.game );
     this.initUI();
 
     this.camera.resetFX();
