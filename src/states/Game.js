@@ -8,14 +8,16 @@ import NutritionManager from '../objects/NutritionManager';
 
 export default class Game extends Phaser.State {
   create() {
-    this._score = 0;
-    this._time = 10;
+    this.score = 0;
     this.gamePaused = false;
     this.runOnce = false;
+
+    this.scoreTemplate = time => `Time: ${time}s`;
 
     this.fatty = new Fatty( this.game, this.world.width / 2, this.world.height, 'fatty' );
     new FoodSpawner( this.game );
     this.initUI();
+
 
     this.camera.resetFX();
     this.camera.flash( 0x000000, 500, false );
@@ -23,14 +25,17 @@ export default class Game extends Phaser.State {
     this.NutritionManager = new NutritionManager( this.game );
     this.game.physics.startSystem( Phaser.Physics.ARCADE );
   }
+
   initUI() {
     this.buttonPause = this.add.button( this.world.width - 20, 20, 'button-pause', this.managePause, this, 1, 0, 2 );
     this.buttonPause.anchor.set( 1, 0 );
 
     const fontScore = { font: '32px Arial', fill: '#000' };
     const fontScoreWhite = { font: '32px Arial', fill: '#FFF' };
-    this.textScore = this.add.text( 30, this.world.height - 20, 'Score: ' + this._score, fontScore );
+    this.textScore = this.add.text( 30, this.world.height - 20, this.scoreTemplate( this.score ), fontScore );
     this.textScore.anchor.set( 0, 1 );
+
+    this.game.time.events.loop( Phaser.Timer.SECOND * 1, this.handlePoints, this );
 
     this.buttonPause.y = -this.buttonPause.height - 20;
     this.add.tween( this.buttonPause ).to( { y: 20 }, 1000, Phaser.Easing.Exponential.Out, true );
@@ -116,19 +121,24 @@ export default class Game extends Phaser.State {
     this.gameoverScoreTween();
     getStorage().setHighscore( 'EPT-highscore', this._score );
   }
-  addPoints() {
-    this._score += 10;
-    this.textScore.setText( 'Score: ' + this._score );
-    const randX = this.rnd.integerInRange( 200, this.world.width - 200 );
-    const randY = this.rnd.integerInRange( 200, this.world.height - 200 );
-    const pointsAdded = this.add.text( randX, randY, '+10',
-		{ font: '48px Arial', fill: '#000', stroke: '#FFF', strokeThickness: 10 } );
 
-    pointsAdded.anchor.set( 0.5, 0.5 );
-    this.add.tween( pointsAdded ).to( { alpha: 0, y: randY - 50 }, 1000, Phaser.Easing.Linear.None, true );
-
-    this.camera.shake( 0.01, 100, true, Phaser.Camera.SHAKE_BOTH, true );
+  handlePoints() {
+    this.score++;
+    this.textScore.setText( this.scoreTemplate( this.score ) );
   }
+
+  addPoints() {
+    // const randX = this.rnd.integerInRange( 200, this.world.width - 200 );
+    // const randY = this.rnd.integerInRange( 200, this.world.height - 200 );
+    // const pointsAdded = this.add.text( randX, randY, '+10',
+		// { font: '48px Arial', fill: '#000', stroke: '#FFF', strokeThickness: 10 } );
+    //
+    // pointsAdded.anchor.set( 0.5, 0.5 );
+    // this.add.tween( pointsAdded ).to( { alpha: 0, y: randY - 50 }, 1000, Phaser.Easing.Linear.None, true );
+    //
+    // this.camera.shake( 0.01, 100, true, Phaser.Camera.SHAKE_BOTH, true );
+  }
+
   gameoverScoreTween() {
     this.screenGameoverScore.setText( 'Score: 0' );
     if ( this._score ) {
