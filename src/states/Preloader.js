@@ -43,7 +43,7 @@ export default class Preloader extends Phaser.State {
     }
   }
   create() {
-    this.state.start( 'MainMenu' );
-    // this.state.start( 'Game' );
+    // this.state.start( 'MainMenu' );
+    this.state.start( 'Game' );
   }
 }
