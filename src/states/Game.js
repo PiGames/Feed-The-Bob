@@ -4,6 +4,7 @@ import { getStorage } from '../utils/StorageManager';
 import Food from '../objects/Food';
 import Fatty from '../objects/Fatty';
 
+import NutritionManager from '../objects/NutritionManager';
 
 export default class Game extends Phaser.State {
   create() {
@@ -13,7 +14,7 @@ export default class Game extends Phaser.State {
     this.runOnce = false;
 
     this.fatty = new Fatty( this.game, this.world.width / 2, this.world.height, 'fatty' );
-
+    new Food( this.game, 'fruit', true );
     this.initUI();
 
     this.camera.resetFX();
@@ -21,8 +22,7 @@ export default class Game extends Phaser.State {
 
     this.game.physics.startSystem( Phaser.Physics.ARCADE );
 
-    //display food
-    new Food( this.game, 'fruit', true );
+    this.NutritionManager = new NutritionManager();
   }
   initUI() {
     this.buttonPause = this.add.button( this.world.width - 20, 20, 'button-pause', this.managePause, this, 1, 0, 2 );
@@ -32,7 +32,6 @@ export default class Game extends Phaser.State {
     const fontScoreWhite = { font: '32px Arial', fill: '#FFF' };
     this.textScore = this.add.text( 30, this.world.height - 20, 'Score: ' + this._score, fontScore );
     this.textScore.anchor.set( 0, 1 );
-
 
     this.buttonPause.y = -this.buttonPause.height - 20;
     this.add.tween( this.buttonPause ).to( { y: 20 }, 1000, Phaser.Easing.Exponential.Out, true );
@@ -108,6 +107,8 @@ export default class Game extends Phaser.State {
   }
   statePlaying() {
     this.screenPausedGroup.visible = false;
+
+    this.NutritionManager.reduceNutrition();
   }
   statePaused() {
     this.screenPausedGroup.visible = true;
