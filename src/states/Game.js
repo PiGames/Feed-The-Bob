@@ -8,27 +8,6 @@ export default class Game extends Phaser.State {
     this.gamePaused = false;
     this.runOnce = false;
 
-    const fontGameplay = { font: '32px Arial', fill: '#000' };
-    this.add.text( 100, 75, 'Gameplay screen', fontGameplay );
-
-    const buttonDummy = this.add.button( this.world.width * 0.5, this.world.height * 0.5, 'clickme', this.addPoints, this );
-    buttonDummy.anchor.set( 0.5, 0.5 );
-    buttonDummy.alpha = 0;
-    buttonDummy.scale.set( 0.1 );
-    this.add.tween( buttonDummy ).to( { alpha: 1 }, 1000, Phaser.Easing.Exponential.Out, true );
-    this.add.tween( buttonDummy.scale ).to( { x: 1, y: 1 }, 1000, Phaser.Easing.Exponential.Out, true );
-
-    this.currentTimer = this.time.create();
-    this.currentTimer.loop( Phaser.Timer.SECOND, () => {
-      this._time--;
-      if ( this._time ) {
-        this.textTime.setText( 'Time left: ' + this._time );
-      }			else {
-        this.stateStatus = 'gameover';
-      }
-    }, this );
-    this.currentTimer.start();
-
     this.initUI();
 
     this.camera.resetFX();
@@ -43,8 +22,6 @@ export default class Game extends Phaser.State {
     this.textScore = this.add.text( 30, this.world.height - 20, 'Score: ' + this._score, fontScore );
     this.textScore.anchor.set( 0, 1 );
 
-    this.textTime = this.add.text( this.world.width - 30, this.world.height - 20, 'Time left: ' + this._time, fontScore );
-    this.textTime.anchor.set( 1, 1 );
 
     this.buttonPause.y = -this.buttonPause.height - 20;
     this.add.tween( this.buttonPause ).to( { y: 20 }, 1000, Phaser.Easing.Exponential.Out, true );
@@ -120,15 +97,12 @@ export default class Game extends Phaser.State {
   }
   statePlaying() {
     this.screenPausedGroup.visible = false;
-    this.currentTimer.resume();
   }
   statePaused() {
     this.screenPausedGroup.visible = true;
-    this.currentTimer.pause();
   }
   stateGameover() {
     this.screenGameoverGroup.visible = true;
-    this.currentTimer.stop();
 		// this.screenGameoverScore.setText('Score: '+this._score);
     this.gameoverScoreTween();
     getStorage().setHighscore( 'EPT-highscore', this._score );
@@ -185,7 +159,6 @@ export default class Game extends Phaser.State {
     this.screenGameoverGroup.visible = false;
     this.gamePaused = false;
     this.runOnce = false;
-    this.currentTimer.start();
     this.stateStatus = 'playing';
     this.state.restart( true );
   }
@@ -194,7 +167,6 @@ export default class Game extends Phaser.State {
     this.screenGameoverGroup.visible = false;
     this.gamePaused = false;
     this.runOnce = false;
-    this.currentTimer.start();
     this.stateStatus = 'playing';
 		// this.state.restart(true);
     this.state.start( 'MainMenu' );

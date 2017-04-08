@@ -2,11 +2,12 @@ const resources = {
   'image': [
 		[ 'background', 'img/background.png' ],
 		[ 'title', 'img/title.png' ],
-		[ 'logo-enclave', 'img/logo-enclave.png' ],
+		[ 'logo-pigames', 'img/logo-pigames.png' ],
 		[ 'clickme', 'img/clickme.png' ],
 		[ 'overlay', 'img/overlay.png' ],
 		[ 'button-beer', 'img/button-beer.png' ],
 		[ 'particle', 'img/particle.png' ],
+		[ 'fatty', 'img/fatty.png' ],
   ],
   'spritesheet': [
 		[ 'button-start', 'img/button-start.png', 180, 180 ],
@@ -41,6 +42,7 @@ export default class Preloader extends Phaser.State {
     }
   }
   create() {
-    this.state.start( 'MainMenu' );
+    // this.state.start( 'MainMenu' );
+    this.state.start( 'Game' );
   }
 }

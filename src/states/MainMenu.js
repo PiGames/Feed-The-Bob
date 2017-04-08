@@ -12,8 +12,7 @@ export default class MainMenu extends Phaser.State {
     getStorage().initUnset( 'EPT-highscore', 0 );
     const highscore = getStorage().get( 'EPT-highscore' ) || 0;
 
-    const buttonEnclave = this.add.button( 20, 20, 'logo-enclave', this.clickEnclave, this );
-    const buttonBeer = this.add.button( 25, 130, 'button-beer', this.clickBeer, this );
+    const buttonEnclave = this.add.button( 20, 20, 'logo-pigames', this.clickEnclave, this );
     const buttonStart = this.add.button( this.world.width - 20, this.world.height - 20, 'button-start', this.clickStart, this, 1, 0, 2 );
     buttonStart.anchor.set( 1 );
 
@@ -37,8 +36,6 @@ export default class MainMenu extends Phaser.State {
     this.add.tween( this.buttonAudio ).to( { y: 20 }, 500, Phaser.Easing.Exponential.Out, true );
     buttonEnclave.x = -buttonEnclave.width - 20;
     this.add.tween( buttonEnclave ).to( { x: 20 }, 500, Phaser.Easing.Exponential.Out, true );
-    buttonBeer.x = -buttonBeer.width - 25;
-    this.add.tween( buttonBeer ).to( { x: 25 }, 500, Phaser.Easing.Exponential.Out, true, 100 );
     buttonAchievements.y = this.world.height + buttonAchievements.height + 20;
     this.add.tween( buttonAchievements ).to( { y: this.world.height - 20 }, 500, Phaser.Easing.Exponential.Out, true );
 
@@ -50,17 +47,14 @@ export default class MainMenu extends Phaser.State {
   }
   clickEnclave() {
     playAudio( 'click' );
-    window.top.location.href = 'http://enclavegames.com/';
-  }
-  clickBeer() {
-    playAudio( 'click' );
-    window.top.location.href = 'https://www.paypal.me/end3r';
+    window.top.location.href = 'http://pigam.es/';
   }
   clickStart() {
     playAudio( 'click' );
     this.camera.fade( 0x000000, 200, false );
     this.time.events.add( 200, () => {
-      this.game.state.start( 'Story' );
+      // this.game.state.start( 'Story' );
+      this.game.state.start( 'Game' );
     } );
   }
   clickAchievements() {
