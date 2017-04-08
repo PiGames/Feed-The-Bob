@@ -7,9 +7,9 @@ Object.defineProperty(exports, "__esModule", {
 var MIN_FOOD_VELOCITY = exports.MIN_FOOD_VELOCITY = 60;
 var MAX_FOOD_VELOCITY = exports.MAX_FOOD_VELOCITY = 100;
 
-var FOOD_SPAWN_INTERVAL = exports.FOOD_SPAWN_INTERVAL = 1.25 * Phaser.Timer.SECOND;
-var FOOD_SPAWN_BOUNDS_WIDTH = exports.FOOD_SPAWN_BOUNDS_WIDTH = 600;
-var FOOD_SPAWN_BOUNDS_HEIGHT = exports.FOOD_SPAWN_BOUNDS_HEIGHT = 500;
+var FOOD_SPAWN_INTERVAL = exports.FOOD_SPAWN_INTERVAL = 0.75 * Phaser.Timer.SECOND;
+var FOOD_SPAWN_BOUNDS_WIDTH = exports.FOOD_SPAWN_BOUNDS_WIDTH = 500;
+var FOOD_SPAWN_BOUNDS_HEIGHT = exports.FOOD_SPAWN_BOUNDS_HEIGHT = 300;
 
 var FOOD_WIDTH = exports.FOOD_WIDTH = 100;
 var FOOD_HEIGHT = exports.FOOD_HEIGHT = 75;
@@ -140,7 +140,7 @@ var Bob = function (_Phaser$Sprite) {
       });
 
       if (isDead) {
-        this.handleDeath();
+        this.handleDeath('');
       }
 
       // this.frame = 2;
@@ -501,8 +501,6 @@ var NutritionUI = function () {
     _classCallCheck(this, NutritionUI);
 
     this.NutritionManager = NutritionManager;
-    var fontSize = 32;
-    var fontScore = { font: fontSize + 'px Arial', fill: '#000' };
 
     this.nutrition = this.NutritionManager.nutrition;
     this.fatOMeter = this.NutritionManager.fatOMeter;
@@ -815,7 +813,7 @@ var Game = function (_Phaser$State) {
         case 'gameover':
           {
             if (!this.runOnce) {
-              this.stateGameover();
+              this.stateGameover(msg);
               this.runOnce = true;
             }
             break;
@@ -853,12 +851,12 @@ var Game = function (_Phaser$State) {
     }
   }, {
     key: 'stateGameover',
-    value: function stateGameover() {
+    value: function stateGameover(msg) {
       this.stopMovingFood();
-      this.game.world.bringToTop(this.screenPausedGroup);
+      this.game.world.bringToTop(this.screenGameoverGroup);
       this.screenGameoverGroup.visible = true;
       // this.screenGameoverScore.setText( 'Score: ' + this.score );
-      this.gameoverScoreTween();
+      this.gameoverScoreTween(msg);
 
       this.getStorage().setHighscore('EPT-highscore', this.score);
     }
@@ -886,17 +884,19 @@ var Game = function (_Phaser$State) {
     value: function gameoverScoreTween() {
       var _this2 = this;
 
-      this.screenGameoverScore.setText('Score: 0');
+      var deathmsg = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+
+      this.screenGameoverScore.setText('');
       if (this.score) {
-        this.tweenedPoints = 0;
+        this.tweenedPoints = this.score;
         var pointsTween = this.add.tween(this);
         pointsTween.to({ tweenedPoints: this.score }, 1000, Phaser.Easing.Linear.None, true, 500);
         pointsTween.onUpdateCallback(function () {
-          _this2.screenGameoverScore.setText('Score: ' + Math.floor(_this2.tweenedPoints));
+          _this2.screenGameoverScore.setText('Time survied on diet: ' + Math.floor(_this2.tweenedPoints) + '\n' + deathmsg);
         }, this);
         pointsTween.onComplete.addOnce(function () {
-          _this2.screenGameoverScore.setText('Score: ' + _this2.score);
-          _this2.spawnEmitter(_this2.screenGameoverScore, 'particle', 20, 300);
+          _this2.screenGameoverScore.setText('Time survied on diet: ' + _this2.score);
+          // this.spawnEmitter( this.screenGameoverScore, 'particle', 20, 300 );
         }, this);
         pointsTween.start();
       }

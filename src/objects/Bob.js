@@ -45,7 +45,7 @@ export default class Bob extends Phaser.Sprite {
     } );
 
     if ( isDead ) {
-      this.handleDeath();
+      this.handleDeath( '' );
     }
 
     // this.frame = 2;

@@ -3,8 +3,6 @@ import { GOOD_AMOUNT_OF_CARBS, GOOD_AMOUNT_OF_FATS, GOOD_AMOUNT_OF_PROTEINS } fr
 export default class NutritionUI {
   constructor( game, NutritionManager ) {
     this.NutritionManager = NutritionManager;
-    const fontSize = 32;
-    const fontScore = { font: `${fontSize}px Arial`, fill: '#000' };
 
     this.nutrition = this.NutritionManager.nutrition;
     this.fatOMeter = this.NutritionManager.fatOMeter;

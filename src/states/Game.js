@@ -94,7 +94,7 @@ export default class Game extends Phaser.State {
     }
     case 'gameover': {
       if ( !this.runOnce ) {
-        this.stateGameover();
+        this.stateGameover( msg );
         this.runOnce = true;
       }
       break;
@@ -123,12 +123,12 @@ export default class Game extends Phaser.State {
   statePaused() {
     this.screenPausedGroup.visible = true;
   }
-  stateGameover() {
+  stateGameover( msg ) {
     this.stopMovingFood();
-    this.game.world.bringToTop( this.screenPausedGroup );
+    this.game.world.bringToTop( this.screenGameoverGroup );
     this.screenGameoverGroup.visible = true;
     // this.screenGameoverScore.setText( 'Score: ' + this.score );
-    this.gameoverScoreTween();
+    this.gameoverScoreTween( msg );
 
     this.getStorage().setHighscore( 'EPT-highscore', this.score );
   }
@@ -150,18 +150,18 @@ export default class Game extends Phaser.State {
     // this.camera.shake( 0.01, 100, true, Phaser.Camera.SHAKE_BOTH, true );
   }
 
-  gameoverScoreTween() {
-    this.screenGameoverScore.setText( 'Score: 0' );
+  gameoverScoreTween( deathmsg = '' ) {
+    this.screenGameoverScore.setText( '' );
     if ( this.score ) {
-      this.tweenedPoints = 0;
+      this.tweenedPoints = this.score;
       const pointsTween = this.add.tween( this );
       pointsTween.to( { tweenedPoints: this.score }, 1000, Phaser.Easing.Linear.None, true, 500 );
       pointsTween.onUpdateCallback( () => {
-        this.screenGameoverScore.setText( 'Score: ' + Math.floor( this.tweenedPoints ) );
+        this.screenGameoverScore.setText( 'Time survied on diet: ' + Math.floor( this.tweenedPoints ) + '\n' + deathmsg );
       }, this );
       pointsTween.onComplete.addOnce( () => {
-        this.screenGameoverScore.setText( 'Score: ' + this.score );
-        this.spawnEmitter( this.screenGameoverScore, 'particle', 20, 300 );
+        this.screenGameoverScore.setText( 'Time survied on diet: ' + this.score );
+        // this.spawnEmitter( this.screenGameoverScore, 'particle', 20, 300 );
       }, this );
       pointsTween.start();
     }
