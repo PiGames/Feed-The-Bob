@@ -1,9 +1,11 @@
 import { MIN_FOOD_VELOCITY, MAX_FOOD_VELOCITY } from '../constants/FoodConstants';
 
 export default class Food extends Phaser.Sprite {
-  constructor( game, x, y, key ) {
+  constructor( game, x, y, key, data, NutritionManager ) {
     super( game, x, y, key );
-    this.scale.setTo( 0.1 );
+    this.data = data;
+    this.NutritionManager = NutritionManager;
+    this.scale.setTo( 0.5 );
     this.game.physics.enable( this );
 
     const directionX = x > this.game.world.centerX ? -1 : 1;
@@ -45,8 +47,9 @@ export default class Food extends Phaser.Sprite {
 
   handleClick() {
     const tween = this.game.add.tween( this );
-    tween.to( { x: this.game.world.centerX - 20, y: this.game.world.height - 370 }, 4000, Phaser.Easing.Linear.None, true );
+    tween.to( { x: this.game.world.centerX - 20, y: this.game.world.height - 370 }, 500, Phaser.Easing.Linear.None, true );
     tween.onComplete.add( () => {
+      this.NutritionManager.updateStats( this.data );
       this.destroy();
     } );
   }
