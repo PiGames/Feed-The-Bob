@@ -19,6 +19,8 @@ export default class Game extends Phaser.State {
     this.camera.resetFX();
     this.camera.flash( 0x000000, 500, false );
 
+    this.game.physics.startSystem( Phaser.Physics.ARCADE );
+
     //display food
     new Food( this.game, 'fruit', true );
   }
