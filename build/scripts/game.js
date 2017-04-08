@@ -7,7 +7,7 @@ Object.defineProperty(exports, "__esModule", {
 var MIN_FOOD_VELOCITY = exports.MIN_FOOD_VELOCITY = 60;
 var MAX_FOOD_VELOCITY = exports.MAX_FOOD_VELOCITY = 100;
 
-var FOOD_SPAWN_INTERVAL = exports.FOOD_SPAWN_INTERVAL = 2 * Phaser.Timer.SECOND;
+var FOOD_SPAWN_INTERVAL = exports.FOOD_SPAWN_INTERVAL = 1.25 * Phaser.Timer.SECOND;
 var FOOD_SPAWN_BOUNDS_WIDTH = exports.FOOD_SPAWN_BOUNDS_WIDTH = 600;
 var FOOD_SPAWN_BOUNDS_HEIGHT = exports.FOOD_SPAWN_BOUNDS_HEIGHT = 500;
 
@@ -517,30 +517,22 @@ var NutritionUI = function () {
     this.game = game;
 
     // Text templates
-    this.carboTextTemplate = function (text) {
-      return 'Carbohydrates: ' + text + 'g';
-    };
-    this.fatsTextTemplate = function (text) {
-      return 'Fats: ' + text + 'g';
-    };
-    this.proteinsTextTemplate = function (text) {
-      return 'Proteins: ' + text + 'g';
-    };
-    this.fatOMeterTextTemplate = function (text) {
-      return 'Fat-o-meter: ' + Math.floor(text / 3 * 100) / 100;
-    };
-
-    this.carboText = game.add.text(30, 30, this.carboTextTemplate(this.nutrition.carbos), fontScore);
-    this.carboText.anchor.set(0);
-
-    this.fatsText = game.add.text(30, 30 + fontSize + 8, this.fatsTextTemplate(this.nutrition.fats), fontScore);
-    this.fatsText.anchor.set(0);
-
-    this.proteinsText = game.add.text(30, 30 + (fontSize + 8) * 2, this.proteinsTextTemplate(this.nutrition.proteins), fontScore);
-    this.proteinsText.anchor.set(0);
-
-    this.fatOMeterText = game.add.text(30, 30 + (fontSize + 8) * 3, this.fatOMeterTextTemplate(this.fatOMeter), fontScore);
-    this.fatOMeterText.anchor.set(0);
+    // this.carboTextTemplate = text => `Carbohydrates: ${text}g`;
+    // this.fatsTextTemplate = text => `Fats: ${text}g`;
+    // this.proteinsTextTemplate = text => `Proteins: ${text}g`;
+    // this.fatOMeterTextTemplate = text => `Fat-o-meter: ${Math.floor( text / 3 * 100 ) / 100}`;
+    //
+    // this.carboText = game.add.text( 30, 30, this.carboTextTemplate( this.nutrition.carbos ), fontScore );
+    // this.carboText.anchor.set( 0 );
+    //
+    // this.fatsText = game.add.text( 30, ( 30 + fontSize + 8 ), this.fatsTextTemplate( this.nutrition.fats ), fontScore );
+    // this.fatsText.anchor.set( 0 );
+    //
+    // this.proteinsText = game.add.text( 30, ( 30 + ( fontSize + 8 ) * 2 ), this.proteinsTextTemplate( this.nutrition.proteins ), fontScore );
+    // this.proteinsText.anchor.set( 0 );
+    //
+    // this.fatOMeterText = game.add.text( 30, ( 30 + ( fontSize + 8 ) * 3 ), this.fatOMeterTextTemplate( this.fatOMeter ), fontScore );
+    // this.fatOMeterText.anchor.set( 0 );
 
     this.drawAllBars();
   }
@@ -548,9 +540,9 @@ var NutritionUI = function () {
   _createClass(NutritionUI, [{
     key: 'updateUI',
     value: function updateUI() {
-      this.carboText.setText(this.carboTextTemplate(this.nutrition.carbos));
-      this.fatsText.setText(this.fatsTextTemplate(this.nutrition.fats));
-      this.proteinsText.setText(this.proteinsTextTemplate(this.nutrition.proteins));
+      // this.carboText.setText( this.carboTextTemplate( this.nutrition.carbos ) );
+      // this.fatsText.setText( this.fatsTextTemplate( this.nutrition.fats ) );
+      // this.proteinsText.setText( this.proteinsTextTemplate( this.nutrition.proteins ) );
       // this.fatOMeterText.setText( this.fatOMeterTextTemplate( this.NutritionManager.fatOMeter ) );
 
       this.drawAllBars();
@@ -862,8 +854,8 @@ var Game = function (_Phaser$State) {
   }, {
     key: 'stateGameover',
     value: function stateGameover() {
-      this.game.world.bringToTop(this.screenPausedGroup);
       this.stopMovingFood();
+      this.game.world.bringToTop(this.screenPausedGroup);
       this.screenGameoverGroup.visible = true;
       // this.screenGameoverScore.setText( 'Score: ' + this.score );
       this.gameoverScoreTween();
@@ -957,8 +949,10 @@ var Game = function (_Phaser$State) {
     key: 'stopMovingFood',
     value: function stopMovingFood() {
       this.foodContainer.forEach(function (food) {
-        food.body.velocity.x = 0;
-        food.body.velocity.y = 0;
+        if (food && food.body) {
+          food.body.velocity.x = 0;
+          food.body.velocity.y = 0;
+        }
       });
       this.game.time.events.pause();
     }
@@ -966,8 +960,10 @@ var Game = function (_Phaser$State) {
     key: 'restoreFoodMovement',
     value: function restoreFoodMovement() {
       this.foodContainer.forEach(function (food) {
-        food.body.velocity.x = food.velocityX;
-        food.body.velocity.y = food.velocityY;
+        if (food && food.body) {
+          food.body.velocity.x = food.velocityX;
+          food.body.velocity.y = food.velocityY;
+        }
       });
       this.game.time.events.resume();
     }

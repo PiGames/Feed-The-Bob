@@ -124,8 +124,8 @@ export default class Game extends Phaser.State {
     this.screenPausedGroup.visible = true;
   }
   stateGameover() {
-    this.game.world.bringToTop( this.screenPausedGroup );
     this.stopMovingFood();
+    this.game.world.bringToTop( this.screenPausedGroup );
     this.screenGameoverGroup.visible = true;
     // this.screenGameoverScore.setText( 'Score: ' + this.score );
     this.gameoverScoreTween();
@@ -204,15 +204,19 @@ export default class Game extends Phaser.State {
   }
   stopMovingFood() {
     this.foodContainer.forEach( food => {
-      food.body.velocity.x = 0;
-      food.body.velocity.y = 0;
+      if ( food && food.body ) {
+        food.body.velocity.x = 0;
+        food.body.velocity.y = 0;
+      }
     } );
     this.game.time.events.pause();
   }
   restoreFoodMovement() {
     this.foodContainer.forEach( food => {
-      food.body.velocity.x = food.velocityX;
-      food.body.velocity.y = food.velocityY;
+      if ( food && food.body ) {
+        food.body.velocity.x = food.velocityX;
+        food.body.velocity.y = food.velocityY;
+      }
     } );
     this.game.time.events.resume();
   }
