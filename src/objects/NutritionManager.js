@@ -18,7 +18,8 @@ export default class NutritionManager {
   }
 
   reduceNutrition() {
-    const percentAmount = 0.03;
+    // const percentAmount = 0.03;
+    const percentAmount = 0.2;
     this.nutrition.carbos -= ( GOOD_AMOUNT_OF_CARBS * percentAmount );
     this.nutrition.fats -= ( GOOD_AMOUNT_OF_FATS * percentAmount );
     this.nutrition.proteins -= ( GOOD_AMOUNT_OF_PROTEINS * percentAmount );

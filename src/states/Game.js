@@ -2,7 +2,7 @@ import { playAudio, manageAudio, getAudioOffset } from '../utils/AudioManager';
 import { getStorage } from '../utils/StorageManager';
 
 import FoodSpawner from '../objects/FoodSpawner';
-import Fatty from '../objects/Fatty';
+import Bob from '../objects/Bob';
 
 import NutritionManager from '../objects/NutritionManager';
 
@@ -14,14 +14,14 @@ export default class Game extends Phaser.State {
 
     this.scoreTemplate = time => `Time: ${time}s`;
 
-    this.fatty = new Fatty( this.game, this.world.width / 2, this.world.height, 'fatty' );
+    this.NutritionManager = new NutritionManager( this.game );
+    this.bob = new Bob( this.game, this.world.width / 2, this.world.height - 32, 'bob', this.NutritionManager );
     new FoodSpawner( this.game );
     this.initUI();
 
     this.camera.resetFX();
     this.camera.flash( 0x000000, 500, false );
 
-    this.NutritionManager = new NutritionManager( this.game );
     this.game.physics.startSystem( Phaser.Physics.ARCADE );
   }
 
@@ -78,6 +78,8 @@ export default class Game extends Phaser.State {
     this.screenGameoverGroup.visible = false;
   }
   update() {
+    this.bob.hadleWeightChange();
+
     switch ( this.stateStatus ) {
     case 'paused': {
       if ( !this.runOnce ) {

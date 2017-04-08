@@ -31,7 +31,7 @@ export default class Food extends Phaser.Sprite {
 
   handleClick() {
     const tween = this.game.add.tween( this );
-    tween.to( { x: this.game.world.centerX - 50, y: this.game.world.height - 250 }, 500, Phaser.Easing.Linear.None, true );
+    tween.to( { x: this.game.world.centerX - 20, y: this.game.world.height - 370 }, 4000, Phaser.Easing.Linear.None, true );
     tween.onComplete.add( () => {
       this.destroy();
     } );
