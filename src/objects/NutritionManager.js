@@ -18,10 +18,9 @@ export default class NutritionManager {
   }
 
   reduceNutrition() {
-    // const percentAmount = 0.03;
-    const percentAmount = 0.2;
-    this.nutrition.carbos += ( GOOD_AMOUNT_OF_CARBS * percentAmount );
-    // this.nutrition.fats -= ( GOOD_AMOUNT_OF_FATS * percentAmount );
+    const percentAmount = 0.03;
+    this.nutrition.carbos -= ( GOOD_AMOUNT_OF_CARBS * percentAmount );
+    this.nutrition.fats -= ( GOOD_AMOUNT_OF_FATS * percentAmount );
     this.nutrition.proteins -= ( GOOD_AMOUNT_OF_PROTEINS * percentAmount );
 
     this.nutrition.carbos = Math.round( this.nutrition.carbos * 10 ) / 10;
@@ -33,6 +32,13 @@ export default class NutritionManager {
       this.nutrition.fats / GOOD_AMOUNT_OF_FATS +
       this.nutrition.proteins / GOOD_AMOUNT_OF_PROTEINS
     );
+
+    this.UI.updateUI();
+  }
+  updateStats( data ) {
+    this.nutrition.carbos += data.carbos;
+    this.nutrition.fats += data.fats;
+    this.nutrition.proteins += data.proteins;
 
     this.UI.updateUI();
   }

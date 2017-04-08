@@ -7,7 +7,10 @@ const resources = {
 		[ 'overlay', 'img/overlay.png' ],
 		[ 'button-beer', 'img/button-beer.png' ],
 		[ 'particle', 'img/particle.png' ],
-    [ 'fruit', 'img/assets/test-fruit.png' ],
+    [ 'apple', 'img/assets/apple.png' ],
+    [ 'chicken', 'img/assets/chicken.png' ],
+    [ 'banana', 'img/assets/banana.png' ],
+    [ 'hamburger', 'img/assets/hamburger.png' ],
   ],
   'spritesheet': [
 		[ 'button-start', 'img/button-start.png', 180, 180 ],

@@ -2,8 +2,10 @@ import { FOOD_SPAWN_INTERVAL, FOOD_SPAWN_BOUNDS_WIDTH, FOOD_SPAWN_BOUNDS_HEIGHT,
 import Food from './Food';
 
 export default class FoodSpawner extends Phaser.Group {
-  constructor( game ) {
+  constructor( game, NutritionManager ) {
     super( game );
+    this.NutritionManager = NutritionManager;
+    this.spawnFood();
     this.timer = this.game.time.events.loop( FOOD_SPAWN_INTERVAL, this.spawnFood, this );
   }
   spawnFood() {
@@ -20,7 +22,7 @@ export default class FoodSpawner extends Phaser.Group {
     }
     const foodType = FOOD_DATA[ Math.floor( Math.random() * FOOD_DATA.length ) ];
     console.log( foodType );
-    const newFood = new Food( this.game, x, y, foodType.key, foodType.nutritionFacts );
+    const newFood = new Food( this.game, x, y, foodType.key, foodType.nutritionFacts, this.NutritionManager );
     this.children.push( newFood );
   }
 }
