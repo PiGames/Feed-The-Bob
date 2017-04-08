@@ -5,7 +5,7 @@ const states = {
   'Boot': EPT.Boot,
   'Preloader': EPT.Preloader,
   'MainMenu': EPT.MainMenu,
-  'Achievements': EPT.Achievements,
+  'Wiki': EPT.Wiki,
   'Story': EPT.Story,
   'Game': EPT.Game,
 };

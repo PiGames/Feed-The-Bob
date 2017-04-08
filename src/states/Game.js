@@ -1,5 +1,6 @@
 import { playAudio, manageAudio, getAudioOffset } from '../utils/AudioManager';
 import { getStorage } from '../utils/StorageManager';
+import Fatty from '../objects/Fatty';
 
 export default class Game extends Phaser.State {
   create() {
@@ -7,6 +8,8 @@ export default class Game extends Phaser.State {
     this._time = 10;
     this.gamePaused = false;
     this.runOnce = false;
+
+    this.fatty = new Fatty( this.game, this.world.width / 2, this.world.height, 'fatty' );
 
     this.initUI();
 
