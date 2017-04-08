@@ -3,12 +3,12 @@ import NutritionUI from './NutritionUI';
 export default class NutritionManager {
   constructor( game ) {
     this.nutrition = {
-      proteins: 1000,
+      carbos: 1000,
       fats: 1000,
-      carbo: 1000,
+      proteins: 1000,
     };
 
-    this.ui = new NutritionUI( game );
+    this.UI = new NutritionUI( game, this );
 
     game.time.events.loop( Phaser.Timer.SECOND * 2, this.reduceNutrition, this );
   }
@@ -16,8 +16,8 @@ export default class NutritionManager {
   reduceNutrition() {
     this.nutrition.proteins--;
     this.nutrition.fats--;
-    this.nutrition.carbo--;
+    this.nutrition.carbos--;
 
-    console.log( this.nutrition );
+    this.UI.updateUI();
   }
 }
