@@ -14,16 +14,16 @@ export default class Game extends Phaser.State {
     this.runOnce = false;
 
     this.fatty = new Fatty( this.game, this.world.width / 2, this.world.height, 'fatty' );
-
+    new Food( this.game, 'fruit', true );
     this.initUI();
 
     this.camera.resetFX();
     this.camera.flash( 0x000000, 500, false );
 
     this.NutritionManager = new NutritionManager( this.game );
+    this.game.physics.startSystem( Phaser.Physics.ARCADE );
 
-    //display food
-    new Food( this.game, 'fruit', true );
+    this.NutritionManager = new NutritionManager();
   }
   initUI() {
     this.buttonPause = this.add.button( this.world.width - 20, 20, 'button-pause', this.managePause, this, 1, 0, 2 );
