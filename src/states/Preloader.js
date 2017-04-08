@@ -7,7 +7,7 @@ const resources = {
 		[ 'overlay', 'img/overlay.png' ],
 		[ 'button-beer', 'img/button-beer.png' ],
 		[ 'particle', 'img/particle.png' ],
-    [ 'fruit', 'img/assets/test-fruit.jpg' ],
+    [ 'fruit', 'img/assets/test-fruit.png' ],
 		[ 'fatty', 'img/assets/fatty.png' ],
   ],
   'spritesheet': [
