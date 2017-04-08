@@ -22,8 +22,6 @@ export default class Game extends Phaser.State {
 
     this.NutritionManager = new NutritionManager( this.game );
     this.game.physics.startSystem( Phaser.Physics.ARCADE );
-
-    this.NutritionManager = new NutritionManager();
   }
   initUI() {
     this.buttonPause = this.add.button( this.world.width - 20, 20, 'button-pause', this.managePause, this, 1, 0, 2 );
