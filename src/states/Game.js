@@ -20,7 +20,7 @@ export default class Game extends Phaser.State {
     this.camera.resetFX();
     this.camera.flash( 0x000000, 500, false );
 
-    this.NutritionManager = new NutritionManager();
+    this.NutritionManager = new NutritionManager( this.game );
 
     //display food
     new Food( this.game, 'fruit', true );
@@ -108,8 +108,6 @@ export default class Game extends Phaser.State {
   }
   statePlaying() {
     this.screenPausedGroup.visible = false;
-
-    this.NutritionManager.reduceNutrition();
   }
   statePaused() {
     this.screenPausedGroup.visible = true;
