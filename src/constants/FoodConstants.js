@@ -7,3 +7,7 @@ export const FOOD_SPAWN_BOUNDS_HEIGHT = 500;
 
 export const FOOD_WIDTH = 50;
 export const FOOD_HEIGHT = 50;
+
+export const FOOD_DATA = [
+  { 'key': 'fruit', 'nutritionFacts': { } },
+];

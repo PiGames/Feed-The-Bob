@@ -1,11 +1,10 @@
-import { FOOD_SPAWN_INTERVAL, FOOD_SPAWN_BOUNDS_WIDTH, FOOD_SPAWN_BOUNDS_HEIGHT, FOOD_WIDTH, FOOD_HEIGHT } from '../constants/FoodConstants';
+import { FOOD_SPAWN_INTERVAL, FOOD_SPAWN_BOUNDS_WIDTH, FOOD_SPAWN_BOUNDS_HEIGHT, FOOD_WIDTH, FOOD_HEIGHT, FOOD_DATA } from '../constants/FoodConstants';
 import Food from './Food';
 
 export default class FoodSpawner extends Phaser.Group {
   constructor( game ) {
     super( game );
-
-    this.game.time.events.loop( FOOD_SPAWN_INTERVAL, this.spawnFood, this );
+    this.timer = this.game.time.events.loop( FOOD_SPAWN_INTERVAL, this.spawnFood, this );
   }
   spawnFood() {
     const sides = [ 'NORTH', 'EAST', 'SOUTH', 'WEST' ];
@@ -19,7 +18,9 @@ export default class FoodSpawner extends Phaser.Group {
       x = spawnSide === 'WEST' ? -FOOD_WIDTH : this.game.world.width + FOOD_WIDTH;
       y = FOOD_SPAWN_BOUNDS_HEIGHT / 2 + Math.random() * FOOD_SPAWN_BOUNDS_HEIGHT;
     }
-    const newFood = new Food( this.game, x, y, 'fruit' );
+    const foodType = FOOD_DATA[ Math.floor( Math.random() * FOOD_DATA.length ) ];
+    console.log( foodType );
+    const newFood = new Food( this.game, x, y, foodType.key, foodType.nutritionFacts );
     this.children.push( newFood );
   }
 }

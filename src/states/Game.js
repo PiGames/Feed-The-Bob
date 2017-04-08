@@ -15,7 +15,9 @@ export default class Game extends Phaser.State {
     this.scoreTemplate = time => `Time: ${time}s`;
 
     this.fatty = new Fatty( this.game, this.world.width / 2, this.world.height, 'fatty' );
-    new FoodSpawner( this.game );
+
+    this.foodSpawner = new FoodSpawner( this.game );
+    this.foodContainer = this.foodSpawner.children;
     this.initUI();
 
 
@@ -103,10 +105,13 @@ export default class Game extends Phaser.State {
     this.gamePaused = !this.gamePaused;
     playAudio( 'click' );
     if ( this.gamePaused ) {
+      this.game.world.bringToTop( this.screenPausedGroup );
       this.stateStatus = 'paused';
+      this.stopMovingFood();
     }		else {
       this.stateStatus = 'playing';
       this.runOnce = false;
+      this.restoreFoodMovement();
     }
   }
   statePlaying() {
@@ -189,5 +194,19 @@ export default class Game extends Phaser.State {
     this.stateStatus = 'playing';
 		// this.state.restart(true);
     this.state.start( 'MainMenu' );
+  }
+  stopMovingFood() {
+    this.foodContainer.forEach( food => {
+      food.body.velocity.x = 0;
+      food.body.velocity.y = 0;
+    } );
+    this.game.time.events.pause();
+  }
+  restoreFoodMovement() {
+    this.foodContainer.forEach( food => {
+      food.body.velocity.x = food.velocityX;
+      food.body.velocity.y = food.velocityY;
+    } );
+    this.game.time.events.resume();
   }
 }
