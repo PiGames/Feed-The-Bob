@@ -12,10 +12,12 @@ export default class Game extends Phaser.State {
     this.gamePaused = false;
     this.runOnce = false;
 
+    this.getStorage = getStorage;
+
     this.scoreTemplate = time => `Time: ${time}s`;
 
     this.NutritionManager = new NutritionManager( this.game );
-    this.bob = new Bob( this.game, this.world.width / 2, this.world.height - 32, 'bob', this.NutritionManager );
+    this.bob = new Bob( this.game, this.world.width / 2, this.world.height - 32, 'bob', this.NutritionManager, this.stateGameover.bind( this ) );
     new FoodSpawner( this.game );
 
     this.foodSpawner = new FoodSpawner( this.game );
@@ -123,10 +125,13 @@ export default class Game extends Phaser.State {
     this.screenPausedGroup.visible = true;
   }
   stateGameover() {
+    this.game.world.bringToTop( this.screenPausedGroup );
+    this.stopMovingFood();
     this.screenGameoverGroup.visible = true;
-		// this.screenGameoverScore.setText('Score: '+this._score);
+    // this.screenGameoverScore.setText( 'Score: ' + this.score );
     this.gameoverScoreTween();
-    getStorage().setHighscore( 'EPT-highscore', this.score );
+
+    this.getStorage().setHighscore( 'EPT-highscore', this.score );
   }
 
   handlePoints() {
@@ -186,6 +191,7 @@ export default class Game extends Phaser.State {
     this.gamePaused = false;
     this.runOnce = false;
     this.stateStatus = 'playing';
+    this.restoreFoodMovement();
     this.state.restart( true );
   }
   stateBack() {

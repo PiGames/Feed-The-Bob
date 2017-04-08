@@ -18,7 +18,7 @@ const resources = {
 		[ 'button-pause', 'img/button-pause.png', 80, 80 ],
 		[ 'button-audio', 'img/button-sound.png', 80, 80 ],
 		[ 'button-back', 'img/button-back.png', 70, 70 ],
-    [ 'bob', 'img/assets/bob.png', 460, 1371 ],
+    [ 'bob', 'img/assets/bob.png', 460, 1370 ],
   ],
   'audio': [
 		[ 'audio-click', [ 'sfx/audio-button.m4a', 'sfx/audio-button.mp3', 'sfx/audio-button.ogg' ] ],
@@ -43,7 +43,7 @@ export default class Preloader extends Phaser.State {
     }
   }
   create() {
-    // this.state.start( 'MainMenu' );
-    this.state.start( 'Game' );
+    this.state.start( 'MainMenu' );
+    // this.state.start( 'Game' );
   }
 }
