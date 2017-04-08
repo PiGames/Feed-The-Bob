@@ -1,5 +1,6 @@
 import { playAudio, manageAudio, getAudioOffset } from '../utils/AudioManager';
 import { getStorage } from '../utils/StorageManager';
+import Food from '../objects/Food';
 
 export default class Game extends Phaser.State {
   create() {
@@ -12,6 +13,9 @@ export default class Game extends Phaser.State {
 
     this.camera.resetFX();
     this.camera.flash( 0x000000, 500, false );
+
+    //display food
+    new Food( this.game, 'fruit', true );
   }
   initUI() {
     this.buttonPause = this.add.button( this.world.width - 20, 20, 'button-pause', this.managePause, this, 1, 0, 2 );
