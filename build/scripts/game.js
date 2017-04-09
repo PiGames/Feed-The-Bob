@@ -254,10 +254,10 @@ var Food = function (_Phaser$Sprite) {
     var directionX = x > _this.game.world.centerX ? -1 : 1;
     var directionY = y > _this.game.world.centerY ? -1 : 1;
 
-    _this.velocityX = directionX * (Math.floor(Math.random() * _FoodConstants.MAX_FOOD_VELOCITY - _FoodConstants.MIN_FOOD_VELOCITY) + _FoodConstants.MIN_FOOD_VELOCITY);
+    _this.velocityX = directionX * (Math.floor(Math.random() * (_FoodConstants.MAX_FOOD_VELOCITY - _FoodConstants.MIN_FOOD_VELOCITY)) + _FoodConstants.MIN_FOOD_VELOCITY);
     _this.body.velocity.x = _this.velocityX;
 
-    _this.velocityY = directionY * (Math.floor(Math.random() * _FoodConstants.MAX_FOOD_VELOCITY - _FoodConstants.MIN_FOOD_VELOCITY) + _FoodConstants.MIN_FOOD_VELOCITY);
+    _this.velocityY = directionY * (Math.floor(Math.random() * (_FoodConstants.MAX_FOOD_VELOCITY - _FoodConstants.MIN_FOOD_VELOCITY)) + _FoodConstants.MIN_FOOD_VELOCITY);
     _this.body.velocity.y = _this.velocityY;
 
     _this.inputEnabled = true;
@@ -384,6 +384,11 @@ var FoodSpawner = function (_Phaser$Group) {
   }, {
     key: 'update',
     value: function update() {
+      this.children.forEach(function (child) {
+        if (Math.abs(child.body.velocity.x) < 60 || Math.abs(child.body.velocity.y) < 60) {
+          console.log('oops', child.body.velocity.x, child.body.velocity.y);
+        }
+      });
       Phaser.Group.prototype.update.call(this);
     }
   }, {

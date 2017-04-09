@@ -13,11 +13,11 @@ export default class Food extends Phaser.Sprite {
     const directionY = y > this.game.world.centerY ? -1 : 1;
 
     this.velocityX = directionX * ( Math.floor(
-      Math.random() * MAX_FOOD_VELOCITY - MIN_FOOD_VELOCITY ) + MIN_FOOD_VELOCITY );
+      Math.random() * ( MAX_FOOD_VELOCITY - MIN_FOOD_VELOCITY ) ) + MIN_FOOD_VELOCITY );
     this.body.velocity.x = this.velocityX;
 
     this.velocityY = directionY * ( Math.floor(
-      Math.random() * MAX_FOOD_VELOCITY - MIN_FOOD_VELOCITY ) + MIN_FOOD_VELOCITY );
+      Math.random() * ( MAX_FOOD_VELOCITY - MIN_FOOD_VELOCITY ) ) + MIN_FOOD_VELOCITY );
     this.body.velocity.y = this.velocityY;
 
     this.inputEnabled = true;
