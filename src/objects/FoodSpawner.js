@@ -21,8 +21,15 @@ export default class FoodSpawner extends Phaser.Group {
       y = FOOD_SPAWN_BOUNDS_HEIGHT / 2 + Math.random() * FOOD_SPAWN_BOUNDS_HEIGHT;
     }
     const foodType = FOOD_DATA[ Math.floor( Math.random() * FOOD_DATA.length ) ];
-    console.log( foodType );
-    const newFood = new Food( this.game, x, y, foodType.key, foodType.nutritionFacts, this.NutritionManager );
+    const newFood = new Food( this.game, x, y, foodType.key, foodType.nutritionFacts, this.NutritionManager, this.removeChild.bind( this ) );
     this.children.push( newFood );
+  }
+  update() {
+    Phaser.Group.prototype.update.call( this );
+  }
+  removeChild( child ) {
+    const index = this.children.indexOf( child );
+    this.children[ index ].destroy();
+    this.children.splice( index, 1 );
   }
 }

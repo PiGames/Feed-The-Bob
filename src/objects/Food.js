@@ -1,8 +1,9 @@
 import { MIN_FOOD_VELOCITY, MAX_FOOD_VELOCITY } from '../constants/FoodConstants';
 
 export default class Food extends Phaser.Sprite {
-  constructor( game, x, y, key, data, NutritionManager ) {
+  constructor( game, x, y, key, data, NutritionManager, onDestroy ) {
     super( game, x, y, key );
+    this.onDestroy = onDestroy;
     this.data = data;
     this.NutritionManager = NutritionManager;
     this.scale.setTo( 0.5 );
@@ -36,8 +37,7 @@ export default class Food extends Phaser.Sprite {
     } );
     this.events.onOutOfBounds.add( () => {
       if ( this.hasEnteredScreen ) {
-        console.log( 'destroy' );
-        this.destroy();
+        this.onDestroy( this );
       }
     } );
 
@@ -50,7 +50,7 @@ export default class Food extends Phaser.Sprite {
     tween.to( { x: this.game.world.centerX - 20, y: this.game.world.height - 370 }, 500, Phaser.Easing.Linear.None, true );
     tween.onComplete.add( () => {
       this.NutritionManager.updateStats( this.data );
-      this.destroy();
+      this.onDestroy( this );
     } );
   }
 }

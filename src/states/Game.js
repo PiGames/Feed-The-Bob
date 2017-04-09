@@ -204,19 +204,19 @@ export default class Game extends Phaser.State {
   }
   stopMovingFood() {
     this.foodContainer.forEach( food => {
-      if ( food && food.body ) {
-        food.body.velocity.x = 0;
-        food.body.velocity.y = 0;
-      }
+    //  if ( food && food.body ) {
+      food.body.velocity.x = 0;
+      food.body.velocity.y = 0;
+    //  }
     } );
     this.game.time.events.pause();
   }
   restoreFoodMovement() {
     this.foodContainer.forEach( food => {
-      if ( food && food.body ) {
-        food.body.velocity.x = food.velocityX;
-        food.body.velocity.y = food.velocityY;
-      }
+      //if ( food && food.body ) {
+      food.body.velocity.x = food.velocityX;
+      food.body.velocity.y = food.velocityY;
+      //}
     } );
     this.game.time.events.resume();
   }

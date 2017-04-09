@@ -240,11 +240,12 @@ function _inherits(subClass, superClass) {
 var Food = function (_Phaser$Sprite) {
   _inherits(Food, _Phaser$Sprite);
 
-  function Food(game, x, y, key, data, NutritionManager) {
+  function Food(game, x, y, key, data, NutritionManager, onDestroy) {
     _classCallCheck(this, Food);
 
     var _this = _possibleConstructorReturn(this, (Food.__proto__ || Object.getPrototypeOf(Food)).call(this, game, x, y, key));
 
+    _this.onDestroy = onDestroy;
     _this.data = data;
     _this.NutritionManager = NutritionManager;
     _this.scale.setTo(0.5);
@@ -276,8 +277,7 @@ var Food = function (_Phaser$Sprite) {
     });
     _this.events.onOutOfBounds.add(function () {
       if (_this.hasEnteredScreen) {
-        console.log('destroy');
-        _this.destroy();
+        _this.onDestroy(_this);
       }
     });
 
@@ -294,7 +294,7 @@ var Food = function (_Phaser$Sprite) {
       tween.to({ x: this.game.world.centerX - 20, y: this.game.world.height - 370 }, 500, Phaser.Easing.Linear.None, true);
       tween.onComplete.add(function () {
         _this2.NutritionManager.updateStats(_this2.data);
-        _this2.destroy();
+        _this2.onDestroy(_this2);
       });
     }
   }]);
@@ -378,9 +378,20 @@ var FoodSpawner = function (_Phaser$Group) {
         y = _FoodConstants.FOOD_SPAWN_BOUNDS_HEIGHT / 2 + Math.random() * _FoodConstants.FOOD_SPAWN_BOUNDS_HEIGHT;
       }
       var foodType = _FoodConstants.FOOD_DATA[Math.floor(Math.random() * _FoodConstants.FOOD_DATA.length)];
-      console.log(foodType);
-      var newFood = new _Food2.default(this.game, x, y, foodType.key, foodType.nutritionFacts, this.NutritionManager);
+      var newFood = new _Food2.default(this.game, x, y, foodType.key, foodType.nutritionFacts, this.NutritionManager, this.removeChild.bind(this));
       this.children.push(newFood);
+    }
+  }, {
+    key: 'update',
+    value: function update() {
+      Phaser.Group.prototype.update.call(this);
+    }
+  }, {
+    key: 'removeChild',
+    value: function removeChild(child) {
+      var index = this.children.indexOf(child);
+      this.children[index].destroy();
+      this.children.splice(index, 1);
     }
   }]);
 
@@ -949,10 +960,10 @@ var Game = function (_Phaser$State) {
     key: 'stopMovingFood',
     value: function stopMovingFood() {
       this.foodContainer.forEach(function (food) {
-        if (food && food.body) {
-          food.body.velocity.x = 0;
-          food.body.velocity.y = 0;
-        }
+        //  if ( food && food.body ) {
+        food.body.velocity.x = 0;
+        food.body.velocity.y = 0;
+        //  }
       });
       this.game.time.events.pause();
     }
@@ -960,10 +971,10 @@ var Game = function (_Phaser$State) {
     key: 'restoreFoodMovement',
     value: function restoreFoodMovement() {
       this.foodContainer.forEach(function (food) {
-        if (food && food.body) {
-          food.body.velocity.x = food.velocityX;
-          food.body.velocity.y = food.velocityY;
-        }
+        //if ( food && food.body ) {
+        food.body.velocity.x = food.velocityX;
+        food.body.velocity.y = food.velocityY;
+        //}
       });
       this.game.time.events.resume();
     }
