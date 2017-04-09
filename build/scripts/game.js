@@ -813,7 +813,7 @@ var Game = function (_Phaser$State) {
         case 'gameover':
           {
             if (!this.runOnce) {
-              this.stateGameover(msg);
+              this.stateGameover();
               this.runOnce = true;
             }
             break;
@@ -942,7 +942,7 @@ var Game = function (_Phaser$State) {
       this.gamePaused = false;
       this.runOnce = false;
       this.stateStatus = 'playing';
-      // this.state.restart(true);
+      this.game.time.events.resume();
       this.state.start('MainMenu');
     }
   }, {
