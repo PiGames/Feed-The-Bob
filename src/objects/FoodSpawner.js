@@ -25,11 +25,6 @@ export default class FoodSpawner extends Phaser.Group {
     this.children.push( newFood );
   }
   update() {
-    this.children.forEach( ( child ) => {
-      if ( Math.abs( child.body.velocity.x ) < 60 || Math.abs( child.body.velocity.y ) < 60 ) {
-        console.log( 'oops', child.body.velocity.x, child.body.velocity.y );
-      }
-    } );
     Phaser.Group.prototype.update.call( this );
   }
   removeChild( child ) {

@@ -384,11 +384,6 @@ var FoodSpawner = function (_Phaser$Group) {
   }, {
     key: 'update',
     value: function update() {
-      this.children.forEach(function (child) {
-        if (Math.abs(child.body.velocity.x) < 60 || Math.abs(child.body.velocity.y) < 60) {
-          console.log('oops', child.body.velocity.x, child.body.velocity.y);
-        }
-      });
       Phaser.Group.prototype.update.call(this);
     }
   }, {
