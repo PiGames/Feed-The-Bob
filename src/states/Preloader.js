@@ -21,6 +21,7 @@ const resources = {
 		[ 'button-pause', 'img/button-pause.png', 80, 80 ],
 		[ 'button-audio', 'img/button-sound.png', 80, 80 ],
 		[ 'button-back', 'img/button-back.png', 70, 70 ],
+		[ 'button-next', 'img/button-next.png', 70, 70 ],
     [ 'bob', 'img/assets/bob.png', 460, 1370 ],
   ],
   'audio': [

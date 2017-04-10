@@ -1148,7 +1148,7 @@ function _inherits(subClass, superClass) {
 
 var resources = {
   'image': [['background', 'img/background.png'], ['title', 'img/title.png'], ['logo-pigames', 'img/logo-pigames.png'], ['clickme', 'img/clickme.png'], ['overlay', 'img/overlay.png'], ['button-beer', 'img/button-beer.png'], ['particle', 'img/particle.png'], ['apple', 'img/assets/apple.png'], ['chicken', 'img/assets/chicken.png'], ['banana', 'img/assets/banana.png'], ['hamburger', 'img/assets/hamburger.png']],
-  'spritesheet': [['button-start', 'img/button-start.png', 180, 180], ['button-continue', 'img/button-continue.png', 180, 180], ['button-mainmenu', 'img/button-mainmenu.png', 180, 180], ['button-restart', 'img/button-tryagain.png', 180, 180], ['button-achievements', 'img/button-achievements.png', 110, 110], ['button-pause', 'img/button-pause.png', 80, 80], ['button-audio', 'img/button-sound.png', 80, 80], ['button-back', 'img/button-back.png', 70, 70], ['bob', 'img/assets/bob.png', 460, 1370]],
+  'spritesheet': [['button-start', 'img/button-start.png', 180, 180], ['button-continue', 'img/button-continue.png', 180, 180], ['button-mainmenu', 'img/button-mainmenu.png', 180, 180], ['button-restart', 'img/button-tryagain.png', 180, 180], ['button-achievements', 'img/button-achievements.png', 110, 110], ['button-pause', 'img/button-pause.png', 80, 80], ['button-audio', 'img/button-sound.png', 80, 80], ['button-back', 'img/button-back.png', 70, 70], ['button-next', 'img/button-next.png', 70, 70], ['bob', 'img/assets/bob.png', 460, 1370]],
   'audio': [['audio-click', ['sfx/audio-button.m4a', 'sfx/audio-button.mp3', 'sfx/audio-button.ogg']], ['audio-theme', ['sfx/music-bitsnbites-liver.m4a', 'sfx/music-bitsnbites-liver.mp3', 'sfx/music-bitsnbites-liver.ogg']]]
 };
 
@@ -1295,6 +1295,10 @@ var _createClass = function () {
 
 var _AudioManager = require('../utils/AudioManager');
 
+var _FoodConstants = require('../constants/FoodConstants');
+
+var _UserInterfaceUtils = require('../utils/UserInterfaceUtils');
+
 function _classCallCheck(instance, Constructor) {
   if (!(instance instanceof Constructor)) {
     throw new TypeError("Cannot call a class as a function");
@@ -1325,19 +1329,118 @@ var Wiki = function (_Phaser$State) {
   _createClass(Wiki, [{
     key: 'create',
     value: function create() {
-      var fontAchievements = { font: '32px Arial', fill: '#000' };
-      this.add.text(100, 75, 'Achievements screen', fontAchievements);
+      var fontWiki = { font: '40px Arial', fill: '#000' };
+      this.add.text(20, 20, 'Wiki', fontWiki);
 
       var buttonBack = this.add.button(this.world.width - 20, this.game.world.height - 20, 'button-back', this.clickBack, this, 1, 0, 2);
       buttonBack.anchor.set(1, 1);
       buttonBack.x = this.world.width + buttonBack.width + 20;
       this.add.tween(buttonBack).to({ x: this.world.width - 20 }, 500, Phaser.Easing.Exponential.Out, true);
+
+      this.currentWikiPageIndex = 0;
+
+      this.currentPage = this.add.group();
+      this.fillGroupWithFoodData(this.currentPage, 0);
+
+      this.nextPage = this.add.group();
+      this.fillGroupWithFoodData(this.nextPage, 1);
+
+      this.nextPage.position.x += this.world.width;
+
+      var buttonPrevious = this.add.button(0, 0, 'button-back', this.goToPreviousWikiPage, this, 1, 0, 2);
+      buttonPrevious.x = -buttonPrevious.width;
+      this.add.tween(buttonPrevious).to({ x: 75 }, 500, Phaser.Easing.Exponential.Out, true);
+      (0, _UserInterfaceUtils.centerObjectInHeight)(buttonPrevious, this.world);
+
+      var buttonNext = this.add.button(0, 0, 'button-next', this.goToNextWikiPage, this, 1, 0, 2);
+      buttonNext.x = this.world.width;
+      this.add.tween(buttonNext).to({ x: this.world.width - buttonNext.width - 75 }, 500, Phaser.Easing.Exponential.Out, true);
+      (0, _UserInterfaceUtils.centerObjectInHeight)(buttonNext, this.world);
     }
   }, {
     key: 'clickBack',
     value: function clickBack() {
       (0, _AudioManager.playAudio)('click');
       this.game.state.start('MainMenu');
+    }
+  }, {
+    key: 'makeFirstLetterCapital',
+    value: function makeFirstLetterCapital(string) {
+      return '' + string.charAt(0).toUpperCase() + string.substring(1);
+    }
+  }, {
+    key: 'goToPreviousWikiPage',
+    value: function goToPreviousWikiPage() {
+      var _this2 = this;
+
+      if (this.tweenIn != null) {
+        return;
+      }
+      this.currentWikiPageIndex = this.currentWikiPageIndex === 0 ? _FoodConstants.FOOD_DATA.length - 1 : this.currentWikiPageIndex - 1;
+
+      this.nextPage.position.x -= this.world.width * 2;
+      this.fillGroupWithFoodData(this.nextPage, this.currentWikiPageIndex);
+
+      this.add.tween(this.currentPage.position).to({ x: this.currentPage.position.x + this.world.width }, 500, Phaser.Easing.Linear.None, true);
+      this.tweenIn = this.add.tween(this.nextPage.position).to({ x: this.nextPage.position.x + this.world.width }, 500, Phaser.Easing.Linear.None, true);
+
+      this.tweenIn.onComplete.add(function () {
+        var tmpPage = _this2.currentPage;
+        _this2.currentPage = _this2.nextPage;
+        _this2.nextPage = tmpPage;
+
+        _this2.tweenIn = null;
+      });
+    }
+  }, {
+    key: 'goToNextWikiPage',
+    value: function goToNextWikiPage() {
+      var _this3 = this;
+
+      if (this.tweenIn != null) {
+        return;
+      }
+      this.currentWikiPageIndex = this.currentWikiPageIndex + 1 === _FoodConstants.FOOD_DATA.length ? 0 : this.currentWikiPageIndex + 1;
+
+      this.add.tween(this.currentPage.position).to({ x: this.currentPage.position.x - this.world.width }, 500, Phaser.Easing.Linear.None, true);
+      this.tweenIn = this.add.tween(this.nextPage.position).to({ x: this.nextPage.position.x - this.world.width }, 500, Phaser.Easing.Linear.None, true);
+
+      this.tweenIn.onComplete.add(function () {
+        var tmpPage = _this3.currentPage;
+
+        _this3.currentPage = _this3.nextPage;
+        var nextIndex = _this3.currentWikiPageIndex + 1 === _FoodConstants.FOOD_DATA.length ? 0 : _this3.currentWikiPageIndex + 1;
+        _this3.fillGroupWithFoodData(tmpPage, nextIndex);
+        tmpPage.position.x += _this3.world.width * 2;
+
+        _this3.nextPage = tmpPage;
+
+        _this3.tweenIn = null;
+      });
+    }
+  }, {
+    key: 'fillGroupWithFoodData',
+    value: function fillGroupWithFoodData(group, index) {
+      group.removeAll(true);
+      var fontTitle = { font: '35px Arial', fill: '#fff' };
+
+      var title = this.add.text(0, 75, this.makeFirstLetterCapital(_FoodConstants.FOOD_DATA[index].key), fontTitle);
+      (0, _UserInterfaceUtils.centerObjectInWidth)(title, this.world);
+      var sprite = this.add.sprite(0, 150, _FoodConstants.FOOD_DATA[index].key);
+      (0, _UserInterfaceUtils.centerObjectInWidth)(sprite, this.world);
+      var fontNutritionFacts = { font: '25px Arial', fill: '#000' };
+      var carbos = this.add.text(0, 325, 'Carbohydrates: ' + _FoodConstants.FOOD_DATA[index].nutritionFacts.carbos + 'g', fontNutritionFacts);
+      (0, _UserInterfaceUtils.centerObjectInWidth)(carbos, this.world);
+      var fats = this.add.text(0, 375, 'Fats: ' + _FoodConstants.FOOD_DATA[index].nutritionFacts.fats + 'g', fontNutritionFacts);
+      (0, _UserInterfaceUtils.centerObjectInWidth)(fats, this.world);
+      var proteins = this.add.text(0, 425, 'Proteins: ' + _FoodConstants.FOOD_DATA[index].nutritionFacts.proteins + 'g', fontNutritionFacts);
+      (0, _UserInterfaceUtils.centerObjectInWidth)(proteins, this.world);
+
+      group.add(title);
+      group.add(sprite);
+      group.add(carbos);
+      group.add(fats);
+      group.add(proteins);
     }
   }]);
 
@@ -1346,7 +1449,7 @@ var Wiki = function (_Phaser$State) {
 
 exports.default = Wiki;
 
-},{"../utils/AudioManager":16}],15:[function(require,module,exports){
+},{"../constants/FoodConstants":1,"../utils/AudioManager":16,"../utils/UserInterfaceUtils":18}],15:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1477,6 +1580,22 @@ function setStorage(storage) {
 var getStorage = exports.getStorage = function getStorage() {
   return EPTStorage;
 };
+
+},{}],18:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.centerObjectInWidth = centerObjectInWidth;
+exports.centerObjectInHeight = centerObjectInHeight;
+function centerObjectInWidth(object, world) {
+  object.position.x = world.width / 2 - object.width / 2;
+}
+
+function centerObjectInHeight(object, world) {
+  object.position.y = world.height / 2 - object.height / 2;
+}
 
 },{}]},{},[3])
 //# sourceMappingURL=game.js.map
