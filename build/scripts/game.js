@@ -1,4 +1,13 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var TIME_TO_REACH_MEDIUM_LEVEL = exports.TIME_TO_REACH_MEDIUM_LEVEL = 5;
+var TIME_TO_REACH_HARD_LEVEL = exports.TIME_TO_REACH_HARD_LEVEL = 10;
+
+},{}],2:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -7,16 +16,16 @@ Object.defineProperty(exports, "__esModule", {
 var MIN_FOOD_VELOCITY = exports.MIN_FOOD_VELOCITY = 60;
 var MAX_FOOD_VELOCITY = exports.MAX_FOOD_VELOCITY = 100;
 
-var FOOD_SPAWN_INTERVAL = exports.FOOD_SPAWN_INTERVAL = 0.75 * Phaser.Timer.SECOND;
+var FOOD_SPAWN_INTERVAL = exports.FOOD_SPAWN_INTERVAL = Phaser.Timer.SECOND;
 var FOOD_SPAWN_BOUNDS_WIDTH = exports.FOOD_SPAWN_BOUNDS_WIDTH = 500;
 var FOOD_SPAWN_BOUNDS_HEIGHT = exports.FOOD_SPAWN_BOUNDS_HEIGHT = 300;
 
 var FOOD_WIDTH = exports.FOOD_WIDTH = 100;
 var FOOD_HEIGHT = exports.FOOD_HEIGHT = 75;
 
-var FOOD_DATA = exports.FOOD_DATA = [{ 'key': 'apple', 'nutritionFacts': { 'carbos': 12, 'fats': 0, 'proteins': 0 } }, { 'key': 'chicken', 'nutritionFacts': { 'carbos': 2, 'fats': 10, 'proteins': 18 } }, { 'key': 'hamburger', 'nutritionFacts': { 'carbos': 30, 'fats': 13, 'proteins': 16 } }, { 'key': 'banana', 'nutritionFacts': { 'carbos': 30, 'fats': 1, 'proteins': 0 } }];
+var FOOD_DATA = exports.FOOD_DATA = [{ 'key': 'apple', 'nutritionFacts': { 'carbos': 12, 'fats': 0, 'proteins': 0 }, 'complexityLevel': 1 }, { 'key': 'chicken', 'nutritionFacts': { 'carbos': 2, 'fats': 10, 'proteins': 18 }, 'complexityLevel': 2 }, { 'key': 'hamburger', 'nutritionFacts': { 'carbos': 30, 'fats': 13, 'proteins': 16 }, 'complexityLevel': 3 }, { 'key': 'banana', 'nutritionFacts': { 'carbos': 30, 'fats': 1, 'proteins': 0 }, 'complexityLevel': 1 }];
 
-},{}],2:[function(require,module,exports){
+},{}],3:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -26,7 +35,7 @@ var GOOD_AMOUNT_OF_CARBS = exports.GOOD_AMOUNT_OF_CARBS = 270;
 var GOOD_AMOUNT_OF_FATS = exports.GOOD_AMOUNT_OF_FATS = 70;
 var GOOD_AMOUNT_OF_PROTEINS = exports.GOOD_AMOUNT_OF_PROTEINS = 50;
 
-},{}],3:[function(require,module,exports){
+},{}],4:[function(require,module,exports){
 'use strict';
 
 var _states = require('./states');
@@ -51,7 +60,7 @@ for (var stateName in states) {
 }
 game.state.start('Boot');
 
-},{"./states":15}],4:[function(require,module,exports){
+},{"./states":16}],5:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -200,7 +209,7 @@ var Bob = function (_Phaser$Sprite) {
 
 exports.default = Bob;
 
-},{"../constants/NutritionConstants":2}],5:[function(require,module,exports){
+},{"../constants/NutritionConstants":3}],6:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -304,7 +313,7 @@ var Food = function (_Phaser$Sprite) {
 
 exports.default = Food;
 
-},{"../constants/FoodConstants":1}],6:[function(require,module,exports){
+},{"../constants/FoodConstants":2}],7:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -326,6 +335,8 @@ var _FoodConstants = require('../constants/FoodConstants');
 var _Food = require('./Food');
 
 var _Food2 = _interopRequireDefault(_Food);
+
+var _DifficultyLevelIntervals = require('../constants/DifficultyLevelIntervals.js');
 
 function _interopRequireDefault(obj) {
   return obj && obj.__esModule ? obj : { default: obj };
@@ -353,17 +364,42 @@ var FoodSpawner = function (_Phaser$Group) {
   _inherits(FoodSpawner, _Phaser$Group);
 
   function FoodSpawner(game, NutritionManager) {
+    var enableDifficultyLevelGrowth = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
+
     _classCallCheck(this, FoodSpawner);
 
     var _this = _possibleConstructorReturn(this, (FoodSpawner.__proto__ || Object.getPrototypeOf(FoodSpawner)).call(this, game));
 
     _this.NutritionManager = NutritionManager;
-    _this.spawnFood();
+    _this.enableDifficultyLevelGrowth = enableDifficultyLevelGrowth;
+
     _this.timer = _this.game.time.events.loop(_FoodConstants.FOOD_SPAWN_INTERVAL, _this.spawnFood, _this);
+
+    if (_this.enableDifficultyLevelGrowth) {
+      _this.sortedFoodData = _FoodConstants.FOOD_DATA.sort(function (food1, food2) {
+        return food1.complexityLevel > food2.complexityLevel;
+      });
+      _this.easyLevelLastIndex = _FoodConstants.FOOD_DATA.length - 1 - _this.sortedFoodData.reverse().findIndex(function (food) {
+        return food.complexityLevel === 1;
+      });
+      _this.mediumLevelLastIndex = _FoodConstants.FOOD_DATA.length - 1 - _this.sortedFoodData.findIndex(function (food) {
+        return food.complexityLevel === 2;
+      });
+      _this.hardLevelLastIndex = _FoodConstants.FOOD_DATA.length - 1;
+
+      _this.sortedFoodData.reverse();
+
+      _this.currentDifficultyLevelLastIndex = _this.easyLevelLastIndex;
+    }
     return _this;
   }
 
   _createClass(FoodSpawner, [{
+    key: 'create',
+    value: function create() {
+      this.spawnFood();
+    }
+  }, {
     key: 'spawnFood',
     value: function spawnFood() {
       var sides = ['NORTH', 'EAST', 'SOUTH', 'WEST'];
@@ -377,7 +413,13 @@ var FoodSpawner = function (_Phaser$Group) {
         x = spawnSide === 'WEST' ? -_FoodConstants.FOOD_WIDTH : this.game.world.width + _FoodConstants.FOOD_WIDTH;
         y = _FoodConstants.FOOD_SPAWN_BOUNDS_HEIGHT / 2 + Math.random() * _FoodConstants.FOOD_SPAWN_BOUNDS_HEIGHT;
       }
-      var foodType = _FoodConstants.FOOD_DATA[Math.floor(Math.random() * _FoodConstants.FOOD_DATA.length)];
+      var foodType = void 0;
+      if (!this.enableDifficultyLevelGrowth) {
+        foodType = _FoodConstants.FOOD_DATA[Math.floor(Math.random() * _FoodConstants.FOOD_DATA.length)];
+      } else {
+        this.tryDifficultyLevelUp();
+        foodType = this.sortedFoodData[Math.floor(Math.random() * (this.currentDifficultyLevelLastIndex + 1))];
+      }
       var newFood = new _Food2.default(this.game, x, y, foodType.key, foodType.nutritionFacts, this.NutritionManager, this.removeChild.bind(this));
       this.children.push(newFood);
     }
@@ -393,6 +435,19 @@ var FoodSpawner = function (_Phaser$Group) {
       this.children[index].destroy();
       this.children.splice(index, 1);
     }
+    // this method should be called from a callback that counts points
+
+  }, {
+    key: 'tryDifficultyLevelUp',
+    value: function tryDifficultyLevelUp(score) {
+      if (score >= _DifficultyLevelIntervals.TIME_TO_REACH_MEDIUM_LEVEL && this.currentDifficultyLevelLastIndex !== this.mediumLevelLastIndex && this.currentDifficultyLevelLastIndex !== this.hardLevelLastIndex) {
+        this.currentDifficultyLevelLastIndex = this.mediumLevelLastIndex;
+        console.log(this.currentDifficultyLevelLastIndex);
+      } else if (score >= _DifficultyLevelIntervals.TIME_TO_REACH_HARD_LEVEL && this.currentDifficultyLevelLastIndex !== this.hardLevelLastIndex) {
+        this.currentDifficultyLevelLastIndex = this.hardLevelLastIndex;
+        console.log(this.currentDifficultyLevelLastIndex);
+      }
+    }
   }]);
 
   return FoodSpawner;
@@ -400,7 +455,7 @@ var FoodSpawner = function (_Phaser$Group) {
 
 exports.default = FoodSpawner;
 
-},{"../constants/FoodConstants":1,"./Food":5}],7:[function(require,module,exports){
+},{"../constants/DifficultyLevelIntervals.js":1,"../constants/FoodConstants":2,"./Food":6}],8:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -482,7 +537,7 @@ var NutritionManager = function () {
 
 exports.default = NutritionManager;
 
-},{"../constants/NutritionConstants":2,"./NutritionUI":8}],8:[function(require,module,exports){
+},{"../constants/NutritionConstants":3,"./NutritionUI":9}],9:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -598,7 +653,7 @@ var NutritionUI = function () {
 
 exports.default = NutritionUI;
 
-},{"../constants/NutritionConstants":2}],9:[function(require,module,exports){
+},{"../constants/NutritionConstants":3}],10:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -664,7 +719,7 @@ var Boot = function (_Phaser$State) {
 
 exports.default = Boot;
 
-},{}],10:[function(require,module,exports){
+},{}],11:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -744,7 +799,7 @@ var Game = function (_Phaser$State) {
       this.NutritionManager = new _NutritionManager2.default(this.game);
       this.bob = new _Bob2.default(this.game, this.world.width / 2, this.world.height - 32, 'bob', this.NutritionManager, this.stateGameover.bind(this));
 
-      this.foodSpawner = new _FoodSpawner2.default(this.game, this.NutritionManager);
+      this.foodSpawner = new _FoodSpawner2.default(this.game, this.NutritionManager, true);
       this.foodContainer = this.foodSpawner.children;
       this.initUI();
 
@@ -875,6 +930,7 @@ var Game = function (_Phaser$State) {
     key: 'handlePoints',
     value: function handlePoints() {
       this.score++;
+      this.foodSpawner.tryDifficultyLevelUp(this.score);
       this.textScore.setText(this.scoreTemplate(this.score));
     }
   }, {
@@ -985,7 +1041,7 @@ var Game = function (_Phaser$State) {
 
 exports.default = Game;
 
-},{"../objects/Bob":4,"../objects/FoodSpawner":6,"../objects/NutritionManager":7,"../utils/AudioManager":16,"../utils/StorageManager":17}],11:[function(require,module,exports){
+},{"../objects/Bob":5,"../objects/FoodSpawner":7,"../objects/NutritionManager":8,"../utils/AudioManager":17,"../utils/StorageManager":18}],12:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1111,7 +1167,7 @@ var MainMenu = function (_Phaser$State) {
 
 exports.default = MainMenu;
 
-},{"../utils/AudioManager":16,"../utils/StorageManager":17}],12:[function(require,module,exports){
+},{"../utils/AudioManager":17,"../utils/StorageManager":18}],13:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1199,7 +1255,7 @@ var Preloader = function (_Phaser$State) {
 
 exports.default = Preloader;
 
-},{}],13:[function(require,module,exports){
+},{}],14:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1276,7 +1332,7 @@ var Story = function (_Phaser$State) {
 
 exports.default = Story;
 
-},{"../utils/AudioManager":16}],14:[function(require,module,exports){
+},{"../utils/AudioManager":17}],15:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1449,7 +1505,7 @@ var Wiki = function (_Phaser$State) {
 
 exports.default = Wiki;
 
-},{"../constants/FoodConstants":1,"../utils/AudioManager":16,"../utils/UserInterfaceUtils":18}],15:[function(require,module,exports){
+},{"../constants/FoodConstants":2,"../utils/AudioManager":17,"../utils/UserInterfaceUtils":19}],16:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1488,7 +1544,7 @@ exports.default = {
   Wiki: _Wiki2.default, Boot: _Boot2.default, Game: _Game2.default, MainMenu: _MainMenu2.default, Preloader: _Preloader2.default, Story: _Story2.default
 };
 
-},{"./Boot":9,"./Game":10,"./MainMenu":11,"./Preloader":12,"./Story":13,"./Wiki":14}],16:[function(require,module,exports){
+},{"./Boot":10,"./Game":11,"./MainMenu":12,"./Preloader":13,"./Story":14,"./Wiki":15}],17:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1564,7 +1620,7 @@ var getAudioOffset = exports.getAudioOffset = function getAudioOffset() {
   return _audioOffset;
 };
 
-},{"./StorageManager":17}],17:[function(require,module,exports){
+},{"./StorageManager":18}],18:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -1581,7 +1637,7 @@ var getStorage = exports.getStorage = function getStorage() {
   return EPTStorage;
 };
 
-},{}],18:[function(require,module,exports){
+},{}],19:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -1597,5 +1653,5 @@ function centerObjectInHeight(object, world) {
   object.position.y = world.height / 2 - object.height / 2;
 }
 
-},{}]},{},[3])
+},{}]},{},[4])
 //# sourceMappingURL=game.js.map

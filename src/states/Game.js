@@ -19,7 +19,7 @@ export default class Game extends Phaser.State {
     this.NutritionManager = new NutritionManager( this.game );
     this.bob = new Bob( this.game, this.world.width / 2, this.world.height - 32, 'bob', this.NutritionManager, this.stateGameover.bind( this ) );
 
-    this.foodSpawner = new FoodSpawner( this.game, this.NutritionManager );
+    this.foodSpawner = new FoodSpawner( this.game, this.NutritionManager, true );
     this.foodContainer = this.foodSpawner.children;
     this.initUI();
 
@@ -135,6 +135,7 @@ export default class Game extends Phaser.State {
 
   handlePoints() {
     this.score++;
+    this.foodSpawner.tryDifficultyLevelUp( this.score );
     this.textScore.setText( this.scoreTemplate( this.score ) );
   }
 
