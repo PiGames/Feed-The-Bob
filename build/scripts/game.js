@@ -13,8 +13,8 @@ var TIME_TO_REACH_HARD_LEVEL = exports.TIME_TO_REACH_HARD_LEVEL = 10;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var MIN_FOOD_VELOCITY = exports.MIN_FOOD_VELOCITY = 60;
-var MAX_FOOD_VELOCITY = exports.MAX_FOOD_VELOCITY = 100;
+var MIN_FOOD_VELOCITY = exports.MIN_FOOD_VELOCITY = 120;
+var MAX_FOOD_VELOCITY = exports.MAX_FOOD_VELOCITY = 200;
 
 var FOOD_SPAWN_INTERVAL = exports.FOOD_SPAWN_INTERVAL = Phaser.Timer.SECOND;
 var FOOD_SPAWN_BOUNDS_WIDTH = exports.FOOD_SPAWN_BOUNDS_WIDTH = 500;
@@ -44,15 +44,17 @@ var AMOUNT_REDUCED_PERCENT = exports.AMOUNT_REDUCED_PERCENT = 0.03;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var NUTRITION_BAR_WIDTH = exports.NUTRITION_BAR_WIDTH = 24;
-var NUTRITION_BAR_HEIGHT = exports.NUTRITION_BAR_HEIGHT = 336;
-var NUTRITION_BAR_OFFSET = exports.NUTRITION_BAR_OFFSET = 12;
-var NUTRITION_BAR_TEXT_OFFSET_X = exports.NUTRITION_BAR_TEXT_OFFSET_X = 1;
-var NUTRITION_BAR_TEXT_OFFSET_Y = exports.NUTRITION_BAR_TEXT_OFFSET_Y = 8;
+var NUTRITION_BAR_WIDTH = exports.NUTRITION_BAR_WIDTH = 680;
+var NUTRITION_BAR_HEIGHT = exports.NUTRITION_BAR_HEIGHT = 56;
+var NUTRITION_BAR_OFFSET = exports.NUTRITION_BAR_OFFSET = 24;
+var NUTRITION_BAR_TEXT_OFFSET_X = exports.NUTRITION_BAR_TEXT_OFFSET_X = 24;
+var NUTRITION_BAR_TEXT_OFFSET_Y = exports.NUTRITION_BAR_TEXT_OFFSET_Y = 4;
 var NUTRITION_BAR_X_FROM_LEFT = exports.NUTRITION_BAR_X_FROM_LEFT = 24;
 var NUTRITION_BAR_Y_FROM_BOTTOM = exports.NUTRITION_BAR_Y_FROM_BOTTOM = 24;
+var NUTRITION_BAR_TEXT_SHADOW_SIZE = exports.NUTRITION_BAR_TEXT_SHADOW_SIZE = 10;
+var NUTRITION_BAR_TEXT_SHADOW_COLOR = exports.NUTRITION_BAR_TEXT_SHADOW_COLOR = 'rgba(0, 0, 0, 0.5)';
 
-var NUTRITION_BAR_INFO_FONT = exports.NUTRITION_BAR_INFO_FONT = { font: '14px Gloria Hallelujah', fill: '#fff' };
+var NUTRITION_BAR_INFO_FONT = exports.NUTRITION_BAR_INFO_FONT = { font: '32px Gloria Hallelujah', fill: '#fff' };
 
 },{}],5:[function(require,module,exports){
 "use strict";
@@ -76,7 +78,7 @@ function _interopRequireDefault(obj) {
   return obj && obj.__esModule ? obj : { default: obj };
 }
 
-var game = new Phaser.Game(960, 640, Phaser.AUTO);
+var game = new Phaser.Game(1920, 1280, Phaser.AUTO);
 var states = {
   'Boot': _states2.default.Boot,
   'Preloader': _states2.default.Preloader,
@@ -142,7 +144,7 @@ var Bob = function (_Phaser$Sprite) {
     _this.NutritionManager = NutritionManager;
 
     _this.anchor.setTo(0.5, 1);
-    _this.scale.setTo(0.25);
+    _this.scale.setTo(0.5);
 
     _this.game.world.add(_this);
     return _this;
@@ -306,7 +308,7 @@ var Food = function (_Phaser$Sprite) {
     _this.onDestroy = onDestroy;
     _this.data = data;
     _this.NutritionManager = NutritionManager;
-    _this.scale.setTo(0.5);
+    _this.scale.setTo(0.75);
     _this.game.physics.enable(_this);
 
     var directionX = x > _this.game.world.centerX ? -1 : 1;
@@ -349,7 +351,7 @@ var Food = function (_Phaser$Sprite) {
       var _this2 = this;
 
       var tween = this.game.add.tween(this);
-      tween.to({ x: this.game.world.centerX - 20, y: this.game.world.height - 370 }, 500, Phaser.Easing.Linear.None, true);
+      tween.to({ x: this.game.world.centerX - 40, y: this.game.world.height - 680 }, 500, Phaser.Easing.Linear.None, true);
       tween.onComplete.add(function () {
         _this2.NutritionManager.updateStats(_this2.data);
         _this2.onDestroy(_this2);
@@ -646,7 +648,7 @@ var NutritionUI = function () {
     value: function updateBar(value, goodAmount, i) {
       var width = _UIConstants.NUTRITION_BAR_WIDTH;
       var height = _UIConstants.NUTRITION_BAR_HEIGHT;
-      var offset = i * (_UIConstants.NUTRITION_BAR_OFFSET + width);
+      var offset = i * (_UIConstants.NUTRITION_BAR_OFFSET + height);
       var doubleOfGoodAmount = goodAmount * 2;
 
       var status = this.NutritionBars[i];
@@ -664,7 +666,7 @@ var NutritionUI = function () {
       var mask = this.NutritionMasks[i];
       mask.clear();
       mask.beginFill(0x000000);
-      mask.drawRect(this.game.width - _UIConstants.NUTRITION_BAR_X_FROM_LEFT - offset - width, this.game.height - _UIConstants.NUTRITION_BAR_Y_FROM_BOTTOM - height + height * (1 - NutritionBarValue), width, height * NutritionBarValue);
+      mask.drawRect(this.game.width - _UIConstants.NUTRITION_BAR_X_FROM_LEFT - width + width * (1 - NutritionBarValue), this.game.height - _UIConstants.NUTRITION_BAR_Y_FROM_BOTTOM - offset - height, width * NutritionBarValue, height);
       mask.endFill();
 
       var statusText = this.NutritionTexts[i];
@@ -675,38 +677,34 @@ var NutritionUI = function () {
     value: function drawBar(value, goodAmount, i, text) {
       var width = _UIConstants.NUTRITION_BAR_WIDTH;
       var height = _UIConstants.NUTRITION_BAR_HEIGHT;
-      var offset = i * (_UIConstants.NUTRITION_BAR_OFFSET + width);
+      var offset = i * (_UIConstants.NUTRITION_BAR_OFFSET + height);
       var doubleOfGoodAmount = goodAmount * 2;
 
       var NutritionBarValue = Math.min(Math.max(value / doubleOfGoodAmount, 0), 1);
 
-      var background = this.game.add.sprite(this.game.width - _UIConstants.NUTRITION_BAR_X_FROM_LEFT - offset, this.game.height - _UIConstants.NUTRITION_BAR_Y_FROM_BOTTOM, 'nutrition-bar-background');
+      var background = this.game.add.sprite(this.game.width - _UIConstants.NUTRITION_BAR_X_FROM_LEFT, this.game.height - _UIConstants.NUTRITION_BAR_Y_FROM_BOTTOM - offset, 'nutrition-bar-background');
       background.anchor.setTo(1, 1);
-      background.scale.setTo(0.5);
 
       var mask = this.game.add.graphics(0, 0);
       mask.beginFill(0x000000);
-      mask.drawRect(this.game.width - _UIConstants.NUTRITION_BAR_X_FROM_LEFT - offset - width, this.game.height - _UIConstants.NUTRITION_BAR_Y_FROM_BOTTOM - height + height * (1 - NutritionBarValue), width, height * NutritionBarValue);
+      mask.drawRect(this.game.width - _UIConstants.NUTRITION_BAR_X_FROM_LEFT - width + width * (1 - NutritionBarValue), this.game.height - _UIConstants.NUTRITION_BAR_Y_FROM_BOTTOM - offset - height, width * NutritionBarValue, height);
       mask.endFill();
 
       this.NutritionMasks[i] = mask;
 
-      var status = this.game.add.sprite(this.game.width - _UIConstants.NUTRITION_BAR_X_FROM_LEFT - offset, this.game.height - _UIConstants.NUTRITION_BAR_Y_FROM_BOTTOM, 'nutrition-bar', 0);
+      var status = this.game.add.sprite(this.game.width - _UIConstants.NUTRITION_BAR_X_FROM_LEFT, this.game.height - _UIConstants.NUTRITION_BAR_Y_FROM_BOTTOM - offset, 'nutrition-bar', 0);
       status.anchor.setTo(1, 1);
-      status.scale.setTo(0.5);
       status.mask = mask;
 
       this.NutritionBars[i] = status;
 
-      var descText = this.game.add.text(this.game.width - _UIConstants.NUTRITION_BAR_X_FROM_LEFT - offset + _UIConstants.NUTRITION_BAR_TEXT_OFFSET_X, this.game.height - _UIConstants.NUTRITION_BAR_Y_FROM_BOTTOM - _UIConstants.NUTRITION_BAR_TEXT_OFFSET_Y, text, _UIConstants.NUTRITION_BAR_INFO_FONT);
+      var descText = this.game.add.text(this.game.width - _UIConstants.NUTRITION_BAR_X_FROM_LEFT + _UIConstants.NUTRITION_BAR_TEXT_OFFSET_X - width, this.game.height - _UIConstants.NUTRITION_BAR_Y_FROM_BOTTOM - offset - _UIConstants.NUTRITION_BAR_TEXT_OFFSET_Y, text, _UIConstants.NUTRITION_BAR_INFO_FONT);
       descText.anchor.setTo(0, 1);
-      descText.rotation = -Math.PI / 2;
-      descText.setShadow(0, 0, 'rgba(0,0,0,0.5)', 5);
+      descText.setShadow(0, 0, _UIConstants.NUTRITION_BAR_TEXT_SHADOW_COLOR, _UIConstants.NUTRITION_BAR_TEXT_SHADOW_SIZE);
 
-      var statusText = this.game.add.text(this.game.width - _UIConstants.NUTRITION_BAR_X_FROM_LEFT - offset + _UIConstants.NUTRITION_BAR_TEXT_OFFSET_X, this.game.height - _UIConstants.NUTRITION_BAR_Y_FROM_BOTTOM + _UIConstants.NUTRITION_BAR_TEXT_OFFSET_Y - height, parseInt(value) + ' / ' + goodAmount, _UIConstants.NUTRITION_BAR_INFO_FONT);
+      var statusText = this.game.add.text(this.game.width - _UIConstants.NUTRITION_BAR_X_FROM_LEFT - _UIConstants.NUTRITION_BAR_TEXT_OFFSET_X, this.game.height - _UIConstants.NUTRITION_BAR_Y_FROM_BOTTOM - _UIConstants.NUTRITION_BAR_TEXT_OFFSET_Y - offset, parseInt(value) + ' / ' + goodAmount, _UIConstants.NUTRITION_BAR_INFO_FONT);
       statusText.anchor.setTo(1, 1);
-      statusText.rotation = -Math.PI / 2;
-      statusText.setShadow(0, 0, 'rgba(0,0,0,0.5)', 5);
+      statusText.setShadow(0, 0, _UIConstants.NUTRITION_BAR_TEXT_SHADOW_COLOR, _UIConstants.NUTRITION_BAR_TEXT_SHADOW_SIZE);
 
       this.NutritionTexts[i] = statusText;
     }
@@ -878,25 +876,28 @@ var Game = function (_Phaser$State) {
       this.buttonPause = this.add.button(this.world.width - 20, 20, 'button-pause', this.managePause, this, 1, 0, 2);
       this.buttonPause.anchor.set(1, 0);
 
-      var fontScore = { font: '32px Gloria Hallelujah', fill: '#fff' };
-      var fontScoreWhite = { font: '32px Arial', fill: '#FFF', align: 'center' };
+      var fontScore = { font: '64px Gloria Hallelujah', fill: '#fff' };
+      var fontScoreWhite = { font: '64px Arial', fill: '#FFF', align: 'center' };
       this.textScore = this.add.text(30, this.world.height - 20, this.scoreTemplate(this.score), fontScore);
       this.textScore.anchor.set(0, 1);
-      this.textScore.setShadow(0, 0, 'rgba(0,0,0,0.5)', 5);
+      this.textScore.setShadow(0, 0, 'rgba(0 ,0, 0, 0.5)', 10);
 
       this.game.time.events.loop(Phaser.Timer.SECOND * 1, this.handlePoints, this);
 
       this.buttonPause.y = -this.buttonPause.height - 20;
       this.add.tween(this.buttonPause).to({ y: 20 }, 1000, Phaser.Easing.Exponential.Out, true);
+      this.buttonPause.scale.setTo(2);
 
       var fontTitle = { font: '48px Arial', fill: '#000', stroke: '#FFF', strokeThickness: 10 };
 
       this.screenPausedGroup = this.add.group();
       this.screenPausedBg = this.add.sprite(0, 0, 'overlay');
+      this.screenPausedBg.scale.setTo(2);
       this.screenPausedText = this.add.text(this.world.width * 0.5, 100, 'Paused', fontTitle);
       this.screenPausedText.anchor.set(0.5, 0);
       this.buttonAudio = this.add.button(this.world.width - 20, 20, 'button-audio', this.clickAudio, this, 1, 0, 2);
       this.buttonAudio.anchor.set(1, 0);
+      this.buttonAudio.scale.setTo(2);
       this.screenPausedBack = this.add.button(150, this.world.height - 100, 'button-mainmenu', this.stateBack, this, 1, 0, 2);
       this.screenPausedBack.anchor.set(0, 1);
       this.screenPausedContinue = this.add.button(this.world.width - 150, this.world.height - 100, 'button-continue', this.managePause, this, 1, 0, 2);
@@ -1155,9 +1156,11 @@ var MainMenu = function (_Phaser$State) {
 
             this.buttonAudio = this.add.button(this.world.width - 20, 20, 'button-audio', this.clickAudio, this, 1, 0, 2);
             this.buttonAudio.anchor.set(1, 0);
+            this.buttonAudio.scale.setTo(2);
 
             var buttonAchievements = this.add.button(20, this.world.height - 20, 'button-wiki', this.clickAchievements, this, 1, 0, 2);
             buttonAchievements.anchor.set(0, 1);
+            buttonAchievements.scale.setTo(2);
 
             var fontHighscore = { font: '32px Arial', fill: '#000' };
             var textHighscore = this.add.text(this.world.width * 0.5, this.world.height - 50, 'Highscore: ' + highscore, fontHighscore);
@@ -1252,7 +1255,7 @@ function _inherits(subClass, superClass) {
 
 var resources = {
   'image': [['background', 'img/background.png'], ['title', 'img/title.png'], ['logo-pigames', 'img/logo-pigames.png'], ['overlay', 'img/overlay.png'], ['nutrition-bar-background', 'img/ui/nutrition-bar-background.png'], ['apple', 'img/assets/apple.png'], ['chicken', 'img/assets/chicken.png'], ['banana', 'img/assets/banana.png'], ['hamburger', 'img/assets/hamburger.png']],
-  'spritesheet': [['button-start', 'img/button-start.png', 180, 180], ['button-continue', 'img/button-continue.png', 180, 180], ['button-mainmenu', 'img/button-mainmenu.png', 180, 180], ['button-restart', 'img/button-tryagain.png', 180, 180], ['button-wiki', 'img/button-wiki.png', 110, 110], ['button-pause', 'img/button-pause.png', 80, 80], ['button-audio', 'img/button-sound.png', 80, 80], ['button-back', 'img/button-back.png', 70, 70], ['button-next', 'img/button-next.png', 70, 70], ['bob', 'img/assets/bob.png', 460, 1370], ['nutrition-bar', 'img/ui/nutrition-bar.png', 48, 672]],
+  'spritesheet': [['button-start', 'img/button-start.png', 180, 180], ['button-continue', 'img/button-continue.png', 180, 180], ['button-mainmenu', 'img/button-mainmenu.png', 180, 180], ['button-restart', 'img/button-tryagain.png', 180, 180], ['button-wiki', 'img/button-wiki.png', 110, 110], ['button-pause', 'img/button-pause.png', 80, 80], ['button-audio', 'img/button-sound.png', 80, 80], ['button-back', 'img/button-back.png', 70, 70], ['button-next', 'img/button-next.png', 70, 70], ['bob', 'img/assets/bob.png', 460, 1370], ['nutrition-bar', 'img/ui/nutrition-bar.png', 680, 56]],
   'audio': [['audio-click', ['sfx/audio-button.m4a', 'sfx/audio-button.mp3', 'sfx/audio-button.ogg']], ['audio-theme', ['sfx/music-bitsnbites-liver.m4a', 'sfx/music-bitsnbites-liver.mp3', 'sfx/music-bitsnbites-liver.ogg']]]
 };
 

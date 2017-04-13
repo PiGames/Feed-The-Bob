@@ -10,7 +10,7 @@ export default class Bob extends Phaser.Sprite {
     this.NutritionManager = NutritionManager;
 
     this.anchor.setTo( 0.5, 1 );
-    this.scale.setTo( 0.25 );
+    this.scale.setTo( 0.5 );
 
     this.game.world.add( this );
   }

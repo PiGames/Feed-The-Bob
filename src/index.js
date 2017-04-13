@@ -1,6 +1,6 @@
 import EPT from './states';
 
-const game = new Phaser.Game( 960, 640, Phaser.AUTO );
+const game = new Phaser.Game( 1920, 1280, Phaser.AUTO );
 const states = {
   'Boot': EPT.Boot,
   'Preloader': EPT.Preloader,

@@ -1,5 +1,5 @@
-export const MIN_FOOD_VELOCITY = 60;
-export const MAX_FOOD_VELOCITY = 100;
+export const MIN_FOOD_VELOCITY = 120;
+export const MAX_FOOD_VELOCITY = 200;
 
 export const FOOD_SPAWN_INTERVAL = Phaser.Timer.SECOND;
 export const FOOD_SPAWN_BOUNDS_WIDTH = 500;

@@ -23,7 +23,7 @@ const resources = {
 		[ 'button-back', 'img/button-back.png', 70, 70 ],
 		[ 'button-next', 'img/button-next.png', 70, 70 ],
     [ 'bob', 'img/assets/bob.png', 460, 1370 ],
-    [ 'nutrition-bar', 'img/ui/nutrition-bar.png', 48, 672 ],
+    [ 'nutrition-bar', 'img/ui/nutrition-bar.png', 680, 56 ],
   ],
   'audio': [
 		[ 'audio-click', [ 'sfx/audio-button.m4a', 'sfx/audio-button.mp3', 'sfx/audio-button.ogg' ] ],
