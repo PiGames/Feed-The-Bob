@@ -89,8 +89,8 @@ export default class Wiki extends Phaser.State {
     const sprite = this.add.sprite( 0, 150, FOOD_DATA[ index ].key );
     centerObjectInWidth( sprite, this.world );
     const fontNutritionFacts = { font: '25px Arial', fill: '#000' };
-    const carbos = this.add.text( 0, 325, `Carbohydrates: ${FOOD_DATA[ index ].nutritionFacts.carbos}g`, fontNutritionFacts );
-    centerObjectInWidth( carbos, this.world );
+    const carbohydrates = this.add.text( 0, 325, `Carbohydrates: ${FOOD_DATA[ index ].nutritionFacts.carbohydrates}g`, fontNutritionFacts );
+    centerObjectInWidth( carbohydrates, this.world );
     const fats = this.add.text( 0, 375, `Fats: ${FOOD_DATA[ index ].nutritionFacts.fats}g`, fontNutritionFacts );
     centerObjectInWidth( fats, this.world );
     const proteins = this.add.text( 0, 425, `Proteins: ${FOOD_DATA[ index ].nutritionFacts.proteins}g`, fontNutritionFacts );
@@ -98,7 +98,7 @@ export default class Wiki extends Phaser.State {
 
     group.add( title );
     group.add( sprite );
-    group.add( carbos );
+    group.add( carbohydrates );
     group.add( fats );
     group.add( proteins );
   }

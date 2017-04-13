@@ -23,7 +23,7 @@ var FOOD_SPAWN_BOUNDS_HEIGHT = exports.FOOD_SPAWN_BOUNDS_HEIGHT = 300;
 var FOOD_WIDTH = exports.FOOD_WIDTH = 100;
 var FOOD_HEIGHT = exports.FOOD_HEIGHT = 75;
 
-var FOOD_DATA = exports.FOOD_DATA = [{ 'key': 'apple', 'nutritionFacts': { 'carbos': 12, 'fats': 0, 'proteins': 0 }, 'complexityLevel': 1 }, { 'key': 'chicken', 'nutritionFacts': { 'carbos': 2, 'fats': 10, 'proteins': 18 }, 'complexityLevel': 2 }, { 'key': 'hamburger', 'nutritionFacts': { 'carbos': 30, 'fats': 13, 'proteins': 16 }, 'complexityLevel': 3 }, { 'key': 'banana', 'nutritionFacts': { 'carbos': 30, 'fats': 1, 'proteins': 0 }, 'complexityLevel': 1 }];
+var FOOD_DATA = exports.FOOD_DATA = [{ 'key': 'apple', 'nutritionFacts': { 'carbohydrates': 12, 'fats': 0, 'proteins': 0 }, 'complexityLevel': 1 }, { 'key': 'chicken', 'nutritionFacts': { 'carbohydrates': 2, 'fats': 10, 'proteins': 18 }, 'complexityLevel': 2 }, { 'key': 'hamburger', 'nutritionFacts': { 'carbohydrates': 30, 'fats': 13, 'proteins': 16 }, 'complexityLevel': 3 }, { 'key': 'banana', 'nutritionFacts': { 'carbohydrates': 30, 'fats': 1, 'proteins': 0 }, 'complexityLevel': 1 }];
 
 },{}],3:[function(require,module,exports){
 "use strict";
@@ -31,11 +31,42 @@ var FOOD_DATA = exports.FOOD_DATA = [{ 'key': 'apple', 'nutritionFacts': { 'carb
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var GOOD_AMOUNT_OF_CARBS = exports.GOOD_AMOUNT_OF_CARBS = 270;
+var GOOD_AMOUNT_OF_CARBOHYDRATES = exports.GOOD_AMOUNT_OF_CARBOHYDRATES = 270;
 var GOOD_AMOUNT_OF_FATS = exports.GOOD_AMOUNT_OF_FATS = 70;
 var GOOD_AMOUNT_OF_PROTEINS = exports.GOOD_AMOUNT_OF_PROTEINS = 50;
 
 },{}],4:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var NUTRITION_BAR_WIDTH = exports.NUTRITION_BAR_WIDTH = 300;
+var NUTRITION_BAR_HEIGHT = exports.NUTRITION_BAR_HEIGHT = 16;
+var NUTRITION_BAR_OFFSET = exports.NUTRITION_BAR_OFFSET = 30;
+var NUTRITION_BAR_TEXT_OFFSET = exports.NUTRITION_BAR_TEXT_OFFSET = 24;
+var NUTRITION_BAR_X_FROM_LEFT = exports.NUTRITION_BAR_X_FROM_LEFT = 24;
+var NUTRITION_BAR_Y_FROM_BOTTOM = exports.NUTRITION_BAR_Y_FROM_BOTTOM = 24;
+
+var NUTRITION_BAR_COLOR_OK = exports.NUTRITION_BAR_COLOR_OK = 0x00FF00;
+var NUTRITION_BAR_COLOR_WARN = exports.NUTRITION_BAR_COLOR_WARN = 0xFFFF00;
+var NUTRITION_BAR_COLOR_DANGER = exports.NUTRITION_BAR_COLOR_DANGER = 0xFF0000;
+var NUTRITION_BAR_COLOR_BORDER = exports.NUTRITION_BAR_COLOR_BORDER = 0x000000;
+var NUTRITION_BAR_ALPHA = exports.NUTRITION_BAR_ALPHA = 0.85;
+var NUTRITION_BAR_INFO_FONT = exports.NUTRITION_BAR_INFO_FONT = { font: '14px Arial', fill: '#000' };
+
+},{}],5:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var SUPER_THIN_BREAKPOINT = exports.SUPER_THIN_BREAKPOINT = 0.17;
+var THIN_BREAKPOINT = exports.THIN_BREAKPOINT = 0.34;
+var FAT_BREAKPOINT = exports.FAT_BREAKPOINT = 0.66;
+var SUPER_FAT_BREAKPOINT = exports.SUPER_FAT_BREAKPOINT = 0.83;
+
+},{}],6:[function(require,module,exports){
 'use strict';
 
 var _states = require('./states');
@@ -60,7 +91,7 @@ for (var stateName in states) {
 }
 game.state.start('Boot');
 
-},{"./states":16}],5:[function(require,module,exports){
+},{"./states":18}],7:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -78,6 +109,8 @@ var _createClass = function () {
 }();
 
 var _NutritionConstants = require('../constants/NutritionConstants');
+
+var _WeightBreakpoints = require('../constants/WeightBreakpoints');
 
 function _classCallCheck(instance, Constructor) {
   if (!(instance instanceof Constructor)) {
@@ -105,8 +138,6 @@ var Bob = function (_Phaser$Sprite) {
 
     var _this = _possibleConstructorReturn(this, (Bob.__proto__ || Object.getPrototypeOf(Bob)).call(this, game, x, y, imageKey));
 
-    _this.frame = 1;
-
     _this.handleDeath = handleDeath;
 
     _this.NutritionManager = NutritionManager;
@@ -123,83 +154,102 @@ var Bob = function (_Phaser$Sprite) {
     value: function hadleWeightChange() {
       var nutrition = this.NutritionManager.nutrition;
 
-      var arr = [this.getStatus(nutrition.carbos, _NutritionConstants.GOOD_AMOUNT_OF_CARBS), this.getStatus(nutrition.fats, _NutritionConstants.GOOD_AMOUNT_OF_FATS), this.getStatus(nutrition.proteins, _NutritionConstants.GOOD_AMOUNT_OF_PROTEINS)];
+      var nutritionStatuses = [this.getStatus(nutrition.carbohydrates, _NutritionConstants.GOOD_AMOUNT_OF_CARBOHYDRATES), this.getStatus(nutrition.fats, _NutritionConstants.GOOD_AMOUNT_OF_FATS), this.getStatus(nutrition.proteins, _NutritionConstants.GOOD_AMOUNT_OF_PROTEINS)];
 
-      var outOfOrder = 0;
+      var isDeadFromThinness = false;
+      var isSuperThin = false;
       var isThin = false;
       var isFat = false;
-      var isDead = false;
       var isSuperFat = false;
+      var isDeadFromFat = false;
 
-      arr.forEach(function (v) {
-        if (v === -1) {
-          isThin = true;
-        } else if (v === 1) {
-          isFat = true;
-        } else if (v === 2) {
-          isFat = true;
-          isSuperFat = true;
+      nutritionStatuses.forEach(function (v) {
+        switch (v) {
+          case -3:
+            isDeadFromThinness = true;
+            break;
+          case -2:
+            isSuperThin = true;
+            break;
+          case -1:
+            isThin = true;
+            break;
+          case 1:
+            isFat = true;
+            break;
+          case 2:
+            isSuperFat = true;
+            break;
+          case 3:
+            isDeadFromFat = true;
+            break;
         }
-
-        if (v === -2) {
-          isDead = true;
-        }
-
-        outOfOrder += v !== 0;
       });
 
-      if (isDead) {
-        this.handleDeath('');
+      if (isDeadFromFat) {
+        this.handleDeath('You have died from fat');
       }
 
-      // this.frame = 2;
-      if (outOfOrder === 0) {
-        this.frame = 1;
-      } else if (outOfOrder === 1) {
+      if (isDeadFromThinness) {
+        this.handleDeath('You have died from thinness');
+      }
+
+      if (isSuperThin || isThin || isFat || isSuperFat) {
         if (isThin) {
+          this.frame = 1;
+        }
+
+        if (isSuperThin) {
           this.frame = 0;
         }
 
         if (isFat) {
-          this.frame = 2;
+          this.frame = 3;
         }
 
         if (isSuperFat) {
-          this.frame = 3;
+          this.frame = 4;
         }
       } else {
-        if (isThin) {
-          this.frame = 0;
-        }
-
-        if (isFat) {
-          this.frame = 2;
-        }
-
-        if (isSuperFat) {
-          this.frame = 3;
-        }
+        this.frame = 2;
       }
     }
   }, {
     key: 'getStatus',
     value: function getStatus(value, goodAmount) {
-      if (value <= 0 || value >= goodAmount * 2) {
+      var doubleOfGoodAmount = goodAmount * 2;
+
+      if (value >= doubleOfGoodAmount) {
+        // Bob died from fatness
+        return 3;
+      }
+
+      if (value <= 0) {
+        // Bob died from thinness
+        return -3;
+      }
+
+      if (value <= doubleOfGoodAmount * _WeightBreakpoints.SUPER_THIN_BREAKPOINT) {
+        // Bob is super thin
         return -2;
       }
 
-      if (value <= goodAmount * 2 * 0.17) {
+      if (value <= doubleOfGoodAmount * _WeightBreakpoints.THIN_BREAKPOINT) {
+        // Bob is thin
         return -1;
       }
 
-      if (value >= goodAmount * 2 * 0.83) {
+      if (value >= doubleOfGoodAmount * _WeightBreakpoints.SUPER_FAT_BREAKPOINT) {
+        // Bob is super fat
         return 2;
       }
 
-      if (value >= goodAmount * 2 * 0.66) {
+      if (value >= doubleOfGoodAmount * _WeightBreakpoints.FAT_BREAKPOINT) {
+        // Bob is fat
         return 1;
       }
 
+      // Bob is normal
       return 0;
     }
   }]);
@@ -209,7 +259,7 @@ var Bob = function (_Phaser$Sprite) {
 
 exports.default = Bob;
 
-},{"../constants/NutritionConstants":3}],6:[function(require,module,exports){
+},{"../constants/NutritionConstants":3,"../constants/WeightBreakpoints":5}],8:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -313,7 +363,7 @@ var Food = function (_Phaser$Sprite) {
 
 exports.default = Food;
 
-},{"../constants/FoodConstants":2}],7:[function(require,module,exports){
+},{"../constants/FoodConstants":2}],9:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -455,7 +505,7 @@ var FoodSpawner = function (_Phaser$Group) {
 
 exports.default = FoodSpawner;
 
-},{"../constants/DifficultyLevelIntervals.js":1,"../constants/FoodConstants":2,"./Food":6}],8:[function(require,module,exports){
+},{"../constants/DifficultyLevelIntervals.js":1,"../constants/FoodConstants":2,"./Food":8}],10:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -493,7 +543,7 @@ var NutritionManager = function () {
     _classCallCheck(this, NutritionManager);
 
     this.nutrition = {
-      carbos: _NutritionConstants.GOOD_AMOUNT_OF_CARBS,
+      carbohydrates: _NutritionConstants.GOOD_AMOUNT_OF_CARBOHYDRATES,
       fats: _NutritionConstants.GOOD_AMOUNT_OF_FATS,
       proteins: _NutritionConstants.GOOD_AMOUNT_OF_PROTEINS
     };
@@ -509,22 +559,22 @@ var NutritionManager = function () {
     key: 'reduceNutrition',
     value: function reduceNutrition() {
       var percentAmount = 0.03;
-      this.nutrition.carbos -= _NutritionConstants.GOOD_AMOUNT_OF_CARBS * percentAmount;
+      this.nutrition.carbohydrates -= _NutritionConstants.GOOD_AMOUNT_OF_CARBOHYDRATES * percentAmount;
       this.nutrition.fats -= _NutritionConstants.GOOD_AMOUNT_OF_FATS * percentAmount;
       this.nutrition.proteins -= _NutritionConstants.GOOD_AMOUNT_OF_PROTEINS * percentAmount;
 
-      this.nutrition.carbos = Math.round(this.nutrition.carbos * 10) / 10;
+      this.nutrition.carbohydrates = Math.round(this.nutrition.carbohydrates * 10) / 10;
       this.nutrition.fats = Math.round(this.nutrition.fats * 10) / 10;
       this.nutrition.proteins = Math.round(this.nutrition.proteins * 10) / 10;
 
-      this.fatOMeter = this.nutrition.carbos / _NutritionConstants.GOOD_AMOUNT_OF_CARBS + this.nutrition.fats / _NutritionConstants.GOOD_AMOUNT_OF_FATS + this.nutrition.proteins / _NutritionConstants.GOOD_AMOUNT_OF_PROTEINS;
+      this.fatOMeter = this.nutrition.carbohydrates / _NutritionConstants.GOOD_AMOUNT_OF_CARBOHYDRATES + this.nutrition.fats / _NutritionConstants.GOOD_AMOUNT_OF_FATS + this.nutrition.proteins / _NutritionConstants.GOOD_AMOUNT_OF_PROTEINS;
 
       this.UI.updateUI();
     }
   }, {
     key: 'updateStats',
     value: function updateStats(data) {
-      this.nutrition.carbos += data.carbos;
+      this.nutrition.carbohydrates += data.carbohydrates;
       this.nutrition.fats += data.fats;
       this.nutrition.proteins += data.proteins;
 
@@ -537,7 +587,7 @@ var NutritionManager = function () {
 
 exports.default = NutritionManager;
 
-},{"../constants/NutritionConstants":3,"./NutritionUI":9}],9:[function(require,module,exports){
+},{"../constants/NutritionConstants":3,"./NutritionUI":11}],11:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -556,6 +606,10 @@ var _createClass = function () {
 
 var _NutritionConstants = require('../constants/NutritionConstants');
 
+var _WeightBreakpoints = require('../constants/WeightBreakpoints');
+
+var _UIConstants = require('../constants/UIConstants');
+
 function _classCallCheck(instance, Constructor) {
   if (!(instance instanceof Constructor)) {
     throw new TypeError("Cannot call a class as a function");
@@ -566,85 +620,58 @@ var NutritionUI = function () {
   function NutritionUI(game, NutritionManager) {
     _classCallCheck(this, NutritionUI);
 
-    this.NutritionManager = NutritionManager;
+    this.game = game;
 
-    this.nutrition = this.NutritionManager.nutrition;
-    this.fatOMeter = this.NutritionManager.fatOMeter;
+    this.nutrition = NutritionManager.nutrition;
 
-    this.healthbars = [game.add.graphics(0, 0), game.add.graphics(0, 0), game.add.graphics(0, 0)];
+    this.NutritionBars = [game.add.graphics(0, 0), game.add.graphics(0, 0), game.add.graphics(0, 0)];
     this.healtTexts = [];
 
-    this.healthbars.forEach(function (v) {
+    this.NutritionBars.forEach(function (v) {
       v.anchor.setTo(1, 1);
     });
 
-    this.game = game;
-
-    // Text templates
-    // this.carboTextTemplate = text => `Carbohydrates: ${text}g`;
-    // this.fatsTextTemplate = text => `Fats: ${text}g`;
-    // this.proteinsTextTemplate = text => `Proteins: ${text}g`;
-    // this.fatOMeterTextTemplate = text => `Fat-o-meter: ${Math.floor( text / 3 * 100 ) / 100}`;
-    //
-    // this.carboText = game.add.text( 30, 30, this.carboTextTemplate( this.nutrition.carbos ), fontScore );
-    // this.carboText.anchor.set( 0 );
-    //
-    // this.fatsText = game.add.text( 30, ( 30 + fontSize + 8 ), this.fatsTextTemplate( this.nutrition.fats ), fontScore );
-    // this.fatsText.anchor.set( 0 );
-    //
-    // this.proteinsText = game.add.text( 30, ( 30 + ( fontSize + 8 ) * 2 ), this.proteinsTextTemplate( this.nutrition.proteins ), fontScore );
-    // this.proteinsText.anchor.set( 0 );
-    //
-    // this.fatOMeterText = game.add.text( 30, ( 30 + ( fontSize + 8 ) * 3 ), this.fatOMeterTextTemplate( this.fatOMeter ), fontScore );
-    // this.fatOMeterText.anchor.set( 0 );
-
-    this.drawAllBars();
+    this.updateUI();
   }
 
   _createClass(NutritionUI, [{
     key: 'updateUI',
     value: function updateUI() {
-      // this.carboText.setText( this.carboTextTemplate( this.nutrition.carbos ) );
-      // this.fatsText.setText( this.fatsTextTemplate( this.nutrition.fats ) );
-      // this.proteinsText.setText( this.proteinsTextTemplate( this.nutrition.proteins ) );
-      // this.fatOMeterText.setText( this.fatOMeterTextTemplate( this.NutritionManager.fatOMeter ) );
-
       this.drawAllBars();
     }
   }, {
     key: 'drawAllBars',
     value: function drawAllBars() {
-      this.drawBar(this.nutrition.carbos, _NutritionConstants.GOOD_AMOUNT_OF_CARBS, 2, 'C:');
+      this.drawBar(this.nutrition.carbohydrates, _NutritionConstants.GOOD_AMOUNT_OF_CARBOHYDRATES, 2, 'C:');
       this.drawBar(this.nutrition.fats, _NutritionConstants.GOOD_AMOUNT_OF_FATS, 1, 'F:');
       this.drawBar(this.nutrition.proteins, _NutritionConstants.GOOD_AMOUNT_OF_PROTEINS, 0, 'P:');
     }
   }, {
     key: 'drawBar',
     value: function drawBar(value, goodAmount, i, text) {
-      var width = 300;
-      var height = 16;
-      var offset = i * 30;
+      var width = _UIConstants.NUTRITION_BAR_WIDTH;
+      var height = _UIConstants.NUTRITION_BAR_HEIGHT;
+      var offset = i * _UIConstants.NUTRITION_BAR_OFFSET;
+      var doubleOfGoodAmount = goodAmount * 2;
 
-      this.healthbars[i].clear();
+      this.NutritionBars[i].clear();
 
-      if (value <= goodAmount * 2 * 0.17 || value >= goodAmount * 2 * 0.83) {
-        this.healthbars[i].beginFill(0xFF0000, 0.85);
-      } else if (value <= goodAmount * 2 * 0.34 || value >= goodAmount * 2 * 0.66) {
-        this.healthbars[i].beginFill(0xFFFF00, 0.85);
+      if (value <= doubleOfGoodAmount * _WeightBreakpoints.SUPER_THIN_BREAKPOINT || value >= doubleOfGoodAmount * _WeightBreakpoints.SUPER_FAT_BREAKPOINT) {
+        this.NutritionBars[i].beginFill(_UIConstants.NUTRITION_BAR_COLOR_DANGER, _UIConstants.NUTRITION_BAR_ALPHA);
+      } else if (value <= doubleOfGoodAmount * _WeightBreakpoints.THIN_BREAKPOINT || value >= doubleOfGoodAmount * _WeightBreakpoints.FAT_BREAKPOINT) {
+        this.NutritionBars[i].beginFill(_UIConstants.NUTRITION_BAR_COLOR_WARN, _UIConstants.NUTRITION_BAR_ALPHA);
       } else {
-        this.healthbars[i].beginFill(0x00FF00, 0.85);
+        this.NutritionBars[i].beginFill(_UIConstants.NUTRITION_BAR_COLOR_OK, _UIConstants.NUTRITION_BAR_ALPHA);
       }
 
-      var fontSize = 14;
-      var fontScore = { font: fontSize + 'px Arial', fill: '#000' };
+      var NutritionBarValue = Math.min(Math.max(value / doubleOfGoodAmount, 0), 1);
 
-      this.game.add.text(this.game.width - (width + 24) - 24, this.game.height - (height + 24) - offset, text, fontScore);
-
-      this.healthbars[i].drawRect(this.game.width - (width + 24), this.game.height - (height + 24) - offset, width * Math.max(value / (goodAmount * 2), 0), height);
-      this.healthbars[i].endFill();
-      this.healthbars[i].lineStyle(2, 0x000000, 1);
-      this.healthbars[i].drawRect(this.game.width - (width + 24), this.game.height - (height + 24) - offset, width, height);
-      this.healthbars[i].lineStyle(0);
+      this.game.add.text(this.game.width - (width + _UIConstants.NUTRITION_BAR_X_FROM_LEFT) - _UIConstants.NUTRITION_BAR_TEXT_OFFSET, this.game.height - (height + _UIConstants.NUTRITION_BAR_Y_FROM_BOTTOM) - offset, text, _UIConstants.NUTRITION_BAR_INFO_FONT);
+      this.NutritionBars[i].drawRect(this.game.width - (width + _UIConstants.NUTRITION_BAR_X_FROM_LEFT), this.game.height - (height + _UIConstants.NUTRITION_BAR_Y_FROM_BOTTOM) - offset, width * NutritionBarValue, height);
+      this.NutritionBars[i].endFill();
+      this.NutritionBars[i].lineStyle(2, _UIConstants.NUTRITION_BAR_COLOR_BORDER, 1);
+      this.NutritionBars[i].drawRect(this.game.width - (width + _UIConstants.NUTRITION_BAR_X_FROM_LEFT), this.game.height - (height + _UIConstants.NUTRITION_BAR_Y_FROM_BOTTOM) - offset, width, height);
+      this.NutritionBars[i].lineStyle(0);
     }
   }]);
 
@@ -653,7 +680,7 @@ var NutritionUI = function () {
 
 exports.default = NutritionUI;
 
-},{"../constants/NutritionConstants":3}],10:[function(require,module,exports){
+},{"../constants/NutritionConstants":3,"../constants/UIConstants":4,"../constants/WeightBreakpoints":5}],12:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -719,7 +746,7 @@ var Boot = function (_Phaser$State) {
 
 exports.default = Boot;
 
-},{}],11:[function(require,module,exports){
+},{}],13:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -815,7 +842,7 @@ var Game = function (_Phaser$State) {
       this.buttonPause.anchor.set(1, 0);
 
       var fontScore = { font: '32px Arial', fill: '#000' };
-      var fontScoreWhite = { font: '32px Arial', fill: '#FFF' };
+      var fontScoreWhite = { font: '32px Arial', fill: '#FFF', align: 'center' };
       this.textScore = this.add.text(30, this.world.height - 20, this.scoreTemplate(this.score), fontScore);
       this.textScore.anchor.set(0, 1);
 
@@ -1041,7 +1068,7 @@ var Game = function (_Phaser$State) {
 
 exports.default = Game;
 
-},{"../objects/Bob":5,"../objects/FoodSpawner":7,"../objects/NutritionManager":8,"../utils/AudioManager":17,"../utils/StorageManager":18}],12:[function(require,module,exports){
+},{"../objects/Bob":7,"../objects/FoodSpawner":9,"../objects/NutritionManager":10,"../utils/AudioManager":19,"../utils/StorageManager":20}],14:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1167,7 +1194,7 @@ var MainMenu = function (_Phaser$State) {
 
 exports.default = MainMenu;
 
-},{"../utils/AudioManager":17,"../utils/StorageManager":18}],13:[function(require,module,exports){
+},{"../utils/AudioManager":19,"../utils/StorageManager":20}],15:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1255,7 +1282,7 @@ var Preloader = function (_Phaser$State) {
 
 exports.default = Preloader;
 
-},{}],14:[function(require,module,exports){
+},{}],16:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1332,7 +1359,7 @@ var Story = function (_Phaser$State) {
 
 exports.default = Story;
 
-},{"../utils/AudioManager":17}],15:[function(require,module,exports){
+},{"../utils/AudioManager":19}],17:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1485,8 +1512,8 @@ var Wiki = function (_Phaser$State) {
       var sprite = this.add.sprite(0, 150, _FoodConstants.FOOD_DATA[index].key);
       (0, _UserInterfaceUtils.centerObjectInWidth)(sprite, this.world);
       var fontNutritionFacts = { font: '25px Arial', fill: '#000' };
-      var carbos = this.add.text(0, 325, 'Carbohydrates: ' + _FoodConstants.FOOD_DATA[index].nutritionFacts.carbos + 'g', fontNutritionFacts);
-      (0, _UserInterfaceUtils.centerObjectInWidth)(carbos, this.world);
+      var carbohydrates = this.add.text(0, 325, 'Carbohydrates: ' + _FoodConstants.FOOD_DATA[index].nutritionFacts.carbohydrates + 'g', fontNutritionFacts);
+      (0, _UserInterfaceUtils.centerObjectInWidth)(carbohydrates, this.world);
       var fats = this.add.text(0, 375, 'Fats: ' + _FoodConstants.FOOD_DATA[index].nutritionFacts.fats + 'g', fontNutritionFacts);
       (0, _UserInterfaceUtils.centerObjectInWidth)(fats, this.world);
       var proteins = this.add.text(0, 425, 'Proteins: ' + _FoodConstants.FOOD_DATA[index].nutritionFacts.proteins + 'g', fontNutritionFacts);
@@ -1494,7 +1521,7 @@ var Wiki = function (_Phaser$State) {
 
       group.add(title);
       group.add(sprite);
-      group.add(carbos);
+      group.add(carbohydrates);
       group.add(fats);
       group.add(proteins);
     }
@@ -1505,7 +1532,7 @@ var Wiki = function (_Phaser$State) {
 
 exports.default = Wiki;
 
-},{"../constants/FoodConstants":2,"../utils/AudioManager":17,"../utils/UserInterfaceUtils":19}],16:[function(require,module,exports){
+},{"../constants/FoodConstants":2,"../utils/AudioManager":19,"../utils/UserInterfaceUtils":21}],18:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1544,7 +1571,7 @@ exports.default = {
   Wiki: _Wiki2.default, Boot: _Boot2.default, Game: _Game2.default, MainMenu: _MainMenu2.default, Preloader: _Preloader2.default, Story: _Story2.default
 };
 
-},{"./Boot":10,"./Game":11,"./MainMenu":12,"./Preloader":13,"./Story":14,"./Wiki":15}],17:[function(require,module,exports){
+},{"./Boot":12,"./Game":13,"./MainMenu":14,"./Preloader":15,"./Story":16,"./Wiki":17}],19:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1620,7 +1647,7 @@ var getAudioOffset = exports.getAudioOffset = function getAudioOffset() {
   return _audioOffset;
 };
 
-},{"./StorageManager":18}],18:[function(require,module,exports){
+},{"./StorageManager":20}],20:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -1637,7 +1664,7 @@ var getStorage = exports.getStorage = function getStorage() {
   return EPTStorage;
 };
 
-},{}],19:[function(require,module,exports){
+},{}],21:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -1653,5 +1680,5 @@ function centerObjectInHeight(object, world) {
   object.position.y = world.height / 2 - object.height / 2;
 }
 
-},{}]},{},[4])
+},{}]},{},[6])
 //# sourceMappingURL=game.js.map

@@ -34,7 +34,7 @@ export default class Game extends Phaser.State {
     this.buttonPause.anchor.set( 1, 0 );
 
     const fontScore = { font: '32px Arial', fill: '#000' };
-    const fontScoreWhite = { font: '32px Arial', fill: '#FFF' };
+    const fontScoreWhite = { font: '32px Arial', fill: '#FFF', align: 'center' };
     this.textScore = this.add.text( 30, this.world.height - 20, this.scoreTemplate( this.score ), fontScore );
     this.textScore.anchor.set( 0, 1 );
 
