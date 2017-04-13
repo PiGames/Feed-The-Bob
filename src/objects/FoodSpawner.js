@@ -1,5 +1,6 @@
-import { FOOD_SPAWN_INTERVAL, FOOD_SPAWN_BOUNDS_WIDTH, FOOD_SPAWN_BOUNDS_HEIGHT, FOOD_WIDTH, FOOD_HEIGHT, FOOD_DATA } from '../constants/FoodConstants';
 import Food from './Food';
+import { getRandomWithWeight } from '../utils/MathUtils.js';
+import { FOOD_SPAWN_INTERVAL, FOOD_SPAWN_BOUNDS_WIDTH, FOOD_SPAWN_BOUNDS_HEIGHT, FOOD_WIDTH, FOOD_HEIGHT, FOOD_DATA } from '../constants/FoodConstants';
 import { TIME_TO_REACH_HARD_LEVEL, TIME_TO_REACH_MEDIUM_LEVEL } from '../constants/DifficultyLevelIntervals.js';
 
 export default class FoodSpawner extends Phaser.Group {
@@ -38,10 +39,10 @@ export default class FoodSpawner extends Phaser.Group {
     }
     let foodType;
     if ( !this.enableDifficultyLevelGrowth ) {
-      foodType = FOOD_DATA[ Math.floor( Math.random() * FOOD_DATA.length ) ];
+      foodType = getRandomWithWeight( FOOD_DATA, FOOD_DATA.length );
     } else {
       this.tryDifficultyLevelUp();
-      foodType = this.sortedFoodData[ Math.floor( Math.random() * ( this.currentDifficultyLevelLastIndex + 1 ) ) ];
+      foodType = getRandomWithWeight( this.sortedFoodData, this.currentDifficultyLevelLastIndex + 1 );
     }
     const newFood = new Food( this.game, x, y, foodType.key, foodType.nutritionFacts, this.NutritionManager, this.removeChild.bind( this ) );
     this.children.push( newFood );

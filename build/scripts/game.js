@@ -23,7 +23,7 @@ var FOOD_SPAWN_BOUNDS_HEIGHT = exports.FOOD_SPAWN_BOUNDS_HEIGHT = 300;
 var FOOD_WIDTH = exports.FOOD_WIDTH = 100;
 var FOOD_HEIGHT = exports.FOOD_HEIGHT = 75;
 
-var FOOD_DATA = exports.FOOD_DATA = [{ 'key': 'apple', 'nutritionFacts': { 'carbohydrates': 12, 'fats': 0, 'proteins': 0 }, 'complexityLevel': 1 }, { 'key': 'chicken', 'nutritionFacts': { 'carbohydrates': 2, 'fats': 10, 'proteins': 18 }, 'complexityLevel': 2 }, { 'key': 'hamburger', 'nutritionFacts': { 'carbohydrates': 30, 'fats': 13, 'proteins': 16 }, 'complexityLevel': 3 }, { 'key': 'banana', 'nutritionFacts': { 'carbohydrates': 30, 'fats': 1, 'proteins': 0 }, 'complexityLevel': 1 }];
+var FOOD_DATA = exports.FOOD_DATA = [{ 'key': 'apple', 'nutritionFacts': { 'carbohydrates': 12, 'fats': 0, 'proteins': 0 }, 'complexityLevel': 1, 'probability': 1 }, { 'key': 'banana', 'nutritionFacts': { 'carbohydrates': 30, 'fats': 1, 'proteins': 0 }, 'complexityLevel': 1, 'probability': 1 }, { 'key': 'chicken', 'nutritionFacts': { 'carbohydrates': 2, 'fats': 10, 'proteins': 18 }, 'complexityLevel': 2, 'probability': 1 }, { 'key': 'hamburger', 'nutritionFacts': { 'carbohydrates': 30, 'fats': 13, 'proteins': 16 }, 'complexityLevel': 3, 'probability': 1 }];
 
 },{}],3:[function(require,module,exports){
 "use strict";
@@ -34,6 +34,9 @@ Object.defineProperty(exports, "__esModule", {
 var GOOD_AMOUNT_OF_CARBOHYDRATES = exports.GOOD_AMOUNT_OF_CARBOHYDRATES = 270;
 var GOOD_AMOUNT_OF_FATS = exports.GOOD_AMOUNT_OF_FATS = 70;
 var GOOD_AMOUNT_OF_PROTEINS = exports.GOOD_AMOUNT_OF_PROTEINS = 50;
+
+var AMOUNT_REDUCED_INTERVAL = exports.AMOUNT_REDUCED_INTERVAL = Phaser.Timer.SECOND * 1;
+var AMOUNT_REDUCED_PERCENT = exports.AMOUNT_REDUCED_PERCENT = 0.03;
 
 },{}],4:[function(require,module,exports){
 'use strict';
@@ -380,11 +383,13 @@ var _createClass = function () {
   };
 }();
 
-var _FoodConstants = require('../constants/FoodConstants');
-
 var _Food = require('./Food');
 
 var _Food2 = _interopRequireDefault(_Food);
+
+var _MathUtils = require('../utils/MathUtils.js');
+
+var _FoodConstants = require('../constants/FoodConstants');
 
 var _DifficultyLevelIntervals = require('../constants/DifficultyLevelIntervals.js');
 
@@ -465,10 +470,10 @@ var FoodSpawner = function (_Phaser$Group) {
       }
       var foodType = void 0;
       if (!this.enableDifficultyLevelGrowth) {
-        foodType = _FoodConstants.FOOD_DATA[Math.floor(Math.random() * _FoodConstants.FOOD_DATA.length)];
+        foodType = (0, _MathUtils.getRandomWithWeight)(_FoodConstants.FOOD_DATA, _FoodConstants.FOOD_DATA.length);
       } else {
         this.tryDifficultyLevelUp();
-        foodType = this.sortedFoodData[Math.floor(Math.random() * (this.currentDifficultyLevelLastIndex + 1))];
+        foodType = (0, _MathUtils.getRandomWithWeight)(this.sortedFoodData, this.currentDifficultyLevelLastIndex + 1);
       }
       var newFood = new _Food2.default(this.game, x, y, foodType.key, foodType.nutritionFacts, this.NutritionManager, this.removeChild.bind(this));
       this.children.push(newFood);
@@ -505,7 +510,7 @@ var FoodSpawner = function (_Phaser$Group) {
 
 exports.default = FoodSpawner;
 
-},{"../constants/DifficultyLevelIntervals.js":1,"../constants/FoodConstants":2,"./Food":8}],10:[function(require,module,exports){
+},{"../constants/DifficultyLevelIntervals.js":1,"../constants/FoodConstants":2,"../utils/MathUtils.js":20,"./Food":8}],10:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -548,26 +553,21 @@ var NutritionManager = function () {
       proteins: _NutritionConstants.GOOD_AMOUNT_OF_PROTEINS
     };
 
-    this.fatOMeter = 3;
-
     this.UI = new _NutritionUI2.default(game, this);
 
-    game.time.events.loop(Phaser.Timer.SECOND * 1, this.reduceNutrition, this);
+    game.time.events.loop(_NutritionConstants.AMOUNT_REDUCED_INTERVAL, this.reduceNutrition, this);
   }
 
   _createClass(NutritionManager, [{
     key: 'reduceNutrition',
     value: function reduceNutrition() {
-      var percentAmount = 0.03;
-      this.nutrition.carbohydrates -= _NutritionConstants.GOOD_AMOUNT_OF_CARBOHYDRATES * percentAmount;
-      this.nutrition.fats -= _NutritionConstants.GOOD_AMOUNT_OF_FATS * percentAmount;
-      this.nutrition.proteins -= _NutritionConstants.GOOD_AMOUNT_OF_PROTEINS * percentAmount;
+      this.nutrition.carbohydrates -= _NutritionConstants.GOOD_AMOUNT_OF_CARBOHYDRATES * _NutritionConstants.AMOUNT_REDUCED_PERCENT;
+      this.nutrition.fats -= _NutritionConstants.GOOD_AMOUNT_OF_FATS * _NutritionConstants.AMOUNT_REDUCED_PERCENT;
+      this.nutrition.proteins -= _NutritionConstants.GOOD_AMOUNT_OF_PROTEINS * _NutritionConstants.AMOUNT_REDUCED_PERCENT;
 
       this.nutrition.carbohydrates = Math.round(this.nutrition.carbohydrates * 10) / 10;
       this.nutrition.fats = Math.round(this.nutrition.fats * 10) / 10;
       this.nutrition.proteins = Math.round(this.nutrition.proteins * 10) / 10;
-
-      this.fatOMeter = this.nutrition.carbohydrates / _NutritionConstants.GOOD_AMOUNT_OF_CARBOHYDRATES + this.nutrition.fats / _NutritionConstants.GOOD_AMOUNT_OF_FATS + this.nutrition.proteins / _NutritionConstants.GOOD_AMOUNT_OF_PROTEINS;
 
       this.UI.updateUI();
     }
@@ -1068,7 +1068,7 @@ var Game = function (_Phaser$State) {
 
 exports.default = Game;
 
-},{"../objects/Bob":7,"../objects/FoodSpawner":9,"../objects/NutritionManager":10,"../utils/AudioManager":19,"../utils/StorageManager":20}],14:[function(require,module,exports){
+},{"../objects/Bob":7,"../objects/FoodSpawner":9,"../objects/NutritionManager":10,"../utils/AudioManager":19,"../utils/StorageManager":21}],14:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1194,7 +1194,7 @@ var MainMenu = function (_Phaser$State) {
 
 exports.default = MainMenu;
 
-},{"../utils/AudioManager":19,"../utils/StorageManager":20}],15:[function(require,module,exports){
+},{"../utils/AudioManager":19,"../utils/StorageManager":21}],15:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1532,7 +1532,7 @@ var Wiki = function (_Phaser$State) {
 
 exports.default = Wiki;
 
-},{"../constants/FoodConstants":2,"../utils/AudioManager":19,"../utils/UserInterfaceUtils":21}],18:[function(require,module,exports){
+},{"../constants/FoodConstants":2,"../utils/AudioManager":19,"../utils/UserInterfaceUtils":22}],18:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1647,7 +1647,36 @@ var getAudioOffset = exports.getAudioOffset = function getAudioOffset() {
   return _audioOffset;
 };
 
-},{"./StorageManager":20}],20:[function(require,module,exports){
+},{"./StorageManager":21}],20:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var getRandomWithWeight = exports.getRandomWithWeight = function getRandomWithWeight(array) {
+  var length = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : array.length;
+
+  var probs = array.slice(0, length).map(function (v) {
+    return v.probability;
+  });
+  var probsSum = probs.reduce(function (a, b) {
+    return a + b;
+  });
+  probs = probs.map(function (v) {
+    return v * (1 / probsSum);
+  });
+
+  var random = Math.random();
+  var sum = 0;
+  for (var i = 0; i < length; i++) {
+    sum += probs[i];
+    if (random <= sum) {
+      return array[i];
+    }
+  }
+};
+
+},{}],21:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -1664,7 +1693,7 @@ var getStorage = exports.getStorage = function getStorage() {
   return EPTStorage;
 };
 
-},{}],21:[function(require,module,exports){
+},{}],22:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
