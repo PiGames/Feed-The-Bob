@@ -990,26 +990,9 @@ var Game = function (_Phaser$State) {
         }, this);
         pointsTween.onComplete.addOnce(function () {
           _this2.screenGameoverScore.setText('Time survied on diet: ' + _this2.score);
-          // this.spawnEmitter( this.screenGameoverScore, 'particle', 20, 300 );
         }, this);
         pointsTween.start();
       }
-    }
-  }, {
-    key: 'spawnEmitter',
-    value: function spawnEmitter(item, particle, number, lifespan, frequency, offsetX, offsetY, gravity) {
-      offsetX = offsetX || 0;
-      offsetY = offsetY || 0;
-      lifespan = lifespan || 2000;
-      frequency = frequency || 0;
-      var emitter = this.game.add.emitter(item.x + offsetX, item.y + offsetY, number);
-      emitter.maxParticles = number;
-      emitter.makeParticles(particle);
-      emitter.setXSpeed(-500, 500);
-      emitter.setYSpeed(-700, 300);
-      emitter.setScale(4, 1, 4, 1, 500, Phaser.Easing.Linear.None);
-      emitter.gravity = gravity || 250;
-      emitter.start(false, lifespan, frequency, number);
     }
   }, {
     key: 'clickAudio',
@@ -1135,7 +1118,7 @@ var MainMenu = function (_Phaser$State) {
       this.buttonAudio = this.add.button(this.world.width - 20, 20, 'button-audio', this.clickAudio, this, 1, 0, 2);
       this.buttonAudio.anchor.set(1, 0);
 
-      var buttonAchievements = this.add.button(20, this.world.height - 20, 'button-achievements', this.clickAchievements, this, 1, 0, 2);
+      var buttonAchievements = this.add.button(20, this.world.height - 20, 'button-wiki', this.clickAchievements, this, 1, 0, 2);
       buttonAchievements.anchor.set(0, 1);
 
       var fontHighscore = { font: '32px Arial', fill: '#000' };
@@ -1230,8 +1213,8 @@ function _inherits(subClass, superClass) {
 }
 
 var resources = {
-  'image': [['background', 'img/background.png'], ['title', 'img/title.png'], ['logo-pigames', 'img/logo-pigames.png'], ['clickme', 'img/clickme.png'], ['overlay', 'img/overlay.png'], ['button-beer', 'img/button-beer.png'], ['particle', 'img/particle.png'], ['apple', 'img/assets/apple.png'], ['chicken', 'img/assets/chicken.png'], ['banana', 'img/assets/banana.png'], ['hamburger', 'img/assets/hamburger.png']],
-  'spritesheet': [['button-start', 'img/button-start.png', 180, 180], ['button-continue', 'img/button-continue.png', 180, 180], ['button-mainmenu', 'img/button-mainmenu.png', 180, 180], ['button-restart', 'img/button-tryagain.png', 180, 180], ['button-achievements', 'img/button-achievements.png', 110, 110], ['button-pause', 'img/button-pause.png', 80, 80], ['button-audio', 'img/button-sound.png', 80, 80], ['button-back', 'img/button-back.png', 70, 70], ['button-next', 'img/button-next.png', 70, 70], ['bob', 'img/assets/bob.png', 460, 1370]],
+  'image': [['background', 'img/background.png'], ['title', 'img/title.png'], ['logo-pigames', 'img/logo-pigames.png'], ['overlay', 'img/overlay.png'], ['apple', 'img/assets/apple.png'], ['chicken', 'img/assets/chicken.png'], ['banana', 'img/assets/banana.png'], ['hamburger', 'img/assets/hamburger.png']],
+  'spritesheet': [['button-start', 'img/button-start.png', 180, 180], ['button-continue', 'img/button-continue.png', 180, 180], ['button-mainmenu', 'img/button-mainmenu.png', 180, 180], ['button-restart', 'img/button-tryagain.png', 180, 180], ['button-wiki', 'img/button-wiki.png', 110, 110], ['button-pause', 'img/button-pause.png', 80, 80], ['button-audio', 'img/button-sound.png', 80, 80], ['button-back', 'img/button-back.png', 70, 70], ['button-next', 'img/button-next.png', 70, 70], ['bob', 'img/assets/bob.png', 460, 1370]],
   'audio': [['audio-click', ['sfx/audio-button.m4a', 'sfx/audio-button.mp3', 'sfx/audio-button.ogg']], ['audio-theme', ['sfx/music-bitsnbites-liver.m4a', 'sfx/music-bitsnbites-liver.mp3', 'sfx/music-bitsnbites-liver.ogg']]]
 };
 

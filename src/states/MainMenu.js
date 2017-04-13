@@ -19,7 +19,7 @@ export default class MainMenu extends Phaser.State {
     this.buttonAudio = this.add.button( this.world.width - 20, 20, 'button-audio', this.clickAudio, this, 1, 0, 2 );
     this.buttonAudio.anchor.set( 1, 0 );
 
-    const buttonAchievements = this.add.button( 20, this.world.height - 20, 'button-achievements', this.clickAchievements, this, 1, 0, 2 );
+    const buttonAchievements = this.add.button( 20, this.world.height - 20, 'button-wiki', this.clickAchievements, this, 1, 0, 2 );
     buttonAchievements.anchor.set( 0, 1 );
 
     const fontHighscore = { font: '32px Arial', fill: '#000' };

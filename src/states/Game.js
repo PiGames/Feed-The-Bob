@@ -162,24 +162,9 @@ export default class Game extends Phaser.State {
       }, this );
       pointsTween.onComplete.addOnce( () => {
         this.screenGameoverScore.setText( 'Time survied on diet: ' + this.score );
-        // this.spawnEmitter( this.screenGameoverScore, 'particle', 20, 300 );
       }, this );
       pointsTween.start();
     }
-  }
-  spawnEmitter( item, particle, number, lifespan, frequency, offsetX, offsetY, gravity ) {
-    offsetX = offsetX || 0;
-    offsetY = offsetY || 0;
-    lifespan = lifespan || 2000;
-    frequency = frequency || 0;
-    const emitter = this.game.add.emitter( item.x + offsetX, item.y + offsetY, number );
-    emitter.maxParticles = number;
-    emitter.makeParticles( particle );
-    emitter.setXSpeed( -500, 500 );
-    emitter.setYSpeed( -700, 300 );
-    emitter.setScale( 4, 1, 4, 1, 500, Phaser.Easing.Linear.None );
-    emitter.gravity = gravity || 250;
-    emitter.start( false, lifespan, frequency, number );
   }
   clickAudio() {
     playAudio( 'click' );
