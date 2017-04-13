@@ -33,10 +33,11 @@ export default class Game extends Phaser.State {
     this.buttonPause = this.add.button( this.world.width - 20, 20, 'button-pause', this.managePause, this, 1, 0, 2 );
     this.buttonPause.anchor.set( 1, 0 );
 
-    const fontScore = { font: '32px Arial', fill: '#000' };
+    const fontScore = { font: '32px Gloria Hallelujah', fill: '#fff' };
     const fontScoreWhite = { font: '32px Arial', fill: '#FFF', align: 'center' };
     this.textScore = this.add.text( 30, this.world.height - 20, this.scoreTemplate( this.score ), fontScore );
     this.textScore.anchor.set( 0, 1 );
+    this.textScore.setShadow( 0, 0, 'rgba(0,0,0,0.5)', 5 );
 
     this.game.time.events.loop( Phaser.Timer.SECOND * 1, this.handlePoints, this );
 
