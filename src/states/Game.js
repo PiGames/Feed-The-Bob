@@ -12,8 +12,6 @@ export default class Game extends Phaser.State {
     this.gamePaused = false;
     this.runOnce = false;
 
-    this.getStorage = getStorage;
-
     this.scoreTemplate = time => `Time: ${time}s`;
 
     this.NutritionManager = new NutritionManager( this.game );
