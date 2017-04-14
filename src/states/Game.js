@@ -33,24 +33,28 @@ export default class Game extends Phaser.State {
     this.buttonPause = this.add.button( this.world.width - 20, 20, 'button-pause', this.managePause, this, 1, 0, 2 );
     this.buttonPause.anchor.set( 1, 0 );
 
-    const fontScore = { font: '32px Arial', fill: '#000' };
-    const fontScoreWhite = { font: '32px Arial', fill: '#FFF' };
+    const fontScore = { font: '64px Gloria Hallelujah', fill: '#fff' };
+    const fontScoreWhite = { font: '64px Arial', fill: '#FFF', align: 'center' };
     this.textScore = this.add.text( 30, this.world.height - 20, this.scoreTemplate( this.score ), fontScore );
     this.textScore.anchor.set( 0, 1 );
+    this.textScore.setShadow( 0, 0, 'rgba(0 ,0, 0, 0.5)', 10 );
 
     this.game.time.events.loop( Phaser.Timer.SECOND * 1, this.handlePoints, this );
 
     this.buttonPause.y = -this.buttonPause.height - 20;
     this.add.tween( this.buttonPause ).to( { y: 20 }, 1000, Phaser.Easing.Exponential.Out, true );
+    this.buttonPause.scale.setTo( 2 );
 
     const fontTitle = { font: '48px Arial', fill: '#000', stroke: '#FFF', strokeThickness: 10 };
 
     this.screenPausedGroup = this.add.group();
     this.screenPausedBg = this.add.sprite( 0, 0, 'overlay' );
+    this.screenPausedBg.scale.setTo( 2 );
     this.screenPausedText = this.add.text( this.world.width * 0.5, 100, 'Paused', fontTitle );
     this.screenPausedText.anchor.set( 0.5, 0 );
     this.buttonAudio = this.add.button( this.world.width - 20, 20, 'button-audio', this.clickAudio, this, 1, 0, 2 );
     this.buttonAudio.anchor.set( 1, 0 );
+    this.buttonAudio.scale.setTo( 2 );
     this.screenPausedBack = this.add.button( 150, this.world.height - 100, 'button-mainmenu', this.stateBack, this, 1, 0, 2 );
     this.screenPausedBack.anchor.set( 0, 1 );
     this.screenPausedContinue = this.add.button( this.world.width - 150, this.world.height - 100, 'button-continue', this.managePause, this, 1, 0, 2 );
@@ -111,7 +115,7 @@ export default class Game extends Phaser.State {
       this.game.world.bringToTop( this.screenPausedGroup );
       this.stateStatus = 'paused';
       this.stopMovingFood();
-    }		else {
+    } else {
       this.stateStatus = 'playing';
       this.runOnce = false;
       this.restoreFoodMovement();
@@ -162,24 +166,9 @@ export default class Game extends Phaser.State {
       }, this );
       pointsTween.onComplete.addOnce( () => {
         this.screenGameoverScore.setText( 'Time survied on diet: ' + this.score );
-        // this.spawnEmitter( this.screenGameoverScore, 'particle', 20, 300 );
       }, this );
       pointsTween.start();
     }
-  }
-  spawnEmitter( item, particle, number, lifespan, frequency, offsetX, offsetY, gravity ) {
-    offsetX = offsetX || 0;
-    offsetY = offsetY || 0;
-    lifespan = lifespan || 2000;
-    frequency = frequency || 0;
-    const emitter = this.game.add.emitter( item.x + offsetX, item.y + offsetY, number );
-    emitter.maxParticles = number;
-    emitter.makeParticles( particle );
-    emitter.setXSpeed( -500, 500 );
-    emitter.setYSpeed( -700, 300 );
-    emitter.setScale( 4, 1, 4, 1, 500, Phaser.Easing.Linear.None );
-    emitter.gravity = gravity || 250;
-    emitter.start( false, lifespan, frequency, number );
   }
   clickAudio() {
     playAudio( 'click' );

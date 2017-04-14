@@ -6,7 +6,7 @@ export default class Food extends Phaser.Sprite {
     this.onDestroy = onDestroy;
     this.data = data;
     this.NutritionManager = NutritionManager;
-    this.scale.setTo( 0.5 );
+    this.scale.setTo( 0.75 );
     this.game.physics.enable( this );
 
     const directionX = x > this.game.world.centerX ? -1 : 1;
@@ -47,7 +47,7 @@ export default class Food extends Phaser.Sprite {
 
   handleClick() {
     const tween = this.game.add.tween( this );
-    tween.to( { x: this.game.world.centerX - 20, y: this.game.world.height - 370 }, 500, Phaser.Easing.Linear.None, true );
+    tween.to( { x: this.game.world.centerX - 40, y: this.game.world.height - 680 }, 500, Phaser.Easing.Linear.None, true );
     tween.onComplete.add( () => {
       this.NutritionManager.updateStats( this.data );
       this.onDestroy( this );

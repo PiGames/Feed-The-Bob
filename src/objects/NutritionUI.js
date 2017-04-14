@@ -1,81 +1,98 @@
-import { GOOD_AMOUNT_OF_CARBS, GOOD_AMOUNT_OF_FATS, GOOD_AMOUNT_OF_PROTEINS } from '../constants/NutritionConstants';
+import { GOOD_AMOUNT_OF_CARBOHYDRATES, GOOD_AMOUNT_OF_FATS, GOOD_AMOUNT_OF_PROTEINS } from '../constants/NutritionConstants';
+import { SUPER_THIN_BREAKPOINT, THIN_BREAKPOINT, FAT_BREAKPOINT, SUPER_FAT_BREAKPOINT } from '../constants/WeightBreakpoints';
+import { NUTRITION_BAR_WIDTH, NUTRITION_BAR_HEIGHT, NUTRITION_BAR_OFFSET, NUTRITION_BAR_X_FROM_LEFT, NUTRITION_BAR_Y_FROM_BOTTOM, NUTRITION_BAR_TEXT_OFFSET_X, NUTRITION_BAR_TEXT_OFFSET_Y, NUTRITION_BAR_INFO_FONT, NUTRITION_BAR_TEXT_SHADOW_SIZE, NUTRITION_BAR_TEXT_SHADOW_COLOR } from '../constants/UIConstants';
 
 export default class NutritionUI {
   constructor( game, NutritionManager ) {
-    this.NutritionManager = NutritionManager;
-
-    this.nutrition = this.NutritionManager.nutrition;
-    this.fatOMeter = this.NutritionManager.fatOMeter;
-
-    this.healthbars = [ game.add.graphics( 0, 0 ), game.add.graphics( 0, 0 ), game.add.graphics( 0, 0 ) ];
-    this.healtTexts = [];
-
-    this.healthbars.forEach( ( v ) => {
-      v.anchor.setTo( 1, 1 );
-    } );
-
     this.game = game;
 
-    // Text templates
-    // this.carboTextTemplate = text => `Carbohydrates: ${text}g`;
-    // this.fatsTextTemplate = text => `Fats: ${text}g`;
-    // this.proteinsTextTemplate = text => `Proteins: ${text}g`;
-    // this.fatOMeterTextTemplate = text => `Fat-o-meter: ${Math.floor( text / 3 * 100 ) / 100}`;
-    //
-    // this.carboText = game.add.text( 30, 30, this.carboTextTemplate( this.nutrition.carbos ), fontScore );
-    // this.carboText.anchor.set( 0 );
-    //
-    // this.fatsText = game.add.text( 30, ( 30 + fontSize + 8 ), this.fatsTextTemplate( this.nutrition.fats ), fontScore );
-    // this.fatsText.anchor.set( 0 );
-    //
-    // this.proteinsText = game.add.text( 30, ( 30 + ( fontSize + 8 ) * 2 ), this.proteinsTextTemplate( this.nutrition.proteins ), fontScore );
-    // this.proteinsText.anchor.set( 0 );
-    //
-    // this.fatOMeterText = game.add.text( 30, ( 30 + ( fontSize + 8 ) * 3 ), this.fatOMeterTextTemplate( this.fatOMeter ), fontScore );
-    // this.fatOMeterText.anchor.set( 0 );
+    this.nutrition = NutritionManager.nutrition;
+
+    this.NutritionBars = [];
+    this.NutritionMasks = [];
+    this.NutritionTexts = [];
 
     this.drawAllBars();
   }
 
   updateUI() {
-    // this.carboText.setText( this.carboTextTemplate( this.nutrition.carbos ) );
-    // this.fatsText.setText( this.fatsTextTemplate( this.nutrition.fats ) );
-    // this.proteinsText.setText( this.proteinsTextTemplate( this.nutrition.proteins ) );
-    // this.fatOMeterText.setText( this.fatOMeterTextTemplate( this.NutritionManager.fatOMeter ) );
-
-    this.drawAllBars();
+    this.updateBar( this.nutrition.carbohydrates, GOOD_AMOUNT_OF_CARBOHYDRATES, 2 );
+    this.updateBar( this.nutrition.fats, GOOD_AMOUNT_OF_FATS, 1 );
+    this.updateBar( this.nutrition.proteins, GOOD_AMOUNT_OF_PROTEINS, 0 );
   }
 
   drawAllBars() {
-    this.drawBar( this.nutrition.carbos, GOOD_AMOUNT_OF_CARBS, 2, 'C:' );
-    this.drawBar( this.nutrition.fats, GOOD_AMOUNT_OF_FATS, 1, 'F:' );
-    this.drawBar( this.nutrition.proteins, GOOD_AMOUNT_OF_PROTEINS, 0, 'P:' );
+    this.drawBar( this.nutrition.carbohydrates, GOOD_AMOUNT_OF_CARBOHYDRATES, 2, 'Carbohydrates' );
+    this.drawBar( this.nutrition.fats, GOOD_AMOUNT_OF_FATS, 1, 'Fats' );
+    this.drawBar( this.nutrition.proteins, GOOD_AMOUNT_OF_PROTEINS, 0, 'Proteins' );
+  }
+
+  updateBar( value, goodAmount, i ) {
+    const width = NUTRITION_BAR_WIDTH;
+    const height = NUTRITION_BAR_HEIGHT;
+    const offset = i * ( NUTRITION_BAR_OFFSET + height );
+    const doubleOfGoodAmount = goodAmount * 2;
+
+    const status = this.NutritionBars[ i ];
+
+    if (
+      value <= doubleOfGoodAmount * SUPER_THIN_BREAKPOINT ||
+      value >= doubleOfGoodAmount * SUPER_FAT_BREAKPOINT
+    ) {
+      status.frame = 2;
+    } else if (
+      value <= doubleOfGoodAmount * THIN_BREAKPOINT ||
+      value >= doubleOfGoodAmount * FAT_BREAKPOINT
+    ) {
+      status.frame = 1;
+    } else {
+      status.frame = 0;
+    }
+
+    const NutritionBarValue = Math.min( Math.max( ( value / doubleOfGoodAmount ), 0 ), 1 );
+
+    const mask = this.NutritionMasks[ i ];
+    mask.clear();
+    mask.beginFill( 0x000000 );
+    mask.drawRect( this.game.width - NUTRITION_BAR_X_FROM_LEFT - width + ( width * ( 1 - NutritionBarValue ) ), this.game.height - NUTRITION_BAR_Y_FROM_BOTTOM - offset - height, width * NutritionBarValue, height );
+    mask.endFill();
+
+    const statusText = this.NutritionTexts[ i ];
+    statusText.setText( `${parseInt( value )} / ${goodAmount}` );
   }
 
   drawBar( value, goodAmount, i, text ) {
-    const width = 300;
-    const height = 16;
-    const offset = i * 30;
+    const width = NUTRITION_BAR_WIDTH;
+    const height = NUTRITION_BAR_HEIGHT;
+    const offset = i * ( NUTRITION_BAR_OFFSET + height );
+    const doubleOfGoodAmount = goodAmount * 2;
 
-    this.healthbars[ i ].clear();
+    const NutritionBarValue = Math.min( Math.max( ( value / doubleOfGoodAmount ), 0 ), 1 );
 
-    if ( value <= ( goodAmount * 2 ) * 0.17 || value >= ( goodAmount * 2 ) * 0.83 ) {
-      this.healthbars[ i ].beginFill( 0xFF0000, 0.85 );
-    } else if ( value <= ( goodAmount * 2 ) * 0.34 || value >= ( goodAmount * 2 ) * 0.66 ) {
-      this.healthbars[ i ].beginFill( 0xFFFF00, 0.85 );
-    } else {
-      this.healthbars[ i ].beginFill( 0x00FF00, 0.85 );
-    }
+    const background = this.game.add.sprite( this.game.width - NUTRITION_BAR_X_FROM_LEFT, this.game.height - NUTRITION_BAR_Y_FROM_BOTTOM - offset, 'nutrition-bar-background' );
+    background.anchor.setTo( 1, 1 );
 
-    const fontSize = 14;
-    const fontScore = { font: `${fontSize}px Arial`, fill: '#000' };
+    const mask = this.game.add.graphics( 0, 0 );
+    mask.beginFill( 0x000000 );
+    mask.drawRect( this.game.width - NUTRITION_BAR_X_FROM_LEFT - width + ( width * ( 1 - NutritionBarValue ) ), this.game.height - NUTRITION_BAR_Y_FROM_BOTTOM - offset - height, width * NutritionBarValue, height );
+    mask.endFill();
 
-    this.game.add.text( this.game.width - ( width + 24 ) - 24, this.game.height - ( height + 24 ) - offset, text, fontScore );
+    this.NutritionMasks[ i ] = mask;
 
-    this.healthbars[ i ].drawRect( this.game.width - ( width + 24 ), this.game.height - ( height + 24 ) - offset, width * Math.max( ( value / ( goodAmount * 2 ) ), 0 ), height );
-    this.healthbars[ i ].endFill();
-    this.healthbars[ i ].lineStyle( 2, 0x000000, 1 );
-    this.healthbars[ i ].drawRect( this.game.width - ( width + 24 ), this.game.height - ( height + 24 ) - offset, width, height );
-    this.healthbars[ i ].lineStyle( 0 );
+    const status = this.game.add.sprite( this.game.width - NUTRITION_BAR_X_FROM_LEFT, this.game.height - NUTRITION_BAR_Y_FROM_BOTTOM - offset, 'nutrition-bar', 0 );
+    status.anchor.setTo( 1, 1 );
+    status.mask = mask;
+
+    this.NutritionBars[ i ] = status;
+
+    const descText = this.game.add.text( this.game.width - NUTRITION_BAR_X_FROM_LEFT + NUTRITION_BAR_TEXT_OFFSET_X - width, this.game.height - NUTRITION_BAR_Y_FROM_BOTTOM - offset - NUTRITION_BAR_TEXT_OFFSET_Y, text, NUTRITION_BAR_INFO_FONT );
+    descText.anchor.setTo( 0, 1 );
+    descText.setShadow( 0, 0, NUTRITION_BAR_TEXT_SHADOW_COLOR, NUTRITION_BAR_TEXT_SHADOW_SIZE );
+
+    const statusText = this.game.add.text( this.game.width - NUTRITION_BAR_X_FROM_LEFT - NUTRITION_BAR_TEXT_OFFSET_X, this.game.height - NUTRITION_BAR_Y_FROM_BOTTOM - NUTRITION_BAR_TEXT_OFFSET_Y - offset, `${parseInt( value )} / ${goodAmount}`, NUTRITION_BAR_INFO_FONT );
+    statusText.anchor.setTo( 1, 1 );
+    statusText.setShadow( 0, 0, NUTRITION_BAR_TEXT_SHADOW_COLOR, NUTRITION_BAR_TEXT_SHADOW_SIZE );
+
+    this.NutritionTexts[ i ] = statusText;
   }
 }

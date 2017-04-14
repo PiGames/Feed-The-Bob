@@ -13,8 +13,8 @@ var TIME_TO_REACH_HARD_LEVEL = exports.TIME_TO_REACH_HARD_LEVEL = 10;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var MIN_FOOD_VELOCITY = exports.MIN_FOOD_VELOCITY = 60;
-var MAX_FOOD_VELOCITY = exports.MAX_FOOD_VELOCITY = 100;
+var MIN_FOOD_VELOCITY = exports.MIN_FOOD_VELOCITY = 120;
+var MAX_FOOD_VELOCITY = exports.MAX_FOOD_VELOCITY = 200;
 
 var FOOD_SPAWN_INTERVAL = exports.FOOD_SPAWN_INTERVAL = Phaser.Timer.SECOND;
 var FOOD_SPAWN_BOUNDS_WIDTH = exports.FOOD_SPAWN_BOUNDS_WIDTH = 500;
@@ -23,7 +23,7 @@ var FOOD_SPAWN_BOUNDS_HEIGHT = exports.FOOD_SPAWN_BOUNDS_HEIGHT = 300;
 var FOOD_WIDTH = exports.FOOD_WIDTH = 100;
 var FOOD_HEIGHT = exports.FOOD_HEIGHT = 75;
 
-var FOOD_DATA = exports.FOOD_DATA = [{ 'key': 'apple', 'nutritionFacts': { 'carbos': 12, 'fats': 0, 'proteins': 0 }, 'complexityLevel': 1 }, { 'key': 'chicken', 'nutritionFacts': { 'carbos': 2, 'fats': 10, 'proteins': 18 }, 'complexityLevel': 2 }, { 'key': 'hamburger', 'nutritionFacts': { 'carbos': 30, 'fats': 13, 'proteins': 16 }, 'complexityLevel': 3 }, { 'key': 'banana', 'nutritionFacts': { 'carbos': 30, 'fats': 1, 'proteins': 0 }, 'complexityLevel': 1 }];
+var FOOD_DATA = exports.FOOD_DATA = [{ 'key': 'apple', 'nutritionFacts': { 'carbohydrates': 12, 'fats': 0, 'proteins': 0 }, 'complexityLevel': 1, 'probability': 1 }, { 'key': 'banana', 'nutritionFacts': { 'carbohydrates': 30, 'fats': 1, 'proteins': 0 }, 'complexityLevel': 1, 'probability': 1 }, { 'key': 'chicken', 'nutritionFacts': { 'carbohydrates': 2, 'fats': 10, 'proteins': 18 }, 'complexityLevel': 2, 'probability': 1 }, { 'key': 'hamburger', 'nutritionFacts': { 'carbohydrates': 30, 'fats': 13, 'proteins': 16 }, 'complexityLevel': 3, 'probability': 1 }];
 
 },{}],3:[function(require,module,exports){
 "use strict";
@@ -31,11 +31,43 @@ var FOOD_DATA = exports.FOOD_DATA = [{ 'key': 'apple', 'nutritionFacts': { 'carb
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var GOOD_AMOUNT_OF_CARBS = exports.GOOD_AMOUNT_OF_CARBS = 270;
+var GOOD_AMOUNT_OF_CARBOHYDRATES = exports.GOOD_AMOUNT_OF_CARBOHYDRATES = 270;
 var GOOD_AMOUNT_OF_FATS = exports.GOOD_AMOUNT_OF_FATS = 70;
 var GOOD_AMOUNT_OF_PROTEINS = exports.GOOD_AMOUNT_OF_PROTEINS = 50;
 
+var AMOUNT_REDUCED_INTERVAL = exports.AMOUNT_REDUCED_INTERVAL = Phaser.Timer.SECOND * 1;
+var AMOUNT_REDUCED_PERCENT = exports.AMOUNT_REDUCED_PERCENT = 0.03;
+
 },{}],4:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var NUTRITION_BAR_WIDTH = exports.NUTRITION_BAR_WIDTH = 680;
+var NUTRITION_BAR_HEIGHT = exports.NUTRITION_BAR_HEIGHT = 56;
+var NUTRITION_BAR_OFFSET = exports.NUTRITION_BAR_OFFSET = 24;
+var NUTRITION_BAR_TEXT_OFFSET_X = exports.NUTRITION_BAR_TEXT_OFFSET_X = 24;
+var NUTRITION_BAR_TEXT_OFFSET_Y = exports.NUTRITION_BAR_TEXT_OFFSET_Y = 4;
+var NUTRITION_BAR_X_FROM_LEFT = exports.NUTRITION_BAR_X_FROM_LEFT = 24;
+var NUTRITION_BAR_Y_FROM_BOTTOM = exports.NUTRITION_BAR_Y_FROM_BOTTOM = 24;
+var NUTRITION_BAR_TEXT_SHADOW_SIZE = exports.NUTRITION_BAR_TEXT_SHADOW_SIZE = 10;
+var NUTRITION_BAR_TEXT_SHADOW_COLOR = exports.NUTRITION_BAR_TEXT_SHADOW_COLOR = 'rgba(0, 0, 0, 0.5)';
+
+var NUTRITION_BAR_INFO_FONT = exports.NUTRITION_BAR_INFO_FONT = { font: '32px Gloria Hallelujah', fill: '#fff' };
+
+},{}],5:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var SUPER_THIN_BREAKPOINT = exports.SUPER_THIN_BREAKPOINT = 0.17;
+var THIN_BREAKPOINT = exports.THIN_BREAKPOINT = 0.34;
+var FAT_BREAKPOINT = exports.FAT_BREAKPOINT = 0.66;
+var SUPER_FAT_BREAKPOINT = exports.SUPER_FAT_BREAKPOINT = 0.83;
+
+},{}],6:[function(require,module,exports){
 'use strict';
 
 var _states = require('./states');
@@ -46,7 +78,7 @@ function _interopRequireDefault(obj) {
   return obj && obj.__esModule ? obj : { default: obj };
 }
 
-var game = new Phaser.Game(960, 640, Phaser.AUTO);
+var game = new Phaser.Game(1920, 1280, Phaser.AUTO);
 var states = {
   'Boot': _states2.default.Boot,
   'Preloader': _states2.default.Preloader,
@@ -60,7 +92,7 @@ for (var stateName in states) {
 }
 game.state.start('Boot');
 
-},{"./states":16}],5:[function(require,module,exports){
+},{"./states":18}],7:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -78,6 +110,8 @@ var _createClass = function () {
 }();
 
 var _NutritionConstants = require('../constants/NutritionConstants');
+
+var _WeightBreakpoints = require('../constants/WeightBreakpoints');
 
 function _classCallCheck(instance, Constructor) {
   if (!(instance instanceof Constructor)) {
@@ -105,14 +139,12 @@ var Bob = function (_Phaser$Sprite) {
 
     var _this = _possibleConstructorReturn(this, (Bob.__proto__ || Object.getPrototypeOf(Bob)).call(this, game, x, y, imageKey));
 
-    _this.frame = 1;
-
     _this.handleDeath = handleDeath;
 
     _this.NutritionManager = NutritionManager;
 
     _this.anchor.setTo(0.5, 1);
-    _this.scale.setTo(0.25);
+    _this.scale.setTo(0.5);
 
     _this.game.world.add(_this);
     return _this;
@@ -123,83 +155,102 @@ var Bob = function (_Phaser$Sprite) {
     value: function hadleWeightChange() {
       var nutrition = this.NutritionManager.nutrition;
 
-      var arr = [this.getStatus(nutrition.carbos, _NutritionConstants.GOOD_AMOUNT_OF_CARBS), this.getStatus(nutrition.fats, _NutritionConstants.GOOD_AMOUNT_OF_FATS), this.getStatus(nutrition.proteins, _NutritionConstants.GOOD_AMOUNT_OF_PROTEINS)];
+      var nutritionStatuses = [this.getStatus(nutrition.carbohydrates, _NutritionConstants.GOOD_AMOUNT_OF_CARBOHYDRATES), this.getStatus(nutrition.fats, _NutritionConstants.GOOD_AMOUNT_OF_FATS), this.getStatus(nutrition.proteins, _NutritionConstants.GOOD_AMOUNT_OF_PROTEINS)];
 
-      var outOfOrder = 0;
+      var isDeadFromThinness = false;
+      var isSuperThin = false;
       var isThin = false;
       var isFat = false;
-      var isDead = false;
       var isSuperFat = false;
+      var isDeadFromFat = false;
 
-      arr.forEach(function (v) {
-        if (v === -1) {
-          isThin = true;
-        } else if (v === 1) {
-          isFat = true;
-        } else if (v === 2) {
-          isFat = true;
-          isSuperFat = true;
+      nutritionStatuses.forEach(function (v) {
+        switch (v) {
+          case -3:
+            isDeadFromThinness = true;
+            break;
+          case -2:
+            isSuperThin = true;
+            break;
+          case -1:
+            isThin = true;
+            break;
+          case 1:
+            isFat = true;
+            break;
+          case 2:
+            isSuperFat = true;
+            break;
+          case 3:
+            isDeadFromFat = true;
+            break;
         }
-
-        if (v === -2) {
-          isDead = true;
-        }
-
-        outOfOrder += v !== 0;
       });
 
-      if (isDead) {
-        this.handleDeath('');
+      if (isDeadFromFat) {
+        this.handleDeath('You have died from fat');
       }
 
-      // this.frame = 2;
-      if (outOfOrder === 0) {
-        this.frame = 1;
-      } else if (outOfOrder === 1) {
+      if (isDeadFromThinness) {
+        this.handleDeath('You have died from thinness');
+      }
+
+      if (isSuperThin || isThin || isFat || isSuperFat) {
         if (isThin) {
+          this.frame = 1;
+        }
+
+        if (isSuperThin) {
           this.frame = 0;
         }
 
         if (isFat) {
-          this.frame = 2;
+          this.frame = 3;
         }
 
         if (isSuperFat) {
-          this.frame = 3;
+          this.frame = 4;
         }
       } else {
-        if (isThin) {
-          this.frame = 0;
-        }
-
-        if (isFat) {
-          this.frame = 2;
-        }
-
-        if (isSuperFat) {
-          this.frame = 3;
-        }
+        this.frame = 2;
       }
     }
   }, {
     key: 'getStatus',
     value: function getStatus(value, goodAmount) {
-      if (value <= 0 || value >= goodAmount * 2) {
+      var doubleOfGoodAmount = goodAmount * 2;
+
+      if (value >= doubleOfGoodAmount) {
+        // Bob died from fatness
+        return 3;
+      }
+
+      if (value <= 0) {
+        // Bob died from thinness
+        return -3;
+      }
+
+      if (value <= doubleOfGoodAmount * _WeightBreakpoints.SUPER_THIN_BREAKPOINT) {
+        // Bob is super thin
         return -2;
       }
 
-      if (value <= goodAmount * 2 * 0.17) {
+      if (value <= doubleOfGoodAmount * _WeightBreakpoints.THIN_BREAKPOINT) {
+        // Bob is thin
         return -1;
       }
 
-      if (value >= goodAmount * 2 * 0.83) {
+      if (value >= doubleOfGoodAmount * _WeightBreakpoints.SUPER_FAT_BREAKPOINT) {
+        // Bob is super fat
         return 2;
       }
 
-      if (value >= goodAmount * 2 * 0.66) {
+      if (value >= doubleOfGoodAmount * _WeightBreakpoints.FAT_BREAKPOINT) {
+        // Bob is fat
         return 1;
       }
 
+      // Bob is normal
       return 0;
     }
   }]);
@@ -209,7 +260,7 @@ var Bob = function (_Phaser$Sprite) {
 
 exports.default = Bob;
 
-},{"../constants/NutritionConstants":3}],6:[function(require,module,exports){
+},{"../constants/NutritionConstants":3,"../constants/WeightBreakpoints":5}],8:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -257,7 +308,7 @@ var Food = function (_Phaser$Sprite) {
     _this.onDestroy = onDestroy;
     _this.data = data;
     _this.NutritionManager = NutritionManager;
-    _this.scale.setTo(0.5);
+    _this.scale.setTo(0.75);
     _this.game.physics.enable(_this);
 
     var directionX = x > _this.game.world.centerX ? -1 : 1;
@@ -300,7 +351,7 @@ var Food = function (_Phaser$Sprite) {
       var _this2 = this;
 
       var tween = this.game.add.tween(this);
-      tween.to({ x: this.game.world.centerX - 20, y: this.game.world.height - 370 }, 500, Phaser.Easing.Linear.None, true);
+      tween.to({ x: this.game.world.centerX - 40, y: this.game.world.height - 680 }, 500, Phaser.Easing.Linear.None, true);
       tween.onComplete.add(function () {
         _this2.NutritionManager.updateStats(_this2.data);
         _this2.onDestroy(_this2);
@@ -313,7 +364,7 @@ var Food = function (_Phaser$Sprite) {
 
 exports.default = Food;
 
-},{"../constants/FoodConstants":2}],7:[function(require,module,exports){
+},{"../constants/FoodConstants":2}],9:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -330,11 +381,13 @@ var _createClass = function () {
   };
 }();
 
-var _FoodConstants = require('../constants/FoodConstants');
-
 var _Food = require('./Food');
 
 var _Food2 = _interopRequireDefault(_Food);
+
+var _MathUtils = require('../utils/MathUtils.js');
+
+var _FoodConstants = require('../constants/FoodConstants');
 
 var _DifficultyLevelIntervals = require('../constants/DifficultyLevelIntervals.js');
 
@@ -415,10 +468,10 @@ var FoodSpawner = function (_Phaser$Group) {
       }
       var foodType = void 0;
       if (!this.enableDifficultyLevelGrowth) {
-        foodType = _FoodConstants.FOOD_DATA[Math.floor(Math.random() * _FoodConstants.FOOD_DATA.length)];
+        foodType = (0, _MathUtils.getRandomWithWeight)(_FoodConstants.FOOD_DATA, _FoodConstants.FOOD_DATA.length);
       } else {
         this.tryDifficultyLevelUp();
-        foodType = this.sortedFoodData[Math.floor(Math.random() * (this.currentDifficultyLevelLastIndex + 1))];
+        foodType = (0, _MathUtils.getRandomWithWeight)(this.sortedFoodData, this.currentDifficultyLevelLastIndex + 1);
       }
       var newFood = new _Food2.default(this.game, x, y, foodType.key, foodType.nutritionFacts, this.NutritionManager, this.removeChild.bind(this));
       this.children.push(newFood);
@@ -455,7 +508,7 @@ var FoodSpawner = function (_Phaser$Group) {
 
 exports.default = FoodSpawner;
 
-},{"../constants/DifficultyLevelIntervals.js":1,"../constants/FoodConstants":2,"./Food":6}],8:[function(require,module,exports){
+},{"../constants/DifficultyLevelIntervals.js":1,"../constants/FoodConstants":2,"../utils/MathUtils.js":20,"./Food":8}],10:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -493,38 +546,33 @@ var NutritionManager = function () {
     _classCallCheck(this, NutritionManager);
 
     this.nutrition = {
-      carbos: _NutritionConstants.GOOD_AMOUNT_OF_CARBS,
+      carbohydrates: _NutritionConstants.GOOD_AMOUNT_OF_CARBOHYDRATES,
       fats: _NutritionConstants.GOOD_AMOUNT_OF_FATS,
       proteins: _NutritionConstants.GOOD_AMOUNT_OF_PROTEINS
     };
 
-    this.fatOMeter = 3;
-
     this.UI = new _NutritionUI2.default(game, this);
 
-    game.time.events.loop(Phaser.Timer.SECOND * 1, this.reduceNutrition, this);
+    game.time.events.loop(_NutritionConstants.AMOUNT_REDUCED_INTERVAL, this.reduceNutrition, this);
   }
 
   _createClass(NutritionManager, [{
     key: 'reduceNutrition',
     value: function reduceNutrition() {
-      var percentAmount = 0.03;
-      this.nutrition.carbos -= _NutritionConstants.GOOD_AMOUNT_OF_CARBS * percentAmount;
-      this.nutrition.fats -= _NutritionConstants.GOOD_AMOUNT_OF_FATS * percentAmount;
-      this.nutrition.proteins -= _NutritionConstants.GOOD_AMOUNT_OF_PROTEINS * percentAmount;
+      this.nutrition.carbohydrates -= _NutritionConstants.GOOD_AMOUNT_OF_CARBOHYDRATES * _NutritionConstants.AMOUNT_REDUCED_PERCENT;
+      this.nutrition.fats -= _NutritionConstants.GOOD_AMOUNT_OF_FATS * _NutritionConstants.AMOUNT_REDUCED_PERCENT;
+      this.nutrition.proteins -= _NutritionConstants.GOOD_AMOUNT_OF_PROTEINS * _NutritionConstants.AMOUNT_REDUCED_PERCENT;
 
-      this.nutrition.carbos = Math.round(this.nutrition.carbos * 10) / 10;
+      this.nutrition.carbohydrates = Math.round(this.nutrition.carbohydrates * 10) / 10;
       this.nutrition.fats = Math.round(this.nutrition.fats * 10) / 10;
       this.nutrition.proteins = Math.round(this.nutrition.proteins * 10) / 10;
-
-      this.fatOMeter = this.nutrition.carbos / _NutritionConstants.GOOD_AMOUNT_OF_CARBS + this.nutrition.fats / _NutritionConstants.GOOD_AMOUNT_OF_FATS + this.nutrition.proteins / _NutritionConstants.GOOD_AMOUNT_OF_PROTEINS;
 
       this.UI.updateUI();
     }
   }, {
     key: 'updateStats',
     value: function updateStats(data) {
-      this.nutrition.carbos += data.carbos;
+      this.nutrition.carbohydrates += data.carbohydrates;
       this.nutrition.fats += data.fats;
       this.nutrition.proteins += data.proteins;
 
@@ -537,7 +585,7 @@ var NutritionManager = function () {
 
 exports.default = NutritionManager;
 
-},{"../constants/NutritionConstants":3,"./NutritionUI":9}],9:[function(require,module,exports){
+},{"../constants/NutritionConstants":3,"./NutritionUI":11}],11:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -556,6 +604,10 @@ var _createClass = function () {
 
 var _NutritionConstants = require('../constants/NutritionConstants');
 
+var _WeightBreakpoints = require('../constants/WeightBreakpoints');
+
+var _UIConstants = require('../constants/UIConstants');
+
 function _classCallCheck(instance, Constructor) {
   if (!(instance instanceof Constructor)) {
     throw new TypeError("Cannot call a class as a function");
@@ -566,37 +618,13 @@ var NutritionUI = function () {
   function NutritionUI(game, NutritionManager) {
     _classCallCheck(this, NutritionUI);
 
-    this.NutritionManager = NutritionManager;
-
-    this.nutrition = this.NutritionManager.nutrition;
-    this.fatOMeter = this.NutritionManager.fatOMeter;
-
-    this.healthbars = [game.add.graphics(0, 0), game.add.graphics(0, 0), game.add.graphics(0, 0)];
-    this.healtTexts = [];
-
-    this.healthbars.forEach(function (v) {
-      v.anchor.setTo(1, 1);
-    });
-
     this.game = game;
 
-    // Text templates
-    // this.carboTextTemplate = text => `Carbohydrates: ${text}g`;
-    // this.fatsTextTemplate = text => `Fats: ${text}g`;
-    // this.proteinsTextTemplate = text => `Proteins: ${text}g`;
-    // this.fatOMeterTextTemplate = text => `Fat-o-meter: ${Math.floor( text / 3 * 100 ) / 100}`;
-    //
-    // this.carboText = game.add.text( 30, 30, this.carboTextTemplate( this.nutrition.carbos ), fontScore );
-    // this.carboText.anchor.set( 0 );
-    //
-    // this.fatsText = game.add.text( 30, ( 30 + fontSize + 8 ), this.fatsTextTemplate( this.nutrition.fats ), fontScore );
-    // this.fatsText.anchor.set( 0 );
-    //
-    // this.proteinsText = game.add.text( 30, ( 30 + ( fontSize + 8 ) * 2 ), this.proteinsTextTemplate( this.nutrition.proteins ), fontScore );
-    // this.proteinsText.anchor.set( 0 );
-    //
-    // this.fatOMeterText = game.add.text( 30, ( 30 + ( fontSize + 8 ) * 3 ), this.fatOMeterTextTemplate( this.fatOMeter ), fontScore );
-    // this.fatOMeterText.anchor.set( 0 );
+    this.nutrition = NutritionManager.nutrition;
+
+    this.NutritionBars = [];
+    this.NutritionMasks = [];
+    this.NutritionTexts = [];
 
     this.drawAllBars();
   }
@@ -604,47 +632,81 @@ var NutritionUI = function () {
   _createClass(NutritionUI, [{
     key: 'updateUI',
     value: function updateUI() {
-      // this.carboText.setText( this.carboTextTemplate( this.nutrition.carbos ) );
-      // this.fatsText.setText( this.fatsTextTemplate( this.nutrition.fats ) );
-      // this.proteinsText.setText( this.proteinsTextTemplate( this.nutrition.proteins ) );
-      // this.fatOMeterText.setText( this.fatOMeterTextTemplate( this.NutritionManager.fatOMeter ) );
-
-      this.drawAllBars();
+      this.updateBar(this.nutrition.carbohydrates, _NutritionConstants.GOOD_AMOUNT_OF_CARBOHYDRATES, 2);
+      this.updateBar(this.nutrition.fats, _NutritionConstants.GOOD_AMOUNT_OF_FATS, 1);
+      this.updateBar(this.nutrition.proteins, _NutritionConstants.GOOD_AMOUNT_OF_PROTEINS, 0);
     }
   }, {
     key: 'drawAllBars',
     value: function drawAllBars() {
-      this.drawBar(this.nutrition.carbos, _NutritionConstants.GOOD_AMOUNT_OF_CARBS, 2, 'C:');
-      this.drawBar(this.nutrition.fats, _NutritionConstants.GOOD_AMOUNT_OF_FATS, 1, 'F:');
-      this.drawBar(this.nutrition.proteins, _NutritionConstants.GOOD_AMOUNT_OF_PROTEINS, 0, 'P:');
+      this.drawBar(this.nutrition.carbohydrates, _NutritionConstants.GOOD_AMOUNT_OF_CARBOHYDRATES, 2, 'Carbohydrates');
+      this.drawBar(this.nutrition.fats, _NutritionConstants.GOOD_AMOUNT_OF_FATS, 1, 'Fats');
+      this.drawBar(this.nutrition.proteins, _NutritionConstants.GOOD_AMOUNT_OF_PROTEINS, 0, 'Proteins');
+    }
+  }, {
+    key: 'updateBar',
+    value: function updateBar(value, goodAmount, i) {
+      var width = _UIConstants.NUTRITION_BAR_WIDTH;
+      var height = _UIConstants.NUTRITION_BAR_HEIGHT;
+      var offset = i * (_UIConstants.NUTRITION_BAR_OFFSET + height);
+      var doubleOfGoodAmount = goodAmount * 2;
+
+      var status = this.NutritionBars[i];
+
+      if (value <= doubleOfGoodAmount * _WeightBreakpoints.SUPER_THIN_BREAKPOINT || value >= doubleOfGoodAmount * _WeightBreakpoints.SUPER_FAT_BREAKPOINT) {
+        status.frame = 2;
+      } else if (value <= doubleOfGoodAmount * _WeightBreakpoints.THIN_BREAKPOINT || value >= doubleOfGoodAmount * _WeightBreakpoints.FAT_BREAKPOINT) {
+        status.frame = 1;
+      } else {
+        status.frame = 0;
+      }
+
+      var NutritionBarValue = Math.min(Math.max(value / doubleOfGoodAmount, 0), 1);
+
+      var mask = this.NutritionMasks[i];
+      mask.clear();
+      mask.beginFill(0x000000);
+      mask.drawRect(this.game.width - _UIConstants.NUTRITION_BAR_X_FROM_LEFT - width + width * (1 - NutritionBarValue), this.game.height - _UIConstants.NUTRITION_BAR_Y_FROM_BOTTOM - offset - height, width * NutritionBarValue, height);
+      mask.endFill();
+
+      var statusText = this.NutritionTexts[i];
+      statusText.setText(parseInt(value) + ' / ' + goodAmount);
     }
   }, {
     key: 'drawBar',
     value: function drawBar(value, goodAmount, i, text) {
-      var width = 300;
-      var height = 16;
-      var offset = i * 30;
+      var width = _UIConstants.NUTRITION_BAR_WIDTH;
+      var height = _UIConstants.NUTRITION_BAR_HEIGHT;
+      var offset = i * (_UIConstants.NUTRITION_BAR_OFFSET + height);
+      var doubleOfGoodAmount = goodAmount * 2;
 
-      this.healthbars[i].clear();
+      var NutritionBarValue = Math.min(Math.max(value / doubleOfGoodAmount, 0), 1);
 
-      if (value <= goodAmount * 2 * 0.17 || value >= goodAmount * 2 * 0.83) {
-        this.healthbars[i].beginFill(0xFF0000, 0.85);
-      } else if (value <= goodAmount * 2 * 0.34 || value >= goodAmount * 2 * 0.66) {
-        this.healthbars[i].beginFill(0xFFFF00, 0.85);
-      } else {
-        this.healthbars[i].beginFill(0x00FF00, 0.85);
-      }
+      var background = this.game.add.sprite(this.game.width - _UIConstants.NUTRITION_BAR_X_FROM_LEFT, this.game.height - _UIConstants.NUTRITION_BAR_Y_FROM_BOTTOM - offset, 'nutrition-bar-background');
+      background.anchor.setTo(1, 1);
 
-      var fontSize = 14;
-      var fontScore = { font: fontSize + 'px Arial', fill: '#000' };
+      var mask = this.game.add.graphics(0, 0);
+      mask.beginFill(0x000000);
+      mask.drawRect(this.game.width - _UIConstants.NUTRITION_BAR_X_FROM_LEFT - width + width * (1 - NutritionBarValue), this.game.height - _UIConstants.NUTRITION_BAR_Y_FROM_BOTTOM - offset - height, width * NutritionBarValue, height);
+      mask.endFill();
 
-      this.game.add.text(this.game.width - (width + 24) - 24, this.game.height - (height + 24) - offset, text, fontScore);
+      this.NutritionMasks[i] = mask;
 
-      this.healthbars[i].drawRect(this.game.width - (width + 24), this.game.height - (height + 24) - offset, width * Math.max(value / (goodAmount * 2), 0), height);
-      this.healthbars[i].endFill();
-      this.healthbars[i].lineStyle(2, 0x000000, 1);
-      this.healthbars[i].drawRect(this.game.width - (width + 24), this.game.height - (height + 24) - offset, width, height);
-      this.healthbars[i].lineStyle(0);
+      var status = this.game.add.sprite(this.game.width - _UIConstants.NUTRITION_BAR_X_FROM_LEFT, this.game.height - _UIConstants.NUTRITION_BAR_Y_FROM_BOTTOM - offset, 'nutrition-bar', 0);
+      status.anchor.setTo(1, 1);
+      status.mask = mask;
+
+      this.NutritionBars[i] = status;
+
+      var descText = this.game.add.text(this.game.width - _UIConstants.NUTRITION_BAR_X_FROM_LEFT + _UIConstants.NUTRITION_BAR_TEXT_OFFSET_X - width, this.game.height - _UIConstants.NUTRITION_BAR_Y_FROM_BOTTOM - offset - _UIConstants.NUTRITION_BAR_TEXT_OFFSET_Y, text, _UIConstants.NUTRITION_BAR_INFO_FONT);
+      descText.anchor.setTo(0, 1);
+      descText.setShadow(0, 0, _UIConstants.NUTRITION_BAR_TEXT_SHADOW_COLOR, _UIConstants.NUTRITION_BAR_TEXT_SHADOW_SIZE);
+
+      var statusText = this.game.add.text(this.game.width - _UIConstants.NUTRITION_BAR_X_FROM_LEFT - _UIConstants.NUTRITION_BAR_TEXT_OFFSET_X, this.game.height - _UIConstants.NUTRITION_BAR_Y_FROM_BOTTOM - _UIConstants.NUTRITION_BAR_TEXT_OFFSET_Y - offset, parseInt(value) + ' / ' + goodAmount, _UIConstants.NUTRITION_BAR_INFO_FONT);
+      statusText.anchor.setTo(1, 1);
+      statusText.setShadow(0, 0, _UIConstants.NUTRITION_BAR_TEXT_SHADOW_COLOR, _UIConstants.NUTRITION_BAR_TEXT_SHADOW_SIZE);
+
+      this.NutritionTexts[i] = statusText;
     }
   }]);
 
@@ -653,7 +715,7 @@ var NutritionUI = function () {
 
 exports.default = NutritionUI;
 
-},{"../constants/NutritionConstants":3}],10:[function(require,module,exports){
+},{"../constants/NutritionConstants":3,"../constants/UIConstants":4,"../constants/WeightBreakpoints":5}],12:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -719,7 +781,7 @@ var Boot = function (_Phaser$State) {
 
 exports.default = Boot;
 
-},{}],11:[function(require,module,exports){
+},{}],13:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -814,24 +876,28 @@ var Game = function (_Phaser$State) {
       this.buttonPause = this.add.button(this.world.width - 20, 20, 'button-pause', this.managePause, this, 1, 0, 2);
       this.buttonPause.anchor.set(1, 0);
 
-      var fontScore = { font: '32px Arial', fill: '#000' };
-      var fontScoreWhite = { font: '32px Arial', fill: '#FFF' };
+      var fontScore = { font: '64px Gloria Hallelujah', fill: '#fff' };
+      var fontScoreWhite = { font: '64px Arial', fill: '#FFF', align: 'center' };
       this.textScore = this.add.text(30, this.world.height - 20, this.scoreTemplate(this.score), fontScore);
       this.textScore.anchor.set(0, 1);
+      this.textScore.setShadow(0, 0, 'rgba(0 ,0, 0, 0.5)', 10);
 
       this.game.time.events.loop(Phaser.Timer.SECOND * 1, this.handlePoints, this);
 
       this.buttonPause.y = -this.buttonPause.height - 20;
       this.add.tween(this.buttonPause).to({ y: 20 }, 1000, Phaser.Easing.Exponential.Out, true);
+      this.buttonPause.scale.setTo(2);
 
       var fontTitle = { font: '48px Arial', fill: '#000', stroke: '#FFF', strokeThickness: 10 };
 
       this.screenPausedGroup = this.add.group();
       this.screenPausedBg = this.add.sprite(0, 0, 'overlay');
+      this.screenPausedBg.scale.setTo(2);
       this.screenPausedText = this.add.text(this.world.width * 0.5, 100, 'Paused', fontTitle);
       this.screenPausedText.anchor.set(0.5, 0);
       this.buttonAudio = this.add.button(this.world.width - 20, 20, 'button-audio', this.clickAudio, this, 1, 0, 2);
       this.buttonAudio.anchor.set(1, 0);
+      this.buttonAudio.scale.setTo(2);
       this.screenPausedBack = this.add.button(150, this.world.height - 100, 'button-mainmenu', this.stateBack, this, 1, 0, 2);
       this.screenPausedBack.anchor.set(0, 1);
       this.screenPausedContinue = this.add.button(this.world.width - 150, this.world.height - 100, 'button-continue', this.managePause, this, 1, 0, 2);
@@ -963,26 +1029,9 @@ var Game = function (_Phaser$State) {
         }, this);
         pointsTween.onComplete.addOnce(function () {
           _this2.screenGameoverScore.setText('Time survied on diet: ' + _this2.score);
-          // this.spawnEmitter( this.screenGameoverScore, 'particle', 20, 300 );
         }, this);
         pointsTween.start();
       }
-    }
-  }, {
-    key: 'spawnEmitter',
-    value: function spawnEmitter(item, particle, number, lifespan, frequency, offsetX, offsetY, gravity) {
-      offsetX = offsetX || 0;
-      offsetY = offsetY || 0;
-      lifespan = lifespan || 2000;
-      frequency = frequency || 0;
-      var emitter = this.game.add.emitter(item.x + offsetX, item.y + offsetY, number);
-      emitter.maxParticles = number;
-      emitter.makeParticles(particle);
-      emitter.setXSpeed(-500, 500);
-      emitter.setYSpeed(-700, 300);
-      emitter.setScale(4, 1, 4, 1, 500, Phaser.Easing.Linear.None);
-      emitter.gravity = gravity || 250;
-      emitter.start(false, lifespan, frequency, number);
     }
   }, {
     key: 'clickAudio',
@@ -1041,21 +1090,21 @@ var Game = function (_Phaser$State) {
 
 exports.default = Game;
 
-},{"../objects/Bob":5,"../objects/FoodSpawner":7,"../objects/NutritionManager":8,"../utils/AudioManager":17,"../utils/StorageManager":18}],12:[function(require,module,exports){
+},{"../objects/Bob":7,"../objects/FoodSpawner":9,"../objects/NutritionManager":10,"../utils/AudioManager":19,"../utils/StorageManager":21}],14:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
+    value: true
 });
 
 var _createClass = function () {
-  function defineProperties(target, props) {
-    for (var i = 0; i < props.length; i++) {
-      var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);
-    }
-  }return function (Constructor, protoProps, staticProps) {
-    if (protoProps) defineProperties(Constructor.prototype, protoProps);if (staticProps) defineProperties(Constructor, staticProps);return Constructor;
-  };
+    function defineProperties(target, props) {
+        for (var i = 0; i < props.length; i++) {
+            var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);
+        }
+    }return function (Constructor, protoProps, staticProps) {
+        if (protoProps) defineProperties(Constructor.prototype, protoProps);if (staticProps) defineProperties(Constructor, staticProps);return Constructor;
+    };
 }();
 
 var _AudioManager = require('../utils/AudioManager');
@@ -1063,111 +1112,113 @@ var _AudioManager = require('../utils/AudioManager');
 var _StorageManager = require('../utils/StorageManager');
 
 function _classCallCheck(instance, Constructor) {
-  if (!(instance instanceof Constructor)) {
-    throw new TypeError("Cannot call a class as a function");
-  }
+    if (!(instance instanceof Constructor)) {
+        throw new TypeError("Cannot call a class as a function");
+    }
 }
 
 function _possibleConstructorReturn(self, call) {
-  if (!self) {
-    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-  }return call && (typeof call === "object" || typeof call === "function") ? call : self;
+    if (!self) {
+        throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+    }return call && (typeof call === "object" || typeof call === "function") ? call : self;
 }
 
 function _inherits(subClass, superClass) {
-  if (typeof superClass !== "function" && superClass !== null) {
-    throw new TypeError("Super expression must either be null or a function, not " + typeof superClass);
-  }subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } });if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
+    if (typeof superClass !== "function" && superClass !== null) {
+        throw new TypeError("Super expression must either be null or a function, not " + typeof superClass);
+    }subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } });if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
 }
 
 var MainMenu = function (_Phaser$State) {
-  _inherits(MainMenu, _Phaser$State);
+    _inherits(MainMenu, _Phaser$State);
 
-  function MainMenu() {
-    _classCallCheck(this, MainMenu);
+    function MainMenu() {
+        _classCallCheck(this, MainMenu);
 
-    return _possibleConstructorReturn(this, (MainMenu.__proto__ || Object.getPrototypeOf(MainMenu)).apply(this, arguments));
-  }
-
-  _createClass(MainMenu, [{
-    key: 'create',
-    value: function create() {
-      this.add.sprite(0, 0, 'background');
-      var title = this.add.sprite(this.world.width * 0.5, (this.world.height - 100) * 0.5, 'title');
-      title.anchor.set(0.5);
-
-      (0, _StorageManager.setStorage)(this.game.plugins.add(Phaser.Plugin.Storage));
-
-      (0, _StorageManager.getStorage)().initUnset('EPT-highscore', 0);
-      var highscore = (0, _StorageManager.getStorage)().get('EPT-highscore') || 0;
-
-      var buttonEnclave = this.add.button(20, 20, 'logo-pigames', this.clickEnclave, this);
-      var buttonStart = this.add.button(this.world.width - 20, this.world.height - 20, 'button-start', this.clickStart, this, 1, 0, 2);
-      buttonStart.anchor.set(1);
-
-      this.buttonAudio = this.add.button(this.world.width - 20, 20, 'button-audio', this.clickAudio, this, 1, 0, 2);
-      this.buttonAudio.anchor.set(1, 0);
-
-      var buttonAchievements = this.add.button(20, this.world.height - 20, 'button-achievements', this.clickAchievements, this, 1, 0, 2);
-      buttonAchievements.anchor.set(0, 1);
-
-      var fontHighscore = { font: '32px Arial', fill: '#000' };
-      var textHighscore = this.add.text(this.world.width * 0.5, this.world.height - 50, 'Highscore: ' + highscore, fontHighscore);
-      textHighscore.anchor.set(0.5, 1);
-
-      (0, _AudioManager.manageAudio)('init', this);
-      // Turn the music off at the start:
-      (0, _AudioManager.manageAudio)('off', this);
-
-      buttonStart.x = this.world.width + buttonStart.width + 20;
-      this.add.tween(buttonStart).to({ x: this.world.width - 20 }, 500, Phaser.Easing.Exponential.Out, true);
-      this.buttonAudio.y = -this.buttonAudio.height - 20;
-      this.add.tween(this.buttonAudio).to({ y: 20 }, 500, Phaser.Easing.Exponential.Out, true);
-      buttonEnclave.x = -buttonEnclave.width - 20;
-      this.add.tween(buttonEnclave).to({ x: 20 }, 500, Phaser.Easing.Exponential.Out, true);
-      buttonAchievements.y = this.world.height + buttonAchievements.height + 20;
-      this.add.tween(buttonAchievements).to({ y: this.world.height - 20 }, 500, Phaser.Easing.Exponential.Out, true);
-
-      this.camera.flash(0x000000, 500, false);
+        return _possibleConstructorReturn(this, (MainMenu.__proto__ || Object.getPrototypeOf(MainMenu)).apply(this, arguments));
     }
-  }, {
-    key: 'clickAudio',
-    value: function clickAudio() {
-      (0, _AudioManager.playAudio)('click');
-      (0, _AudioManager.manageAudio)('switch', this);
-    }
-  }, {
-    key: 'clickEnclave',
-    value: function clickEnclave() {
-      (0, _AudioManager.playAudio)('click');
-      window.top.location.href = 'http://pigam.es/';
-    }
-  }, {
-    key: 'clickStart',
-    value: function clickStart() {
-      var _this2 = this;
 
-      (0, _AudioManager.playAudio)('click');
-      this.camera.fade(0x000000, 200, false);
-      this.time.events.add(200, function () {
-        // this.game.state.start( 'Story' );
-        _this2.game.state.start('Game');
-      });
-    }
-  }, {
-    key: 'clickAchievements',
-    value: function clickAchievements() {
-      (0, _AudioManager.playAudio)('click');
-      this.game.state.start('Wiki');
-    }
-  }]);
+    _createClass(MainMenu, [{
+        key: 'create',
+        value: function create() {
+            this.add.sprite(0, 0, 'background');
+            var title = this.add.sprite(this.world.width * 0.5, (this.world.height - 100) * 0.5, 'title');
+            title.anchor.set(0.5);
 
-  return MainMenu;
+            (0, _StorageManager.setStorage)(this.game.plugins.add(Phaser.Plugin.Storage));
+
+            (0, _StorageManager.getStorage)().initUnset('EPT-highscore', 0);
+            var highscore = (0, _StorageManager.getStorage)().get('EPT-highscore') || 0;
+
+            var buttonEnclave = this.add.button(20, 20, 'logo-pigames', this.clickEnclave, this);
+            var buttonStart = this.add.button(this.world.width - 20, this.world.height - 20, 'button-start', this.clickStart, this, 1, 0, 2);
+            buttonStart.anchor.set(1);
+
+            this.buttonAudio = this.add.button(this.world.width - 20, 20, 'button-audio', this.clickAudio, this, 1, 0, 2);
+            this.buttonAudio.anchor.set(1, 0);
+            this.buttonAudio.scale.setTo(2);
+
+            var buttonAchievements = this.add.button(20, this.world.height - 20, 'button-wiki', this.clickAchievements, this, 1, 0, 2);
+            buttonAchievements.anchor.set(0, 1);
+            buttonAchievements.scale.setTo(2);
+
+            var fontHighscore = { font: '32px Arial', fill: '#000' };
+            var textHighscore = this.add.text(this.world.width * 0.5, this.world.height - 50, 'Highscore: ' + highscore, fontHighscore);
+            textHighscore.anchor.set(0.5, 1);
+
+            (0, _AudioManager.manageAudio)('init', this);
+            // Turn the music off at the start:
+            (0, _AudioManager.manageAudio)('off', this);
+
+            buttonStart.x = this.world.width + buttonStart.width + 20;
+            this.add.tween(buttonStart).to({ x: this.world.width - 20 }, 500, Phaser.Easing.Exponential.Out, true);
+            this.buttonAudio.y = -this.buttonAudio.height - 20;
+            this.add.tween(this.buttonAudio).to({ y: 20 }, 500, Phaser.Easing.Exponential.Out, true);
+            buttonEnclave.x = -buttonEnclave.width - 20;
+            this.add.tween(buttonEnclave).to({ x: 20 }, 500, Phaser.Easing.Exponential.Out, true);
+            buttonAchievements.y = this.world.height + buttonAchievements.height + 20;
+            this.add.tween(buttonAchievements).to({ y: this.world.height - 20 }, 500, Phaser.Easing.Exponential.Out, true);
+
+            this.camera.flash(0x000000, 500, false);
+        }
+    }, {
+        key: 'clickAudio',
+        value: function clickAudio() {
+            (0, _AudioManager.playAudio)('click');
+            (0, _AudioManager.manageAudio)('switch', this);
+        }
+    }, {
+        key: 'clickEnclave',
+        value: function clickEnclave() {
+            (0, _AudioManager.playAudio)('click');
+            window.top.location.href = 'http://pigam.es/';
+        }
+    }, {
+        key: 'clickStart',
+        value: function clickStart() {
+            var _this2 = this;
+
+            (0, _AudioManager.playAudio)('click');
+            this.camera.fade(0x000000, 200, false);
+            this.time.events.add(200, function () {
+                // this.game.state.start( 'Story' );
+                _this2.game.state.start('Game');
+            });
+        }
+    }, {
+        key: 'clickAchievements',
+        value: function clickAchievements() {
+            (0, _AudioManager.playAudio)('click');
+            this.game.state.start('Wiki');
+        }
+    }]);
+
+    return MainMenu;
 }(Phaser.State);
 
 exports.default = MainMenu;
 
-},{"../utils/AudioManager":17,"../utils/StorageManager":18}],13:[function(require,module,exports){
+},{"../utils/AudioManager":19,"../utils/StorageManager":21}],15:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1203,9 +1254,15 @@ function _inherits(subClass, superClass) {
 }
 
 var resources = {
-  'image': [['background', 'img/background.png'], ['title', 'img/title.png'], ['logo-pigames', 'img/logo-pigames.png'], ['clickme', 'img/clickme.png'], ['overlay', 'img/overlay.png'], ['button-beer', 'img/button-beer.png'], ['particle', 'img/particle.png'], ['apple', 'img/assets/apple.png'], ['chicken', 'img/assets/chicken.png'], ['banana', 'img/assets/banana.png'], ['hamburger', 'img/assets/hamburger.png']],
-  'spritesheet': [['button-start', 'img/button-start.png', 180, 180], ['button-continue', 'img/button-continue.png', 180, 180], ['button-mainmenu', 'img/button-mainmenu.png', 180, 180], ['button-restart', 'img/button-tryagain.png', 180, 180], ['button-achievements', 'img/button-achievements.png', 110, 110], ['button-pause', 'img/button-pause.png', 80, 80], ['button-audio', 'img/button-sound.png', 80, 80], ['button-back', 'img/button-back.png', 70, 70], ['button-next', 'img/button-next.png', 70, 70], ['bob', 'img/assets/bob.png', 460, 1370]],
+  'image': [['background', 'img/background.png'], ['title', 'img/title.png'], ['logo-pigames', 'img/logo-pigames.png'], ['overlay', 'img/overlay.png'], ['nutrition-bar-background', 'img/ui/nutrition-bar-background.png'], ['apple', 'img/assets/apple.png'], ['chicken', 'img/assets/chicken.png'], ['banana', 'img/assets/banana.png'], ['hamburger', 'img/assets/hamburger.png']],
+  'spritesheet': [['button-start', 'img/button-start.png', 180, 180], ['button-continue', 'img/button-continue.png', 180, 180], ['button-mainmenu', 'img/button-mainmenu.png', 180, 180], ['button-restart', 'img/button-tryagain.png', 180, 180], ['button-wiki', 'img/button-wiki.png', 110, 110], ['button-pause', 'img/button-pause.png', 80, 80], ['button-audio', 'img/button-sound.png', 80, 80], ['button-back', 'img/button-back.png', 70, 70], ['button-next', 'img/button-next.png', 70, 70], ['bob', 'img/assets/bob.png', 460, 1370], ['nutrition-bar', 'img/ui/nutrition-bar.png', 680, 56]],
   'audio': [['audio-click', ['sfx/audio-button.m4a', 'sfx/audio-button.mp3', 'sfx/audio-button.ogg']], ['audio-theme', ['sfx/music-bitsnbites-liver.m4a', 'sfx/music-bitsnbites-liver.mp3', 'sfx/music-bitsnbites-liver.ogg']]]
+};
+
+window.WebFontConfig = {
+  google: {
+    families: ['Gloria Hallelujah']
+  }
 };
 
 var Preloader = function (_Phaser$State) {
@@ -1241,12 +1298,14 @@ var Preloader = function (_Phaser$State) {
       for (var method in resources) {
         _loop(method);
       }
+
+      this.load.script('webfont', '//ajax.googleapis.com/ajax/libs/webfont/1.4.7/webfont.js');
     }
   }, {
     key: 'create',
     value: function create() {
-      this.state.start('MainMenu');
-      // this.state.start( 'Game' );
+      // this.state.start( 'MainMenu' );
+      this.state.start('Game');
     }
   }]);
 
@@ -1255,7 +1314,7 @@ var Preloader = function (_Phaser$State) {
 
 exports.default = Preloader;
 
-},{}],14:[function(require,module,exports){
+},{}],16:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1332,21 +1391,21 @@ var Story = function (_Phaser$State) {
 
 exports.default = Story;
 
-},{"../utils/AudioManager":17}],15:[function(require,module,exports){
+},{"../utils/AudioManager":19}],17:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
+    value: true
 });
 
 var _createClass = function () {
-  function defineProperties(target, props) {
-    for (var i = 0; i < props.length; i++) {
-      var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);
-    }
-  }return function (Constructor, protoProps, staticProps) {
-    if (protoProps) defineProperties(Constructor.prototype, protoProps);if (staticProps) defineProperties(Constructor, staticProps);return Constructor;
-  };
+    function defineProperties(target, props) {
+        for (var i = 0; i < props.length; i++) {
+            var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);
+        }
+    }return function (Constructor, protoProps, staticProps) {
+        if (protoProps) defineProperties(Constructor.prototype, protoProps);if (staticProps) defineProperties(Constructor, staticProps);return Constructor;
+    };
 }();
 
 var _AudioManager = require('../utils/AudioManager');
@@ -1356,156 +1415,156 @@ var _FoodConstants = require('../constants/FoodConstants');
 var _UserInterfaceUtils = require('../utils/UserInterfaceUtils');
 
 function _classCallCheck(instance, Constructor) {
-  if (!(instance instanceof Constructor)) {
-    throw new TypeError("Cannot call a class as a function");
-  }
+    if (!(instance instanceof Constructor)) {
+        throw new TypeError("Cannot call a class as a function");
+    }
 }
 
 function _possibleConstructorReturn(self, call) {
-  if (!self) {
-    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-  }return call && (typeof call === "object" || typeof call === "function") ? call : self;
+    if (!self) {
+        throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+    }return call && (typeof call === "object" || typeof call === "function") ? call : self;
 }
 
 function _inherits(subClass, superClass) {
-  if (typeof superClass !== "function" && superClass !== null) {
-    throw new TypeError("Super expression must either be null or a function, not " + typeof superClass);
-  }subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } });if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
+    if (typeof superClass !== "function" && superClass !== null) {
+        throw new TypeError("Super expression must either be null or a function, not " + typeof superClass);
+    }subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } });if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
 }
 
 var Wiki = function (_Phaser$State) {
-  _inherits(Wiki, _Phaser$State);
+    _inherits(Wiki, _Phaser$State);
 
-  function Wiki() {
-    _classCallCheck(this, Wiki);
+    function Wiki() {
+        _classCallCheck(this, Wiki);
 
-    return _possibleConstructorReturn(this, (Wiki.__proto__ || Object.getPrototypeOf(Wiki)).apply(this, arguments));
-  }
-
-  _createClass(Wiki, [{
-    key: 'create',
-    value: function create() {
-      var fontWiki = { font: '40px Arial', fill: '#000' };
-      this.add.text(20, 20, 'Wiki', fontWiki);
-
-      var buttonBack = this.add.button(this.world.width - 20, this.game.world.height - 20, 'button-back', this.clickBack, this, 1, 0, 2);
-      buttonBack.anchor.set(1, 1);
-      buttonBack.x = this.world.width + buttonBack.width + 20;
-      this.add.tween(buttonBack).to({ x: this.world.width - 20 }, 500, Phaser.Easing.Exponential.Out, true);
-
-      this.currentWikiPageIndex = 0;
-
-      this.currentPage = this.add.group();
-      this.fillGroupWithFoodData(this.currentPage, 0);
-
-      this.nextPage = this.add.group();
-      this.fillGroupWithFoodData(this.nextPage, 1);
-
-      this.nextPage.position.x += this.world.width;
-
-      var buttonPrevious = this.add.button(0, 0, 'button-back', this.goToPreviousWikiPage, this, 1, 0, 2);
-      buttonPrevious.x = -buttonPrevious.width;
-      this.add.tween(buttonPrevious).to({ x: 75 }, 500, Phaser.Easing.Exponential.Out, true);
-      (0, _UserInterfaceUtils.centerObjectInHeight)(buttonPrevious, this.world);
-
-      var buttonNext = this.add.button(0, 0, 'button-next', this.goToNextWikiPage, this, 1, 0, 2);
-      buttonNext.x = this.world.width;
-      this.add.tween(buttonNext).to({ x: this.world.width - buttonNext.width - 75 }, 500, Phaser.Easing.Exponential.Out, true);
-      (0, _UserInterfaceUtils.centerObjectInHeight)(buttonNext, this.world);
+        return _possibleConstructorReturn(this, (Wiki.__proto__ || Object.getPrototypeOf(Wiki)).apply(this, arguments));
     }
-  }, {
-    key: 'clickBack',
-    value: function clickBack() {
-      (0, _AudioManager.playAudio)('click');
-      this.game.state.start('MainMenu');
-    }
-  }, {
-    key: 'makeFirstLetterCapital',
-    value: function makeFirstLetterCapital(string) {
-      return '' + string.charAt(0).toUpperCase() + string.substring(1);
-    }
-  }, {
-    key: 'goToPreviousWikiPage',
-    value: function goToPreviousWikiPage() {
-      var _this2 = this;
 
-      if (this.tweenIn != null) {
-        return;
-      }
-      this.currentWikiPageIndex = this.currentWikiPageIndex === 0 ? _FoodConstants.FOOD_DATA.length - 1 : this.currentWikiPageIndex - 1;
+    _createClass(Wiki, [{
+        key: 'create',
+        value: function create() {
+            var fontWiki = { font: '40px Arial', fill: '#000' };
+            this.add.text(20, 20, 'Wiki', fontWiki);
 
-      this.nextPage.position.x -= this.world.width * 2;
-      this.fillGroupWithFoodData(this.nextPage, this.currentWikiPageIndex);
+            var buttonBack = this.add.button(this.world.width - 20, this.game.world.height - 20, 'button-back', this.clickBack, this, 1, 0, 2);
+            buttonBack.anchor.set(1, 1);
+            buttonBack.x = this.world.width + buttonBack.width + 20;
+            this.add.tween(buttonBack).to({ x: this.world.width - 20 }, 500, Phaser.Easing.Exponential.Out, true);
 
-      this.add.tween(this.currentPage.position).to({ x: this.currentPage.position.x + this.world.width }, 500, Phaser.Easing.Linear.None, true);
-      this.tweenIn = this.add.tween(this.nextPage.position).to({ x: this.nextPage.position.x + this.world.width }, 500, Phaser.Easing.Linear.None, true);
+            this.currentWikiPageIndex = 0;
 
-      this.tweenIn.onComplete.add(function () {
-        var tmpPage = _this2.currentPage;
-        _this2.currentPage = _this2.nextPage;
-        _this2.nextPage = tmpPage;
+            this.currentPage = this.add.group();
+            this.fillGroupWithFoodData(this.currentPage, 0);
 
-        _this2.tweenIn = null;
-      });
-    }
-  }, {
-    key: 'goToNextWikiPage',
-    value: function goToNextWikiPage() {
-      var _this3 = this;
+            this.nextPage = this.add.group();
+            this.fillGroupWithFoodData(this.nextPage, 1);
 
-      if (this.tweenIn != null) {
-        return;
-      }
-      this.currentWikiPageIndex = this.currentWikiPageIndex + 1 === _FoodConstants.FOOD_DATA.length ? 0 : this.currentWikiPageIndex + 1;
+            this.nextPage.position.x += this.world.width;
 
-      this.add.tween(this.currentPage.position).to({ x: this.currentPage.position.x - this.world.width }, 500, Phaser.Easing.Linear.None, true);
-      this.tweenIn = this.add.tween(this.nextPage.position).to({ x: this.nextPage.position.x - this.world.width }, 500, Phaser.Easing.Linear.None, true);
+            var buttonPrevious = this.add.button(0, 0, 'button-back', this.goToPreviousWikiPage, this, 1, 0, 2);
+            buttonPrevious.x = -buttonPrevious.width;
+            this.add.tween(buttonPrevious).to({ x: 75 }, 500, Phaser.Easing.Exponential.Out, true);
+            (0, _UserInterfaceUtils.centerObjectInHeight)(buttonPrevious, this.world);
 
-      this.tweenIn.onComplete.add(function () {
-        var tmpPage = _this3.currentPage;
+            var buttonNext = this.add.button(0, 0, 'button-next', this.goToNextWikiPage, this, 1, 0, 2);
+            buttonNext.x = this.world.width;
+            this.add.tween(buttonNext).to({ x: this.world.width - buttonNext.width - 75 }, 500, Phaser.Easing.Exponential.Out, true);
+            (0, _UserInterfaceUtils.centerObjectInHeight)(buttonNext, this.world);
+        }
+    }, {
+        key: 'clickBack',
+        value: function clickBack() {
+            (0, _AudioManager.playAudio)('click');
+            this.game.state.start('MainMenu');
+        }
+    }, {
+        key: 'makeFirstLetterCapital',
+        value: function makeFirstLetterCapital(string) {
+            return '' + string.charAt(0).toUpperCase() + string.substring(1);
+        }
+    }, {
+        key: 'goToPreviousWikiPage',
+        value: function goToPreviousWikiPage() {
+            var _this2 = this;
 
-        _this3.currentPage = _this3.nextPage;
-        var nextIndex = _this3.currentWikiPageIndex + 1 === _FoodConstants.FOOD_DATA.length ? 0 : _this3.currentWikiPageIndex + 1;
-        _this3.fillGroupWithFoodData(tmpPage, nextIndex);
-        tmpPage.position.x += _this3.world.width * 2;
+            if (this.tweenIn != null) {
+                return;
+            }
+            this.currentWikiPageIndex = this.currentWikiPageIndex === 0 ? _FoodConstants.FOOD_DATA.length - 1 : this.currentWikiPageIndex - 1;
 
-        _this3.nextPage = tmpPage;
+            this.nextPage.position.x -= this.world.width * 2;
+            this.fillGroupWithFoodData(this.nextPage, this.currentWikiPageIndex);
 
-        _this3.tweenIn = null;
-      });
-    }
-  }, {
-    key: 'fillGroupWithFoodData',
-    value: function fillGroupWithFoodData(group, index) {
-      group.removeAll(true);
-      var fontTitle = { font: '35px Arial', fill: '#fff' };
+            this.add.tween(this.currentPage.position).to({ x: this.currentPage.position.x + this.world.width }, 500, Phaser.Easing.Linear.None, true);
+            this.tweenIn = this.add.tween(this.nextPage.position).to({ x: this.nextPage.position.x + this.world.width }, 500, Phaser.Easing.Linear.None, true);
 
-      var title = this.add.text(0, 75, this.makeFirstLetterCapital(_FoodConstants.FOOD_DATA[index].key), fontTitle);
-      (0, _UserInterfaceUtils.centerObjectInWidth)(title, this.world);
-      var sprite = this.add.sprite(0, 150, _FoodConstants.FOOD_DATA[index].key);
-      (0, _UserInterfaceUtils.centerObjectInWidth)(sprite, this.world);
-      var fontNutritionFacts = { font: '25px Arial', fill: '#000' };
-      var carbos = this.add.text(0, 325, 'Carbohydrates: ' + _FoodConstants.FOOD_DATA[index].nutritionFacts.carbos + 'g', fontNutritionFacts);
-      (0, _UserInterfaceUtils.centerObjectInWidth)(carbos, this.world);
-      var fats = this.add.text(0, 375, 'Fats: ' + _FoodConstants.FOOD_DATA[index].nutritionFacts.fats + 'g', fontNutritionFacts);
-      (0, _UserInterfaceUtils.centerObjectInWidth)(fats, this.world);
-      var proteins = this.add.text(0, 425, 'Proteins: ' + _FoodConstants.FOOD_DATA[index].nutritionFacts.proteins + 'g', fontNutritionFacts);
-      (0, _UserInterfaceUtils.centerObjectInWidth)(proteins, this.world);
+            this.tweenIn.onComplete.add(function () {
+                var tmpPage = _this2.currentPage;
+                _this2.currentPage = _this2.nextPage;
+                _this2.nextPage = tmpPage;
 
-      group.add(title);
-      group.add(sprite);
-      group.add(carbos);
-      group.add(fats);
-      group.add(proteins);
-    }
-  }]);
+                _this2.tweenIn = null;
+            });
+        }
+    }, {
+        key: 'goToNextWikiPage',
+        value: function goToNextWikiPage() {
+            var _this3 = this;
 
-  return Wiki;
+            if (this.tweenIn != null) {
+                return;
+            }
+            this.currentWikiPageIndex = this.currentWikiPageIndex + 1 === _FoodConstants.FOOD_DATA.length ? 0 : this.currentWikiPageIndex + 1;
+
+            this.add.tween(this.currentPage.position).to({ x: this.currentPage.position.x - this.world.width }, 500, Phaser.Easing.Linear.None, true);
+            this.tweenIn = this.add.tween(this.nextPage.position).to({ x: this.nextPage.position.x - this.world.width }, 500, Phaser.Easing.Linear.None, true);
+
+            this.tweenIn.onComplete.add(function () {
+                var tmpPage = _this3.currentPage;
+
+                _this3.currentPage = _this3.nextPage;
+                var nextIndex = _this3.currentWikiPageIndex + 1 === _FoodConstants.FOOD_DATA.length ? 0 : _this3.currentWikiPageIndex + 1;
+                _this3.fillGroupWithFoodData(tmpPage, nextIndex);
+                tmpPage.position.x += _this3.world.width * 2;
+
+                _this3.nextPage = tmpPage;
+
+                _this3.tweenIn = null;
+            });
+        }
+    }, {
+        key: 'fillGroupWithFoodData',
+        value: function fillGroupWithFoodData(group, index) {
+            group.removeAll(true);
+            var fontTitle = { font: '35px Arial', fill: '#fff' };
+
+            var title = this.add.text(0, 75, this.makeFirstLetterCapital(_FoodConstants.FOOD_DATA[index].key), fontTitle);
+            (0, _UserInterfaceUtils.centerObjectInWidth)(title, this.world);
+            var sprite = this.add.sprite(0, 150, _FoodConstants.FOOD_DATA[index].key);
+            (0, _UserInterfaceUtils.centerObjectInWidth)(sprite, this.world);
+            var fontNutritionFacts = { font: '25px Arial', fill: '#000' };
+            var carbohydrates = this.add.text(0, 325, 'Carbohydrates: ' + _FoodConstants.FOOD_DATA[index].nutritionFacts.carbohydrates + 'g', fontNutritionFacts);
+            (0, _UserInterfaceUtils.centerObjectInWidth)(carbohydrates, this.world);
+            var fats = this.add.text(0, 375, 'Fats: ' + _FoodConstants.FOOD_DATA[index].nutritionFacts.fats + 'g', fontNutritionFacts);
+            (0, _UserInterfaceUtils.centerObjectInWidth)(fats, this.world);
+            var proteins = this.add.text(0, 425, 'Proteins: ' + _FoodConstants.FOOD_DATA[index].nutritionFacts.proteins + 'g', fontNutritionFacts);
+            (0, _UserInterfaceUtils.centerObjectInWidth)(proteins, this.world);
+
+            group.add(title);
+            group.add(sprite);
+            group.add(carbohydrates);
+            group.add(fats);
+            group.add(proteins);
+        }
+    }]);
+
+    return Wiki;
 }(Phaser.State);
 
 exports.default = Wiki;
 
-},{"../constants/FoodConstants":2,"../utils/AudioManager":17,"../utils/UserInterfaceUtils":19}],16:[function(require,module,exports){
+},{"../constants/FoodConstants":2,"../utils/AudioManager":19,"../utils/UserInterfaceUtils":22}],18:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1544,7 +1603,7 @@ exports.default = {
   Wiki: _Wiki2.default, Boot: _Boot2.default, Game: _Game2.default, MainMenu: _MainMenu2.default, Preloader: _Preloader2.default, Story: _Story2.default
 };
 
-},{"./Boot":10,"./Game":11,"./MainMenu":12,"./Preloader":13,"./Story":14,"./Wiki":15}],17:[function(require,module,exports){
+},{"./Boot":12,"./Game":13,"./MainMenu":14,"./Preloader":15,"./Story":16,"./Wiki":17}],19:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1620,7 +1679,36 @@ var getAudioOffset = exports.getAudioOffset = function getAudioOffset() {
   return _audioOffset;
 };
 
-},{"./StorageManager":18}],18:[function(require,module,exports){
+},{"./StorageManager":21}],20:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var getRandomWithWeight = exports.getRandomWithWeight = function getRandomWithWeight(array) {
+  var length = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : array.length;
+
+  var probs = array.slice(0, length).map(function (v) {
+    return v.probability;
+  });
+  var probsSum = probs.reduce(function (a, b) {
+    return a + b;
+  });
+  probs = probs.map(function (v) {
+    return v * (1 / probsSum);
+  });
+
+  var random = Math.random();
+  var sum = 0;
+  for (var i = 0; i < length; i++) {
+    sum += probs[i];
+    if (random <= sum) {
+      return array[i];
+    }
+  }
+};
+
+},{}],21:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -1637,7 +1725,7 @@ var getStorage = exports.getStorage = function getStorage() {
   return EPTStorage;
 };
 
-},{}],19:[function(require,module,exports){
+},{}],22:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -1653,5 +1741,5 @@ function centerObjectInHeight(object, world) {
   object.position.y = world.height / 2 - object.height / 2;
 }
 
-},{}]},{},[4])
+},{}]},{},[6])
 //# sourceMappingURL=game.js.map

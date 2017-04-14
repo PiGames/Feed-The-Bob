@@ -3,10 +3,10 @@ const resources = {
 		[ 'background', 'img/background.png' ],
 		[ 'title', 'img/title.png' ],
 		[ 'logo-pigames', 'img/logo-pigames.png' ],
-		[ 'clickme', 'img/clickme.png' ],
 		[ 'overlay', 'img/overlay.png' ],
-		[ 'button-beer', 'img/button-beer.png' ],
-		[ 'particle', 'img/particle.png' ],
+
+    [ 'nutrition-bar-background', 'img/ui/nutrition-bar-background.png' ],
+
     [ 'apple', 'img/assets/apple.png' ],
     [ 'chicken', 'img/assets/chicken.png' ],
     [ 'banana', 'img/assets/banana.png' ],
@@ -17,17 +17,24 @@ const resources = {
 		[ 'button-continue', 'img/button-continue.png', 180, 180 ],
 		[ 'button-mainmenu', 'img/button-mainmenu.png', 180, 180 ],
 		[ 'button-restart', 'img/button-tryagain.png', 180, 180 ],
-		[ 'button-achievements', 'img/button-achievements.png', 110, 110 ],
+		[ 'button-wiki', 'img/button-wiki.png', 110, 110 ],
 		[ 'button-pause', 'img/button-pause.png', 80, 80 ],
 		[ 'button-audio', 'img/button-sound.png', 80, 80 ],
 		[ 'button-back', 'img/button-back.png', 70, 70 ],
 		[ 'button-next', 'img/button-next.png', 70, 70 ],
     [ 'bob', 'img/assets/bob.png', 460, 1370 ],
+    [ 'nutrition-bar', 'img/ui/nutrition-bar.png', 680, 56 ],
   ],
   'audio': [
 		[ 'audio-click', [ 'sfx/audio-button.m4a', 'sfx/audio-button.mp3', 'sfx/audio-button.ogg' ] ],
 		[ 'audio-theme', [ 'sfx/music-bitsnbites-liver.m4a', 'sfx/music-bitsnbites-liver.mp3', 'sfx/music-bitsnbites-liver.ogg' ] ],
   ],
+};
+
+window.WebFontConfig = {
+  google: {
+    families: [ 'Gloria Hallelujah' ],
+  },
 };
 
 export default class Preloader extends Phaser.State {
@@ -45,9 +52,11 @@ export default class Preloader extends Phaser.State {
         loader && loader.apply( this.load, args );
       }, this );
     }
+
+    this.load.script( 'webfont', '//ajax.googleapis.com/ajax/libs/webfont/1.4.7/webfont.js' );
   }
   create() {
-    this.state.start( 'MainMenu' );
-    // this.state.start( 'Game' );
+    // this.state.start( 'MainMenu' );
+    this.state.start( 'Game' );
   }
 }

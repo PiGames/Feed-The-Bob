@@ -1,42 +1,34 @@
 import NutritionUI from './NutritionUI';
 
-import { GOOD_AMOUNT_OF_CARBS, GOOD_AMOUNT_OF_FATS, GOOD_AMOUNT_OF_PROTEINS } from '../constants/NutritionConstants';
+import { GOOD_AMOUNT_OF_CARBOHYDRATES, GOOD_AMOUNT_OF_FATS, GOOD_AMOUNT_OF_PROTEINS, AMOUNT_REDUCED_INTERVAL, AMOUNT_REDUCED_PERCENT } from '../constants/NutritionConstants';
 
 export default class NutritionManager {
   constructor( game ) {
     this.nutrition = {
-      carbos: GOOD_AMOUNT_OF_CARBS,
+      carbohydrates: GOOD_AMOUNT_OF_CARBOHYDRATES,
       fats: GOOD_AMOUNT_OF_FATS,
       proteins: GOOD_AMOUNT_OF_PROTEINS,
     };
 
-    this.fatOMeter = 3;
-
     this.UI = new NutritionUI( game, this );
 
-    game.time.events.loop( Phaser.Timer.SECOND * 1, this.reduceNutrition, this );
+    game.time.events.loop( AMOUNT_REDUCED_INTERVAL, this.reduceNutrition, this );
   }
 
   reduceNutrition() {
-    const percentAmount = 0.03;
-    this.nutrition.carbos -= ( GOOD_AMOUNT_OF_CARBS * percentAmount );
-    this.nutrition.fats -= ( GOOD_AMOUNT_OF_FATS * percentAmount );
-    this.nutrition.proteins -= ( GOOD_AMOUNT_OF_PROTEINS * percentAmount );
+    this.nutrition.carbohydrates -= ( GOOD_AMOUNT_OF_CARBOHYDRATES * AMOUNT_REDUCED_PERCENT );
+    this.nutrition.fats -= ( GOOD_AMOUNT_OF_FATS * AMOUNT_REDUCED_PERCENT );
+    this.nutrition.proteins -= ( GOOD_AMOUNT_OF_PROTEINS * AMOUNT_REDUCED_PERCENT );
 
-    this.nutrition.carbos = Math.round( this.nutrition.carbos * 10 ) / 10;
+    this.nutrition.carbohydrates = Math.round( this.nutrition.carbohydrates * 10 ) / 10;
     this.nutrition.fats = Math.round( this.nutrition.fats * 10 ) / 10;
     this.nutrition.proteins = Math.round( this.nutrition.proteins * 10 ) / 10;
 
-    this.fatOMeter = (
-      this.nutrition.carbos / GOOD_AMOUNT_OF_CARBS +
-      this.nutrition.fats / GOOD_AMOUNT_OF_FATS +
-      this.nutrition.proteins / GOOD_AMOUNT_OF_PROTEINS
-    );
-
     this.UI.updateUI();
   }
+
   updateStats( data ) {
-    this.nutrition.carbos += data.carbos;
+    this.nutrition.carbohydrates += data.carbohydrates;
     this.nutrition.fats += data.fats;
     this.nutrition.proteins += data.proteins;
 
