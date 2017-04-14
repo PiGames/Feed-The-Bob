@@ -130,7 +130,7 @@ export default class Game extends Phaser.State {
     // this.screenGameoverScore.setText( 'Score: ' + this.score );
     this.gameoverScoreTween( msg );
 
-    this.getStorage().setHighscore( 'EPT-highscore', this.score );
+    getStorage().setHighscore( 'EPT-highscore', this.score );
   }
 
   handlePoints() {

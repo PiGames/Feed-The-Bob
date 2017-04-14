@@ -58,11 +58,8 @@ export default class FoodSpawner extends Phaser.Group {
   tryDifficultyLevelUp( score ) {
     if ( score >= TIME_TO_REACH_MEDIUM_LEVEL && this.currentDifficultyLevelLastIndex !== this.mediumLevelLastIndex && this.currentDifficultyLevelLastIndex !== this.hardLevelLastIndex ) {
       this.currentDifficultyLevelLastIndex = this.mediumLevelLastIndex;
-      console.log( this.currentDifficultyLevelLastIndex );
     } else if ( score >= TIME_TO_REACH_HARD_LEVEL && this.currentDifficultyLevelLastIndex !== this.hardLevelLastIndex ) {
       this.currentDifficultyLevelLastIndex = this.hardLevelLastIndex;
-      console.log( this.currentDifficultyLevelLastIndex );
-
     }
   }
 }
