@@ -32,6 +32,6 @@ export default class NutritionManager {
     this.nutrition.fats += data.fats;
     this.nutrition.proteins += data.proteins;
 
-    this.UI.updateUI();
+    this.UI.updateUI( data );
   }
 }

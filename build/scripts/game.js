@@ -55,6 +55,7 @@ var NUTRITION_BAR_TEXT_SHADOW_SIZE = exports.NUTRITION_BAR_TEXT_SHADOW_SIZE = 10
 var NUTRITION_BAR_TEXT_SHADOW_COLOR = exports.NUTRITION_BAR_TEXT_SHADOW_COLOR = 'rgba(0, 0, 0, 0.5)';
 
 var NUTRITION_BAR_INFO_FONT = exports.NUTRITION_BAR_INFO_FONT = { font: '32px Gloria Hallelujah', fill: '#fff' };
+var NUTRITION_NUTRITION_ADDED_FONT = exports.NUTRITION_NUTRITION_ADDED_FONT = { font: '40px Gloria Hallelujah', fill: '#fff', stroke: '#000', strokeThickness: 6 };
 
 },{}],5:[function(require,module,exports){
 "use strict";
@@ -574,7 +575,7 @@ var NutritionManager = function () {
       this.nutrition.fats += data.fats;
       this.nutrition.proteins += data.proteins;
 
-      this.UI.updateUI();
+      this.UI.updateUI(data);
     }
   }]);
 
@@ -587,17 +588,17 @@ exports.default = NutritionManager;
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
 
 var _createClass = function () {
-    function defineProperties(target, props) {
-        for (var i = 0; i < props.length; i++) {
-            var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);
-        }
-    }return function (Constructor, protoProps, staticProps) {
-        if (protoProps) defineProperties(Constructor.prototype, protoProps);if (staticProps) defineProperties(Constructor, staticProps);return Constructor;
-    };
+  function defineProperties(target, props) {
+    for (var i = 0; i < props.length; i++) {
+      var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);
+    }
+  }return function (Constructor, protoProps, staticProps) {
+    if (protoProps) defineProperties(Constructor.prototype, protoProps);if (staticProps) defineProperties(Constructor, staticProps);return Constructor;
+  };
 }();
 
 var _NutritionConstants = require('../constants/NutritionConstants');
@@ -607,108 +608,144 @@ var _WeightBreakpoints = require('../constants/WeightBreakpoints');
 var _UIConstants = require('../constants/UIConstants');
 
 function _classCallCheck(instance, Constructor) {
-    if (!(instance instanceof Constructor)) {
-        throw new TypeError("Cannot call a class as a function");
-    }
+  if (!(instance instanceof Constructor)) {
+    throw new TypeError("Cannot call a class as a function");
+  }
 }
 
 var NutritionUI = function () {
-    function NutritionUI(game, NutritionManager) {
-        _classCallCheck(this, NutritionUI);
+  function NutritionUI(game, NutritionManager) {
+    _classCallCheck(this, NutritionUI);
 
-        this.game = game;
+    this.game = game;
 
-        this.nutrition = NutritionManager.nutrition;
+    this.nutrition = NutritionManager.nutrition;
 
-        this.NutritionBars = [];
-        this.NutritionMasks = [];
-        this.NutritionTexts = [];
+    this.NutritionBars = [];
+    this.NutritionMasks = [];
+    this.NutritionTexts = [];
 
-        this.drawAllBars();
+    this.drawAllBars();
+  }
+
+  _createClass(NutritionUI, [{
+    key: 'updateUI',
+    value: function updateUI(updatedValues) {
+      this.updateBar(this.nutrition.carbohydrates, _NutritionConstants.GOOD_AMOUNT_OF_CARBOHYDRATES, 2);
+      this.updateBar(this.nutrition.fats, _NutritionConstants.GOOD_AMOUNT_OF_FATS, 1);
+      this.updateBar(this.nutrition.proteins, _NutritionConstants.GOOD_AMOUNT_OF_PROTEINS, 0);
+
+      if (updatedValues) {
+        for (var key in updatedValues) {
+          var value = updatedValues[key];
+          if (value !== 0) {
+            this.displayAddition(key, value);
+          }
+        }
+      }
     }
+  }, {
+    key: 'drawAllBars',
+    value: function drawAllBars() {
+      this.drawBar(this.nutrition.carbohydrates, _NutritionConstants.GOOD_AMOUNT_OF_CARBOHYDRATES, 2, 'Carbohydrates');
+      this.drawBar(this.nutrition.fats, _NutritionConstants.GOOD_AMOUNT_OF_FATS, 1, 'Fats');
+      this.drawBar(this.nutrition.proteins, _NutritionConstants.GOOD_AMOUNT_OF_PROTEINS, 0, 'Proteins');
+    }
+  }, {
+    key: 'displayAddition',
+    value: function displayAddition(key, val) {
+      var i = 0;
 
-    _createClass(NutritionUI, [{
-        key: 'updateUI',
-        value: function updateUI() {
-            this.updateBar(this.nutrition.carbohydrates, _NutritionConstants.GOOD_AMOUNT_OF_CARBOHYDRATES, 2);
-            this.updateBar(this.nutrition.fats, _NutritionConstants.GOOD_AMOUNT_OF_FATS, 1);
-            this.updateBar(this.nutrition.proteins, _NutritionConstants.GOOD_AMOUNT_OF_PROTEINS, 0);
-        }
-    }, {
-        key: 'drawAllBars',
-        value: function drawAllBars() {
-            this.drawBar(this.nutrition.carbohydrates, _NutritionConstants.GOOD_AMOUNT_OF_CARBOHYDRATES, 2, 'Carbohydrates');
-            this.drawBar(this.nutrition.fats, _NutritionConstants.GOOD_AMOUNT_OF_FATS, 1, 'Fats');
-            this.drawBar(this.nutrition.proteins, _NutritionConstants.GOOD_AMOUNT_OF_PROTEINS, 0, 'Proteins');
-        }
-    }, {
-        key: 'updateBar',
-        value: function updateBar(value, goodAmount, i) {
-            var width = _UIConstants.NUTRITION_BAR_WIDTH;
-            var height = _UIConstants.NUTRITION_BAR_HEIGHT;
-            var offset = i * (_UIConstants.NUTRITION_BAR_OFFSET + height);
-            var doubleOfGoodAmount = goodAmount * 2;
+      switch (key) {
+        case 'carbohydrates':
+          i = 2;
+          break;
+        case 'fats':
+          i = 1;
+          break;
+        case 'proteins':
+          i = 0;
+          break;
+        // no default
+      }
 
-            var status = this.NutritionBars[i];
+      var height = _UIConstants.NUTRITION_BAR_HEIGHT;
+      var offset = i * (_UIConstants.NUTRITION_BAR_OFFSET + height);
 
-            if (value <= doubleOfGoodAmount * _WeightBreakpoints.SUPER_THIN_BREAKPOINT || value >= doubleOfGoodAmount * _WeightBreakpoints.SUPER_FAT_BREAKPOINT) {
-                status.frame = 2;
-            } else if (value <= doubleOfGoodAmount * _WeightBreakpoints.THIN_BREAKPOINT || value >= doubleOfGoodAmount * _WeightBreakpoints.FAT_BREAKPOINT) {
-                status.frame = 1;
-            } else {
-                status.frame = 0;
-            }
+      var textX = this.game.width - _UIConstants.NUTRITION_BAR_X_FROM_LEFT - _UIConstants.NUTRITION_BAR_TEXT_OFFSET_X;
+      var textY = this.game.height - _UIConstants.NUTRITION_BAR_Y_FROM_BOTTOM - _UIConstants.NUTRITION_BAR_TEXT_OFFSET_Y - offset;
+      var nutritionAdded = this.game.add.text(textX, textY, '+' + val, _UIConstants.NUTRITION_NUTRITION_ADDED_FONT);
+      nutritionAdded.anchor.setTo(1, 1);
+      this.game.add.tween(nutritionAdded).to({ alpha: 0, y: textY - 100 }, 1000, Phaser.Easing.Linear.None, true);
+    }
+  }, {
+    key: 'updateBar',
+    value: function updateBar(value, goodAmount, i) {
+      var width = _UIConstants.NUTRITION_BAR_WIDTH;
+      var height = _UIConstants.NUTRITION_BAR_HEIGHT;
+      var offset = i * (_UIConstants.NUTRITION_BAR_OFFSET + height);
+      var doubleOfGoodAmount = goodAmount * 2;
 
-            var NutritionBarValue = Math.min(Math.max(value / doubleOfGoodAmount, 0), 1);
+      var status = this.NutritionBars[i];
 
-            var mask = this.NutritionMasks[i];
-            mask.clear();
-            mask.beginFill(0x000000);
-            mask.drawRect(this.game.width - _UIConstants.NUTRITION_BAR_X_FROM_LEFT - width + width * (1 - NutritionBarValue), this.game.height - _UIConstants.NUTRITION_BAR_Y_FROM_BOTTOM - offset - height, width * NutritionBarValue, height);
-            mask.endFill();
+      if (value <= doubleOfGoodAmount * _WeightBreakpoints.SUPER_THIN_BREAKPOINT || value >= doubleOfGoodAmount * _WeightBreakpoints.SUPER_FAT_BREAKPOINT) {
+        status.frame = 2;
+      } else if (value <= doubleOfGoodAmount * _WeightBreakpoints.THIN_BREAKPOINT || value >= doubleOfGoodAmount * _WeightBreakpoints.FAT_BREAKPOINT) {
+        status.frame = 1;
+      } else {
+        status.frame = 0;
+      }
 
-            var statusText = this.NutritionTexts[i];
-            statusText.setText(parseInt(value) + ' / ' + goodAmount);
-        }
-    }, {
-        key: 'drawBar',
-        value: function drawBar(value, goodAmount, i, text) {
-            var width = _UIConstants.NUTRITION_BAR_WIDTH;
-            var height = _UIConstants.NUTRITION_BAR_HEIGHT;
-            var offset = i * (_UIConstants.NUTRITION_BAR_OFFSET + height);
-            var doubleOfGoodAmount = goodAmount * 2;
+      var NutritionBarValue = Math.min(Math.max(value / doubleOfGoodAmount, 0), 1);
 
-            var NutritionBarValue = Math.min(Math.max(value / doubleOfGoodAmount, 0), 1);
+      var mask = this.NutritionMasks[i];
+      mask.clear();
+      mask.beginFill(0x000000);
+      mask.drawRect(this.game.width - _UIConstants.NUTRITION_BAR_X_FROM_LEFT - width + width * (1 - NutritionBarValue), this.game.height - _UIConstants.NUTRITION_BAR_Y_FROM_BOTTOM - offset - height, width * NutritionBarValue, height);
+      mask.endFill();
 
-            var background = this.game.add.sprite(this.game.width - _UIConstants.NUTRITION_BAR_X_FROM_LEFT, this.game.height - _UIConstants.NUTRITION_BAR_Y_FROM_BOTTOM - offset, 'nutrition-bar-background');
-            background.anchor.setTo(1, 1);
+      var statusText = this.NutritionTexts[i];
+      statusText.setText(parseInt(value) + ' / ' + goodAmount);
+    }
+  }, {
+    key: 'drawBar',
+    value: function drawBar(value, goodAmount, i, text) {
+      var width = _UIConstants.NUTRITION_BAR_WIDTH;
+      var height = _UIConstants.NUTRITION_BAR_HEIGHT;
+      var offset = i * (_UIConstants.NUTRITION_BAR_OFFSET + height);
+      var doubleOfGoodAmount = goodAmount * 2;
 
-            var mask = this.game.add.graphics(0, 0);
-            mask.beginFill(0x000000);
-            mask.drawRect(this.game.width - _UIConstants.NUTRITION_BAR_X_FROM_LEFT - width + width * (1 - NutritionBarValue), this.game.height - _UIConstants.NUTRITION_BAR_Y_FROM_BOTTOM - offset - height, width * NutritionBarValue, height);
-            mask.endFill();
+      var NutritionBarValue = Math.min(Math.max(value / doubleOfGoodAmount, 0), 1);
 
-            this.NutritionMasks[i] = mask;
+      var background = this.game.add.sprite(this.game.width - _UIConstants.NUTRITION_BAR_X_FROM_LEFT, this.game.height - _UIConstants.NUTRITION_BAR_Y_FROM_BOTTOM - offset, 'nutrition-bar-background');
+      background.anchor.setTo(1, 1);
 
-            var status = this.game.add.sprite(this.game.width - _UIConstants.NUTRITION_BAR_X_FROM_LEFT, this.game.height - _UIConstants.NUTRITION_BAR_Y_FROM_BOTTOM - offset, 'nutrition-bar', 0);
-            status.anchor.setTo(1, 1);
-            status.mask = mask;
+      var mask = this.game.add.graphics(0, 0);
+      mask.beginFill(0x000000);
+      mask.drawRect(this.game.width - _UIConstants.NUTRITION_BAR_X_FROM_LEFT - width + width * (1 - NutritionBarValue), this.game.height - _UIConstants.NUTRITION_BAR_Y_FROM_BOTTOM - offset - height, width * NutritionBarValue, height);
+      mask.endFill();
 
-            this.NutritionBars[i] = status;
+      this.NutritionMasks[i] = mask;
 
-            var descText = this.game.add.text(this.game.width - _UIConstants.NUTRITION_BAR_X_FROM_LEFT + _UIConstants.NUTRITION_BAR_TEXT_OFFSET_X - width, this.game.height - _UIConstants.NUTRITION_BAR_Y_FROM_BOTTOM - offset - _UIConstants.NUTRITION_BAR_TEXT_OFFSET_Y, text, _UIConstants.NUTRITION_BAR_INFO_FONT);
-            descText.anchor.setTo(0, 1);
-            descText.setShadow(0, 0, _UIConstants.NUTRITION_BAR_TEXT_SHADOW_COLOR, _UIConstants.NUTRITION_BAR_TEXT_SHADOW_SIZE);
+      var status = this.game.add.sprite(this.game.width - _UIConstants.NUTRITION_BAR_X_FROM_LEFT, this.game.height - _UIConstants.NUTRITION_BAR_Y_FROM_BOTTOM - offset, 'nutrition-bar', 0);
+      status.anchor.setTo(1, 1);
+      status.mask = mask;
 
-            var statusText = this.game.add.text(this.game.width - _UIConstants.NUTRITION_BAR_X_FROM_LEFT - _UIConstants.NUTRITION_BAR_TEXT_OFFSET_X, this.game.height - _UIConstants.NUTRITION_BAR_Y_FROM_BOTTOM - _UIConstants.NUTRITION_BAR_TEXT_OFFSET_Y - offset, parseInt(value) + ' / ' + goodAmount, _UIConstants.NUTRITION_BAR_INFO_FONT);
-            statusText.anchor.setTo(1, 1);
-            statusText.setShadow(0, 0, _UIConstants.NUTRITION_BAR_TEXT_SHADOW_COLOR, _UIConstants.NUTRITION_BAR_TEXT_SHADOW_SIZE);
+      this.NutritionBars[i] = status;
 
-            this.NutritionTexts[i] = statusText;
-        }
-    }]);
+      var descText = this.game.add.text(this.game.width - _UIConstants.NUTRITION_BAR_X_FROM_LEFT + _UIConstants.NUTRITION_BAR_TEXT_OFFSET_X - width, this.game.height - _UIConstants.NUTRITION_BAR_Y_FROM_BOTTOM - offset - _UIConstants.NUTRITION_BAR_TEXT_OFFSET_Y, text, _UIConstants.NUTRITION_BAR_INFO_FONT);
+      descText.anchor.setTo(0, 1);
+      descText.setShadow(0, 0, _UIConstants.NUTRITION_BAR_TEXT_SHADOW_COLOR, _UIConstants.NUTRITION_BAR_TEXT_SHADOW_SIZE);
 
-    return NutritionUI;
+      var statusText = this.game.add.text(this.game.width - _UIConstants.NUTRITION_BAR_X_FROM_LEFT - _UIConstants.NUTRITION_BAR_TEXT_OFFSET_X, this.game.height - _UIConstants.NUTRITION_BAR_Y_FROM_BOTTOM - _UIConstants.NUTRITION_BAR_TEXT_OFFSET_Y - offset, parseInt(value) + ' / ' + goodAmount, _UIConstants.NUTRITION_BAR_INFO_FONT);
+      statusText.anchor.setTo(1, 1);
+      statusText.setShadow(0, 0, _UIConstants.NUTRITION_BAR_TEXT_SHADOW_COLOR, _UIConstants.NUTRITION_BAR_TEXT_SHADOW_SIZE);
+
+      this.NutritionTexts[i] = statusText;
+    }
+  }]);
+
+  return NutritionUI;
 }();
 
 exports.default = NutritionUI;

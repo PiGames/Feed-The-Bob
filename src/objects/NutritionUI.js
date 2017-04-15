@@ -1,6 +1,6 @@
 import { GOOD_AMOUNT_OF_CARBOHYDRATES, GOOD_AMOUNT_OF_FATS, GOOD_AMOUNT_OF_PROTEINS } from '../constants/NutritionConstants';
 import { SUPER_THIN_BREAKPOINT, THIN_BREAKPOINT, FAT_BREAKPOINT, SUPER_FAT_BREAKPOINT } from '../constants/WeightBreakpoints';
-import { NUTRITION_BAR_WIDTH, NUTRITION_BAR_HEIGHT, NUTRITION_BAR_OFFSET, NUTRITION_BAR_X_FROM_LEFT, NUTRITION_BAR_Y_FROM_BOTTOM, NUTRITION_BAR_TEXT_OFFSET_X, NUTRITION_BAR_TEXT_OFFSET_Y, NUTRITION_BAR_INFO_FONT, NUTRITION_BAR_TEXT_SHADOW_SIZE, NUTRITION_BAR_TEXT_SHADOW_COLOR } from '../constants/UIConstants';
+import { NUTRITION_BAR_WIDTH, NUTRITION_BAR_HEIGHT, NUTRITION_BAR_OFFSET, NUTRITION_BAR_X_FROM_LEFT, NUTRITION_BAR_Y_FROM_BOTTOM, NUTRITION_BAR_TEXT_OFFSET_X, NUTRITION_BAR_TEXT_OFFSET_Y, NUTRITION_BAR_INFO_FONT, NUTRITION_BAR_TEXT_SHADOW_SIZE, NUTRITION_BAR_TEXT_SHADOW_COLOR, NUTRITION_NUTRITION_ADDED_FONT } from '../constants/UIConstants';
 
 export default class NutritionUI {
   constructor( game, NutritionManager ) {
@@ -15,16 +15,52 @@ export default class NutritionUI {
     this.drawAllBars();
   }
 
-  updateUI() {
+  updateUI( updatedValues ) {
     this.updateBar( this.nutrition.carbohydrates, GOOD_AMOUNT_OF_CARBOHYDRATES, 2 );
     this.updateBar( this.nutrition.fats, GOOD_AMOUNT_OF_FATS, 1 );
     this.updateBar( this.nutrition.proteins, GOOD_AMOUNT_OF_PROTEINS, 0 );
+
+    if ( updatedValues ) {
+      for ( let key in updatedValues ) {
+        const value = updatedValues[ key ];
+        if ( value !== 0 ) {
+          this.displayAddition( key, value );
+        }
+      }
+    }
   }
 
   drawAllBars() {
     this.drawBar( this.nutrition.carbohydrates, GOOD_AMOUNT_OF_CARBOHYDRATES, 2, 'Carbohydrates' );
     this.drawBar( this.nutrition.fats, GOOD_AMOUNT_OF_FATS, 1, 'Fats' );
     this.drawBar( this.nutrition.proteins, GOOD_AMOUNT_OF_PROTEINS, 0, 'Proteins' );
+  }
+
+  displayAddition( key, val ) {
+    let i = 0;
+
+    switch ( key ) {
+    case 'carbohydrates':
+      i = 2;
+      break;
+    case 'fats':
+      i = 1;
+      break;
+    case 'proteins':
+      i = 0;
+      break;
+    // no default
+    }
+
+    const height = NUTRITION_BAR_HEIGHT;
+    const offset = i * ( NUTRITION_BAR_OFFSET + height );
+
+    const textX = this.game.width - NUTRITION_BAR_X_FROM_LEFT - NUTRITION_BAR_TEXT_OFFSET_X;
+    const textY = this.game.height - NUTRITION_BAR_Y_FROM_BOTTOM - NUTRITION_BAR_TEXT_OFFSET_Y - offset;
+    const nutritionAdded = this.game.add.text( textX, textY, `+${val}`, NUTRITION_NUTRITION_ADDED_FONT );
+    nutritionAdded.anchor.setTo( 1, 1 );
+    this.game.add.tween( nutritionAdded ).to( { alpha: 0, y: textY - 100 }, 1000, Phaser.Easing.Linear.None, true );
+
   }
 
   updateBar( value, goodAmount, i ) {

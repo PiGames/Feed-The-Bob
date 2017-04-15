@@ -9,3 +9,4 @@ export const NUTRITION_BAR_TEXT_SHADOW_SIZE = 10;
 export const NUTRITION_BAR_TEXT_SHADOW_COLOR = 'rgba(0, 0, 0, 0.5)';
 
 export const NUTRITION_BAR_INFO_FONT = { font: '32px Gloria Hallelujah', fill: '#fff' };
+export const NUTRITION_NUTRITION_ADDED_FONT = { font: '40px Gloria Hallelujah', fill: '#fff', stroke: '#000', strokeThickness: 6 };
