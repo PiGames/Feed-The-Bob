@@ -169,6 +169,7 @@ var Bob = function (_Phaser$Sprite) {
         switch (v) {
           case -3:
             isDeadFromThinness = true;
+            isSuperThin = true;
             break;
           case -2:
             isSuperThin = true;
@@ -184,17 +185,10 @@ var Bob = function (_Phaser$Sprite) {
             break;
           case 3:
             isDeadFromFat = true;
+            isSuperFat = true;
             break;
         }
       });
-
-      if (isDeadFromFat) {
-        this.handleDeath('You have died from fat');
-      }
-
-      if (isDeadFromThinness) {
-        this.handleDeath('You have died from thinness');
-      }
 
       if (isSuperThin || isThin || isFat || isSuperFat) {
         if (isThin) {
@@ -214,6 +208,14 @@ var Bob = function (_Phaser$Sprite) {
         }
       } else {
         this.frame = 2;
+      }
+
+      if (isDeadFromFat) {
+        this.handleDeath('You have died from fat');
+      }
+
+      if (isDeadFromThinness) {
+        this.handleDeath('You have died from thinness');
       }
     }
   }, {
@@ -919,7 +921,6 @@ var Game = function (_Phaser$State) {
 
       this.buttonPause.y = -this.buttonPause.height - 20;
       this.add.tween(this.buttonPause).to({ y: 20 }, 1000, Phaser.Easing.Exponential.Out, true);
-      this.buttonPause.scale.setTo(2);
 
       var fontTitle = { font: '48px Arial', fill: '#000', stroke: '#FFF', strokeThickness: 10 };
 
@@ -930,7 +931,6 @@ var Game = function (_Phaser$State) {
       this.screenPausedText.anchor.set(0.5, 0);
       this.buttonAudio = this.add.button(this.world.width - 20, 20, 'button-audio', this.clickAudio, this, 1, 0, 2);
       this.buttonAudio.anchor.set(1, 0);
-      this.buttonAudio.scale.setTo(2);
       this.screenPausedBack = this.add.button(150, this.world.height - 100, 'button-mainmenu', this.stateBack, this, 1, 0, 2);
       this.screenPausedBack.anchor.set(0, 1);
       this.screenPausedContinue = this.add.button(this.world.width - 150, this.world.height - 100, 'button-continue', this.managePause, this, 1, 0, 2);
@@ -940,12 +940,14 @@ var Game = function (_Phaser$State) {
       this.screenPausedGroup.add(this.buttonAudio);
       this.screenPausedGroup.add(this.screenPausedBack);
       this.screenPausedGroup.add(this.screenPausedContinue);
+      this.screenPausedGroup.alpha = 0;
       this.screenPausedGroup.visible = false;
 
       this.buttonAudio.setFrames((0, _AudioManager.getAudioOffset)() + 1, (0, _AudioManager.getAudioOffset)() + 0, (0, _AudioManager.getAudioOffset)() + 2);
 
       this.screenGameoverGroup = this.add.group();
       this.screenGameoverBg = this.add.sprite(0, 0, 'overlay');
+      this.screenGameoverBg.scale.setTo(2);
       this.screenGameoverText = this.add.text(this.world.width * 0.5, 100, 'Game over', fontTitle);
       this.screenGameoverText.anchor.set(0.5, 0);
       this.screenGameoverBack = this.add.button(150, this.world.height - 100, 'button-mainmenu', this.stateBack, this, 1, 0, 2);
@@ -959,6 +961,7 @@ var Game = function (_Phaser$State) {
       this.screenGameoverGroup.add(this.screenGameoverBack);
       this.screenGameoverGroup.add(this.screenGameoverRestart);
       this.screenGameoverGroup.add(this.screenGameoverScore);
+      this.screenGameoverGroup.alpha = 0;
       this.screenGameoverGroup.visible = false;
     }
   }, {
@@ -985,7 +988,10 @@ var Game = function (_Phaser$State) {
           }
         case 'playing':
           {
-            this.statePlaying();
+            if (!this.runOnce) {
+              this.statePlaying();
+              this.runOnce = true;
+            }
           }
       }
     }
@@ -997,6 +1003,7 @@ var Game = function (_Phaser$State) {
       if (this.gamePaused) {
         this.game.world.bringToTop(this.screenPausedGroup);
         this.stateStatus = 'paused';
+        this.runOnce = false;
         this.stopMovingFood();
       } else {
         this.stateStatus = 'playing';
@@ -1007,21 +1014,34 @@ var Game = function (_Phaser$State) {
   }, {
     key: 'statePlaying',
     value: function statePlaying() {
-      this.screenPausedGroup.visible = false;
+      var _this2 = this;
+
+      var tween = this.game.add.tween(this.screenPausedGroup);
+      tween.to({ alpha: 0 }, 100, Phaser.Easing.Linear.None, true);
+      tween.onComplete.add(function () {
+        if (_this2.screenPausedGroup.visible) {
+          _this2.screenPausedGroup.visible = false;
+        }
+      }, this);
     }
   }, {
     key: 'statePaused',
     value: function statePaused() {
       this.screenPausedGroup.visible = true;
+      var tween = this.game.add.tween(this.screenPausedGroup);
+      tween.to({ alpha: 1 }, 100, Phaser.Easing.Linear.None, true);
     }
   }, {
     key: 'stateGameover',
     value: function stateGameover(msg) {
       this.stopMovingFood();
       this.game.world.bringToTop(this.screenGameoverGroup);
-      this.screenGameoverGroup.visible = true;
-      // this.screenGameoverScore.setText( 'Score: ' + this.score );
+      this.screenGameoverScore.setText('Score: ' + this.score);
       this.gameoverScoreTween(msg);
+
+      this.screenGameoverGroup.visible = true;
+      var tween = this.game.add.tween(this.screenGameoverGroup);
+      tween.to({ alpha: 1 }, 100, Phaser.Easing.Linear.None, true);
 
       (0, _StorageManager.getStorage)().setHighscore('EPT-highscore', this.score);
     }
@@ -1033,22 +1053,9 @@ var Game = function (_Phaser$State) {
       this.textScore.setText(this.scoreTemplate(this.score));
     }
   }, {
-    key: 'addPoints',
-    value: function addPoints() {
-      // const randX = this.rnd.integerInRange( 200, this.world.width - 200 );
-      // const randY = this.rnd.integerInRange( 200, this.world.height - 200 );
-      // const pointsAdded = this.add.text( randX, randY, '+10',
-      // { font: '48px Arial', fill: '#000', stroke: '#FFF', strokeThickness: 10 } );
-      //
-      // pointsAdded.anchor.set( 0.5, 0.5 );
-      // this.add.tween( pointsAdded ).to( { alpha: 0, y: randY - 50 }, 1000, Phaser.Easing.Linear.None, true );
-      //
-      // this.camera.shake( 0.01, 100, true, Phaser.Camera.SHAKE_BOTH, true );
-    }
-  }, {
     key: 'gameoverScoreTween',
     value: function gameoverScoreTween() {
-      var _this2 = this;
+      var _this3 = this;
 
       var deathmsg = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
 
@@ -1058,10 +1065,10 @@ var Game = function (_Phaser$State) {
         var pointsTween = this.add.tween(this);
         pointsTween.to({ tweenedPoints: this.score }, 1000, Phaser.Easing.Linear.None, true, 500);
         pointsTween.onUpdateCallback(function () {
-          _this2.screenGameoverScore.setText('Time survied on diet: ' + Math.floor(_this2.tweenedPoints) + '\n' + deathmsg);
+          _this3.screenGameoverScore.setText('Time survied on diet: ' + Math.floor(_this3.tweenedPoints) + '\n' + deathmsg);
         }, this);
         pointsTween.onComplete.addOnce(function () {
-          _this2.screenGameoverScore.setText('Time survied on diet: ' + _this2.score);
+          _this3.screenGameoverScore.setText('Time survied on diet: ' + _this3.score);
         }, this);
         pointsTween.start();
       }
@@ -1189,11 +1196,9 @@ var MainMenu = function (_Phaser$State) {
 
             this.buttonAudio = this.add.button(this.world.width - 20, 20, 'button-audio', this.clickAudio, this, 1, 0, 2);
             this.buttonAudio.anchor.set(1, 0);
-            this.buttonAudio.scale.setTo(2);
 
-            var buttonAchievements = this.add.button(20, this.world.height - 20, 'button-wiki', this.clickAchievements, this, 1, 0, 2);
-            buttonAchievements.anchor.set(0, 1);
-            buttonAchievements.scale.setTo(2);
+            var buttonWiki = this.add.button(20, this.world.height - 20, 'button-wiki', this.clickAchievements, this, 1, 0, 2);
+            buttonWiki.anchor.set(0, 1);
 
             var fontHighscore = { font: '32px Arial', fill: '#000' };
             var textHighscore = this.add.text(this.world.width * 0.5, this.world.height - 50, 'Highscore: ' + highscore, fontHighscore);
@@ -1209,8 +1214,8 @@ var MainMenu = function (_Phaser$State) {
             this.add.tween(this.buttonAudio).to({ y: 20 }, 500, Phaser.Easing.Exponential.Out, true);
             buttonEnclave.x = -buttonEnclave.width - 20;
             this.add.tween(buttonEnclave).to({ x: 20 }, 500, Phaser.Easing.Exponential.Out, true);
-            buttonAchievements.y = this.world.height + buttonAchievements.height + 20;
-            this.add.tween(buttonAchievements).to({ y: this.world.height - 20 }, 500, Phaser.Easing.Exponential.Out, true);
+            buttonWiki.y = this.world.height + buttonWiki.height + 20;
+            this.add.tween(buttonWiki).to({ y: this.world.height - 20 }, 500, Phaser.Easing.Exponential.Out, true);
 
             this.camera.flash(0x000000, 500, false);
         }
@@ -1287,8 +1292,8 @@ function _inherits(subClass, superClass) {
 }
 
 var resources = {
-  'image': [['background', 'img/background.png'], ['title', 'img/title.png'], ['logo-pigames', 'img/logo-pigames.png'], ['overlay', 'img/overlay.png'], ['nutrition-bar-background', 'img/ui/nutrition-bar-background.png'], ['apple', 'img/assets/apple.png'], ['chicken', 'img/assets/chicken.png'], ['banana', 'img/assets/banana.png'], ['hamburger', 'img/assets/hamburger.png']],
-  'spritesheet': [['button-start', 'img/button-start.png', 180, 180], ['button-continue', 'img/button-continue.png', 180, 180], ['button-mainmenu', 'img/button-mainmenu.png', 180, 180], ['button-restart', 'img/button-tryagain.png', 180, 180], ['button-wiki', 'img/button-wiki.png', 110, 110], ['button-pause', 'img/button-pause.png', 80, 80], ['button-audio', 'img/button-sound.png', 80, 80], ['button-back', 'img/button-back.png', 70, 70], ['button-next', 'img/button-next.png', 70, 70], ['bob', 'img/assets/bob.png', 460, 1370], ['nutrition-bar', 'img/ui/nutrition-bar.png', 680, 56]],
+  'image': [['background', 'img/background.png'], ['title', 'img/title.png'], ['logo-pigames', 'img/logo-pigames.png'], ['overlay', 'img/ui/overlay.png'], ['nutrition-bar-background', 'img/ui/nutrition-bar-background.png'], ['apple', 'img/assets/apple.png'], ['chicken', 'img/assets/chicken.png'], ['banana', 'img/assets/banana.png'], ['hamburger', 'img/assets/hamburger.png']],
+  'spritesheet': [['button-start', 'img/ui/button-start.png', 160, 160], ['button-continue', 'img/ui/button-start.png', 160, 160], ['button-mainmenu', 'img/ui/button-mainmenu.png', 160, 160], ['button-restart', 'img/ui/button-tryagain.png', 160, 160], ['button-wiki', 'img/ui/button-wiki.png', 160, 160], ['button-pause', 'img/ui/button-pause.png', 160, 160], ['button-audio', 'img/ui/button-sound.png', 160, 160], ['button-back', 'img/button-back.png', 70, 70], ['button-next', 'img/button-next.png', 70, 70], ['bob', 'img/assets/bob.png', 460, 1370], ['nutrition-bar', 'img/ui/nutrition-bar.png', 680, 56]],
   'audio': [['audio-click', ['sfx/audio-button.m4a', 'sfx/audio-button.mp3', 'sfx/audio-button.ogg']], ['audio-theme', ['sfx/music-bitsnbites-liver.m4a', 'sfx/music-bitsnbites-liver.mp3', 'sfx/music-bitsnbites-liver.ogg']]]
 };
 
@@ -1337,8 +1342,8 @@ var Preloader = function (_Phaser$State) {
   }, {
     key: 'create',
     value: function create() {
-      // this.state.start( 'MainMenu' );
-      this.state.start('Game');
+      this.state.start('MainMenu');
+      // this.state.start( 'Game' );
     }
   }]);
 

@@ -3,7 +3,7 @@ const resources = {
 		[ 'background', 'img/background.png' ],
 		[ 'title', 'img/title.png' ],
 		[ 'logo-pigames', 'img/logo-pigames.png' ],
-		[ 'overlay', 'img/overlay.png' ],
+		[ 'overlay', 'img/ui/overlay.png' ],
 
     [ 'nutrition-bar-background', 'img/ui/nutrition-bar-background.png' ],
 
@@ -13,13 +13,13 @@ const resources = {
     [ 'hamburger', 'img/assets/hamburger.png' ],
   ],
   'spritesheet': [
-		[ 'button-start', 'img/button-start.png', 180, 180 ],
-		[ 'button-continue', 'img/button-continue.png', 180, 180 ],
-		[ 'button-mainmenu', 'img/button-mainmenu.png', 180, 180 ],
-		[ 'button-restart', 'img/button-tryagain.png', 180, 180 ],
-		[ 'button-wiki', 'img/button-wiki.png', 110, 110 ],
-		[ 'button-pause', 'img/button-pause.png', 80, 80 ],
-		[ 'button-audio', 'img/button-sound.png', 80, 80 ],
+		[ 'button-start', 'img/ui/button-start.png', 160, 160 ],
+		[ 'button-continue', 'img/ui/button-start.png', 160, 160 ],
+		[ 'button-mainmenu', 'img/ui/button-mainmenu.png', 160, 160 ],
+		[ 'button-restart', 'img/ui/button-tryagain.png', 160, 160 ],
+		[ 'button-wiki', 'img/ui/button-wiki.png', 160, 160 ],
+		[ 'button-pause', 'img/ui/button-pause.png', 160, 160 ],
+		[ 'button-audio', 'img/ui/button-sound.png', 160, 160 ],
 		[ 'button-back', 'img/button-back.png', 70, 70 ],
 		[ 'button-next', 'img/button-next.png', 70, 70 ],
     [ 'bob', 'img/assets/bob.png', 460, 1370 ],
@@ -56,7 +56,7 @@ export default class Preloader extends Phaser.State {
     this.load.script( 'webfont', '//ajax.googleapis.com/ajax/libs/webfont/1.4.7/webfont.js' );
   }
   create() {
-    // this.state.start( 'MainMenu' );
-    this.state.start( 'Game' );
+    this.state.start( 'MainMenu' );
+    // this.state.start( 'Game' );
   }
 }

@@ -31,6 +31,7 @@ export default class Bob extends Phaser.Sprite {
       switch ( v ) {
       case -3:
         isDeadFromThinness = true;
+        isSuperThin = true;
         break;
       case -2:
         isSuperThin = true;
@@ -46,17 +47,10 @@ export default class Bob extends Phaser.Sprite {
         break;
       case 3:
         isDeadFromFat = true;
+        isSuperFat = true;
         break;
       }
     } );
-
-    if ( isDeadFromFat ) {
-      this.handleDeath( 'You have died from fat' );
-    }
-
-    if ( isDeadFromThinness ) {
-      this.handleDeath( 'You have died from thinness' );
-    }
 
     if ( isSuperThin || isThin || isFat || isSuperFat ) {
       if ( isThin ) {
@@ -76,6 +70,14 @@ export default class Bob extends Phaser.Sprite {
       }
     } else {
       this.frame = 2;
+    }
+
+    if ( isDeadFromFat ) {
+      this.handleDeath( 'You have died from fat' );
+    }
+
+    if ( isDeadFromThinness ) {
+      this.handleDeath( 'You have died from thinness' );
     }
   }
 

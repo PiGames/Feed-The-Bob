@@ -18,11 +18,9 @@ export default class MainMenu extends Phaser.State {
 
     this.buttonAudio = this.add.button( this.world.width - 20, 20, 'button-audio', this.clickAudio, this, 1, 0, 2 );
     this.buttonAudio.anchor.set( 1, 0 );
-    this.buttonAudio.scale.setTo( 2 );
 
-    const buttonAchievements = this.add.button( 20, this.world.height - 20, 'button-wiki', this.clickAchievements, this, 1, 0, 2 );
-    buttonAchievements.anchor.set( 0, 1 );
-    buttonAchievements.scale.setTo( 2 );
+    const buttonWiki = this.add.button( 20, this.world.height - 20, 'button-wiki', this.clickAchievements, this, 1, 0, 2 );
+    buttonWiki.anchor.set( 0, 1 );
 
     const fontHighscore = { font: '32px Arial', fill: '#000' };
     const textHighscore = this.add.text( this.world.width * 0.5, this.world.height - 50, 'Highscore: ' + highscore, fontHighscore );
@@ -38,8 +36,8 @@ export default class MainMenu extends Phaser.State {
     this.add.tween( this.buttonAudio ).to( { y: 20 }, 500, Phaser.Easing.Exponential.Out, true );
     buttonEnclave.x = -buttonEnclave.width - 20;
     this.add.tween( buttonEnclave ).to( { x: 20 }, 500, Phaser.Easing.Exponential.Out, true );
-    buttonAchievements.y = this.world.height + buttonAchievements.height + 20;
-    this.add.tween( buttonAchievements ).to( { y: this.world.height - 20 }, 500, Phaser.Easing.Exponential.Out, true );
+    buttonWiki.y = this.world.height + buttonWiki.height + 20;
+    this.add.tween( buttonWiki ).to( { y: this.world.height - 20 }, 500, Phaser.Easing.Exponential.Out, true );
 
     this.camera.flash( 0x000000, 500, false );
   }

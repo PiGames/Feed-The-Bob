@@ -41,7 +41,6 @@ export default class Game extends Phaser.State {
 
     this.buttonPause.y = -this.buttonPause.height - 20;
     this.add.tween( this.buttonPause ).to( { y: 20 }, 1000, Phaser.Easing.Exponential.Out, true );
-    this.buttonPause.scale.setTo( 2 );
 
     const fontTitle = { font: '48px Arial', fill: '#000', stroke: '#FFF', strokeThickness: 10 };
 
@@ -52,7 +51,6 @@ export default class Game extends Phaser.State {
     this.screenPausedText.anchor.set( 0.5, 0 );
     this.buttonAudio = this.add.button( this.world.width - 20, 20, 'button-audio', this.clickAudio, this, 1, 0, 2 );
     this.buttonAudio.anchor.set( 1, 0 );
-    this.buttonAudio.scale.setTo( 2 );
     this.screenPausedBack = this.add.button( 150, this.world.height - 100, 'button-mainmenu', this.stateBack, this, 1, 0, 2 );
     this.screenPausedBack.anchor.set( 0, 1 );
     this.screenPausedContinue = this.add.button( this.world.width - 150, this.world.height - 100, 'button-continue', this.managePause, this, 1, 0, 2 );
@@ -62,12 +60,14 @@ export default class Game extends Phaser.State {
     this.screenPausedGroup.add( this.buttonAudio );
     this.screenPausedGroup.add( this.screenPausedBack );
     this.screenPausedGroup.add( this.screenPausedContinue );
+    this.screenPausedGroup.alpha = 0;
     this.screenPausedGroup.visible = false;
 
     this.buttonAudio.setFrames( getAudioOffset() + 1, getAudioOffset() + 0, getAudioOffset() + 2 );
 
     this.screenGameoverGroup = this.add.group();
     this.screenGameoverBg = this.add.sprite( 0, 0, 'overlay' );
+    this.screenGameoverBg.scale.setTo( 2 );
     this.screenGameoverText = this.add.text( this.world.width * 0.5, 100, 'Game over', fontTitle );
     this.screenGameoverText.anchor.set( 0.5, 0 );
     this.screenGameoverBack = this.add.button( 150, this.world.height - 100, 'button-mainmenu', this.stateBack, this, 1, 0, 2 );
@@ -81,6 +81,7 @@ export default class Game extends Phaser.State {
     this.screenGameoverGroup.add( this.screenGameoverBack );
     this.screenGameoverGroup.add( this.screenGameoverRestart );
     this.screenGameoverGroup.add( this.screenGameoverScore );
+    this.screenGameoverGroup.alpha = 0;
     this.screenGameoverGroup.visible = false;
   }
   update() {
@@ -102,7 +103,10 @@ export default class Game extends Phaser.State {
       break;
     }
     case 'playing': {
-      this.statePlaying();
+      if ( !this.runOnce ) {
+        this.statePlaying();
+        this.runOnce = true;
+      }
     }
     }
   }
@@ -112,6 +116,7 @@ export default class Game extends Phaser.State {
     if ( this.gamePaused ) {
       this.game.world.bringToTop( this.screenPausedGroup );
       this.stateStatus = 'paused';
+      this.runOnce = false;
       this.stopMovingFood();
     } else {
       this.stateStatus = 'playing';
@@ -120,17 +125,28 @@ export default class Game extends Phaser.State {
     }
   }
   statePlaying() {
-    this.screenPausedGroup.visible = false;
+    const tween = this.game.add.tween( this.screenPausedGroup );
+    tween.to( { alpha: 0 }, 100, Phaser.Easing.Linear.None, true );
+    tween.onComplete.add( () => {
+      if ( this.screenPausedGroup.visible ) {
+        this.screenPausedGroup.visible = false;
+      }
+    }, this );
   }
   statePaused() {
     this.screenPausedGroup.visible = true;
+    const tween = this.game.add.tween( this.screenPausedGroup );
+    tween.to( { alpha: 1 }, 100, Phaser.Easing.Linear.None, true );
   }
   stateGameover( msg ) {
     this.stopMovingFood();
     this.game.world.bringToTop( this.screenGameoverGroup );
-    this.screenGameoverGroup.visible = true;
-    // this.screenGameoverScore.setText( 'Score: ' + this.score );
+    this.screenGameoverScore.setText( 'Score: ' + this.score );
     this.gameoverScoreTween( msg );
+
+    this.screenGameoverGroup.visible = true;
+    const tween = this.game.add.tween( this.screenGameoverGroup );
+    tween.to( { alpha: 1 }, 100, Phaser.Easing.Linear.None, true );
 
     getStorage().setHighscore( 'EPT-highscore', this.score );
   }
@@ -139,18 +155,6 @@ export default class Game extends Phaser.State {
     this.score++;
     this.foodSpawner.tryDifficultyLevelUp( this.score );
     this.textScore.setText( this.scoreTemplate( this.score ) );
-  }
-
-  addPoints() {
-    // const randX = this.rnd.integerInRange( 200, this.world.width - 200 );
-    // const randY = this.rnd.integerInRange( 200, this.world.height - 200 );
-    // const pointsAdded = this.add.text( randX, randY, '+10',
-		// { font: '48px Arial', fill: '#000', stroke: '#FFF', strokeThickness: 10 } );
-    //
-    // pointsAdded.anchor.set( 0.5, 0.5 );
-    // this.add.tween( pointsAdded ).to( { alpha: 0, y: randY - 50 }, 1000, Phaser.Easing.Linear.None, true );
-    //
-    // this.camera.shake( 0.01, 100, true, Phaser.Camera.SHAKE_BOTH, true );
   }
 
   gameoverScoreTween( deathmsg = '' ) {
@@ -192,19 +196,15 @@ export default class Game extends Phaser.State {
   }
   stopMovingFood() {
     this.foodContainer.forEach( food => {
-    //  if ( food && food.body ) {
       food.body.velocity.x = 0;
       food.body.velocity.y = 0;
-    //  }
     } );
     this.game.time.events.pause();
   }
   restoreFoodMovement() {
     this.foodContainer.forEach( food => {
-      //if ( food && food.body ) {
       food.body.velocity.x = food.velocityX;
       food.body.velocity.y = food.velocityY;
-      //}
     } );
     this.game.time.events.resume();
   }
