@@ -587,17 +587,17 @@ exports.default = NutritionManager;
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
+    value: true
 });
 
 var _createClass = function () {
-  function defineProperties(target, props) {
-    for (var i = 0; i < props.length; i++) {
-      var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);
-    }
-  }return function (Constructor, protoProps, staticProps) {
-    if (protoProps) defineProperties(Constructor.prototype, protoProps);if (staticProps) defineProperties(Constructor, staticProps);return Constructor;
-  };
+    function defineProperties(target, props) {
+        for (var i = 0; i < props.length; i++) {
+            var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);
+        }
+    }return function (Constructor, protoProps, staticProps) {
+        if (protoProps) defineProperties(Constructor.prototype, protoProps);if (staticProps) defineProperties(Constructor, staticProps);return Constructor;
+    };
 }();
 
 var _NutritionConstants = require('../constants/NutritionConstants');
@@ -607,108 +607,108 @@ var _WeightBreakpoints = require('../constants/WeightBreakpoints');
 var _UIConstants = require('../constants/UIConstants');
 
 function _classCallCheck(instance, Constructor) {
-  if (!(instance instanceof Constructor)) {
-    throw new TypeError("Cannot call a class as a function");
-  }
+    if (!(instance instanceof Constructor)) {
+        throw new TypeError("Cannot call a class as a function");
+    }
 }
 
 var NutritionUI = function () {
-  function NutritionUI(game, NutritionManager) {
-    _classCallCheck(this, NutritionUI);
+    function NutritionUI(game, NutritionManager) {
+        _classCallCheck(this, NutritionUI);
 
-    this.game = game;
+        this.game = game;
 
-    this.nutrition = NutritionManager.nutrition;
+        this.nutrition = NutritionManager.nutrition;
 
-    this.NutritionBars = [];
-    this.NutritionMasks = [];
-    this.NutritionTexts = [];
+        this.NutritionBars = [];
+        this.NutritionMasks = [];
+        this.NutritionTexts = [];
 
-    this.drawAllBars();
-  }
-
-  _createClass(NutritionUI, [{
-    key: 'updateUI',
-    value: function updateUI() {
-      this.updateBar(this.nutrition.carbohydrates, _NutritionConstants.GOOD_AMOUNT_OF_CARBOHYDRATES, 2);
-      this.updateBar(this.nutrition.fats, _NutritionConstants.GOOD_AMOUNT_OF_FATS, 1);
-      this.updateBar(this.nutrition.proteins, _NutritionConstants.GOOD_AMOUNT_OF_PROTEINS, 0);
+        this.drawAllBars();
     }
-  }, {
-    key: 'drawAllBars',
-    value: function drawAllBars() {
-      this.drawBar(this.nutrition.carbohydrates, _NutritionConstants.GOOD_AMOUNT_OF_CARBOHYDRATES, 2, 'Carbohydrates');
-      this.drawBar(this.nutrition.fats, _NutritionConstants.GOOD_AMOUNT_OF_FATS, 1, 'Fats');
-      this.drawBar(this.nutrition.proteins, _NutritionConstants.GOOD_AMOUNT_OF_PROTEINS, 0, 'Proteins');
-    }
-  }, {
-    key: 'updateBar',
-    value: function updateBar(value, goodAmount, i) {
-      var width = _UIConstants.NUTRITION_BAR_WIDTH;
-      var height = _UIConstants.NUTRITION_BAR_HEIGHT;
-      var offset = i * (_UIConstants.NUTRITION_BAR_OFFSET + height);
-      var doubleOfGoodAmount = goodAmount * 2;
 
-      var status = this.NutritionBars[i];
+    _createClass(NutritionUI, [{
+        key: 'updateUI',
+        value: function updateUI() {
+            this.updateBar(this.nutrition.carbohydrates, _NutritionConstants.GOOD_AMOUNT_OF_CARBOHYDRATES, 2);
+            this.updateBar(this.nutrition.fats, _NutritionConstants.GOOD_AMOUNT_OF_FATS, 1);
+            this.updateBar(this.nutrition.proteins, _NutritionConstants.GOOD_AMOUNT_OF_PROTEINS, 0);
+        }
+    }, {
+        key: 'drawAllBars',
+        value: function drawAllBars() {
+            this.drawBar(this.nutrition.carbohydrates, _NutritionConstants.GOOD_AMOUNT_OF_CARBOHYDRATES, 2, 'Carbohydrates');
+            this.drawBar(this.nutrition.fats, _NutritionConstants.GOOD_AMOUNT_OF_FATS, 1, 'Fats');
+            this.drawBar(this.nutrition.proteins, _NutritionConstants.GOOD_AMOUNT_OF_PROTEINS, 0, 'Proteins');
+        }
+    }, {
+        key: 'updateBar',
+        value: function updateBar(value, goodAmount, i) {
+            var width = _UIConstants.NUTRITION_BAR_WIDTH;
+            var height = _UIConstants.NUTRITION_BAR_HEIGHT;
+            var offset = i * (_UIConstants.NUTRITION_BAR_OFFSET + height);
+            var doubleOfGoodAmount = goodAmount * 2;
 
-      if (value <= doubleOfGoodAmount * _WeightBreakpoints.SUPER_THIN_BREAKPOINT || value >= doubleOfGoodAmount * _WeightBreakpoints.SUPER_FAT_BREAKPOINT) {
-        status.frame = 2;
-      } else if (value <= doubleOfGoodAmount * _WeightBreakpoints.THIN_BREAKPOINT || value >= doubleOfGoodAmount * _WeightBreakpoints.FAT_BREAKPOINT) {
-        status.frame = 1;
-      } else {
-        status.frame = 0;
-      }
+            var status = this.NutritionBars[i];
 
-      var NutritionBarValue = Math.min(Math.max(value / doubleOfGoodAmount, 0), 1);
+            if (value <= doubleOfGoodAmount * _WeightBreakpoints.SUPER_THIN_BREAKPOINT || value >= doubleOfGoodAmount * _WeightBreakpoints.SUPER_FAT_BREAKPOINT) {
+                status.frame = 2;
+            } else if (value <= doubleOfGoodAmount * _WeightBreakpoints.THIN_BREAKPOINT || value >= doubleOfGoodAmount * _WeightBreakpoints.FAT_BREAKPOINT) {
+                status.frame = 1;
+            } else {
+                status.frame = 0;
+            }
 
-      var mask = this.NutritionMasks[i];
-      mask.clear();
-      mask.beginFill(0x000000);
-      mask.drawRect(this.game.width - _UIConstants.NUTRITION_BAR_X_FROM_LEFT - width + width * (1 - NutritionBarValue), this.game.height - _UIConstants.NUTRITION_BAR_Y_FROM_BOTTOM - offset - height, width * NutritionBarValue, height);
-      mask.endFill();
+            var NutritionBarValue = Math.min(Math.max(value / doubleOfGoodAmount, 0), 1);
 
-      var statusText = this.NutritionTexts[i];
-      statusText.setText(parseInt(value) + ' / ' + goodAmount);
-    }
-  }, {
-    key: 'drawBar',
-    value: function drawBar(value, goodAmount, i, text) {
-      var width = _UIConstants.NUTRITION_BAR_WIDTH;
-      var height = _UIConstants.NUTRITION_BAR_HEIGHT;
-      var offset = i * (_UIConstants.NUTRITION_BAR_OFFSET + height);
-      var doubleOfGoodAmount = goodAmount * 2;
+            var mask = this.NutritionMasks[i];
+            mask.clear();
+            mask.beginFill(0x000000);
+            mask.drawRect(this.game.width - _UIConstants.NUTRITION_BAR_X_FROM_LEFT - width + width * (1 - NutritionBarValue), this.game.height - _UIConstants.NUTRITION_BAR_Y_FROM_BOTTOM - offset - height, width * NutritionBarValue, height);
+            mask.endFill();
 
-      var NutritionBarValue = Math.min(Math.max(value / doubleOfGoodAmount, 0), 1);
+            var statusText = this.NutritionTexts[i];
+            statusText.setText(parseInt(value) + ' / ' + goodAmount);
+        }
+    }, {
+        key: 'drawBar',
+        value: function drawBar(value, goodAmount, i, text) {
+            var width = _UIConstants.NUTRITION_BAR_WIDTH;
+            var height = _UIConstants.NUTRITION_BAR_HEIGHT;
+            var offset = i * (_UIConstants.NUTRITION_BAR_OFFSET + height);
+            var doubleOfGoodAmount = goodAmount * 2;
 
-      var background = this.game.add.sprite(this.game.width - _UIConstants.NUTRITION_BAR_X_FROM_LEFT, this.game.height - _UIConstants.NUTRITION_BAR_Y_FROM_BOTTOM - offset, 'nutrition-bar-background');
-      background.anchor.setTo(1, 1);
+            var NutritionBarValue = Math.min(Math.max(value / doubleOfGoodAmount, 0), 1);
 
-      var mask = this.game.add.graphics(0, 0);
-      mask.beginFill(0x000000);
-      mask.drawRect(this.game.width - _UIConstants.NUTRITION_BAR_X_FROM_LEFT - width + width * (1 - NutritionBarValue), this.game.height - _UIConstants.NUTRITION_BAR_Y_FROM_BOTTOM - offset - height, width * NutritionBarValue, height);
-      mask.endFill();
+            var background = this.game.add.sprite(this.game.width - _UIConstants.NUTRITION_BAR_X_FROM_LEFT, this.game.height - _UIConstants.NUTRITION_BAR_Y_FROM_BOTTOM - offset, 'nutrition-bar-background');
+            background.anchor.setTo(1, 1);
 
-      this.NutritionMasks[i] = mask;
+            var mask = this.game.add.graphics(0, 0);
+            mask.beginFill(0x000000);
+            mask.drawRect(this.game.width - _UIConstants.NUTRITION_BAR_X_FROM_LEFT - width + width * (1 - NutritionBarValue), this.game.height - _UIConstants.NUTRITION_BAR_Y_FROM_BOTTOM - offset - height, width * NutritionBarValue, height);
+            mask.endFill();
 
-      var status = this.game.add.sprite(this.game.width - _UIConstants.NUTRITION_BAR_X_FROM_LEFT, this.game.height - _UIConstants.NUTRITION_BAR_Y_FROM_BOTTOM - offset, 'nutrition-bar', 0);
-      status.anchor.setTo(1, 1);
-      status.mask = mask;
+            this.NutritionMasks[i] = mask;
 
-      this.NutritionBars[i] = status;
+            var status = this.game.add.sprite(this.game.width - _UIConstants.NUTRITION_BAR_X_FROM_LEFT, this.game.height - _UIConstants.NUTRITION_BAR_Y_FROM_BOTTOM - offset, 'nutrition-bar', 0);
+            status.anchor.setTo(1, 1);
+            status.mask = mask;
 
-      var descText = this.game.add.text(this.game.width - _UIConstants.NUTRITION_BAR_X_FROM_LEFT + _UIConstants.NUTRITION_BAR_TEXT_OFFSET_X - width, this.game.height - _UIConstants.NUTRITION_BAR_Y_FROM_BOTTOM - offset - _UIConstants.NUTRITION_BAR_TEXT_OFFSET_Y, text, _UIConstants.NUTRITION_BAR_INFO_FONT);
-      descText.anchor.setTo(0, 1);
-      descText.setShadow(0, 0, _UIConstants.NUTRITION_BAR_TEXT_SHADOW_COLOR, _UIConstants.NUTRITION_BAR_TEXT_SHADOW_SIZE);
+            this.NutritionBars[i] = status;
 
-      var statusText = this.game.add.text(this.game.width - _UIConstants.NUTRITION_BAR_X_FROM_LEFT - _UIConstants.NUTRITION_BAR_TEXT_OFFSET_X, this.game.height - _UIConstants.NUTRITION_BAR_Y_FROM_BOTTOM - _UIConstants.NUTRITION_BAR_TEXT_OFFSET_Y - offset, parseInt(value) + ' / ' + goodAmount, _UIConstants.NUTRITION_BAR_INFO_FONT);
-      statusText.anchor.setTo(1, 1);
-      statusText.setShadow(0, 0, _UIConstants.NUTRITION_BAR_TEXT_SHADOW_COLOR, _UIConstants.NUTRITION_BAR_TEXT_SHADOW_SIZE);
+            var descText = this.game.add.text(this.game.width - _UIConstants.NUTRITION_BAR_X_FROM_LEFT + _UIConstants.NUTRITION_BAR_TEXT_OFFSET_X - width, this.game.height - _UIConstants.NUTRITION_BAR_Y_FROM_BOTTOM - offset - _UIConstants.NUTRITION_BAR_TEXT_OFFSET_Y, text, _UIConstants.NUTRITION_BAR_INFO_FONT);
+            descText.anchor.setTo(0, 1);
+            descText.setShadow(0, 0, _UIConstants.NUTRITION_BAR_TEXT_SHADOW_COLOR, _UIConstants.NUTRITION_BAR_TEXT_SHADOW_SIZE);
 
-      this.NutritionTexts[i] = statusText;
-    }
-  }]);
+            var statusText = this.game.add.text(this.game.width - _UIConstants.NUTRITION_BAR_X_FROM_LEFT - _UIConstants.NUTRITION_BAR_TEXT_OFFSET_X, this.game.height - _UIConstants.NUTRITION_BAR_Y_FROM_BOTTOM - _UIConstants.NUTRITION_BAR_TEXT_OFFSET_Y - offset, parseInt(value) + ' / ' + goodAmount, _UIConstants.NUTRITION_BAR_INFO_FONT);
+            statusText.anchor.setTo(1, 1);
+            statusText.setShadow(0, 0, _UIConstants.NUTRITION_BAR_TEXT_SHADOW_COLOR, _UIConstants.NUTRITION_BAR_TEXT_SHADOW_SIZE);
 
-  return NutritionUI;
+            this.NutritionTexts[i] = statusText;
+        }
+    }]);
+
+    return NutritionUI;
 }();
 
 exports.default = NutritionUI;
@@ -1090,17 +1090,17 @@ exports.default = Game;
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
+    value: true
 });
 
 var _createClass = function () {
-  function defineProperties(target, props) {
-    for (var i = 0; i < props.length; i++) {
-      var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);
-    }
-  }return function (Constructor, protoProps, staticProps) {
-    if (protoProps) defineProperties(Constructor.prototype, protoProps);if (staticProps) defineProperties(Constructor, staticProps);return Constructor;
-  };
+    function defineProperties(target, props) {
+        for (var i = 0; i < props.length; i++) {
+            var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);
+        }
+    }return function (Constructor, protoProps, staticProps) {
+        if (protoProps) defineProperties(Constructor.prototype, protoProps);if (staticProps) defineProperties(Constructor, staticProps);return Constructor;
+    };
 }();
 
 var _AudioManager = require('../utils/AudioManager');
@@ -1108,108 +1108,108 @@ var _AudioManager = require('../utils/AudioManager');
 var _StorageManager = require('../utils/StorageManager');
 
 function _classCallCheck(instance, Constructor) {
-  if (!(instance instanceof Constructor)) {
-    throw new TypeError("Cannot call a class as a function");
-  }
+    if (!(instance instanceof Constructor)) {
+        throw new TypeError("Cannot call a class as a function");
+    }
 }
 
 function _possibleConstructorReturn(self, call) {
-  if (!self) {
-    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-  }return call && (typeof call === "object" || typeof call === "function") ? call : self;
+    if (!self) {
+        throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+    }return call && (typeof call === "object" || typeof call === "function") ? call : self;
 }
 
 function _inherits(subClass, superClass) {
-  if (typeof superClass !== "function" && superClass !== null) {
-    throw new TypeError("Super expression must either be null or a function, not " + typeof superClass);
-  }subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } });if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
+    if (typeof superClass !== "function" && superClass !== null) {
+        throw new TypeError("Super expression must either be null or a function, not " + typeof superClass);
+    }subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } });if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
 }
 
 var MainMenu = function (_Phaser$State) {
-  _inherits(MainMenu, _Phaser$State);
+    _inherits(MainMenu, _Phaser$State);
 
-  function MainMenu() {
-    _classCallCheck(this, MainMenu);
+    function MainMenu() {
+        _classCallCheck(this, MainMenu);
 
-    return _possibleConstructorReturn(this, (MainMenu.__proto__ || Object.getPrototypeOf(MainMenu)).apply(this, arguments));
-  }
-
-  _createClass(MainMenu, [{
-    key: 'create',
-    value: function create() {
-      this.add.sprite(0, 0, 'background');
-      var title = this.add.sprite(this.world.width * 0.5, (this.world.height - 100) * 0.5, 'title');
-      title.anchor.set(0.5);
-
-      (0, _StorageManager.setStorage)(this.game.plugins.add(Phaser.Plugin.Storage));
-
-      (0, _StorageManager.getStorage)().initUnset('EPT-highscore', 0);
-      var highscore = (0, _StorageManager.getStorage)().get('EPT-highscore') || 0;
-
-      var buttonEnclave = this.add.button(20, 20, 'logo-pigames', this.clickEnclave, this);
-      var buttonStart = this.add.button(this.world.width - 20, this.world.height - 20, 'button-start', this.clickStart, this, 1, 0, 2);
-      buttonStart.anchor.set(1);
-
-      this.buttonAudio = this.add.button(this.world.width - 20, 20, 'button-audio', this.clickAudio, this, 1, 0, 2);
-      this.buttonAudio.anchor.set(1, 0);
-      this.buttonAudio.scale.setTo(2);
-
-      var buttonAchievements = this.add.button(20, this.world.height - 20, 'button-wiki', this.clickAchievements, this, 1, 0, 2);
-      buttonAchievements.anchor.set(0, 1);
-      buttonAchievements.scale.setTo(2);
-
-      var fontHighscore = { font: '32px Arial', fill: '#000' };
-      var textHighscore = this.add.text(this.world.width * 0.5, this.world.height - 50, 'Highscore: ' + highscore, fontHighscore);
-      textHighscore.anchor.set(0.5, 1);
-
-      (0, _AudioManager.manageAudio)('init', this);
-      // Turn the music off at the start:
-      (0, _AudioManager.manageAudio)('off', this);
-
-      buttonStart.x = this.world.width + buttonStart.width + 20;
-      this.add.tween(buttonStart).to({ x: this.world.width - 20 }, 500, Phaser.Easing.Exponential.Out, true);
-      this.buttonAudio.y = -this.buttonAudio.height - 20;
-      this.add.tween(this.buttonAudio).to({ y: 20 }, 500, Phaser.Easing.Exponential.Out, true);
-      buttonEnclave.x = -buttonEnclave.width - 20;
-      this.add.tween(buttonEnclave).to({ x: 20 }, 500, Phaser.Easing.Exponential.Out, true);
-      buttonAchievements.y = this.world.height + buttonAchievements.height + 20;
-      this.add.tween(buttonAchievements).to({ y: this.world.height - 20 }, 500, Phaser.Easing.Exponential.Out, true);
-
-      this.camera.flash(0x000000, 500, false);
+        return _possibleConstructorReturn(this, (MainMenu.__proto__ || Object.getPrototypeOf(MainMenu)).apply(this, arguments));
     }
-  }, {
-    key: 'clickAudio',
-    value: function clickAudio() {
-      (0, _AudioManager.playAudio)('click');
-      (0, _AudioManager.manageAudio)('switch', this);
-    }
-  }, {
-    key: 'clickEnclave',
-    value: function clickEnclave() {
-      (0, _AudioManager.playAudio)('click');
-      window.top.location.href = 'http://pigam.es/';
-    }
-  }, {
-    key: 'clickStart',
-    value: function clickStart() {
-      var _this2 = this;
 
-      (0, _AudioManager.playAudio)('click');
-      this.camera.fade(0x000000, 200, false);
-      this.time.events.add(200, function () {
-        // this.game.state.start( 'Story' );
-        _this2.game.state.start('Game');
-      });
-    }
-  }, {
-    key: 'clickAchievements',
-    value: function clickAchievements() {
-      (0, _AudioManager.playAudio)('click');
-      this.game.state.start('Wiki');
-    }
-  }]);
+    _createClass(MainMenu, [{
+        key: 'create',
+        value: function create() {
+            this.add.sprite(0, 0, 'background');
+            var title = this.add.sprite(this.world.width * 0.5, (this.world.height - 100) * 0.5, 'title');
+            title.anchor.set(0.5);
 
-  return MainMenu;
+            (0, _StorageManager.setStorage)(this.game.plugins.add(Phaser.Plugin.Storage));
+
+            (0, _StorageManager.getStorage)().initUnset('EPT-highscore', 0);
+            var highscore = (0, _StorageManager.getStorage)().get('EPT-highscore') || 0;
+
+            var buttonEnclave = this.add.button(20, 20, 'logo-pigames', this.clickEnclave, this);
+            var buttonStart = this.add.button(this.world.width - 20, this.world.height - 20, 'button-start', this.clickStart, this, 1, 0, 2);
+            buttonStart.anchor.set(1);
+
+            this.buttonAudio = this.add.button(this.world.width - 20, 20, 'button-audio', this.clickAudio, this, 1, 0, 2);
+            this.buttonAudio.anchor.set(1, 0);
+            this.buttonAudio.scale.setTo(2);
+
+            var buttonAchievements = this.add.button(20, this.world.height - 20, 'button-wiki', this.clickAchievements, this, 1, 0, 2);
+            buttonAchievements.anchor.set(0, 1);
+            buttonAchievements.scale.setTo(2);
+
+            var fontHighscore = { font: '32px Arial', fill: '#000' };
+            var textHighscore = this.add.text(this.world.width * 0.5, this.world.height - 50, 'Highscore: ' + highscore, fontHighscore);
+            textHighscore.anchor.set(0.5, 1);
+
+            (0, _AudioManager.manageAudio)('init', this);
+            // Turn the music off at the start:
+            (0, _AudioManager.manageAudio)('off', this);
+
+            buttonStart.x = this.world.width + buttonStart.width + 20;
+            this.add.tween(buttonStart).to({ x: this.world.width - 20 }, 500, Phaser.Easing.Exponential.Out, true);
+            this.buttonAudio.y = -this.buttonAudio.height - 20;
+            this.add.tween(this.buttonAudio).to({ y: 20 }, 500, Phaser.Easing.Exponential.Out, true);
+            buttonEnclave.x = -buttonEnclave.width - 20;
+            this.add.tween(buttonEnclave).to({ x: 20 }, 500, Phaser.Easing.Exponential.Out, true);
+            buttonAchievements.y = this.world.height + buttonAchievements.height + 20;
+            this.add.tween(buttonAchievements).to({ y: this.world.height - 20 }, 500, Phaser.Easing.Exponential.Out, true);
+
+            this.camera.flash(0x000000, 500, false);
+        }
+    }, {
+        key: 'clickAudio',
+        value: function clickAudio() {
+            (0, _AudioManager.playAudio)('click');
+            (0, _AudioManager.manageAudio)('switch', this);
+        }
+    }, {
+        key: 'clickEnclave',
+        value: function clickEnclave() {
+            (0, _AudioManager.playAudio)('click');
+            window.top.location.href = 'http://pigam.es/';
+        }
+    }, {
+        key: 'clickStart',
+        value: function clickStart() {
+            var _this2 = this;
+
+            (0, _AudioManager.playAudio)('click');
+            this.camera.fade(0x000000, 200, false);
+            this.time.events.add(200, function () {
+                // this.game.state.start( 'Story' );
+                _this2.game.state.start('Game');
+            });
+        }
+    }, {
+        key: 'clickAchievements',
+        value: function clickAchievements() {
+            (0, _AudioManager.playAudio)('click');
+            this.game.state.start('Wiki');
+        }
+    }]);
+
+    return MainMenu;
 }(Phaser.State);
 
 exports.default = MainMenu;
@@ -1391,17 +1391,17 @@ exports.default = Story;
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
+    value: true
 });
 
 var _createClass = function () {
-  function defineProperties(target, props) {
-    for (var i = 0; i < props.length; i++) {
-      var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);
-    }
-  }return function (Constructor, protoProps, staticProps) {
-    if (protoProps) defineProperties(Constructor.prototype, protoProps);if (staticProps) defineProperties(Constructor, staticProps);return Constructor;
-  };
+    function defineProperties(target, props) {
+        for (var i = 0; i < props.length; i++) {
+            var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);
+        }
+    }return function (Constructor, protoProps, staticProps) {
+        if (protoProps) defineProperties(Constructor.prototype, protoProps);if (staticProps) defineProperties(Constructor, staticProps);return Constructor;
+    };
 }();
 
 var _AudioManager = require('../utils/AudioManager');
@@ -1411,151 +1411,151 @@ var _FoodConstants = require('../constants/FoodConstants');
 var _UserInterfaceUtils = require('../utils/UserInterfaceUtils');
 
 function _classCallCheck(instance, Constructor) {
-  if (!(instance instanceof Constructor)) {
-    throw new TypeError("Cannot call a class as a function");
-  }
+    if (!(instance instanceof Constructor)) {
+        throw new TypeError("Cannot call a class as a function");
+    }
 }
 
 function _possibleConstructorReturn(self, call) {
-  if (!self) {
-    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-  }return call && (typeof call === "object" || typeof call === "function") ? call : self;
+    if (!self) {
+        throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+    }return call && (typeof call === "object" || typeof call === "function") ? call : self;
 }
 
 function _inherits(subClass, superClass) {
-  if (typeof superClass !== "function" && superClass !== null) {
-    throw new TypeError("Super expression must either be null or a function, not " + typeof superClass);
-  }subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } });if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
+    if (typeof superClass !== "function" && superClass !== null) {
+        throw new TypeError("Super expression must either be null or a function, not " + typeof superClass);
+    }subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } });if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
 }
 
 var Wiki = function (_Phaser$State) {
-  _inherits(Wiki, _Phaser$State);
+    _inherits(Wiki, _Phaser$State);
 
-  function Wiki() {
-    _classCallCheck(this, Wiki);
+    function Wiki() {
+        _classCallCheck(this, Wiki);
 
-    return _possibleConstructorReturn(this, (Wiki.__proto__ || Object.getPrototypeOf(Wiki)).apply(this, arguments));
-  }
-
-  _createClass(Wiki, [{
-    key: 'create',
-    value: function create() {
-      var fontWiki = { font: '40px Arial', fill: '#000' };
-      this.add.text(20, 20, 'Wiki', fontWiki);
-
-      var buttonBack = this.add.button(this.world.width - 20, this.game.world.height - 20, 'button-back', this.clickBack, this, 1, 0, 2);
-      buttonBack.anchor.set(1, 1);
-      buttonBack.x = this.world.width + buttonBack.width + 20;
-      this.add.tween(buttonBack).to({ x: this.world.width - 20 }, 500, Phaser.Easing.Exponential.Out, true);
-
-      this.currentWikiPageIndex = 0;
-
-      this.currentPage = this.add.group();
-      this.fillGroupWithFoodData(this.currentPage, 0);
-
-      this.nextPage = this.add.group();
-      this.fillGroupWithFoodData(this.nextPage, 1);
-
-      this.nextPage.position.x += this.world.width;
-
-      var buttonPrevious = this.add.button(0, 0, 'button-back', this.goToPreviousWikiPage, this, 1, 0, 2);
-      buttonPrevious.x = -buttonPrevious.width;
-      this.add.tween(buttonPrevious).to({ x: 75 }, 500, Phaser.Easing.Exponential.Out, true);
-      (0, _UserInterfaceUtils.centerObjectInHeight)(buttonPrevious, this.world);
-
-      var buttonNext = this.add.button(0, 0, 'button-next', this.goToNextWikiPage, this, 1, 0, 2);
-      buttonNext.x = this.world.width;
-      this.add.tween(buttonNext).to({ x: this.world.width - buttonNext.width - 75 }, 500, Phaser.Easing.Exponential.Out, true);
-      (0, _UserInterfaceUtils.centerObjectInHeight)(buttonNext, this.world);
+        return _possibleConstructorReturn(this, (Wiki.__proto__ || Object.getPrototypeOf(Wiki)).apply(this, arguments));
     }
-  }, {
-    key: 'clickBack',
-    value: function clickBack() {
-      (0, _AudioManager.playAudio)('click');
-      this.game.state.start('MainMenu');
-    }
-  }, {
-    key: 'makeFirstLetterCapital',
-    value: function makeFirstLetterCapital(string) {
-      return '' + string.charAt(0).toUpperCase() + string.substring(1);
-    }
-  }, {
-    key: 'goToPreviousWikiPage',
-    value: function goToPreviousWikiPage() {
-      var _this2 = this;
 
-      if (this.tweenIn != null) {
-        return;
-      }
-      this.currentWikiPageIndex = this.currentWikiPageIndex === 0 ? _FoodConstants.FOOD_DATA.length - 1 : this.currentWikiPageIndex - 1;
+    _createClass(Wiki, [{
+        key: 'create',
+        value: function create() {
+            var fontWiki = { font: '40px Arial', fill: '#000' };
+            this.add.text(20, 20, 'Wiki', fontWiki);
 
-      this.nextPage.position.x -= this.world.width * 2;
-      this.fillGroupWithFoodData(this.nextPage, this.currentWikiPageIndex);
+            var buttonBack = this.add.button(this.world.width - 20, this.game.world.height - 20, 'button-back', this.clickBack, this, 1, 0, 2);
+            buttonBack.anchor.set(1, 1);
+            buttonBack.x = this.world.width + buttonBack.width + 20;
+            this.add.tween(buttonBack).to({ x: this.world.width - 20 }, 500, Phaser.Easing.Exponential.Out, true);
 
-      this.add.tween(this.currentPage.position).to({ x: this.currentPage.position.x + this.world.width }, 500, Phaser.Easing.Linear.None, true);
-      this.tweenIn = this.add.tween(this.nextPage.position).to({ x: this.nextPage.position.x + this.world.width }, 500, Phaser.Easing.Linear.None, true);
+            this.currentWikiPageIndex = 0;
 
-      this.tweenIn.onComplete.add(function () {
-        var tmpPage = _this2.currentPage;
-        _this2.currentPage = _this2.nextPage;
-        _this2.nextPage = tmpPage;
+            this.currentPage = this.add.group();
+            this.fillGroupWithFoodData(this.currentPage, 0);
 
-        _this2.tweenIn = null;
-      });
-    }
-  }, {
-    key: 'goToNextWikiPage',
-    value: function goToNextWikiPage() {
-      var _this3 = this;
+            this.nextPage = this.add.group();
+            this.fillGroupWithFoodData(this.nextPage, 1);
 
-      if (this.tweenIn != null) {
-        return;
-      }
-      this.currentWikiPageIndex = this.currentWikiPageIndex + 1 === _FoodConstants.FOOD_DATA.length ? 0 : this.currentWikiPageIndex + 1;
+            this.nextPage.position.x += this.world.width;
 
-      this.add.tween(this.currentPage.position).to({ x: this.currentPage.position.x - this.world.width }, 500, Phaser.Easing.Linear.None, true);
-      this.tweenIn = this.add.tween(this.nextPage.position).to({ x: this.nextPage.position.x - this.world.width }, 500, Phaser.Easing.Linear.None, true);
+            var buttonPrevious = this.add.button(0, 0, 'button-back', this.goToPreviousWikiPage, this, 1, 0, 2);
+            buttonPrevious.x = -buttonPrevious.width;
+            this.add.tween(buttonPrevious).to({ x: 75 }, 500, Phaser.Easing.Exponential.Out, true);
+            (0, _UserInterfaceUtils.centerObjectInHeight)(buttonPrevious, this.world);
 
-      this.tweenIn.onComplete.add(function () {
-        var tmpPage = _this3.currentPage;
+            var buttonNext = this.add.button(0, 0, 'button-next', this.goToNextWikiPage, this, 1, 0, 2);
+            buttonNext.x = this.world.width;
+            this.add.tween(buttonNext).to({ x: this.world.width - buttonNext.width - 75 }, 500, Phaser.Easing.Exponential.Out, true);
+            (0, _UserInterfaceUtils.centerObjectInHeight)(buttonNext, this.world);
+        }
+    }, {
+        key: 'clickBack',
+        value: function clickBack() {
+            (0, _AudioManager.playAudio)('click');
+            this.game.state.start('MainMenu');
+        }
+    }, {
+        key: 'makeFirstLetterCapital',
+        value: function makeFirstLetterCapital(string) {
+            return '' + string.charAt(0).toUpperCase() + string.substring(1);
+        }
+    }, {
+        key: 'goToPreviousWikiPage',
+        value: function goToPreviousWikiPage() {
+            var _this2 = this;
 
-        _this3.currentPage = _this3.nextPage;
-        var nextIndex = _this3.currentWikiPageIndex + 1 === _FoodConstants.FOOD_DATA.length ? 0 : _this3.currentWikiPageIndex + 1;
-        _this3.fillGroupWithFoodData(tmpPage, nextIndex);
-        tmpPage.position.x += _this3.world.width * 2;
+            if (this.tweenIn != null) {
+                return;
+            }
+            this.currentWikiPageIndex = this.currentWikiPageIndex === 0 ? _FoodConstants.FOOD_DATA.length - 1 : this.currentWikiPageIndex - 1;
 
-        _this3.nextPage = tmpPage;
+            this.nextPage.position.x -= this.world.width * 2;
+            this.fillGroupWithFoodData(this.nextPage, this.currentWikiPageIndex);
 
-        _this3.tweenIn = null;
-      });
-    }
-  }, {
-    key: 'fillGroupWithFoodData',
-    value: function fillGroupWithFoodData(group, index) {
-      group.removeAll(true);
-      var fontTitle = { font: '35px Arial', fill: '#fff' };
+            this.add.tween(this.currentPage.position).to({ x: this.currentPage.position.x + this.world.width }, 500, Phaser.Easing.Linear.None, true);
+            this.tweenIn = this.add.tween(this.nextPage.position).to({ x: this.nextPage.position.x + this.world.width }, 500, Phaser.Easing.Linear.None, true);
 
-      var title = this.add.text(0, 75, this.makeFirstLetterCapital(_FoodConstants.FOOD_DATA[index].key), fontTitle);
-      (0, _UserInterfaceUtils.centerObjectInWidth)(title, this.world);
-      var sprite = this.add.sprite(0, 150, _FoodConstants.FOOD_DATA[index].key);
-      (0, _UserInterfaceUtils.centerObjectInWidth)(sprite, this.world);
-      var fontNutritionFacts = { font: '25px Arial', fill: '#000' };
-      var carbohydrates = this.add.text(0, 325, 'Carbohydrates: ' + _FoodConstants.FOOD_DATA[index].nutritionFacts.carbohydrates + 'g', fontNutritionFacts);
-      (0, _UserInterfaceUtils.centerObjectInWidth)(carbohydrates, this.world);
-      var fats = this.add.text(0, 375, 'Fats: ' + _FoodConstants.FOOD_DATA[index].nutritionFacts.fats + 'g', fontNutritionFacts);
-      (0, _UserInterfaceUtils.centerObjectInWidth)(fats, this.world);
-      var proteins = this.add.text(0, 425, 'Proteins: ' + _FoodConstants.FOOD_DATA[index].nutritionFacts.proteins + 'g', fontNutritionFacts);
-      (0, _UserInterfaceUtils.centerObjectInWidth)(proteins, this.world);
+            this.tweenIn.onComplete.add(function () {
+                var tmpPage = _this2.currentPage;
+                _this2.currentPage = _this2.nextPage;
+                _this2.nextPage = tmpPage;
 
-      group.add(title);
-      group.add(sprite);
-      group.add(carbohydrates);
-      group.add(fats);
-      group.add(proteins);
-    }
-  }]);
+                _this2.tweenIn = null;
+            });
+        }
+    }, {
+        key: 'goToNextWikiPage',
+        value: function goToNextWikiPage() {
+            var _this3 = this;
 
-  return Wiki;
+            if (this.tweenIn != null) {
+                return;
+            }
+            this.currentWikiPageIndex = this.currentWikiPageIndex + 1 === _FoodConstants.FOOD_DATA.length ? 0 : this.currentWikiPageIndex + 1;
+
+            this.add.tween(this.currentPage.position).to({ x: this.currentPage.position.x - this.world.width }, 500, Phaser.Easing.Linear.None, true);
+            this.tweenIn = this.add.tween(this.nextPage.position).to({ x: this.nextPage.position.x - this.world.width }, 500, Phaser.Easing.Linear.None, true);
+
+            this.tweenIn.onComplete.add(function () {
+                var tmpPage = _this3.currentPage;
+
+                _this3.currentPage = _this3.nextPage;
+                var nextIndex = _this3.currentWikiPageIndex + 1 === _FoodConstants.FOOD_DATA.length ? 0 : _this3.currentWikiPageIndex + 1;
+                _this3.fillGroupWithFoodData(tmpPage, nextIndex);
+                tmpPage.position.x += _this3.world.width * 2;
+
+                _this3.nextPage = tmpPage;
+
+                _this3.tweenIn = null;
+            });
+        }
+    }, {
+        key: 'fillGroupWithFoodData',
+        value: function fillGroupWithFoodData(group, index) {
+            group.removeAll(true);
+            var fontTitle = { font: '35px Arial', fill: '#fff' };
+
+            var title = this.add.text(0, 75, this.makeFirstLetterCapital(_FoodConstants.FOOD_DATA[index].key), fontTitle);
+            (0, _UserInterfaceUtils.centerObjectInWidth)(title, this.world);
+            var sprite = this.add.sprite(0, 150, _FoodConstants.FOOD_DATA[index].key);
+            (0, _UserInterfaceUtils.centerObjectInWidth)(sprite, this.world);
+            var fontNutritionFacts = { font: '25px Arial', fill: '#000' };
+            var carbohydrates = this.add.text(0, 325, 'Carbohydrates: ' + _FoodConstants.FOOD_DATA[index].nutritionFacts.carbohydrates + 'g', fontNutritionFacts);
+            (0, _UserInterfaceUtils.centerObjectInWidth)(carbohydrates, this.world);
+            var fats = this.add.text(0, 375, 'Fats: ' + _FoodConstants.FOOD_DATA[index].nutritionFacts.fats + 'g', fontNutritionFacts);
+            (0, _UserInterfaceUtils.centerObjectInWidth)(fats, this.world);
+            var proteins = this.add.text(0, 425, 'Proteins: ' + _FoodConstants.FOOD_DATA[index].nutritionFacts.proteins + 'g', fontNutritionFacts);
+            (0, _UserInterfaceUtils.centerObjectInWidth)(proteins, this.world);
+
+            group.add(title);
+            group.add(sprite);
+            group.add(carbohydrates);
+            group.add(fats);
+            group.add(proteins);
+        }
+    }]);
+
+    return Wiki;
 }(Phaser.State);
 
 exports.default = Wiki;
