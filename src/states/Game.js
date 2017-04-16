@@ -25,6 +25,12 @@ export default class Game extends Phaser.State {
     this.camera.flash( 0x000000, 500, false );
 
     this.game.physics.startSystem( Phaser.Physics.ARCADE );
+
+    this.game.onResume.add( () => {
+      if ( this.stateStatus !== 'playing' ) {
+        this.game.time.events.pause();
+      }
+    } );
   }
 
   initUI() {

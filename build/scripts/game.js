@@ -885,6 +885,8 @@ var Game = function (_Phaser$State) {
   _createClass(Game, [{
     key: 'create',
     value: function create() {
+      var _this2 = this;
+
       this.score = 0;
       this.gamePaused = false;
       this.runOnce = false;
@@ -904,6 +906,12 @@ var Game = function (_Phaser$State) {
       this.camera.flash(0x000000, 500, false);
 
       this.game.physics.startSystem(Phaser.Physics.ARCADE);
+
+      this.game.onResume.add(function () {
+        if (_this2.stateStatus !== 'playing') {
+          _this2.game.time.events.pause();
+        }
+      });
     }
   }, {
     key: 'initUI',
@@ -1014,13 +1022,13 @@ var Game = function (_Phaser$State) {
   }, {
     key: 'statePlaying',
     value: function statePlaying() {
-      var _this2 = this;
+      var _this3 = this;
 
       var tween = this.game.add.tween(this.screenPausedGroup);
       tween.to({ alpha: 0 }, 100, Phaser.Easing.Linear.None, true);
       tween.onComplete.add(function () {
-        if (_this2.screenPausedGroup.visible) {
-          _this2.screenPausedGroup.visible = false;
+        if (_this3.screenPausedGroup.visible) {
+          _this3.screenPausedGroup.visible = false;
         }
       }, this);
     }
@@ -1055,7 +1063,7 @@ var Game = function (_Phaser$State) {
   }, {
     key: 'gameoverScoreTween',
     value: function gameoverScoreTween() {
-      var _this3 = this;
+      var _this4 = this;
 
       var deathmsg = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
 
@@ -1065,10 +1073,10 @@ var Game = function (_Phaser$State) {
         var pointsTween = this.add.tween(this);
         pointsTween.to({ tweenedPoints: this.score }, 1000, Phaser.Easing.Linear.None, true, 500);
         pointsTween.onUpdateCallback(function () {
-          _this3.screenGameoverScore.setText('Time survied on diet: ' + Math.floor(_this3.tweenedPoints) + '\n' + deathmsg);
+          _this4.screenGameoverScore.setText('Time survied on diet: ' + Math.floor(_this4.tweenedPoints) + '\n' + deathmsg);
         }, this);
         pointsTween.onComplete.addOnce(function () {
-          _this3.screenGameoverScore.setText('Time survied on diet: ' + _this3.score);
+          _this4.screenGameoverScore.setText('Time survied on diet: ' + _this4.score);
         }, this);
         pointsTween.start();
       }
@@ -1105,10 +1113,8 @@ var Game = function (_Phaser$State) {
     key: 'stopMovingFood',
     value: function stopMovingFood() {
       this.foodContainer.forEach(function (food) {
-        //  if ( food && food.body ) {
         food.body.velocity.x = 0;
         food.body.velocity.y = 0;
-        //  }
       });
       this.game.time.events.pause();
     }
@@ -1116,10 +1122,8 @@ var Game = function (_Phaser$State) {
     key: 'restoreFoodMovement',
     value: function restoreFoodMovement() {
       this.foodContainer.forEach(function (food) {
-        //if ( food && food.body ) {
         food.body.velocity.x = food.velocityX;
         food.body.velocity.y = food.velocityY;
-        //}
       });
       this.game.time.events.resume();
     }
@@ -1134,17 +1138,17 @@ exports.default = Game;
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
 
 var _createClass = function () {
-    function defineProperties(target, props) {
-        for (var i = 0; i < props.length; i++) {
-            var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);
-        }
-    }return function (Constructor, protoProps, staticProps) {
-        if (protoProps) defineProperties(Constructor.prototype, protoProps);if (staticProps) defineProperties(Constructor, staticProps);return Constructor;
-    };
+  function defineProperties(target, props) {
+    for (var i = 0; i < props.length; i++) {
+      var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);
+    }
+  }return function (Constructor, protoProps, staticProps) {
+    if (protoProps) defineProperties(Constructor.prototype, protoProps);if (staticProps) defineProperties(Constructor, staticProps);return Constructor;
+  };
 }();
 
 var _AudioManager = require('../utils/AudioManager');
@@ -1152,106 +1156,106 @@ var _AudioManager = require('../utils/AudioManager');
 var _StorageManager = require('../utils/StorageManager');
 
 function _classCallCheck(instance, Constructor) {
-    if (!(instance instanceof Constructor)) {
-        throw new TypeError("Cannot call a class as a function");
-    }
+  if (!(instance instanceof Constructor)) {
+    throw new TypeError("Cannot call a class as a function");
+  }
 }
 
 function _possibleConstructorReturn(self, call) {
-    if (!self) {
-        throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-    }return call && (typeof call === "object" || typeof call === "function") ? call : self;
+  if (!self) {
+    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+  }return call && (typeof call === "object" || typeof call === "function") ? call : self;
 }
 
 function _inherits(subClass, superClass) {
-    if (typeof superClass !== "function" && superClass !== null) {
-        throw new TypeError("Super expression must either be null or a function, not " + typeof superClass);
-    }subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } });if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
+  if (typeof superClass !== "function" && superClass !== null) {
+    throw new TypeError("Super expression must either be null or a function, not " + typeof superClass);
+  }subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } });if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
 }
 
 var MainMenu = function (_Phaser$State) {
-    _inherits(MainMenu, _Phaser$State);
+  _inherits(MainMenu, _Phaser$State);
 
-    function MainMenu() {
-        _classCallCheck(this, MainMenu);
+  function MainMenu() {
+    _classCallCheck(this, MainMenu);
 
-        return _possibleConstructorReturn(this, (MainMenu.__proto__ || Object.getPrototypeOf(MainMenu)).apply(this, arguments));
+    return _possibleConstructorReturn(this, (MainMenu.__proto__ || Object.getPrototypeOf(MainMenu)).apply(this, arguments));
+  }
+
+  _createClass(MainMenu, [{
+    key: 'create',
+    value: function create() {
+      this.add.sprite(0, 0, 'background');
+      var title = this.add.sprite(this.world.width * 0.5, (this.world.height - 100) * 0.5, 'title');
+      title.anchor.set(0.5);
+
+      (0, _StorageManager.setStorage)(this.game.plugins.add(Phaser.Plugin.Storage));
+
+      (0, _StorageManager.getStorage)().initUnset('EPT-highscore', 0);
+      var highscore = (0, _StorageManager.getStorage)().get('EPT-highscore') || 0;
+
+      var buttonEnclave = this.add.button(20, 20, 'logo-pigames', this.clickEnclave, this);
+      var buttonStart = this.add.button(this.world.width - 20, this.world.height - 20, 'button-start', this.clickStart, this, 1, 0, 2);
+      buttonStart.anchor.set(1);
+
+      this.buttonAudio = this.add.button(this.world.width - 20, 20, 'button-audio', this.clickAudio, this, 1, 0, 2);
+      this.buttonAudio.anchor.set(1, 0);
+
+      var buttonWiki = this.add.button(20, this.world.height - 20, 'button-wiki', this.clickAchievements, this, 1, 0, 2);
+      buttonWiki.anchor.set(0, 1);
+
+      var fontHighscore = { font: '32px Arial', fill: '#000' };
+      var textHighscore = this.add.text(this.world.width * 0.5, this.world.height - 50, 'Highscore: ' + highscore, fontHighscore);
+      textHighscore.anchor.set(0.5, 1);
+
+      (0, _AudioManager.manageAudio)('init', this);
+      // Turn the music off at the start:
+      (0, _AudioManager.manageAudio)('off', this);
+
+      buttonStart.x = this.world.width + buttonStart.width + 20;
+      this.add.tween(buttonStart).to({ x: this.world.width - 20 }, 500, Phaser.Easing.Exponential.Out, true);
+      this.buttonAudio.y = -this.buttonAudio.height - 20;
+      this.add.tween(this.buttonAudio).to({ y: 20 }, 500, Phaser.Easing.Exponential.Out, true);
+      buttonEnclave.x = -buttonEnclave.width - 20;
+      this.add.tween(buttonEnclave).to({ x: 20 }, 500, Phaser.Easing.Exponential.Out, true);
+      buttonWiki.y = this.world.height + buttonWiki.height + 20;
+      this.add.tween(buttonWiki).to({ y: this.world.height - 20 }, 500, Phaser.Easing.Exponential.Out, true);
+
+      this.camera.flash(0x000000, 500, false);
     }
+  }, {
+    key: 'clickAudio',
+    value: function clickAudio() {
+      (0, _AudioManager.playAudio)('click');
+      (0, _AudioManager.manageAudio)('switch', this);
+    }
+  }, {
+    key: 'clickEnclave',
+    value: function clickEnclave() {
+      (0, _AudioManager.playAudio)('click');
+      window.top.location.href = 'http://pigam.es/';
+    }
+  }, {
+    key: 'clickStart',
+    value: function clickStart() {
+      var _this2 = this;
 
-    _createClass(MainMenu, [{
-        key: 'create',
-        value: function create() {
-            this.add.sprite(0, 0, 'background');
-            var title = this.add.sprite(this.world.width * 0.5, (this.world.height - 100) * 0.5, 'title');
-            title.anchor.set(0.5);
+      (0, _AudioManager.playAudio)('click');
+      this.camera.fade(0x000000, 200, false);
+      this.time.events.add(200, function () {
+        // this.game.state.start( 'Story' );
+        _this2.game.state.start('Game');
+      });
+    }
+  }, {
+    key: 'clickAchievements',
+    value: function clickAchievements() {
+      (0, _AudioManager.playAudio)('click');
+      this.game.state.start('Wiki');
+    }
+  }]);
 
-            (0, _StorageManager.setStorage)(this.game.plugins.add(Phaser.Plugin.Storage));
-
-            (0, _StorageManager.getStorage)().initUnset('EPT-highscore', 0);
-            var highscore = (0, _StorageManager.getStorage)().get('EPT-highscore') || 0;
-
-            var buttonEnclave = this.add.button(20, 20, 'logo-pigames', this.clickEnclave, this);
-            var buttonStart = this.add.button(this.world.width - 20, this.world.height - 20, 'button-start', this.clickStart, this, 1, 0, 2);
-            buttonStart.anchor.set(1);
-
-            this.buttonAudio = this.add.button(this.world.width - 20, 20, 'button-audio', this.clickAudio, this, 1, 0, 2);
-            this.buttonAudio.anchor.set(1, 0);
-
-            var buttonWiki = this.add.button(20, this.world.height - 20, 'button-wiki', this.clickAchievements, this, 1, 0, 2);
-            buttonWiki.anchor.set(0, 1);
-
-            var fontHighscore = { font: '32px Arial', fill: '#000' };
-            var textHighscore = this.add.text(this.world.width * 0.5, this.world.height - 50, 'Highscore: ' + highscore, fontHighscore);
-            textHighscore.anchor.set(0.5, 1);
-
-            (0, _AudioManager.manageAudio)('init', this);
-            // Turn the music off at the start:
-            (0, _AudioManager.manageAudio)('off', this);
-
-            buttonStart.x = this.world.width + buttonStart.width + 20;
-            this.add.tween(buttonStart).to({ x: this.world.width - 20 }, 500, Phaser.Easing.Exponential.Out, true);
-            this.buttonAudio.y = -this.buttonAudio.height - 20;
-            this.add.tween(this.buttonAudio).to({ y: 20 }, 500, Phaser.Easing.Exponential.Out, true);
-            buttonEnclave.x = -buttonEnclave.width - 20;
-            this.add.tween(buttonEnclave).to({ x: 20 }, 500, Phaser.Easing.Exponential.Out, true);
-            buttonWiki.y = this.world.height + buttonWiki.height + 20;
-            this.add.tween(buttonWiki).to({ y: this.world.height - 20 }, 500, Phaser.Easing.Exponential.Out, true);
-
-            this.camera.flash(0x000000, 500, false);
-        }
-    }, {
-        key: 'clickAudio',
-        value: function clickAudio() {
-            (0, _AudioManager.playAudio)('click');
-            (0, _AudioManager.manageAudio)('switch', this);
-        }
-    }, {
-        key: 'clickEnclave',
-        value: function clickEnclave() {
-            (0, _AudioManager.playAudio)('click');
-            window.top.location.href = 'http://pigam.es/';
-        }
-    }, {
-        key: 'clickStart',
-        value: function clickStart() {
-            var _this2 = this;
-
-            (0, _AudioManager.playAudio)('click');
-            this.camera.fade(0x000000, 200, false);
-            this.time.events.add(200, function () {
-                // this.game.state.start( 'Story' );
-                _this2.game.state.start('Game');
-            });
-        }
-    }, {
-        key: 'clickAchievements',
-        value: function clickAchievements() {
-            (0, _AudioManager.playAudio)('click');
-            this.game.state.start('Wiki');
-        }
-    }]);
-
-    return MainMenu;
+  return MainMenu;
 }(Phaser.State);
 
 exports.default = MainMenu;
@@ -1433,17 +1437,17 @@ exports.default = Story;
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
 
 var _createClass = function () {
-    function defineProperties(target, props) {
-        for (var i = 0; i < props.length; i++) {
-            var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);
-        }
-    }return function (Constructor, protoProps, staticProps) {
-        if (protoProps) defineProperties(Constructor.prototype, protoProps);if (staticProps) defineProperties(Constructor, staticProps);return Constructor;
-    };
+  function defineProperties(target, props) {
+    for (var i = 0; i < props.length; i++) {
+      var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);
+    }
+  }return function (Constructor, protoProps, staticProps) {
+    if (protoProps) defineProperties(Constructor.prototype, protoProps);if (staticProps) defineProperties(Constructor, staticProps);return Constructor;
+  };
 }();
 
 var _AudioManager = require('../utils/AudioManager');
@@ -1453,151 +1457,151 @@ var _FoodConstants = require('../constants/FoodConstants');
 var _UserInterfaceUtils = require('../utils/UserInterfaceUtils');
 
 function _classCallCheck(instance, Constructor) {
-    if (!(instance instanceof Constructor)) {
-        throw new TypeError("Cannot call a class as a function");
-    }
+  if (!(instance instanceof Constructor)) {
+    throw new TypeError("Cannot call a class as a function");
+  }
 }
 
 function _possibleConstructorReturn(self, call) {
-    if (!self) {
-        throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-    }return call && (typeof call === "object" || typeof call === "function") ? call : self;
+  if (!self) {
+    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+  }return call && (typeof call === "object" || typeof call === "function") ? call : self;
 }
 
 function _inherits(subClass, superClass) {
-    if (typeof superClass !== "function" && superClass !== null) {
-        throw new TypeError("Super expression must either be null or a function, not " + typeof superClass);
-    }subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } });if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
+  if (typeof superClass !== "function" && superClass !== null) {
+    throw new TypeError("Super expression must either be null or a function, not " + typeof superClass);
+  }subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } });if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
 }
 
 var Wiki = function (_Phaser$State) {
-    _inherits(Wiki, _Phaser$State);
+  _inherits(Wiki, _Phaser$State);
 
-    function Wiki() {
-        _classCallCheck(this, Wiki);
+  function Wiki() {
+    _classCallCheck(this, Wiki);
 
-        return _possibleConstructorReturn(this, (Wiki.__proto__ || Object.getPrototypeOf(Wiki)).apply(this, arguments));
+    return _possibleConstructorReturn(this, (Wiki.__proto__ || Object.getPrototypeOf(Wiki)).apply(this, arguments));
+  }
+
+  _createClass(Wiki, [{
+    key: 'create',
+    value: function create() {
+      var fontWiki = { font: '40px Arial', fill: '#000' };
+      this.add.text(20, 20, 'Wiki', fontWiki);
+
+      var buttonBack = this.add.button(this.world.width - 20, this.game.world.height - 20, 'button-back', this.clickBack, this, 1, 0, 2);
+      buttonBack.anchor.set(1, 1);
+      buttonBack.x = this.world.width + buttonBack.width + 20;
+      this.add.tween(buttonBack).to({ x: this.world.width - 20 }, 500, Phaser.Easing.Exponential.Out, true);
+
+      this.currentWikiPageIndex = 0;
+
+      this.currentPage = this.add.group();
+      this.fillGroupWithFoodData(this.currentPage, 0);
+
+      this.nextPage = this.add.group();
+      this.fillGroupWithFoodData(this.nextPage, 1);
+
+      this.nextPage.position.x += this.world.width;
+
+      var buttonPrevious = this.add.button(0, 0, 'button-back', this.goToPreviousWikiPage, this, 1, 0, 2);
+      buttonPrevious.x = -buttonPrevious.width;
+      this.add.tween(buttonPrevious).to({ x: 75 }, 500, Phaser.Easing.Exponential.Out, true);
+      (0, _UserInterfaceUtils.centerObjectInHeight)(buttonPrevious, this.world);
+
+      var buttonNext = this.add.button(0, 0, 'button-next', this.goToNextWikiPage, this, 1, 0, 2);
+      buttonNext.x = this.world.width;
+      this.add.tween(buttonNext).to({ x: this.world.width - buttonNext.width - 75 }, 500, Phaser.Easing.Exponential.Out, true);
+      (0, _UserInterfaceUtils.centerObjectInHeight)(buttonNext, this.world);
     }
+  }, {
+    key: 'clickBack',
+    value: function clickBack() {
+      (0, _AudioManager.playAudio)('click');
+      this.game.state.start('MainMenu');
+    }
+  }, {
+    key: 'makeFirstLetterCapital',
+    value: function makeFirstLetterCapital(string) {
+      return '' + string.charAt(0).toUpperCase() + string.substring(1);
+    }
+  }, {
+    key: 'goToPreviousWikiPage',
+    value: function goToPreviousWikiPage() {
+      var _this2 = this;
 
-    _createClass(Wiki, [{
-        key: 'create',
-        value: function create() {
-            var fontWiki = { font: '40px Arial', fill: '#000' };
-            this.add.text(20, 20, 'Wiki', fontWiki);
+      if (this.tweenIn != null) {
+        return;
+      }
+      this.currentWikiPageIndex = this.currentWikiPageIndex === 0 ? _FoodConstants.FOOD_DATA.length - 1 : this.currentWikiPageIndex - 1;
 
-            var buttonBack = this.add.button(this.world.width - 20, this.game.world.height - 20, 'button-back', this.clickBack, this, 1, 0, 2);
-            buttonBack.anchor.set(1, 1);
-            buttonBack.x = this.world.width + buttonBack.width + 20;
-            this.add.tween(buttonBack).to({ x: this.world.width - 20 }, 500, Phaser.Easing.Exponential.Out, true);
+      this.nextPage.position.x -= this.world.width * 2;
+      this.fillGroupWithFoodData(this.nextPage, this.currentWikiPageIndex);
 
-            this.currentWikiPageIndex = 0;
+      this.add.tween(this.currentPage.position).to({ x: this.currentPage.position.x + this.world.width }, 500, Phaser.Easing.Linear.None, true);
+      this.tweenIn = this.add.tween(this.nextPage.position).to({ x: this.nextPage.position.x + this.world.width }, 500, Phaser.Easing.Linear.None, true);
 
-            this.currentPage = this.add.group();
-            this.fillGroupWithFoodData(this.currentPage, 0);
+      this.tweenIn.onComplete.add(function () {
+        var tmpPage = _this2.currentPage;
+        _this2.currentPage = _this2.nextPage;
+        _this2.nextPage = tmpPage;
 
-            this.nextPage = this.add.group();
-            this.fillGroupWithFoodData(this.nextPage, 1);
+        _this2.tweenIn = null;
+      });
+    }
+  }, {
+    key: 'goToNextWikiPage',
+    value: function goToNextWikiPage() {
+      var _this3 = this;
 
-            this.nextPage.position.x += this.world.width;
+      if (this.tweenIn != null) {
+        return;
+      }
+      this.currentWikiPageIndex = this.currentWikiPageIndex + 1 === _FoodConstants.FOOD_DATA.length ? 0 : this.currentWikiPageIndex + 1;
 
-            var buttonPrevious = this.add.button(0, 0, 'button-back', this.goToPreviousWikiPage, this, 1, 0, 2);
-            buttonPrevious.x = -buttonPrevious.width;
-            this.add.tween(buttonPrevious).to({ x: 75 }, 500, Phaser.Easing.Exponential.Out, true);
-            (0, _UserInterfaceUtils.centerObjectInHeight)(buttonPrevious, this.world);
+      this.add.tween(this.currentPage.position).to({ x: this.currentPage.position.x - this.world.width }, 500, Phaser.Easing.Linear.None, true);
+      this.tweenIn = this.add.tween(this.nextPage.position).to({ x: this.nextPage.position.x - this.world.width }, 500, Phaser.Easing.Linear.None, true);
 
-            var buttonNext = this.add.button(0, 0, 'button-next', this.goToNextWikiPage, this, 1, 0, 2);
-            buttonNext.x = this.world.width;
-            this.add.tween(buttonNext).to({ x: this.world.width - buttonNext.width - 75 }, 500, Phaser.Easing.Exponential.Out, true);
-            (0, _UserInterfaceUtils.centerObjectInHeight)(buttonNext, this.world);
-        }
-    }, {
-        key: 'clickBack',
-        value: function clickBack() {
-            (0, _AudioManager.playAudio)('click');
-            this.game.state.start('MainMenu');
-        }
-    }, {
-        key: 'makeFirstLetterCapital',
-        value: function makeFirstLetterCapital(string) {
-            return '' + string.charAt(0).toUpperCase() + string.substring(1);
-        }
-    }, {
-        key: 'goToPreviousWikiPage',
-        value: function goToPreviousWikiPage() {
-            var _this2 = this;
+      this.tweenIn.onComplete.add(function () {
+        var tmpPage = _this3.currentPage;
 
-            if (this.tweenIn != null) {
-                return;
-            }
-            this.currentWikiPageIndex = this.currentWikiPageIndex === 0 ? _FoodConstants.FOOD_DATA.length - 1 : this.currentWikiPageIndex - 1;
+        _this3.currentPage = _this3.nextPage;
+        var nextIndex = _this3.currentWikiPageIndex + 1 === _FoodConstants.FOOD_DATA.length ? 0 : _this3.currentWikiPageIndex + 1;
+        _this3.fillGroupWithFoodData(tmpPage, nextIndex);
+        tmpPage.position.x += _this3.world.width * 2;
 
-            this.nextPage.position.x -= this.world.width * 2;
-            this.fillGroupWithFoodData(this.nextPage, this.currentWikiPageIndex);
+        _this3.nextPage = tmpPage;
 
-            this.add.tween(this.currentPage.position).to({ x: this.currentPage.position.x + this.world.width }, 500, Phaser.Easing.Linear.None, true);
-            this.tweenIn = this.add.tween(this.nextPage.position).to({ x: this.nextPage.position.x + this.world.width }, 500, Phaser.Easing.Linear.None, true);
+        _this3.tweenIn = null;
+      });
+    }
+  }, {
+    key: 'fillGroupWithFoodData',
+    value: function fillGroupWithFoodData(group, index) {
+      group.removeAll(true);
+      var fontTitle = { font: '35px Arial', fill: '#fff' };
 
-            this.tweenIn.onComplete.add(function () {
-                var tmpPage = _this2.currentPage;
-                _this2.currentPage = _this2.nextPage;
-                _this2.nextPage = tmpPage;
+      var title = this.add.text(0, 75, this.makeFirstLetterCapital(_FoodConstants.FOOD_DATA[index].key), fontTitle);
+      (0, _UserInterfaceUtils.centerObjectInWidth)(title, this.world);
+      var sprite = this.add.sprite(0, 150, _FoodConstants.FOOD_DATA[index].key);
+      (0, _UserInterfaceUtils.centerObjectInWidth)(sprite, this.world);
+      var fontNutritionFacts = { font: '25px Arial', fill: '#000' };
+      var carbohydrates = this.add.text(0, 325, 'Carbohydrates: ' + _FoodConstants.FOOD_DATA[index].nutritionFacts.carbohydrates + 'g', fontNutritionFacts);
+      (0, _UserInterfaceUtils.centerObjectInWidth)(carbohydrates, this.world);
+      var fats = this.add.text(0, 375, 'Fats: ' + _FoodConstants.FOOD_DATA[index].nutritionFacts.fats + 'g', fontNutritionFacts);
+      (0, _UserInterfaceUtils.centerObjectInWidth)(fats, this.world);
+      var proteins = this.add.text(0, 425, 'Proteins: ' + _FoodConstants.FOOD_DATA[index].nutritionFacts.proteins + 'g', fontNutritionFacts);
+      (0, _UserInterfaceUtils.centerObjectInWidth)(proteins, this.world);
 
-                _this2.tweenIn = null;
-            });
-        }
-    }, {
-        key: 'goToNextWikiPage',
-        value: function goToNextWikiPage() {
-            var _this3 = this;
+      group.add(title);
+      group.add(sprite);
+      group.add(carbohydrates);
+      group.add(fats);
+      group.add(proteins);
+    }
+  }]);
 
-            if (this.tweenIn != null) {
-                return;
-            }
-            this.currentWikiPageIndex = this.currentWikiPageIndex + 1 === _FoodConstants.FOOD_DATA.length ? 0 : this.currentWikiPageIndex + 1;
-
-            this.add.tween(this.currentPage.position).to({ x: this.currentPage.position.x - this.world.width }, 500, Phaser.Easing.Linear.None, true);
-            this.tweenIn = this.add.tween(this.nextPage.position).to({ x: this.nextPage.position.x - this.world.width }, 500, Phaser.Easing.Linear.None, true);
-
-            this.tweenIn.onComplete.add(function () {
-                var tmpPage = _this3.currentPage;
-
-                _this3.currentPage = _this3.nextPage;
-                var nextIndex = _this3.currentWikiPageIndex + 1 === _FoodConstants.FOOD_DATA.length ? 0 : _this3.currentWikiPageIndex + 1;
-                _this3.fillGroupWithFoodData(tmpPage, nextIndex);
-                tmpPage.position.x += _this3.world.width * 2;
-
-                _this3.nextPage = tmpPage;
-
-                _this3.tweenIn = null;
-            });
-        }
-    }, {
-        key: 'fillGroupWithFoodData',
-        value: function fillGroupWithFoodData(group, index) {
-            group.removeAll(true);
-            var fontTitle = { font: '35px Arial', fill: '#fff' };
-
-            var title = this.add.text(0, 75, this.makeFirstLetterCapital(_FoodConstants.FOOD_DATA[index].key), fontTitle);
-            (0, _UserInterfaceUtils.centerObjectInWidth)(title, this.world);
-            var sprite = this.add.sprite(0, 150, _FoodConstants.FOOD_DATA[index].key);
-            (0, _UserInterfaceUtils.centerObjectInWidth)(sprite, this.world);
-            var fontNutritionFacts = { font: '25px Arial', fill: '#000' };
-            var carbohydrates = this.add.text(0, 325, 'Carbohydrates: ' + _FoodConstants.FOOD_DATA[index].nutritionFacts.carbohydrates + 'g', fontNutritionFacts);
-            (0, _UserInterfaceUtils.centerObjectInWidth)(carbohydrates, this.world);
-            var fats = this.add.text(0, 375, 'Fats: ' + _FoodConstants.FOOD_DATA[index].nutritionFacts.fats + 'g', fontNutritionFacts);
-            (0, _UserInterfaceUtils.centerObjectInWidth)(fats, this.world);
-            var proteins = this.add.text(0, 425, 'Proteins: ' + _FoodConstants.FOOD_DATA[index].nutritionFacts.proteins + 'g', fontNutritionFacts);
-            (0, _UserInterfaceUtils.centerObjectInWidth)(proteins, this.world);
-
-            group.add(title);
-            group.add(sprite);
-            group.add(carbohydrates);
-            group.add(fats);
-            group.add(proteins);
-        }
-    }]);
-
-    return Wiki;
+  return Wiki;
 }(Phaser.State);
 
 exports.default = Wiki;
