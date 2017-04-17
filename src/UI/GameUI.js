@@ -160,7 +160,7 @@ export default class GameUI {
     const tween = this.game.add.tween( this.screenGameoverGroup );
     tween.to( { alpha: 1 }, 100, Phaser.Easing.Linear.None, true );
 
-    PPTStorage.setHighscore( 'EPT-highscore', this.score );
+    PPTStorage.setHighscore( 'PPT-highscore', this.score );
   }
 
   stateRestart() {

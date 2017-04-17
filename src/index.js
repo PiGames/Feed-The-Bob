@@ -1,13 +1,13 @@
-import EPT from './states';
+import PPT from './states';
 
 const game = new Phaser.Game( 1920, 1280, Phaser.AUTO );
 const states = {
-  'Boot': EPT.Boot,
-  'Preloader': EPT.Preloader,
-  'MainMenu': EPT.MainMenu,
-  'Wiki': EPT.Wiki,
-  'Story': EPT.Story,
-  'Game': EPT.Game,
+  'Boot': PPT.Boot,
+  'Preloader': PPT.Preloader,
+  'MainMenu': PPT.MainMenu,
+  'Wiki': PPT.Wiki,
+  'Story': PPT.Story,
+  'Game': PPT.Game,
 };
 for ( const stateName in states ) {
   game.state.add( stateName, states[ stateName ] );

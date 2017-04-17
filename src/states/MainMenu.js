@@ -12,8 +12,8 @@ export default class MainMenu extends Phaser.State {
 
     setStorage( this.game.plugins.add( Phaser.Plugin.Storage ) );
 
-    PPTStorage.initUnset( 'EPT-highscore', 0 );
-    const highscore = PPTStorage.get( 'EPT-highscore' ) || 0;
+    PPTStorage.initUnset( 'PPT-highscore', 0 );
+    const highscore = PPTStorage.get( 'PPT-highscore' ) || 0;
 
     const buttonEnclave = this.add.button( 20, 20, 'logo-pigames', this.clickPiGames, this );
     const buttonStart = this.add.button( this.world.width - 20, this.world.height - 20, 'button-start', this.clickStart, this, 1, 0, 2 );

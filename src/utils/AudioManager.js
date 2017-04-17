@@ -8,9 +8,9 @@ let _audioOffset;
 export function manageAudio( mode, game ) {
   switch ( mode ) {
   case 'init': {
-    PPTStorage.initUnset( 'EPT-audio', true );
-    _audioStatus = PPTStorage.get( 'EPT-audio' );
-		// EPT._soundClick = game.add.audio('audio-click');
+    PPTStorage.initUnset( 'PPT-audio', true );
+    _audioStatus = PPTStorage.get( 'PPT-audio' );
+		// PPT._soundClick = game.add.audio('audio-click');
     _sound = [];
     _sound[ 'click' ] = game.add.audio( 'audio-click' );
     if ( !_soundMusic ) {
@@ -45,7 +45,7 @@ export function manageAudio( mode, game ) {
       _soundMusic.stop();
     }
   }
-  PPTStorage.set( 'EPT-audio', _audioStatus );
+  PPTStorage.set( 'PPT-audio', _audioStatus );
   game.buttonAudio.setFrames( _audioOffset + 1, _audioOffset + 0, _audioOffset + 2 );
 }
 export function playAudio( sound ) {
