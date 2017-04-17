@@ -1,4 +1,4 @@
-import { getStorage } from './StorageManager';
+import { PPTStorage } from './StorageManager';
 
 let _audioStatus;
 let _sound;
@@ -8,8 +8,8 @@ let _audioOffset;
 export function manageAudio( mode, game ) {
   switch ( mode ) {
   case 'init': {
-    getStorage().initUnset( 'EPT-audio', true );
-    _audioStatus = getStorage().get( 'EPT-audio' );
+    PPTStorage.initUnset( 'EPT-audio', true );
+    _audioStatus = PPTStorage.get( 'EPT-audio' );
 		// EPT._soundClick = game.add.audio('audio-click');
     _sound = [];
     _sound[ 'click' ] = game.add.audio( 'audio-click' );
@@ -45,7 +45,7 @@ export function manageAudio( mode, game ) {
       _soundMusic.stop();
     }
   }
-  getStorage().set( 'EPT-audio', _audioStatus );
+  PPTStorage.set( 'EPT-audio', _audioStatus );
   game.buttonAudio.setFrames( _audioOffset + 1, _audioOffset + 0, _audioOffset + 2 );
 }
 export function playAudio( sound ) {

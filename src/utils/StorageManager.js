@@ -1,7 +1,5 @@
-let EPTStorage;
+export let PPTStorage;
 
 export function setStorage( storage ) {
-  EPTStorage = storage;
+  PPTStorage = storage;
 }
-
-export const getStorage = () => EPTStorage;

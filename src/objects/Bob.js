@@ -73,11 +73,11 @@ export default class Bob extends Phaser.Sprite {
     }
 
     if ( isDeadFromFat ) {
-      this.handleDeath( 'You have died from fat' );
+      this.handleDeath( 'fat' );
     }
 
     if ( isDeadFromThinness ) {
-      this.handleDeath( 'You have died from thinness' );
+      this.handleDeath( 'thinness' );
     }
   }
 

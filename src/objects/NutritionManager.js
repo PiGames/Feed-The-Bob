@@ -1,4 +1,4 @@
-import NutritionUI from './NutritionUI';
+import NutritionUI from '../UI/NutritionUI';
 
 import { GOOD_AMOUNT_OF_CARBOHYDRATES, GOOD_AMOUNT_OF_FATS, GOOD_AMOUNT_OF_PROTEINS, AMOUNT_REDUCED_INTERVAL, AMOUNT_REDUCED_PERCENT } from '../constants/NutritionConstants';
 

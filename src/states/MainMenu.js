@@ -1,5 +1,5 @@
 import { playAudio, manageAudio } from '../utils/AudioManager';
-import { getStorage, setStorage } from '../utils/StorageManager';
+import { PPTStorage, setStorage } from '../utils/StorageManager';
 
 export default class MainMenu extends Phaser.State {
   create() {
@@ -9,8 +9,8 @@ export default class MainMenu extends Phaser.State {
 
     setStorage( this.game.plugins.add( Phaser.Plugin.Storage ) );
 
-    getStorage().initUnset( 'EPT-highscore', 0 );
-    const highscore = getStorage().get( 'EPT-highscore' ) || 0;
+    PPTStorage.initUnset( 'EPT-highscore', 0 );
+    const highscore = PPTStorage.get( 'EPT-highscore' ) || 0;
 
     const buttonEnclave = this.add.button( 20, 20, 'logo-pigames', this.clickEnclave, this );
     const buttonStart = this.add.button( this.world.width - 20, this.world.height - 20, 'button-start', this.clickStart, this, 1, 0, 2 );

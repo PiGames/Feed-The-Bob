@@ -1,6 +1,6 @@
 import { playAudio } from '../utils/AudioManager';
 import { FOOD_DATA } from '../constants/FoodConstants';
-import { centerObjectInWidth, centerObjectInHeight } from '../utils/UserInterfaceUtils';
+import { centerObjectInWidth, centerObjectInHeight } from '../utils/UIUtils';
 export default class Wiki extends Phaser.State {
   create() {
     const fontWiki = { font: '40px Arial', fill: '#000' };
