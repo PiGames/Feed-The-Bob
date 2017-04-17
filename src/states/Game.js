@@ -7,10 +7,6 @@ import NutritionManager from '../objects/NutritionManager';
 
 export default class Game extends Phaser.State {
   create() {
-    this.score = 0;
-    this.gamePaused = false;
-    this.runOnce = false;
-
     this.gameUI = new GameUI( this );
 
     this.NutritionManager = new NutritionManager( this.game );

@@ -2,7 +2,7 @@ import { MIN_FOOD_VELOCITY, MAX_FOOD_VELOCITY } from '../constants/FoodConstants
 
 export default class Food extends Phaser.Sprite {
   constructor( game, x, y, key, data, NutritionManager, onDestroy ) {
-    super( game, x, y, key );
+    super( game, x, y, 'products', key );
     this.onDestroy = onDestroy;
     this.data = data;
     this.NutritionManager = NutritionManager;

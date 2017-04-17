@@ -6,11 +6,6 @@ const resources = {
 		[ 'overlay', 'img/ui/overlay.png' ],
 
     [ 'nutrition-bar-background', 'img/ui/nutrition-bar-background.png' ],
-
-    [ 'apple', 'img/assets/apple.png' ],
-    [ 'chicken', 'img/assets/chicken.png' ],
-    [ 'banana', 'img/assets/banana.png' ],
-    [ 'hamburger', 'img/assets/hamburger.png' ],
   ],
   'spritesheet': [
 		[ 'button-start', 'img/ui/button-start.png', 160, 160 ],
@@ -24,6 +19,7 @@ const resources = {
 		[ 'button-next', 'img/button-next.png', 70, 70 ],
     [ 'bob', 'img/assets/bob.png', 460, 1370 ],
     [ 'nutrition-bar', 'img/ui/nutrition-bar.png', 680, 56 ],
+    [ 'products', 'img/assets/products-en.png', 200, 150 ],
   ],
   'audio': [
 		[ 'audio-click', [ 'sfx/audio-button.m4a', 'sfx/audio-button.mp3', 'sfx/audio-button.ogg' ] ],

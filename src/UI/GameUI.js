@@ -9,6 +9,8 @@ export default class GameUI {
     this.state = state;
     this.game = state.game;
 
+    this.stateStatus = 'playing';
+
     this.score = 0;
     this.runOnce = false;
     this.gamePaused = false;
@@ -76,6 +78,7 @@ export default class GameUI {
   }
 
   updateUI() {
+
     switch ( this.stateStatus ) {
     case 'paused': {
       if ( !this.runOnce ) {

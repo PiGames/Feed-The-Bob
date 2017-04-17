@@ -36,7 +36,7 @@ export default class Wiki extends Phaser.State {
     this.game.state.start( 'MainMenu' );
   }
   makeFirstLetterCapital( string ) {
-    return `${string.charAt( 0 ).toUpperCase()}${string.substring( 1 )}`;
+    return `${string[ 0 ].toUpperCase()}${string.substring( 1 )}`;
   }
   goToPreviousWikiPage() {
     if ( this.tweenIn != null ) {
@@ -84,9 +84,9 @@ export default class Wiki extends Phaser.State {
     group.removeAll( true );
     const fontTitle = { font: '35px Arial', fill: '#fff' };
 
-    const title = this.add.text( 0, 75, this.makeFirstLetterCapital( FOOD_DATA[ index ].key ), fontTitle );
+    const title = this.add.text( 0, 75, this.makeFirstLetterCapital( FOOD_DATA[ index ].name ), fontTitle );
     centerObjectInWidth( title, this.world );
-    const sprite = this.add.sprite( 0, 150, FOOD_DATA[ index ].key );
+    const sprite = this.add.sprite( 0, 150, 'products', FOOD_DATA[ index ].key );
     centerObjectInWidth( sprite, this.world );
     const fontNutritionFacts = { font: '25px Arial', fill: '#000' };
     const carbohydrates = this.add.text( 0, 325, `Carbohydrates: ${FOOD_DATA[ index ].nutritionFacts.carbohydrates}g`, fontNutritionFacts );
