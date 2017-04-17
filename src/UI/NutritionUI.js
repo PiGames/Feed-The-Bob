@@ -1,6 +1,7 @@
 import { GOOD_AMOUNT_OF_CARBOHYDRATES, GOOD_AMOUNT_OF_FATS, GOOD_AMOUNT_OF_PROTEINS } from '../constants/NutritionConstants';
 import { SUPER_THIN_BREAKPOINT, THIN_BREAKPOINT, FAT_BREAKPOINT, SUPER_FAT_BREAKPOINT } from '../constants/WeightBreakpoints';
-import { NUTRITION_BAR_WIDTH, NUTRITION_BAR_HEIGHT, NUTRITION_BAR_OFFSET, NUTRITION_BAR_X_FROM_LEFT, NUTRITION_BAR_Y_FROM_BOTTOM, NUTRITION_BAR_TEXT_OFFSET_X, NUTRITION_BAR_TEXT_OFFSET_Y, NUTRITION_BAR_INFO_FONT, NUTRITION_BAR_TEXT_SHADOW_SIZE, NUTRITION_BAR_TEXT_SHADOW_COLOR, NUTRITION_NUTRITION_ADDED_FONT } from '../constants/UIConstants';
+import { NUTRITION_BAR_WIDTH, NUTRITION_BAR_HEIGHT, NUTRITION_BAR_OFFSET, NUTRITION_BAR_X_FROM_LEFT, NUTRITION_BAR_Y_FROM_BOTTOM, NUTRITION_BAR_TEXT_OFFSET_X, NUTRITION_BAR_TEXT_OFFSET_Y, NUTRITION_BAR_INFO_FONT, NUTRITION_NUTRITION_ADDED_FONT } from '../constants/UIConstants';
+import Text from './Text';
 
 export default class NutritionUI {
   constructor( game, NutritionManager ) {
@@ -57,10 +58,8 @@ export default class NutritionUI {
 
     const textX = this.game.width - NUTRITION_BAR_X_FROM_LEFT - NUTRITION_BAR_TEXT_OFFSET_X;
     const textY = this.game.height - NUTRITION_BAR_Y_FROM_BOTTOM - NUTRITION_BAR_TEXT_OFFSET_Y - offset;
-    const nutritionAdded = this.game.add.text( textX, textY, `+${val}`, NUTRITION_NUTRITION_ADDED_FONT );
-    nutritionAdded.anchor.setTo( 1, 1 );
+    const nutritionAdded = new Text( this.game, textX, textY, `+${val}`, NUTRITION_NUTRITION_ADDED_FONT, [ 1, 1 ] );
     this.game.add.tween( nutritionAdded ).to( { alpha: 0, y: textY - 100 }, 1000, Phaser.Easing.Linear.None, true );
-
   }
 
   updateBar( value, goodAmount, i ) {
@@ -121,13 +120,10 @@ export default class NutritionUI {
 
     this.NutritionBars[ i ] = status;
 
-    const descText = this.game.add.text( this.game.width - NUTRITION_BAR_X_FROM_LEFT + NUTRITION_BAR_TEXT_OFFSET_X - width, this.game.height - NUTRITION_BAR_Y_FROM_BOTTOM - offset - NUTRITION_BAR_TEXT_OFFSET_Y, text, NUTRITION_BAR_INFO_FONT );
-    descText.anchor.setTo( 0, 1 );
-    descText.setShadow( 0, 0, NUTRITION_BAR_TEXT_SHADOW_COLOR, NUTRITION_BAR_TEXT_SHADOW_SIZE );
+    // descText
+    new Text( this.game, this.game.width - NUTRITION_BAR_X_FROM_LEFT + NUTRITION_BAR_TEXT_OFFSET_X - width, this.game.height - NUTRITION_BAR_Y_FROM_BOTTOM - offset - NUTRITION_BAR_TEXT_OFFSET_Y, text, NUTRITION_BAR_INFO_FONT, [ 0, 1 ] );
 
-    const statusText = this.game.add.text( this.game.width - NUTRITION_BAR_X_FROM_LEFT - NUTRITION_BAR_TEXT_OFFSET_X, this.game.height - NUTRITION_BAR_Y_FROM_BOTTOM - NUTRITION_BAR_TEXT_OFFSET_Y - offset, `${parseInt( value )} / ${goodAmount}`, NUTRITION_BAR_INFO_FONT );
-    statusText.anchor.setTo( 1, 1 );
-    statusText.setShadow( 0, 0, NUTRITION_BAR_TEXT_SHADOW_COLOR, NUTRITION_BAR_TEXT_SHADOW_SIZE );
+    const statusText = new Text( this.game, this.game.width - NUTRITION_BAR_X_FROM_LEFT - NUTRITION_BAR_TEXT_OFFSET_X, this.game.height - NUTRITION_BAR_Y_FROM_BOTTOM - NUTRITION_BAR_TEXT_OFFSET_Y - offset, `${parseInt( value )} / ${goodAmount}`, NUTRITION_BAR_INFO_FONT, [ 1, 1 ] );
 
     this.NutritionTexts[ i ] = statusText;
   }

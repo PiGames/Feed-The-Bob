@@ -1,5 +1,6 @@
-import { NUTRITION_BAR_INFO_FONT, SCORE_FONT, SCORE_TEMPLATE, GAMEOVER_TITLE_FONT, GAMEOVER_SCORE_FONT } from '../constants/UIConstants';
+import { SCORE_FONT, SCORE_TEMPLATE, GAMEOVER_TITLE_FONT, GAMEOVER_SCORE_FONT, PAUSE_TITLE_FONT } from '../constants/UIConstants';
 import { playAudio, manageAudio, getAudioOffset } from '../utils/AudioManager';
+import Text from './Text';
 
 import { PPTStorage } from '../utils/StorageManager';
 
@@ -18,9 +19,7 @@ export default class GameUI {
   }
 
   initScore() {
-    this.textScore = this.game.add.text( 30, this.game.world.height - 20, SCORE_TEMPLATE( this.score ), SCORE_FONT );
-    this.textScore.anchor.set( 0, 1 );
-    this.textScore.setShadow( 0, 0, 'rgba(0 ,0, 0, 0.5)', 10 );
+    this.textScore = new Text( this.game, 30, this.game.world.height - 20, SCORE_TEMPLATE( this.score ), SCORE_FONT, [ 0, 1 ] );
 
     this.game.time.events.loop( Phaser.Timer.SECOND * 1, this.handlePointsAddition, this );
   }
@@ -36,8 +35,7 @@ export default class GameUI {
     this.screenPausedBg = this.game.add.sprite( 0, 0, 'overlay' );
     this.screenPausedBg.scale.setTo( 2 );
 
-    this.screenPausedText = this.game.add.text( this.game.world.width * 0.5, 100, 'Paused', NUTRITION_BAR_INFO_FONT );
-    this.screenPausedText.anchor.set( 0.5, 0 );
+    this.screenPausedText = new Text( this.game, 'center', 'center', 'Paused', PAUSE_TITLE_FONT );
 
     this.buttonAudio = this.game.add.button( this.game.world.width - 20, 20, 'button-audio', this.clickAudio, this, 1, 0, 2 );
     this.buttonAudio.anchor.set( 1, 0 );
@@ -62,14 +60,12 @@ export default class GameUI {
     this.screenGameoverGroup = this.game.add.group();
     this.screenGameoverBg = this.game.add.sprite( 0, 0, 'overlay' );
     this.screenGameoverBg.scale.setTo( 2 );
-    this.screenGameoverText = this.game.add.text( this.game.world.centerX, 100, 'Game over', GAMEOVER_TITLE_FONT );
-    this.screenGameoverText.anchor.set( 0.5, 0 );
+    this.screenGameoverText = new Text( this.game, 'center', 100, 'Game over', GAMEOVER_TITLE_FONT );
     this.screenGameoverBack = this.game.add.button( 150, this.game.world.height - 100, 'button-mainmenu', this.stateBack, this, 1, 0, 2 );
     this.screenGameoverBack.anchor.set( 0, 1 );
     this.screenGameoverRestart = this.game.add.button( this.game.world.width - 150, this.game.world.height - 100, 'button-restart', this.stateRestart, this, 1, 0, 2 );
     this.screenGameoverRestart.anchor.set( 1, 1 );
-    this.screenGameoverScore = this.game.add.text( this.game.world.centerX, this.game.world.centerY, 'Score: ' + this.score, GAMEOVER_SCORE_FONT );
-    this.screenGameoverScore.anchor.set( 0.5, 0.5 );
+    this.screenGameoverScore = new Text( this.game, 'center', 'center', 'Score: ' + this.score, GAMEOVER_SCORE_FONT );
     this.screenGameoverGroup.add( this.screenGameoverBg );
     this.screenGameoverGroup.add( this.screenGameoverText );
     this.screenGameoverGroup.add( this.screenGameoverBack );

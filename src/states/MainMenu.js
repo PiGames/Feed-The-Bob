@@ -1,5 +1,8 @@
-import { playAudio, manageAudio } from '../utils/AudioManager';
+import { playAudio, manageAudio, getStatusAudio } from '../utils/AudioManager';
 import { PPTStorage, setStorage } from '../utils/StorageManager';
+import Text from '../UI/Text';
+
+import { MENU_HIGHSCORE_FONT } from '../constants/UIConstants';
 
 export default class MainMenu extends Phaser.State {
   create() {
@@ -12,7 +15,7 @@ export default class MainMenu extends Phaser.State {
     PPTStorage.initUnset( 'EPT-highscore', 0 );
     const highscore = PPTStorage.get( 'EPT-highscore' ) || 0;
 
-    const buttonEnclave = this.add.button( 20, 20, 'logo-pigames', this.clickEnclave, this );
+    const buttonEnclave = this.add.button( 20, 20, 'logo-pigames', this.clickPiGames, this );
     const buttonStart = this.add.button( this.world.width - 20, this.world.height - 20, 'button-start', this.clickStart, this, 1, 0, 2 );
     buttonStart.anchor.set( 1 );
 
@@ -22,13 +25,15 @@ export default class MainMenu extends Phaser.State {
     const buttonWiki = this.add.button( 20, this.world.height - 20, 'button-wiki', this.clickAchievements, this, 1, 0, 2 );
     buttonWiki.anchor.set( 0, 1 );
 
-    const fontHighscore = { font: '32px Arial', fill: '#000' };
-    const textHighscore = this.add.text( this.world.width * 0.5, this.world.height - 50, 'Highscore: ' + highscore, fontHighscore );
-    textHighscore.anchor.set( 0.5, 1 );
+    // Highscore text
+    new Text( this.game, 'center', this.world.height - 50, 'Highscore: ' + highscore, MENU_HIGHSCORE_FONT, [ null, 1 ] );
 
     manageAudio( 'init', this );
-		// Turn the music off at the start:
-    manageAudio( 'off', this );
+
+    if ( getStatusAudio() !== true ) {
+      // Turn the music off at the start:
+      manageAudio( 'off', this );
+    }
 
     buttonStart.x = this.world.width + buttonStart.width + 20;
     this.add.tween( buttonStart ).to( { x: this.world.width - 20 }, 500, Phaser.Easing.Exponential.Out, true );
@@ -45,7 +50,7 @@ export default class MainMenu extends Phaser.State {
     playAudio( 'click' );
     manageAudio( 'switch', this );
   }
-  clickEnclave() {
+  clickPiGames() {
     playAudio( 'click' );
     window.top.location.href = 'http://pigam.es/';
   }

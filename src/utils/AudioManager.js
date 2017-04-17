@@ -56,4 +56,8 @@ export function playAudio( sound ) {
   }
 }
 
+export function getStatusAudio() {
+  return _audioStatus;
+}
+
 export const getAudioOffset = () => _audioOffset;
