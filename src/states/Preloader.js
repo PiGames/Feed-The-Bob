@@ -22,8 +22,8 @@ const resources = {
     [ 'products', 'img/assets/products-en.png', 200, 150 ],
   ],
   'audio': [
-		[ 'audio-click', [ 'sfx/audio-button.m4a', 'sfx/audio-button.mp3', 'sfx/audio-button.ogg' ] ],
-		[ 'audio-theme', [ 'sfx/music-bitsnbites-liver.m4a', 'sfx/music-bitsnbites-liver.mp3', 'sfx/music-bitsnbites-liver.ogg' ] ],
+		[ 'audio-click', [ 'sfx/click.mp3', 'sfx/click.ogg' ] ],
+		[ 'audio-theme', [ 'sfx/farty-mcsty.m4a', 'sfx/farty-mcsty.mp3', 'sfx/farty-mcsty.ogg' ] ],
   ],
 };
 
