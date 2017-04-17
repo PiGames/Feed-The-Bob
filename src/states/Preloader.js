@@ -27,19 +27,6 @@ const resources = {
   ],
 };
 
-window.WebFontConfig = {
-  google: {
-    families: [ 'Gloria Hallelujah' ],
-  },
-  fontsLoaded: false,
-  active: () => {
-    window.fontsLoaded = true;
-  },
-  inactive: () => {
-    window.fontsLoaded = true;
-  },
-};
-
 export default class Preloader extends Phaser.State {
   preload() {
     this.add.sprite( ( this.world.width - 580 ) * 0.5, ( this.world.height + 150 ) * 0.5, 'loading-background' );
@@ -49,17 +36,23 @@ export default class Preloader extends Phaser.State {
     this._preloadResources();
   }
   _preloadResources() {
+    this.span = document.createElement( 'span' );
+    this.span.innerHTML = 'Zażółć';
+    this.span.setAttribute( 'style', 'position: absolute; font-family: Arial,  monospace; font-size: 300px; top: -99999px; left: -99999px; opacity: 0;' );
+    document.body.appendChild( this.span );
+    this.initialFontSize = this.span.clientHeight;
+    this.span.style.fontFamily = '"Bromine"';
+
     for ( const method in resources ) {
       resources[ method ].forEach( ( args ) => {
         const loader = this.load[ method ];
         loader && loader.apply( this.load, args );
       }, this );
     }
-
-    this.load.script( 'webfont', '//ajax.googleapis.com/ajax/libs/webfont/1.4.7/webfont.js' );
   }
   update() {
-    if ( window.fontsLoaded ) {
+    if ( this.initialFontSize !== this.span.clientHeight ) {
+      document.body.removeChild( this.span );
       this.state.start( 'MainMenu' );
     }
   }

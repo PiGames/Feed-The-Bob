@@ -13,6 +13,7 @@ var babelify = require('babelify');
 var browserify = require('browserify');
 var browserSync = require('browser-sync');
 var ghPages = require('gulp-gh-pages');
+var watch = require('gulp-watch');
 
 /**
  * Using different folders/file names? Change these constants:
@@ -163,14 +164,15 @@ function serve() {
     browserSync(options);
 
     // Watches for changes in files inside the './src' folder.
-    gulp.watch(SOURCE_PATH + '/**/*.js', ['watch-js']);
+    // Watches for changes in files inside the './src' folder.
+    watch(SOURCE_PATH + '/**/*.js', function() {
+      gulp.start('watch-js');
+    });
+
 
     // Watches for changes in files inside the './static' folder. Also sets 'keepFiles' to true (see cleanBuild()).
-    gulp.watch(STATIC_PATH + '/**/*', ['watch-static']).on('change', function() {
-        console.log( 1 );
-        keepFiles = true;
-        copyStatic();
-    });
+    watch(STATIC_PATH + '/**/*')
+      .pipe( gulp.dest('build') );
 
 }
 

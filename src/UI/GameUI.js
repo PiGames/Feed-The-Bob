@@ -29,6 +29,7 @@ export default class GameUI {
   initPauseScreen() {
     this.buttonPause = this.game.add.button( this.game.world.width - 20, 20, 'button-pause', this.managePause, this, 1, 0, 2 );
     this.buttonPause.anchor.set( 1, 0 );
+    this.buttonPause.input.priorityID = 0;
 
     this.buttonPause.y = -this.buttonPause.height - 20;
     this.game.add.tween( this.buttonPause ).to( { y: 20 }, 1000, Phaser.Easing.Exponential.Out, true );
@@ -36,18 +37,23 @@ export default class GameUI {
     this.screenPausedGroup = this.game.add.group();
     this.screenPausedBg = this.game.add.sprite( 0, 0, 'overlay' );
     this.screenPausedBg.scale.setTo( 2 );
+    this.screenPausedBg.inputEnabled = true;
+    this.screenPausedBg.input.priorityID = 1;
 
     this.screenPausedText = new Text( this.game, 'center', 'center', 'Paused', PAUSE_TITLE_FONT );
 
     this.buttonAudio = this.game.add.button( this.game.world.width - 20, 20, 'button-audio', this.clickAudio, this, 1, 0, 2 );
     this.buttonAudio.anchor.set( 1, 0 );
     this.buttonAudio.setFrames( getAudioOffset() + 1, getAudioOffset() + 0, getAudioOffset() + 2 );
+    this.buttonAudio.input.priorityID = 1;
 
     this.screenPausedBack = this.game.add.button( 150, this.game.world.height - 100, 'button-mainmenu', this.stateBack, this, 1, 0, 2 );
     this.screenPausedBack.anchor.set( 0, 1 );
+    this.screenPausedBack.input.priorityID = 1;
 
     this.screenPausedContinue = this.game.add.button( this.game.world.width - 150, this.game.world.height - 100, 'button-continue', this.managePause, this, 1, 0, 2 );
     this.screenPausedContinue.anchor.set( 1, 1 );
+    this.screenPausedContinue.input.priorityID = 1;
 
     this.screenPausedGroup.add( this.screenPausedBg );
     this.screenPausedGroup.add( this.screenPausedText );
@@ -60,14 +66,24 @@ export default class GameUI {
 
   initGameoverScreen() {
     this.screenGameoverGroup = this.game.add.group();
+
     this.screenGameoverBg = this.game.add.sprite( 0, 0, 'overlay' );
     this.screenGameoverBg.scale.setTo( 2 );
+    this.screenGameoverBg.inputEnabled = true;
+    this.screenGameoverBg.input.priorityID = 2;
+
     this.screenGameoverText = new Text( this.game, 'center', 100, 'Game over', GAMEOVER_TITLE_FONT );
+
     this.screenGameoverBack = this.game.add.button( 150, this.game.world.height - 100, 'button-mainmenu', this.stateBack, this, 1, 0, 2 );
     this.screenGameoverBack.anchor.set( 0, 1 );
+    this.screenGameoverBack.input.priorityID = 2;
+
     this.screenGameoverRestart = this.game.add.button( this.game.world.width - 150, this.game.world.height - 100, 'button-restart', this.stateRestart, this, 1, 0, 2 );
     this.screenGameoverRestart.anchor.set( 1, 1 );
+    this.screenGameoverRestart.input.priorityID = 2;
+
     this.screenGameoverScore = new Text( this.game, 'center', 'center', 'Score: ' + this.score, GAMEOVER_SCORE_FONT );
+
     this.screenGameoverGroup.add( this.screenGameoverBg );
     this.screenGameoverGroup.add( this.screenGameoverText );
     this.screenGameoverGroup.add( this.screenGameoverBack );
