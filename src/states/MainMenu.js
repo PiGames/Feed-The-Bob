@@ -25,8 +25,8 @@ export default class MainMenu extends Phaser.State {
     const buttonWiki = this.add.button( 20, this.world.height - 20, 'button-wiki', this.clickAchievements, this, 1, 0, 2 );
     buttonWiki.anchor.set( 0, 1 );
 
-    // Highscore text
-    new Text( this.game, 'center', this.world.height - 50, 'Highscore: ' + highscore, MENU_HIGHSCORE_FONT, [ null, 1 ] );
+    const highscoreText = new Text( this.game, 'center', this.world.height - 50, 'Highscore: ' + highscore, MENU_HIGHSCORE_FONT, [ null, 1 ] );
+    highscoreText.padding.set( 0, 15 );
 
     manageAudio( 'init', this );
 

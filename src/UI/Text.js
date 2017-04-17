@@ -13,8 +13,6 @@ export default class Text extends Phaser.Text {
       newAnchor[ 1 ] = newAnchor[ 1 ] || 0.5;
     }
 
-    console.log( this );
-
     if ( style.shadow ) {
       const shadow = style.shadow.match( /rgba\(.+\)|[^ ]+/g );
       this.setShadow.apply( this, shadow );

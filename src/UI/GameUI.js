@@ -103,7 +103,7 @@ export default class GameUI {
   handlePointsAddition() {
     this.score++;
     this.textScore.setText( SCORE_TEMPLATE( this.score ) );
-    this.state.foodSpawner.tryDifficultyLevelUp.call( this.state, this.score );
+    this.state.foodSpawner.tryDifficultyLevelUp( this.score );
   }
 
   managePause() {

@@ -35,6 +35,13 @@ window.WebFontConfig = {
   google: {
     families: [ 'Gloria Hallelujah' ],
   },
+  fontsLoaded: false,
+  active: () => {
+    window.fontsLoaded = true;
+  },
+  inactive: () => {
+    window.fontsLoaded = true;
+  },
 };
 
 export default class Preloader extends Phaser.State {
@@ -55,8 +62,9 @@ export default class Preloader extends Phaser.State {
 
     this.load.script( 'webfont', '//ajax.googleapis.com/ajax/libs/webfont/1.4.7/webfont.js' );
   }
-  create() {
-    this.state.start( 'MainMenu' );
-    // this.state.start( 'Game' );
+  update() {
+    if ( window.fontsLoaded ) {
+      this.state.start( 'MainMenu' );
+    }
   }
 }

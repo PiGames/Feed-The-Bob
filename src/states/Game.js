@@ -25,7 +25,7 @@ export default class Game extends Phaser.State {
     this.game.physics.startSystem( Phaser.Physics.ARCADE );
 
     this.game.onResume.add( () => {
-      if ( this.stateStatus !== 'playing' ) {
+      if ( this.gameUI.stateStatus !== 'playing' ) {
         this.game.time.events.pause();
       }
     } );
