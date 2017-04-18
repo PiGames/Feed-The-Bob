@@ -13,6 +13,10 @@ export default class Bob extends Phaser.Sprite {
     this.scale.setTo( 0.5 );
 
     this.game.world.add( this );
+
+    this.scoreValue = 3;
+
+    this.onScoreValueChange = new Phaser.Signal();
   }
 
   hadleWeightChange() {
@@ -26,6 +30,8 @@ export default class Bob extends Phaser.Sprite {
     let isFat = false;
     let isSuperFat = false;
     let isDeadFromFat = false;
+
+    let scoreValue = 0;
 
     nutritionStatuses.forEach( ( v ) => {
       switch ( v ) {
@@ -49,8 +55,14 @@ export default class Bob extends Phaser.Sprite {
         isDeadFromFat = true;
         isSuperFat = true;
         break;
+      default:
+        scoreValue += 1;
       }
     } );
+    if ( this.scoreValue !== scoreValue ) {
+      this.scoreValue = scoreValue;
+      this.onScoreValueChange.dispatch( scoreValue );
+    }
 
     if ( isSuperThin || isThin || isFat || isSuperFat ) {
       if ( isThin ) {

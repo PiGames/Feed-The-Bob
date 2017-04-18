@@ -5,15 +5,19 @@ import Text from './Text';
 import { PPTStorage } from '../utils/StorageManager';
 
 export default class GameUI {
-  constructor( state ) {
+  constructor( state, Bob ) {
     this.state = state;
     this.game = state.game;
+
+    this.Bob = Bob;
 
     this.stateStatus = 'playing';
 
     this.score = 0;
     this.runOnce = false;
     this.gamePaused = false;
+
+    this.scoreValue = 3;
 
     this.initScore();
     this.initPauseScreen();
@@ -119,8 +123,12 @@ export default class GameUI {
     }
   }
 
+  onScoreValueChange( scoreValue ) {
+    this.scoreValue = scoreValue;
+  }
+
   handlePointsAddition() {
-    this.score++;
+    this.score += this.scoreValue;
     this.textScore.setText( SCORE_TEMPLATE( this.score ) );
     this.state.foodSpawner.tryDifficultyLevelUp( this.score );
   }

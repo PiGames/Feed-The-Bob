@@ -11,6 +11,7 @@ export default class Game extends Phaser.State {
 
     this.NutritionManager = new NutritionManager( this.game );
     this.bob = new Bob( this.game, this.world.width / 2, this.world.height - 32, 'bob', this.NutritionManager, this.gameUI.stateGameover.bind( this.gameUI ) );
+    this.bob.onScoreValueChange.add( ( ...args ) => this.gameUI.onScoreValueChange( ...args ) );
 
     this.foodSpawner = new FoodSpawner( this.game, this.NutritionManager, true );
     this.foodContainer = this.foodSpawner.children;
