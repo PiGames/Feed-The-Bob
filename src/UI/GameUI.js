@@ -14,6 +14,7 @@ export default class GameUI {
     this.stateStatus = 'playing';
 
     this.score = 0;
+    this.timePassed = 0;
     this.runOnce = false;
     this.gamePaused = false;
 
@@ -128,9 +129,10 @@ export default class GameUI {
   }
 
   handlePointsAddition() {
+    this.timePassed++;
     this.score += this.scoreValue;
     this.textScore.setText( SCORE_TEMPLATE( this.score ) );
-    this.state.foodSpawner.tryDifficultyLevelUp( this.score );
+    this.state.foodSpawner.tryDifficultyLevelUp( this.timePassed );
   }
 
   managePause() {

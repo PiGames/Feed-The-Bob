@@ -95,11 +95,14 @@ export default class Wiki extends Phaser.State {
     centerObjectInWidth( fats, this.world );
     const proteins = this.add.text( 0, 425, `Proteins: ${FOOD_DATA[ index ].nutritionFacts.proteins}g`, fontNutritionFacts );
     centerObjectInWidth( proteins, this.world );
+    const quantity = this.add.text( 0, 475, `Quantity: ${FOOD_DATA[ index ].quantity}`, fontNutritionFacts );
+    centerObjectInWidth( quantity, this.world );
 
     group.add( title );
     group.add( sprite );
     group.add( carbohydrates );
     group.add( fats );
     group.add( proteins );
+    group.add( quantity );
   }
 }
