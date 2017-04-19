@@ -20,6 +20,8 @@ export default class GameUI {
 
     this.scoreValue = 3;
 
+    this.timeAdvance = new Phaser.Signal();
+
     this.initScore();
     this.initHealthBar();
     this.initPauseScreen();
@@ -136,11 +138,16 @@ export default class GameUI {
     this.scoreValue = scoreValue;
   }
 
+  updateHealthBarValue( health ) {
+    this.healthBar.width = 180 * ( health / 100 );
+  }
+
   handlePointsAddition() {
     this.timePassed++;
     this.score += this.scoreValue;
     this.textScore.setText( SCORE_TEMPLATE( this.score ) );
     this.state.foodSpawner.tryDifficultyLevelUp( this.timePassed );
+    this.timeAdvance.dispatch();
   }
 
   managePause() {

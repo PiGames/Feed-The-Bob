@@ -17,9 +17,11 @@ export default class Bob extends Phaser.Sprite {
     this.scoreValue = 3;
 
     this.onScoreValueChange = new Phaser.Signal();
+
+    this.onWeightChange = new Phaser.Signal();
   }
 
-  hadleWeightChange() {
+  handleWeightChange() {
     const nutrition = this.NutritionManager.nutrition;
 
     const nutritionStatuses = [ this.getStatus( nutrition.carbohydrates, GOOD_AMOUNT_OF_CARBOHYDRATES ), this.getStatus( nutrition.fats, GOOD_AMOUNT_OF_FATS ), this.getStatus( nutrition.proteins, GOOD_AMOUNT_OF_PROTEINS ) ];
@@ -59,6 +61,8 @@ export default class Bob extends Phaser.Sprite {
         scoreValue += 1;
       }
     } );
+    this.onWeightChange.dispatch( isSuperFat || isSuperThin );
+
     if ( this.scoreValue !== scoreValue ) {
       this.scoreValue = scoreValue;
       this.onScoreValueChange.dispatch( scoreValue );
