@@ -1,4 +1,4 @@
-import { MIN_FOOD_VELOCITY, MAX_FOOD_VELOCITY } from '../constants/FoodConstants';
+import { MIN_FOOD_VELOCITY, MAX_FOOD_VELOCITY, FOOD_TWEEN_SPEED, FOOD_TWEEN_X, FOOD_TWEEN_Y, FOOD_SCALE, FOOD_TWEEN_SCALE } from '../constants/FoodConstants';
 
 export default class Food extends Phaser.Sprite {
   constructor( game, x, y, key, data, NutritionManager, onDestroy ) {
@@ -6,7 +6,8 @@ export default class Food extends Phaser.Sprite {
     this.onDestroy = onDestroy;
     this.data = data;
     this.NutritionManager = NutritionManager;
-    this.scale.setTo( 0.75 );
+    this.scale.setTo( FOOD_SCALE );
+    this.anchor.setTo( 0.5, 0.5 );
     this.game.physics.enable( this );
 
     const directionX = x > this.game.world.centerX ? -1 : 1;
@@ -47,7 +48,10 @@ export default class Food extends Phaser.Sprite {
 
   handleClick() {
     const tween = this.game.add.tween( this );
-    tween.to( { x: this.game.world.centerX - 40, y: this.game.world.height - 680 }, 500, Phaser.Easing.Linear.None, true );
+    const tweenScale = this.game.add.tween( this.scale );
+    tween.to( { x: this.game.world.centerX - FOOD_TWEEN_X, y: this.game.world.height - FOOD_TWEEN_Y }, FOOD_TWEEN_SPEED, Phaser.Easing.Linear.None, true );
+    tweenScale.to( { x: FOOD_TWEEN_SCALE, y: FOOD_TWEEN_SCALE }, FOOD_TWEEN_SPEED, Phaser.Easing.Linear.None, true );
+
     tween.onComplete.add( () => {
       this.NutritionManager.updateStats( this.data );
       this.onDestroy( this );

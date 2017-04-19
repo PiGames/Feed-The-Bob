@@ -1,5 +1,6 @@
 import { GOOD_AMOUNT_OF_CARBOHYDRATES, GOOD_AMOUNT_OF_FATS, GOOD_AMOUNT_OF_PROTEINS } from '../constants/NutritionConstants';
 import { SUPER_THIN_BREAKPOINT, THIN_BREAKPOINT, FAT_BREAKPOINT, SUPER_FAT_BREAKPOINT } from '../constants/WeightBreakpoints';
+import { BOB_SCALE } from '../constants/BobConstants';
 
 export default class Bob extends Phaser.Sprite {
   constructor( game, x, y, imageKey, NutritionManager, handleDeath ) {
@@ -10,7 +11,7 @@ export default class Bob extends Phaser.Sprite {
     this.NutritionManager = NutritionManager;
 
     this.anchor.setTo( 0.5, 1 );
-    this.scale.setTo( 0.5 );
+    this.scale.setTo( BOB_SCALE );
 
     this.game.world.add( this );
 
@@ -66,7 +67,7 @@ export default class Bob extends Phaser.Sprite {
 
     if ( isSuperThin || isThin || isFat || isSuperFat ) {
       if ( isThin ) {
-        this.frame = 1;
+        this.frame = 6;
       }
 
       if ( isSuperThin ) {
@@ -74,22 +75,22 @@ export default class Bob extends Phaser.Sprite {
       }
 
       if ( isFat ) {
-        this.frame = 3;
+        this.frame = 12;
       }
 
       if ( isSuperFat ) {
-        this.frame = 4;
+        this.frame = 14;
       }
     } else {
-      this.frame = 2;
+      this.frame = 8;
     }
 
     if ( isDeadFromFat ) {
-      this.handleDeath( 'fat' );
+      this.handleDeath( 'beeing too fat' );
     }
 
     if ( isDeadFromThinness ) {
-      this.handleDeath( 'thinness' );
+      this.handleDeath( 'beeing too thin' );
     }
   }
 

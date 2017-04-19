@@ -1,5 +1,14 @@
+import { BOB_OFFSET_Y, BOB_SCALE } from './BobConstants';
+
 export const MIN_FOOD_VELOCITY = 120;
 export const MAX_FOOD_VELOCITY = 200;
+
+export const FOOD_SCALE = 1;
+
+export const FOOD_TWEEN_SPEED = 500;
+export const FOOD_TWEEN_SCALE = 0.75;
+export const FOOD_TWEEN_X = 0;
+export const FOOD_TWEEN_Y = 560 * BOB_SCALE + BOB_OFFSET_Y;
 
 export const FOOD_SPAWN_INTERVAL = Phaser.Timer.SECOND;
 export const FOOD_SPAWN_BOUNDS_WIDTH = 500;

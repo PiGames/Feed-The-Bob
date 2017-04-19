@@ -20,6 +20,7 @@ export default class GameUI {
 
     this.scoreValue = 3;
 
+    this.game.add.sprite( 0, 0, 'background' );
     this.initScore();
     this.initPauseScreen();
     this.initGameoverScreen();
@@ -52,11 +53,11 @@ export default class GameUI {
     this.buttonAudio.setFrames( getAudioOffset() + 1, getAudioOffset() + 0, getAudioOffset() + 2 );
     this.buttonAudio.input.priorityID = 1;
 
-    this.screenPausedBack = this.game.add.button( 150, this.game.world.height - 100, 'button-mainmenu', this.stateBack, this, 1, 0, 2 );
+    this.screenPausedBack = this.game.add.button( 20, this.game.world.height - 20, 'button-mainmenu', this.stateBack, this, 1, 0, 2 );
     this.screenPausedBack.anchor.set( 0, 1 );
     this.screenPausedBack.input.priorityID = 1;
 
-    this.screenPausedContinue = this.game.add.button( this.game.world.width - 150, this.game.world.height - 100, 'button-continue', this.managePause, this, 1, 0, 2 );
+    this.screenPausedContinue = this.game.add.button( this.game.world.width - 20, this.game.world.height - 20, 'button-continue', this.managePause, this, 1, 0, 2 );
     this.screenPausedContinue.anchor.set( 1, 1 );
     this.screenPausedContinue.input.priorityID = 1;
 
