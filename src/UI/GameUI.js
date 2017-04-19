@@ -20,8 +20,11 @@ export default class GameUI {
 
     this.scoreValue = 3;
 
+    this.timeAdvance = new Phaser.Signal();
+
     this.game.add.sprite( 0, 0, 'background' );
     this.initScore();
+    this.initHealthBar();
     this.initPauseScreen();
     this.initGameoverScreen();
   }
@@ -30,6 +33,13 @@ export default class GameUI {
     this.textScore = new Text( this.game, 30, this.game.world.height - 20, SCORE_TEMPLATE( this.score ), SCORE_FONT, [ 0, 1 ] );
 
     this.game.time.events.loop( Phaser.Timer.SECOND * 1, this.handlePointsAddition, this );
+  }
+
+  initHealthBar() {
+    new Text( this.game, 30, this.game.world.height - 100, 'Health: ', SCORE_FONT, [ 0, 1 ] );
+
+    this.healthBar = this.game.add.tileSprite( 240, this.game.world.height - 120, 180, 50, 'heart' );
+    this.healthBar.anchor.setTo( 0, 1 );
   }
 
   initPauseScreen() {
@@ -129,11 +139,16 @@ export default class GameUI {
     this.scoreValue = scoreValue;
   }
 
+  updateHealthBarValue( health ) {
+    this.healthBar.width = 180 * ( health / 100 );
+  }
+
   handlePointsAddition() {
     this.timePassed++;
     this.score += this.scoreValue;
     this.textScore.setText( SCORE_TEMPLATE( this.score ) );
     this.state.foodSpawner.tryDifficultyLevelUp( this.timePassed );
+    this.timeAdvance.dispatch();
   }
 
   managePause() {

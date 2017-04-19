@@ -4,6 +4,7 @@ import FoodSpawner from '../objects/FoodSpawner';
 import Bob from '../objects/Bob';
 
 import NutritionManager from '../objects/NutritionManager';
+import HealthHandler from '../objects/HealthHandler';
 
 import { BOB_OFFSET_Y } from '../constants/BobConstants';
 
@@ -14,6 +15,12 @@ export default class Game extends Phaser.State {
     this.NutritionManager = new NutritionManager( this.game );
     this.bob = new Bob( this.game, this.world.width / 2, this.world.height - BOB_OFFSET_Y, 'bob', this.NutritionManager, this.gameUI.stateGameover.bind( this.gameUI ) );
     this.bob.onScoreValueChange.add( ( ...args ) => this.gameUI.onScoreValueChange( ...args ) );
+
+    const healthHandler = new HealthHandler();
+    this.bob.onWeightChange.add( ( ...args ) => healthHandler.setShouldBobBeHarmed( ...args ) );
+    this.gameUI.timeAdvance.add( () => healthHandler.doHarmToBob() );
+    healthHandler.onHealthUpdate.add( ( ...args ) => this.gameUI.updateHealthBarValue( ...args ) );
+    healthHandler.onHealthUpdate.add( ( ...args ) => this.checkForDeath( ...args ) );
 
     this.foodSpawner = new FoodSpawner( this.game, this.NutritionManager, true );
     this.foodContainer = this.foodSpawner.children;
@@ -30,9 +37,15 @@ export default class Game extends Phaser.State {
     } );
   }
 
+  checkForDeath( health ) {
+    if ( health <= 0 ) {
+      this.gameUI.stateGameover( 'dangerous nutriotion style' );
+    }
+  }
+
   update() {
     this.gameUI.updateUI();
-    this.bob.hadleWeightChange();
+    this.bob.handleWeightChange();
   }
 
   stopMovingFood() {
