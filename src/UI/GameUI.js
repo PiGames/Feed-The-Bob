@@ -21,6 +21,7 @@ export default class GameUI {
     this.scoreValue = 3;
 
     this.initScore();
+    this.initHealthBar();
     this.initPauseScreen();
     this.initGameoverScreen();
   }
@@ -29,6 +30,13 @@ export default class GameUI {
     this.textScore = new Text( this.game, 30, this.game.world.height - 20, SCORE_TEMPLATE( this.score ), SCORE_FONT, [ 0, 1 ] );
 
     this.game.time.events.loop( Phaser.Timer.SECOND * 1, this.handlePointsAddition, this );
+  }
+
+  initHealthBar() {
+    new Text( this.game, 30, this.game.world.height - 100, 'Health: ', SCORE_FONT, [ 0, 1 ] );
+
+    this.healthBar = this.game.add.tileSprite( 240, this.game.world.height - 120, 180, 50, 'heart' );
+    this.healthBar.anchor.setTo( 0, 1 );
   }
 
   initPauseScreen() {
