@@ -93,7 +93,7 @@ export default class NutritionUI {
     mask.endFill();
 
     const statusText = this.NutritionTexts[ i ];
-    statusText.setText( `${parseInt( value )} / ${goodAmount}` );
+    statusText.setText( `${parseInt( Math.max( value, 0 ) )} / ${goodAmount}` );
   }
 
   drawBar( value, goodAmount, i, text ) {
@@ -123,7 +123,7 @@ export default class NutritionUI {
     // descText
     new Text( this.game, this.game.width - NUTRITION_BAR_X_FROM_LEFT + NUTRITION_BAR_TEXT_OFFSET_X - width, this.game.height - NUTRITION_BAR_Y_FROM_BOTTOM - offset - NUTRITION_BAR_TEXT_OFFSET_Y, text, NUTRITION_BAR_INFO_FONT, [ 0, 1 ] );
 
-    const statusText = new Text( this.game, this.game.width - NUTRITION_BAR_X_FROM_LEFT - NUTRITION_BAR_TEXT_OFFSET_X, this.game.height - NUTRITION_BAR_Y_FROM_BOTTOM - NUTRITION_BAR_TEXT_OFFSET_Y - offset, `${parseInt( value )} / ${goodAmount}`, NUTRITION_BAR_INFO_FONT, [ 1, 1 ] );
+    const statusText = new Text( this.game, this.game.width - NUTRITION_BAR_X_FROM_LEFT - NUTRITION_BAR_TEXT_OFFSET_X, this.game.height - NUTRITION_BAR_Y_FROM_BOTTOM - NUTRITION_BAR_TEXT_OFFSET_Y - offset, `${Math.max( parseInt( value ), 0 )} / ${goodAmount}`, NUTRITION_BAR_INFO_FONT, [ 1, 1 ] );
 
     this.NutritionTexts[ i ] = statusText;
   }

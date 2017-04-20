@@ -30,6 +30,7 @@ const resources = {
 
 export default class Preloader extends Phaser.State {
   preload() {
+    this.add.sprite( 0, 0, 'loadingbg' );
     this.add.sprite( ( this.world.width - 580 ) * 0.5, ( this.world.height + 150 ) * 0.5, 'loading-background' );
     const preloadProgress = this.add.sprite( ( this.world.width - 540 ) * 0.5, ( this.world.height + 170 ) * 0.5, 'loading-progress' );
     this.load.setPreloadSprite( preloadProgress );
