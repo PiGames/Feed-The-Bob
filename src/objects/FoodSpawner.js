@@ -4,12 +4,13 @@ import { FOOD_SPAWN_INTERVAL, FOOD_SPAWN_BOUNDS_WIDTH, FOOD_SPAWN_BOUNDS_HEIGHT,
 import { TIME_TO_REACH_HARD_LEVEL, TIME_TO_REACH_MEDIUM_LEVEL } from '../constants/DifficultyLevelIntervals.js';
 
 export default class FoodSpawner extends Phaser.Group {
-  constructor( game, NutritionManager, enableDifficultyLevelGrowth = false ) {
+  constructor( game, enableDifficultyLevelGrowth = false ) {
     super( game );
-    this.NutritionManager = NutritionManager;
     this.enableDifficultyLevelGrowth = enableDifficultyLevelGrowth;
 
     this.timer = this.game.time.events.loop( FOOD_SPAWN_INTERVAL, this.spawnFood, this );
+
+    this.updateStatsSignal = new Phaser.Signal();
 
     if ( this.enableDifficultyLevelGrowth ) {
       this.sortedFoodData = FOOD_DATA.sort( ( food1, food2 ) => food1.complexityLevel > food2.complexityLevel );
@@ -49,7 +50,7 @@ export default class FoodSpawner extends Phaser.Group {
       foodType = getRandomWithWeight( this.sortedFoodData, this.currentDifficultyLevelLastIndex + 1 );
     }
     console.log( 'food spawned' );
-    const newFood = new Food( this.game, x, y, foodType.key, foodType.nutritionFacts, this.NutritionManager, this.removeChild.bind( this ) );
+    const newFood = new Food( this.game, x, y, foodType.key, foodType.nutritionFacts, this.updateStatsSignal, this.removeChild.bind( this ) );
     this.children.push( newFood );
   }
   update() {

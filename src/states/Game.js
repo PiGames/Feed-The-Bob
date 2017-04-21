@@ -10,9 +10,13 @@ import { BOB_OFFSET_Y } from '../constants/BobConstants';
 
 export default class Game extends Phaser.State {
   create() {
-    this.gameUI = new GameUI( this );
+    this.foodSpawner = new FoodSpawner( this.game, true );
+    this.foodContainer = this.foodSpawner.children;
 
+    this.gameUI = new GameUI( this );
     this.NutritionManager = new NutritionManager( this.game );
+    this.foodSpawner.updateStatsSignal.add( ( ...args ) => this.NutritionManager.updateStats( ...args ) );
+
     this.bob = new Bob( this.game, this.world.width / 2, this.world.height - BOB_OFFSET_Y, 'bob', this.NutritionManager, this.gameUI.stateGameover.bind( this.gameUI ) );
     this.bob.onScoreValueChange.add( ( ...args ) => this.gameUI.onScoreValueChange( ...args ) );
 
@@ -21,9 +25,6 @@ export default class Game extends Phaser.State {
     this.gameUI.timeAdvance.add( () => healthHandler.doHarmToBob() );
     healthHandler.onHealthUpdate.add( ( ...args ) => this.gameUI.updateHealthBarValue( ...args ) );
     healthHandler.onHealthUpdate.add( ( ...args ) => this.checkForDeath( ...args ) );
-
-    this.foodSpawner = new FoodSpawner( this.game, this.NutritionManager, true );
-    this.foodContainer = this.foodSpawner.children;
 
     this.camera.resetFX();
     this.camera.flash( 0x000000, 500, false );
