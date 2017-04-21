@@ -40,6 +40,7 @@ export default class Game extends Phaser.State {
   checkForDeath( health ) {
     if ( health <= 0 ) {
       this.gameUI.stateGameover( 'dangerous nutriotion style' );
+      this.game.veryBadGlobalFlagToMakeAHotFixSorryButIHaveToUseIt = false;
     }
   }
 

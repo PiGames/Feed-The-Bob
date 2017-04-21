@@ -26,6 +26,10 @@ export default class FoodSpawner extends Phaser.Group {
     this.spawnFood();
   }
   spawnFood() {
+    if ( this.game.veryBadGlobalFlagToMakeAHotFixSorryButIHaveToUseIt === false ) {
+      // I really don't know how to handle this differently, I'll ask on Slack or smth...
+      return;
+    }
     const sides = [ 'NORTH', 'EAST', 'SOUTH', 'WEST' ];
     const spawnSide = sides[ Math.floor( Math.random() * 4 ) ];
     let x;
@@ -44,6 +48,7 @@ export default class FoodSpawner extends Phaser.Group {
       this.tryDifficultyLevelUp();
       foodType = getRandomWithWeight( this.sortedFoodData, this.currentDifficultyLevelLastIndex + 1 );
     }
+    console.log( 'food spawned' );
     const newFood = new Food( this.game, x, y, foodType.key, foodType.nutritionFacts, this.NutritionManager, this.removeChild.bind( this ) );
     this.children.push( newFood );
   }
@@ -57,9 +62,12 @@ export default class FoodSpawner extends Phaser.Group {
   }
   // this method should be called from a callback that counts points
   tryDifficultyLevelUp( score ) {
-    if ( score >= TIME_TO_REACH_MEDIUM_LEVEL && this.currentDifficultyLevelLastIndex !== this.mediumLevelLastIndex && this.currentDifficultyLevelLastIndex !== this.hardLevelLastIndex ) {
+    if ( score >= TIME_TO_REACH_MEDIUM_LEVEL &&
+       this.currentDifficultyLevelLastIndex !== this.mediumLevelLastIndex &&
+       this.currentDifficultyLevelLastIndex !== this.hardLevelLastIndex ) {
       this.currentDifficultyLevelLastIndex = this.mediumLevelLastIndex;
-    } else if ( score >= TIME_TO_REACH_HARD_LEVEL && this.currentDifficultyLevelLastIndex !== this.hardLevelLastIndex ) {
+    } else if ( score >= TIME_TO_REACH_HARD_LEVEL &&
+      this.currentDifficultyLevelLastIndex !== this.hardLevelLastIndex ) {
       this.currentDifficultyLevelLastIndex = this.hardLevelLastIndex;
     }
   }
