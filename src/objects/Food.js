@@ -49,8 +49,10 @@ export default class Food extends Phaser.Sprite {
   handleClick() {
     const tween = this.game.add.tween( this );
     const tweenScale = this.game.add.tween( this.scale );
+    const tweenSpin = this.game.add.tween( this );
     tween.to( { x: this.game.world.centerX - FOOD_TWEEN_X, y: this.game.world.height - FOOD_TWEEN_Y }, FOOD_TWEEN_SPEED, Phaser.Easing.Linear.None, true );
     tweenScale.to( { x: FOOD_TWEEN_SCALE, y: FOOD_TWEEN_SCALE }, FOOD_TWEEN_SPEED, Phaser.Easing.Linear.None, true );
+    tweenSpin.to( { angle: 360 }, FOOD_TWEEN_SPEED, Phaser.Easing.Linear.None, true );
 
     tween.onComplete.add( () => {
       this.updateStatsSignal.dispatch( this.data );
