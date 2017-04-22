@@ -40,6 +40,7 @@ export default class GameUI {
 
     this.healthBar = this.game.add.tileSprite( 240, this.game.world.height - 120, 180, 50, 'heart' );
     this.healthBar.anchor.setTo( 0, 1 );
+    this.healthBar.scale.setTo( 1.25 );
   }
 
   initPauseScreen() {

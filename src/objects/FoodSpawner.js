@@ -49,7 +49,6 @@ export default class FoodSpawner extends Phaser.Group {
       this.tryDifficultyLevelUp();
       foodType = getRandomWithWeight( this.sortedFoodData, this.currentDifficultyLevelLastIndex + 1 );
     }
-    console.log( 'food spawned' );
     const newFood = new Food( this.game, x, y, foodType.key, foodType.nutritionFacts, this.updateStatsSignal, this.removeChild.bind( this ) );
     this.children.push( newFood );
   }

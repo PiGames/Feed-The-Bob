@@ -22,7 +22,7 @@ export default class MainMenu extends Phaser.State {
     this.buttonAudio = this.add.button( this.world.width - 20, 20, 'button-audio', this.clickAudio, this, 1, 0, 2 );
     this.buttonAudio.anchor.set( 1, 0 );
 
-    const buttonWiki = this.add.button( 20, this.world.height - 20, 'button-wiki', this.clickAchievements, this, 1, 0, 2 );
+    const buttonWiki = this.add.button( 20, this.world.height - 20, 'button-wiki', this.clickWiki, this, 1, 0, 2 );
     buttonWiki.anchor.set( 0, 1 );
 
     const highscoreText = new Text( this.game, 'center', this.world.height - 50, 'Highscore: ' + highscore, MENU_HIGHSCORE_FONT, [ null, 1 ] );
@@ -62,8 +62,11 @@ export default class MainMenu extends Phaser.State {
       this.game.state.start( 'Game' );
     } );
   }
-  clickAchievements() {
+  clickWiki() {
     playAudio( 'click' );
-    this.game.state.start( 'Wiki' );
+    this.camera.fade( 0x000000, 200, false );
+    this.camera.onFadeComplete.add( () => {
+      this.game.state.start( 'Wiki' );
+    }, this );
   }
 }

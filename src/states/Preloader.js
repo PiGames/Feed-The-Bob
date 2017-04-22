@@ -56,6 +56,7 @@ export default class Preloader extends Phaser.State {
     if ( this.initialFontSize !== this.span.clientHeight ) {
       document.body.removeChild( this.span );
       this.state.start( 'MainMenu' );
+      // this.state.start( 'Wiki' );
     }
   }
 }
