@@ -17,7 +17,7 @@ export const FOOD_SPAWN_BOUNDS_HEIGHT = 300;
 export const FOOD_WIDTH = 100;
 export const FOOD_HEIGHT = 75;
 
-export const FOOD_DATA = [
+export const FOOD_DATA = Object.freeze( [
   // Complexity lv. 1
   { 'key': 0, 'name': 'apple', 'nutritionFacts': { 'carbohydrates': 12, 'fats': 0, 'proteins': 0 }, 'complexityLevel': 1, 'probability': 2, 'quantity': 'one apple' },
   { 'key': 4, 'name': 'butter', 'nutritionFacts': { 'carbohydrates': 0, 'fats': 20, 'proteins': 0 }, 'complexityLevel': 1, 'probability': 1, 'quantity': 'two spoons' },
@@ -33,4 +33,4 @@ export const FOOD_DATA = [
   { 'key': 3, 'name': 'hamburger', 'nutritionFacts': { 'carbohydrates': 30, 'fats': 13, 'proteins': 16 }, 'complexityLevel': 3, 'probability': 1, 'quantity': 'one hamburger' },
   { 'key': 8, 'name': 'peanut butter', 'nutritionFacts': { 'carbohydrates': 6, 'fats': 16, 'proteins': 8 }, 'complexityLevel': 3, 'probability': 1, 'quantity': '2 spoons' },
   { 'key': 6, 'name': 'milk', 'nutritionFacts': { 'carbohydrates': 12, 'fats': 8, 'proteins': 8 }, 'complexityLevel': 3, 'probability': 1, 'quantity': 'one cup' },
-];
+] );

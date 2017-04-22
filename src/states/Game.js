@@ -2,17 +2,18 @@ import GameUI from '../UI/GameUI';
 
 import FoodSpawner from '../objects/FoodSpawner';
 import Bob from '../objects/Bob';
-
 import NutritionManager from '../objects/NutritionManager';
 import HealthHandler from '../objects/HealthHandler';
+import { initFoodDataManager } from '../objects/FoodDataManager';
 
 import { BOB_OFFSET_Y } from '../constants/BobConstants';
 
 export default class Game extends Phaser.State {
   create() {
+    initFoodDataManager();
+
     this.foodSpawner = new FoodSpawner( this.game, true );
     this.foodContainer = this.foodSpawner.children;
-
     this.gameUI = new GameUI( this );
     this.NutritionManager = new NutritionManager( this.game );
     this.foodSpawner.updateStatsSignal.add( ( ...args ) => this.NutritionManager.updateStats( ...args ) );
@@ -36,6 +37,9 @@ export default class Game extends Phaser.State {
         this.game.time.events.pause();
       }
     } );
+
+    // don't bother it's just a hot fix, or not...
+    this.game.veryBadGlobalFlagToMakeAHotFixSorryButIHaveToUseIt = true;
   }
 
   checkForDeath( health ) {

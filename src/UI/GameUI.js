@@ -38,7 +38,7 @@ export default class GameUI {
   initHealthBar() {
     new Text( this.game, 30, this.game.world.height - 100, 'Health: ', SCORE_FONT, [ 0, 1 ] );
 
-    this.healthBar = this.game.add.tileSprite( 240, this.game.world.height - 120, 180, 50, 'heart' );
+    this.healthBar = this.game.add.tileSprite( 240, this.game.world.height - 120, 300, 50, 'heart' );
     this.healthBar.anchor.setTo( 0, 1 );
   }
 
@@ -140,7 +140,7 @@ export default class GameUI {
   }
 
   updateHealthBarValue( health ) {
-    this.healthBar.width = 180 * ( health / 100 );
+    this.healthBar.width = 300 * ( health / 100 );
   }
 
   handlePointsAddition() {

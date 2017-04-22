@@ -2,6 +2,8 @@ import { GOOD_AMOUNT_OF_CARBOHYDRATES, GOOD_AMOUNT_OF_FATS, GOOD_AMOUNT_OF_PROTE
 import { SUPER_THIN_BREAKPOINT, THIN_BREAKPOINT, FAT_BREAKPOINT, SUPER_FAT_BREAKPOINT } from '../constants/WeightBreakpoints';
 import { BOB_SCALE } from '../constants/BobConstants';
 
+import { makeKeySpawnMoreFrequently, resetFoodSpawnProbability } from '../objects/FoodDataManager';
+
 export default class Bob extends Phaser.Sprite {
   constructor( game, x, y, imageKey, NutritionManager, handleDeath ) {
     super( game, x, y, imageKey );
@@ -27,26 +29,28 @@ export default class Bob extends Phaser.Sprite {
 
     const nutritionStatuses = [ this.getStatus( nutrition.carbohydrates, GOOD_AMOUNT_OF_CARBOHYDRATES ), this.getStatus( nutrition.fats, GOOD_AMOUNT_OF_FATS ), this.getStatus( nutrition.proteins, GOOD_AMOUNT_OF_PROTEINS ) ];
 
-    let isDeadFromThinness = false;
     let isSuperThin = false;
     let isThin = false;
     let isFat = false;
     let isSuperFat = false;
-    let isDeadFromFat = false;
 
     let scoreValue = 0;
 
-    nutritionStatuses.forEach( ( v ) => {
+    const makeProbabilityHigher = [ { name: 'carbohydrates', makeHigher: false, makeSuperHigher: false },
+     { name: 'fats', makeHigher: false, makeSuperHigher: false },
+      { name: 'proteins', makeHigher: false, makeSuperHigher: false } ];
+    nutritionStatuses.forEach( ( v, index ) => {
       switch ( v ) {
       case -3:
-        isDeadFromThinness = true;
         isSuperThin = true;
         break;
       case -2:
         isSuperThin = true;
+        makeProbabilityHigher[ index ].makeSuperHigher = true;
         break;
       case -1:
         isThin = true;
+        makeProbabilityHigher[ index ].makeHigher = true;
         break;
       case 1:
         isFat = true;
@@ -55,14 +59,25 @@ export default class Bob extends Phaser.Sprite {
         isSuperFat = true;
         break;
       case 3:
-        isDeadFromFat = true;
         isSuperFat = true;
         break;
       default:
         scoreValue += 1;
       }
     } );
-    this.onWeightChange.dispatch( isSuperFat || isSuperThin );
+
+    resetFoodSpawnProbability();
+
+    makeProbabilityHigher.forEach( ( macro ) => {
+      if ( macro.makeHigher === true ) {
+        makeKeySpawnMoreFrequently( macro.name, 3 );
+      } else if ( macro.makeSuperHigher === true ) {
+        makeKeySpawnMoreFrequently( macro.name, 5 );
+      }
+    } );
+
+
+    this.onWeightChange.dispatch( isFat || isThin || isSuperFat || isSuperThin, isSuperFat || isSuperThin );
 
     if ( this.scoreValue !== scoreValue ) {
       this.scoreValue = scoreValue;
@@ -87,14 +102,6 @@ export default class Bob extends Phaser.Sprite {
       }
     } else {
       this.frame = 8;
-    }
-
-    if ( isDeadFromFat ) {
-      this.handleDeath( 'beeing too fat' );
-    }
-
-    if ( isDeadFromThinness ) {
-      this.handleDeath( 'beeing too thin' );
     }
   }
 
