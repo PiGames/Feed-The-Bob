@@ -8,6 +8,7 @@ const states = {
   'Wiki': PPT.Wiki,
   'Story': PPT.Story,
   'Game': PPT.Game,
+  'Credits': PPT.Credits,
 };
 for ( const stateName in states ) {
   game.state.add( stateName, states[ stateName ] );

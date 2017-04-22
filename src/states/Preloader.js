@@ -14,6 +14,8 @@ const resources = {
 		[ 'button-continue', 'img/ui/button-start.png', 160, 160 ],
 		[ 'button-mainmenu', 'img/ui/button-mainmenu.png', 160, 160 ],
 		[ 'button-restart', 'img/ui/button-tryagain.png', 160, 160 ],
+    [ 'button-options', 'img/ui/button-options.png', 160, 160 ],
+    [ 'button-credits', 'img/ui/button-credits.png', 160, 160 ],
 		[ 'button-wiki', 'img/ui/button-wiki.png', 160, 160 ],
 		[ 'button-pause', 'img/ui/button-pause.png', 160, 160 ],
 		[ 'button-audio', 'img/ui/button-sound.png', 160, 160 ],
