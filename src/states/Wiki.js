@@ -6,19 +6,25 @@ import Text from '../UI/Text';
 export default class Wiki extends Phaser.State {
   create() {
     this.add.sprite( 0, 0, 'loadingbg' );
+    this.camera.flash( 0x000000, 500, false );
+
+    this.ui = this.add.group();
+
     const buttonBack = this.add.button( this.world.width - 20, this.game.world.height - 20, 'button-mainmenu', this.clickBack, this, 1, 0, 2 );
     buttonBack.anchor.set( 1, 1 );
     buttonBack.x = this.world.width + buttonBack.width + 20;
     this.add.tween( buttonBack ).to( { x: this.world.width - 20 }, 500, Phaser.Easing.Exponential.Out, true );
-    this.camera.flash( 0x000000, 500, false );
 
-    const buttonNext = this.add.button( 0, this.world.height / 2, 'button-next', this.goToNextWikiPage, this, 1, 0, 2 );
-    buttonNext.x = this.world.width - 64;
-    buttonNext.anchor.setTo( 1, 0.5 );
+    this.buttonNext = this.add.button( 0, this.world.height / 2, 'button-next', this.goToNextWikiPage, this, 1, 0, 2 );
+    this.buttonNext.x = this.world.width - 64;
+    this.buttonNext.anchor.setTo( 1, 0.5 );
 
-    const buttonPrev = this.add.button( 64, this.world.height / 2, 'button-back', this.goToPrevWikiPage, this, 1, 0, 2 );
-    buttonPrev.anchor.setTo( 0, 0.5 );
+    this.buttonPrev = this.add.button( 64, this.world.height / 2, 'button-back', this.goToPrevWikiPage, this, 1, 0, 2 );
+    this.buttonPrev.anchor.setTo( 0, 0.5 );
 
+    this.ui.add( buttonBack );
+    this.ui.add( this.buttonNext );
+    this.ui.add( this.buttonPrev );
 
     this.pages = [];
     const prevPage = this.add.group();
@@ -72,8 +78,12 @@ export default class Wiki extends Phaser.State {
   goToPrevWikiPage() {
     this.add.tween( this.pages[ 1 ].position ).to( { x: this.world.width }, 250, Phaser.Easing.Linear.In, true );
     const tweenIn = this.add.tween( this.pages[ 0 ].position ).to( { x: 0 }, 250, Phaser.Easing.Linear.Out, true );
+    this.game.world.bringToTop( this.ui );
+
+    this.buttonPrev.inputEnabled = false;
 
     tweenIn.onComplete.add( () => {
+      this.buttonPrev.inputEnabled = true;
       this.pages[ 0 ].position.x = 0;
 
       let currentIndex = this.pages[ 0 ].index - 1;
@@ -96,8 +106,11 @@ export default class Wiki extends Phaser.State {
   goToNextWikiPage() {
     this.add.tween( this.pages[ 1 ].position ).to( { x: this.world.width * -1 }, 250, Phaser.Easing.Linear.In, true );
     const tweenIn = this.add.tween( this.pages[ 2 ].position ).to( { x: 0 }, 250, Phaser.Easing.Linear.Out, true );
+    this.game.world.bringToTop( this.ui );
+    this.buttonNext.inputEnabled = false;
 
     tweenIn.onComplete.add( () => {
+      this.buttonNext.inputEnabled = true;
       this.pages[ 2 ].position.x = 0;
 
       let currentIndex = this.pages[ 2 ].index + 1;
