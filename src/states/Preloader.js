@@ -4,6 +4,7 @@ const resources = {
 		[ 'title', 'img/title.png' ],
 		[ 'logo-pigames', 'img/logo-pigames.png' ],
 		[ 'overlay', 'img/ui/overlay.png' ],
+		[ 'sheet', 'img/ui/sheet.png' ],
 
     [ 'nutrition-bar-background', 'img/ui/nutrition-bar-background.png' ],
     [ 'heart', 'img/assets/heart.png' ],
@@ -16,8 +17,8 @@ const resources = {
 		[ 'button-wiki', 'img/ui/button-wiki.png', 160, 160 ],
 		[ 'button-pause', 'img/ui/button-pause.png', 160, 160 ],
 		[ 'button-audio', 'img/ui/button-sound.png', 160, 160 ],
-		[ 'button-back', 'img/button-back.png', 70, 70 ],
-		[ 'button-next', 'img/button-next.png', 70, 70 ],
+    [ 'button-back', 'img/ui/button-back.png', 160, 170 ],
+		[ 'button-next', 'img/ui/button-next.png', 160, 170 ],
     [ 'bob', 'img/assets/bob.png', 458, 989 ],
     [ 'nutrition-bar', 'img/ui/nutrition-bar.png', 680, 56 ],
     [ 'products', 'img/assets/products-en.png', 200, 150 ],
@@ -55,8 +56,8 @@ export default class Preloader extends Phaser.State {
   update() {
     if ( this.initialFontSize !== this.span.clientHeight ) {
       document.body.removeChild( this.span );
-      this.state.start( 'MainMenu' );
-      // this.state.start( 'Wiki' );
+      // this.state.start( 'MainMenu' );
+      this.state.start( 'Wiki' );
     }
   }
 }

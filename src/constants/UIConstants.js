@@ -19,4 +19,5 @@ export const GAMEOVER_SCORE_FONT = { font: '64px "Bromine"', fill: '#fff', align
 
 export const MENU_HIGHSCORE_FONT = { font: '56px "Bromine"', fill: '#fff', stroke: '#000', strokeThickness: 3, align: 'center', shadow: '0 0 rgba(0, 0, 0, 0.5) 10' };
 
-export const WIKI_FONT = { font: '56px "Bromine"', fill: '#fff', stroke: '#000', strokeThickness: 3, align: 'center', shadow: '0 0 rgba(0, 0, 0, 0.5) 10' };
+export const WIKI_TITLE_FONT = { font: '96px "Bromine"', fill: '#000', align: 'center' };
+export const WIKI_FONT = { font: '56px "Bromine"', fill: '#000', align: 'center' };

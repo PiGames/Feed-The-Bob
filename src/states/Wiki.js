@@ -1,6 +1,6 @@
 import { playAudio } from '../utils/AudioManager';
 import { FOOD_DATA } from '../constants/FoodConstants';
-import { WIKI_FONT } from '../constants/UIConstants';
+import { WIKI_TITLE_FONT, WIKI_FONT } from '../constants/UIConstants';
 import Text from '../UI/Text';
 
 export default class Wiki extends Phaser.State {
@@ -46,17 +46,21 @@ export default class Wiki extends Phaser.State {
     group.index = index;
     group.removeAll( true );
 
-    const title = new Text( this.game, 'center', 0, FOOD_DATA[ index ].name, WIKI_FONT );
+    const sheet = this.add.sprite( this.game.width / 2, 0, 'sheet' );
+    sheet.anchor.setTo( 0.5, 0 );
 
-    const sprite = this.add.sprite( 0, title.height, 'products', FOOD_DATA[ index ].key );
+    const title = new Text( this.game, 'center', 220, FOOD_DATA[ index ].name, WIKI_TITLE_FONT, [ null, 1 ] );
+
+    const sprite = this.add.sprite( this.game.width / 2, 380, 'products', FOOD_DATA[ index ].key );
     sprite.scale.setTo( 1.5 );
-    sprite.x = this.game.width / 2 - sprite.width / 2;
+    sprite.anchor.setTo( 0.5 );
 
-    const carbohydrates = new Text( this.game, 'center', sprite.y + sprite.height, `Carbohydrates: ${FOOD_DATA[ index ].nutritionFacts.carbohydrates}g`, WIKI_FONT );
-    const fats = new Text( this.game, 'center', carbohydrates.y + carbohydrates.height, `Fats: ${FOOD_DATA[ index ].nutritionFacts.fats}g`, WIKI_FONT );
-    const proteins = new Text( this.game, 'center', fats.y + fats.height, `Proteins: ${FOOD_DATA[ index ].nutritionFacts.proteins}g`, WIKI_FONT );
-    const quantity = new Text( this.game, 'center', proteins.y + proteins.height, `Quantity: ${FOOD_DATA[ index ].quantity}`, WIKI_FONT );
+    const carbohydrates = new Text( this.game, 'center', 600, `Carbohydrates: ${FOOD_DATA[ index ].nutritionFacts.carbohydrates}g`, WIKI_FONT, [ null, 1 ] );
+    const fats = new Text( this.game, 'center', 714, `Fats: ${FOOD_DATA[ index ].nutritionFacts.fats}g`, WIKI_FONT, [ null, 1 ] );
+    const proteins = new Text( this.game, 'center', 828, `Proteins: ${FOOD_DATA[ index ].nutritionFacts.proteins}g`, WIKI_FONT, [ null, 1 ] );
+    const quantity = new Text( this.game, 'center', 943, `Quantity: ${FOOD_DATA[ index ].quantity}`, WIKI_FONT, [ null, 1 ] );
 
+    group.add( sheet );
     group.add( title );
     group.add( sprite );
     group.add( carbohydrates );
