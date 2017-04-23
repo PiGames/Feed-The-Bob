@@ -19,26 +19,24 @@ export default class MainMenu extends Phaser.State {
     const buttonStart = this.add.button( this.world.width - 20, this.world.height - 20, 'button-start', this.clickStart, this, 1, 0, 2 );
     buttonStart.anchor.set( 1 );
 
-    this.buttonAudio = this.add.button( this.world.width - 20, 20, 'button-audio', this.clickAudio, this, 1, 0, 2 );
-    this.buttonAudio.anchor.set( 1, 0 );
-
-    const buttonWiki = this.add.button( 20, this.world.height - 20, 'button-wiki', this.clickAchievements, this, 1, 0, 2 );
+    const buttonWiki = this.add.button( 20, this.world.height - 20, 'button-wiki', this.clickWiki, this, 1, 0, 2 );
     buttonWiki.anchor.set( 0, 1 );
 
     const highscoreText = new Text( this.game, 'center', this.world.height - 50, 'Highscore: ' + highscore, MENU_HIGHSCORE_FONT, [ null, 1 ] );
     highscoreText.padding.set( 0, 15 );
 
+    this.initOptions();
+
     manageAudio( 'init', this );
 
     if ( getStatusAudio() !== true ) {
-      // Turn the music off at the start:
       manageAudio( 'off', this );
     }
 
     buttonStart.x = this.world.width + buttonStart.width + 20;
     this.add.tween( buttonStart ).to( { x: this.world.width - 20 }, 500, Phaser.Easing.Exponential.Out, true );
-    this.buttonAudio.y = -this.buttonAudio.height - 20;
-    this.add.tween( this.buttonAudio ).to( { y: 20 }, 500, Phaser.Easing.Exponential.Out, true );
+    this.buttonOptions.y = -this.buttonOptions.height - 20;
+    this.add.tween( this.buttonOptions ).to( { y: 20 }, 500, Phaser.Easing.Exponential.Out, true );
     buttonEnclave.x = -buttonEnclave.width - 20;
     this.add.tween( buttonEnclave ).to( { x: 20 }, 500, Phaser.Easing.Exponential.Out, true );
     buttonWiki.y = this.world.height + buttonWiki.height + 20;
@@ -46,14 +44,68 @@ export default class MainMenu extends Phaser.State {
 
     this.camera.flash( 0x000000, 500, false );
   }
+
+  initOptions() {
+    this.ui = [];
+
+    this.buttonAudio = this.add.button( this.world.width - 20, 20, 'button-audio', this.clickAudio, this, 1, 0, 2 );
+    this.buttonAudio.anchor.set( 1, 0 );
+    this.buttonAudio.visible = false;
+    this.ui.push( this.buttonAudio );
+
+    this.buttonCredits = this.add.button( this.world.width - 20, 20, 'button-credits', this.clickCredits, this, 1, 0, 2 );
+    this.buttonCredits.anchor.set( 1, 0 );
+    this.buttonCredits.visible = false;
+    this.ui.push( this.buttonCredits );
+
+    this.optionsExpanded = false;
+    this.buttonOptions = this.add.button( this.world.width - 20, 20, 'button-options', this.clickOptions, this, 1, 0, 2 );
+    this.buttonOptions.anchor.set( 1, 0 );
+  }
+
+  clickOptions() {
+    if ( this.optionsExpanded ) {
+      this.contractOptions();
+    } else {
+      this.expandOptions();
+    }
+  }
+
+  expandOptions() {
+    this.optionsExpanded = true;
+    let prevX = 0;
+
+    this.ui.forEach( ( button, i ) => {
+      button.visible = true;
+      this.add.tween( button.position ).to( { x: this.world.width - button.width - prevX - ( 20 * ( i + 2 ) ) }, 500, Phaser.Easing.Exponential.Out, true );
+      prevX += button.width;
+    } );
+  }
+
+  contractOptions() {
+    this.optionsExpanded = false;
+
+    this.ui.forEach( ( button ) => {
+      const tween = this.add.tween( button.position ).to( { x: this.world.width - 20 }, 500, Phaser.Easing.Exponential.Out, true );
+
+      tween.onComplete.add( () => {
+        if ( !this.optionsExpanded ) {
+          button.visible = false;
+        }
+      } );
+    } );
+  }
+
   clickAudio() {
     playAudio( 'click' );
     manageAudio( 'switch', this );
   }
+
   clickPiGames() {
     playAudio( 'click' );
     window.top.location.href = 'http://pigam.es/';
   }
+
   clickStart() {
     playAudio( 'click' );
     this.camera.fade( 0x000000, 200, false );
@@ -62,8 +114,20 @@ export default class MainMenu extends Phaser.State {
       this.game.state.start( 'Game' );
     } );
   }
-  clickAchievements() {
+
+  clickWiki() {
     playAudio( 'click' );
-    this.game.state.start( 'Wiki' );
+    this.camera.fade( 0x000000, 200, false );
+    this.camera.onFadeComplete.add( () => {
+      this.game.state.start( 'Wiki' );
+    }, this );
+  }
+
+  clickCredits() {
+    playAudio( 'click' );
+    this.camera.fade( 0x000000, 200, false );
+    this.camera.onFadeComplete.add( () => {
+      this.game.state.start( 'Credits' );
+    }, this );
   }
 }

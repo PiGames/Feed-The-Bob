@@ -33,7 +33,6 @@ export default class FoodSpawner extends Phaser.Group {
       x = spawnSide === 'WEST' ? -FOOD_WIDTH : this.game.world.width + FOOD_WIDTH;
       y = FOOD_SPAWN_BOUNDS_HEIGHT / 2 + Math.random() * FOOD_SPAWN_BOUNDS_HEIGHT;
     }
-
     this.tryDifficultyLevelUp();
 
     const foodType = getRandomWithWeight( getFoodData(), this.currentDifficultyLevelLastIndex + 1 );
