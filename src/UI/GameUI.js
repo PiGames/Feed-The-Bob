@@ -218,11 +218,9 @@ export default class GameUI {
 
   gameoverScoreTween( deathmsg = '' ) {
     this.screenGameoverScore.setText( '' );
-    if ( this.score ) {
-      const secondNumberSuffix = time => ( time === 1 ) ? '' : 's';
+    const secondNumberSuffix = time => ( time === 1 ) ? '' : 's';
 
-      this.screenGameoverScore.setText( `You have survived for ${Math.floor( this.score )} second${secondNumberSuffix( this.score )}\nand died from ${deathmsg}` );
-    }
+    this.screenGameoverScore.setText( `You have survived for ${Math.floor( this.score )} second${secondNumberSuffix( this.score )}\nand died from ${deathmsg}` );
   }
 
   clickAudio() {

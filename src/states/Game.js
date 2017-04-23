@@ -19,7 +19,7 @@ export default class Game extends Phaser.State {
     this.NutritionManager = new NutritionManager( this.game );
     this.foodSpawner.updateStatsSignal.add( ( ...args ) => this.NutritionManager.updateStats( ...args ) );
 
-    this.bob = new Bob( this.game, this.world.width / 2, this.world.height - $( BOB_OFFSET_Y ), $( 'bob' ), this.NutritionManager, this.gameUI.stateGameover.bind( this.gameUI ) );
+    this.bob = new Bob( this.game, this.world.width / 2, this.world.height - $( BOB_OFFSET_Y ), $( 'bob' ), this.NutritionManager );
     this.bob.onScoreValueChange.add( ( ...args ) => this.gameUI.onScoreValueChange( ...args ) );
 
     const healthHandler = new HealthHandler();
@@ -45,7 +45,7 @@ export default class Game extends Phaser.State {
 
   checkForDeath( health ) {
     if ( health <= 0 ) {
-      this.gameUI.stateGameover( 'dangerous nutriotion style' );
+      this.gameUI.stateGameover( 'dangerous nutrition style' );
       this.game.veryBadGlobalFlagToMakeAHotFixSorryButIHaveToUseIt = false;
     }
   }

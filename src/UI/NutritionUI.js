@@ -1,5 +1,7 @@
 import { $ } from '../utils/ScaleManager';
 
+import { getStatus } from '../utils/NutritionUtils';
+
 import { GOOD_AMOUNT_OF_CARBOHYDRATES, GOOD_AMOUNT_OF_FATS, GOOD_AMOUNT_OF_PROTEINS } from '../constants/NutritionConstants';
 import { SUPER_THIN_BREAKPOINT, THIN_BREAKPOINT, FAT_BREAKPOINT, SUPER_FAT_BREAKPOINT } from '../constants/WeightBreakpoints';
 import { NUTRITION_BAR_WIDTH, NUTRITION_BAR_HEIGHT, NUTRITION_BAR_OFFSET, NUTRITION_BAR_X_FROM_LEFT, NUTRITION_BAR_Y_FROM_BOTTOM, NUTRITION_BAR_TEXT_OFFSET_X, NUTRITION_BAR_TEXT_OFFSET_Y, NUTRITION_BAR_INFO_FONT, NUTRITION_NUTRITION_ADDED_FONT } from '../constants/UIConstants';
@@ -55,13 +57,13 @@ export default class NutritionUI {
     // no default
     }
 
-    const height = NUTRITION_BAR_HEIGHT;
-    const offset = i * ( NUTRITION_BAR_OFFSET + height );
+    const height = $( NUTRITION_BAR_HEIGHT );
+    const offset = i * ( $( NUTRITION_BAR_OFFSET ) + height );
 
-    const textX = this.game.width - $( NUTRITION_BAR_X_FROM_LEFT - NUTRITION_BAR_TEXT_OFFSET_X );
-    const textY = this.game.height - $( NUTRITION_BAR_Y_FROM_BOTTOM - NUTRITION_BAR_TEXT_OFFSET_Y ) - offset;
+    const textX = this.game.width - $( NUTRITION_BAR_X_FROM_LEFT ) - $( NUTRITION_BAR_TEXT_OFFSET_X ) - $( 10, 0.5 );
+    const textY = this.game.height - $( NUTRITION_BAR_Y_FROM_BOTTOM ) - $( NUTRITION_BAR_TEXT_OFFSET_Y ) - offset;
     const nutritionAdded = new Text( this.game, textX, textY, `+${val}`, $( NUTRITION_NUTRITION_ADDED_FONT ), [ 1, 1 ] );
-    this.game.add.tween( nutritionAdded ).to( { alpha: 0, y: $( textY - 100 ) }, 1000, Phaser.Easing.Linear.None, true );
+    this.game.add.tween( nutritionAdded ).to( { alpha: 0, y: textY - $( 100 ) }, $( 1000 ), Phaser.Easing.Linear.None, true );
   }
 
   updateBar( value, goodAmount, i ) {
@@ -71,16 +73,11 @@ export default class NutritionUI {
     const doubleOfGoodAmount = goodAmount * 2;
 
     const status = this.NutritionBars[ i ];
+    const bobStatus = getStatus( value, goodAmount );
 
-    if (
-      value <= doubleOfGoodAmount * SUPER_THIN_BREAKPOINT ||
-      value >= doubleOfGoodAmount * SUPER_FAT_BREAKPOINT
-    ) {
+    if ( bobStatus <= SUPER_THIN_BREAKPOINT || bobStatus >= SUPER_FAT_BREAKPOINT ) {
       status.frame = 2;
-    } else if (
-      value <= doubleOfGoodAmount * THIN_BREAKPOINT ||
-      value >= doubleOfGoodAmount * FAT_BREAKPOINT
-    ) {
+    } else if ( bobStatus <= THIN_BREAKPOINT || bobStatus >= FAT_BREAKPOINT ) {
       status.frame = 1;
     } else {
       status.frame = 0;
