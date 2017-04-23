@@ -4,6 +4,10 @@ export default class Boot extends Phaser.State {
     this.game.load.image( 'loadingbg', 'img/loadingbg.png' );
     this.game.load.image( 'loading-background', 'img/loading-background.png' );
     this.game.load.image( 'loading-progress', 'img/loading-progress.png' );
+
+    this.game.load.image( 'loadingbg-50', 'img50/loadingbg.png' );
+    this.game.load.image( 'loading-background-50', 'img50/loading-background.png' );
+    this.game.load.image( 'loading-progress-50', 'img50/loading-progress.png' );
   }
   create() {
     this.game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;

@@ -1,3 +1,6 @@
+import { $set } from '../utils/ScaleManager';
+import { PPTStorage, setStorage } from '../utils/StorageManager';
+
 const resources = {
   'image': [
 		[ 'background', 'img/background.png' ],
@@ -24,6 +27,8 @@ const resources = {
     [ 'bob', 'img/assets/bob.png', 458, 989 ],
     [ 'nutrition-bar', 'img/ui/nutrition-bar.png', 680, 56 ],
     [ 'products', 'img/assets/products-en.png', 200, 150 ],
+		[ 'button-start', 'img/ui/button-start.png', 160, 160 ],
+		[ 'button-quality', 'img/ui/button-quality.png', 160, 160 ],
   ],
   'audio': [
 		[ 'audio-click', [ 'sfx/click.mp3', 'sfx/click.ogg' ] ],
@@ -51,12 +56,28 @@ export default class Preloader extends Phaser.State {
     for ( const method in resources ) {
       resources[ method ].forEach( ( args ) => {
         const loader = this.load[ method ];
+        if ( method === 'image' || method === 'spritesheet' ) {
+          const args50 = args.concat();
+          args50[ 0 ] += '-50';
+          args50[ 1 ] = args50[ 1 ].replace( 'img/', 'img50/' );
+          args50[ 2 ] /= 2;
+          args50[ 3 ] /= 2;
+
+          loader && loader.apply( this.load, args50 );
+        }
+
         loader && loader.apply( this.load, args );
       }, this );
     }
   }
   update() {
     if ( this.initialFontSize !== this.span.clientHeight ) {
+      setStorage( this.game.plugins.add( Phaser.Plugin.Storage ) );
+
+      if ( PPTStorage.get( 'PPT-quality' ) === 0.5 ) {
+        $set.call( this, 0.5 );
+      }
+
       document.body.removeChild( this.span );
       this.state.start( 'MainMenu' );
     }

@@ -1,25 +1,28 @@
+import { $ } from '../utils/ScaleManager';
 import { playAudio } from '../utils/AudioManager';
 import { FOOD_DATA } from '../constants/FoodConstants';
 import { WIKI_TITLE_FONT, WIKI_FONT } from '../constants/UIConstants';
 import Text from '../UI/Text';
 
+import { MENU_BUTTON_OFFSET } from '../constants/UIConstants';
+
 export default class Wiki extends Phaser.State {
   create() {
-    this.add.sprite( 0, 0, 'loadingbg' );
+    this.add.sprite( 0, 0, $( 'loadingbg' ) );
     this.camera.flash( 0x000000, 500, false );
 
     this.ui = this.add.group();
 
-    const buttonBack = this.add.button( this.world.width - 20, this.game.world.height - 20, 'button-mainmenu', this.clickBack, this, 1, 0, 2 );
+    const buttonBack = this.add.button( this.world.width - MENU_BUTTON_OFFSET, this.game.world.height - MENU_BUTTON_OFFSET, $( 'button-mainmenu' ), this.clickBack, this, 1, 0, 2 );
     buttonBack.anchor.set( 1, 1 );
-    buttonBack.x = this.world.width + buttonBack.width + 20;
-    this.add.tween( buttonBack ).to( { x: this.world.width - 20 }, 500, Phaser.Easing.Exponential.Out, true );
+    buttonBack.x = this.world.width + buttonBack.width + MENU_BUTTON_OFFSET;
+    this.add.tween( buttonBack ).to( { x: this.world.width - MENU_BUTTON_OFFSET }, 500, Phaser.Easing.Exponential.Out, true );
 
-    this.buttonNext = this.add.button( 0, this.world.height / 2, 'button-next', this.goToNextWikiPage, this, 1, 0, 2 );
+    this.buttonNext = this.add.button( 0, this.world.height / 2, $( 'button-next' ), this.goToNextWikiPage, this, 1, 0, 2 );
     this.buttonNext.x = this.world.width - 64;
     this.buttonNext.anchor.setTo( 1, 0.5 );
 
-    this.buttonPrev = this.add.button( 64, this.world.height / 2, 'button-back', this.goToPrevWikiPage, this, 1, 0, 2 );
+    this.buttonPrev = this.add.button( 64, this.world.height / 2, $( 'button-back' ), this.goToPrevWikiPage, this, 1, 0, 2 );
     this.buttonPrev.anchor.setTo( 0, 0.5 );
 
     this.ui.add( buttonBack );
@@ -52,19 +55,19 @@ export default class Wiki extends Phaser.State {
     group.index = index;
     group.removeAll( true );
 
-    const sheet = this.add.sprite( this.game.width / 2, 0, 'sheet' );
+    const sheet = this.add.sprite( this.game.width / 2, 0, $( 'sheet' ) );
     sheet.anchor.setTo( 0.5, 0 );
 
-    const title = new Text( this.game, 'center', 220, FOOD_DATA[ index ].name, WIKI_TITLE_FONT, [ null, 1 ] );
+    const title = new Text( this.game, 'center', $( 220 ), FOOD_DATA[ index ].name, $( WIKI_TITLE_FONT ), [ null, 1 ] );
 
-    const sprite = this.add.sprite( this.game.width / 2, 380, 'products', FOOD_DATA[ index ].key );
+    const sprite = this.add.sprite( this.game.width / 2, $( 380 ), $( 'products' ), FOOD_DATA[ index ].key );
     sprite.scale.setTo( 1.5 );
     sprite.anchor.setTo( 0.5 );
 
-    const carbohydrates = new Text( this.game, 'center', 600, `Carbohydrates: ${FOOD_DATA[ index ].nutritionFacts.carbohydrates}g`, WIKI_FONT, [ null, 1 ] );
-    const fats = new Text( this.game, 'center', 714, `Fats: ${FOOD_DATA[ index ].nutritionFacts.fats}g`, WIKI_FONT, [ null, 1 ] );
-    const proteins = new Text( this.game, 'center', 828, `Proteins: ${FOOD_DATA[ index ].nutritionFacts.proteins}g`, WIKI_FONT, [ null, 1 ] );
-    const quantity = new Text( this.game, 'center', 943, `Quantity: ${FOOD_DATA[ index ].quantity}`, WIKI_FONT, [ null, 1 ] );
+    const carbohydrates = new Text( this.game, 'center', $( 600 ), `Carbohydrates: ${FOOD_DATA[ index ].nutritionFacts.carbohydrates}g`, $( WIKI_FONT ), [ null, 1 ] );
+    const fats = new Text( this.game, 'center', $( 714 ), `Fats: ${FOOD_DATA[ index ].nutritionFacts.fats}g`, $( WIKI_FONT ), [ null, 1 ] );
+    const proteins = new Text( this.game, 'center', $( 828 ), `Proteins: ${FOOD_DATA[ index ].nutritionFacts.proteins}g`, $( WIKI_FONT ), [ null, 1 ] );
+    const quantity = new Text( this.game, 'center', $( 943 ), `Quantity: ${FOOD_DATA[ index ].quantity}`, $( WIKI_FONT ), [ null, 1 ] );
 
     group.add( sheet );
     group.add( title );

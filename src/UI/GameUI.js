@@ -1,4 +1,5 @@
-import { SCORE_FONT, SCORE_TEMPLATE, GAMEOVER_TITLE_FONT, GAMEOVER_SCORE_FONT, PAUSE_TITLE_FONT } from '../constants/UIConstants';
+import { $ } from '../utils/ScaleManager';
+import { SCORE_FONT, SCORE_TEMPLATE, GAMEOVER_TITLE_FONT, GAMEOVER_SCORE_FONT, PAUSE_TITLE_FONT, MENU_BUTTON_OFFSET } from '../constants/UIConstants';
 import { playAudio, manageAudio, getAudioOffset } from '../utils/AudioManager';
 import Text from './Text';
 
@@ -22,7 +23,7 @@ export default class GameUI {
 
     this.timeAdvance = new Phaser.Signal();
 
-    this.game.add.sprite( 0, 0, 'background' );
+    this.game.add.sprite( 0, 0, $( 'background' ) );
     this.initScore();
     this.initHealthBar();
     this.initPauseScreen();
@@ -30,45 +31,45 @@ export default class GameUI {
   }
 
   initScore() {
-    this.textScore = new Text( this.game, 30, this.game.world.height - 20, SCORE_TEMPLATE( this.score ), SCORE_FONT, [ 0, 1 ] );
+    this.textScore = new Text( this.game, $( 30 ), this.game.world.height - $( 20 ), SCORE_TEMPLATE( this.score ), $( SCORE_FONT ), [ 0, 1 ] );
 
     this.game.time.events.loop( Phaser.Timer.SECOND * 1, this.handlePointsAddition, this );
   }
 
   initHealthBar() {
-    new Text( this.game, 30, this.game.world.height - 100, 'Health: ', SCORE_FONT, [ 0, 1 ] );
+    const text = new Text( this.game, $( 30 ), this.game.world.height - $( 100 ), 'Health: ', $( SCORE_FONT ), [ 0, 1 ] );
 
-    this.healthBar = this.game.add.tileSprite( 240, this.game.world.height - 120, 300, 50, 'heart' );
+    this.healthBar = this.game.add.tileSprite( text.x + text.width, this.game.world.height - $( 120 ), $( 300 ), $( 50 ), $( 'heart' ) );
     this.healthBar.anchor.setTo( 0, 1 );
     this.healthBar.scale.setTo( 1.25 );
   }
 
   initPauseScreen() {
-    this.buttonPause = this.game.add.button( this.game.world.width - 20, 20, 'button-pause', this.managePause, this, 1, 0, 2 );
+    this.buttonPause = this.game.add.button( this.game.world.width - MENU_BUTTON_OFFSET, MENU_BUTTON_OFFSET, $( 'button-pause' ), this.managePause, this, 1, 0, 2 );
     this.buttonPause.anchor.set( 1, 0 );
     this.buttonPause.input.priorityID = 0;
 
-    this.buttonPause.y = -this.buttonPause.height - 20;
-    this.game.add.tween( this.buttonPause ).to( { y: 20 }, 1000, Phaser.Easing.Exponential.Out, true );
+    this.buttonPause.y = -this.buttonPause.height - MENU_BUTTON_OFFSET;
+    this.game.add.tween( this.buttonPause ).to( { y: MENU_BUTTON_OFFSET }, 1000, Phaser.Easing.Exponential.Out, true );
 
     this.screenPausedGroup = this.game.add.group();
-    this.screenPausedBg = this.game.add.sprite( 0, 0, 'overlay' );
+    this.screenPausedBg = this.game.add.sprite( 0, 0, $( 'overlay' ) );
     this.screenPausedBg.scale.setTo( 2 );
     this.screenPausedBg.inputEnabled = true;
     this.screenPausedBg.input.priorityID = 1;
 
-    this.screenPausedText = new Text( this.game, 'center', 'center', 'Paused', PAUSE_TITLE_FONT );
+    this.screenPausedText = new Text( this.game, 'center', 'center', 'Paused', $( PAUSE_TITLE_FONT ) );
 
-    this.buttonAudio = this.game.add.button( this.game.world.width - 20, 20, 'button-audio', this.clickAudio, this, 1, 0, 2 );
+    this.buttonAudio = this.game.add.button( this.game.world.width - MENU_BUTTON_OFFSET, MENU_BUTTON_OFFSET, $( 'button-audio' ), this.clickAudio, this, 1, 0, 2 );
     this.buttonAudio.anchor.set( 1, 0 );
     this.buttonAudio.setFrames( getAudioOffset() + 1, getAudioOffset() + 0, getAudioOffset() + 2 );
     this.buttonAudio.input.priorityID = 1;
 
-    this.screenPausedBack = this.game.add.button( 20, this.game.world.height - 20, 'button-mainmenu', this.stateBack, this, 1, 0, 2 );
+    this.screenPausedBack = this.game.add.button( MENU_BUTTON_OFFSET, this.game.world.height - MENU_BUTTON_OFFSET, $( 'button-mainmenu' ), this.stateBack, this, 1, 0, 2 );
     this.screenPausedBack.anchor.set( 0, 1 );
     this.screenPausedBack.input.priorityID = 1;
 
-    this.screenPausedContinue = this.game.add.button( this.game.world.width - 20, this.game.world.height - 20, 'button-continue', this.managePause, this, 1, 0, 2 );
+    this.screenPausedContinue = this.game.add.button( this.game.world.width - MENU_BUTTON_OFFSET, this.game.world.height - MENU_BUTTON_OFFSET, $( 'button-continue' ), this.managePause, this, 1, 0, 2 );
     this.screenPausedContinue.anchor.set( 1, 1 );
     this.screenPausedContinue.input.priorityID = 1;
 
@@ -84,22 +85,22 @@ export default class GameUI {
   initGameoverScreen() {
     this.screenGameoverGroup = this.game.add.group();
 
-    this.screenGameoverBg = this.game.add.sprite( 0, 0, 'overlay' );
+    this.screenGameoverBg = this.game.add.sprite( 0, 0, $( 'overlay' ) );
     this.screenGameoverBg.scale.setTo( 2 );
     this.screenGameoverBg.inputEnabled = true;
     this.screenGameoverBg.input.priorityID = 2;
 
-    this.screenGameoverText = new Text( this.game, 'center', 100, 'Game over', GAMEOVER_TITLE_FONT );
+    this.screenGameoverText = new Text( this.game, 'center', $( 100 ), 'Game over', $( GAMEOVER_TITLE_FONT ) );
 
-    this.screenGameoverBack = this.game.add.button( 150, this.game.world.height - 100, 'button-mainmenu', this.stateBack, this, 1, 0, 2 );
+    this.screenGameoverBack = this.game.add.button( $( 150 ), this.game.world.height - $( 100 ), $( 'button-mainmenu' ), this.stateBack, this, 1, 0, 2 );
     this.screenGameoverBack.anchor.set( 0, 1 );
     this.screenGameoverBack.input.priorityID = 2;
 
-    this.screenGameoverRestart = this.game.add.button( this.game.world.width - 150, this.game.world.height - 100, 'button-restart', this.stateRestart, this, 1, 0, 2 );
+    this.screenGameoverRestart = this.game.add.button( this.game.world.width - $( 150 ), this.game.world.height - $( 100 ), $( 'button-restart' ), this.stateRestart, this, 1, 0, 2 );
     this.screenGameoverRestart.anchor.set( 1, 1 );
     this.screenGameoverRestart.input.priorityID = 2;
 
-    this.screenGameoverScore = new Text( this.game, 'center', 'center', 'Score: ' + this.score, GAMEOVER_SCORE_FONT );
+    this.screenGameoverScore = new Text( this.game, 'center', 'center', 'Score: ' + this.score, $( GAMEOVER_SCORE_FONT ) );
 
     this.screenGameoverGroup.add( this.screenGameoverBg );
     this.screenGameoverGroup.add( this.screenGameoverText );
@@ -111,7 +112,6 @@ export default class GameUI {
   }
 
   updateUI() {
-
     switch ( this.stateStatus ) {
     case 'paused': {
       if ( !this.runOnce ) {
@@ -141,7 +141,7 @@ export default class GameUI {
   }
 
   updateHealthBarValue( health ) {
-    this.healthBar.width = 300 * ( health / 100 );
+    this.healthBar.width = $( 300 ) * ( health / 100 );
   }
 
   handlePointsAddition() {

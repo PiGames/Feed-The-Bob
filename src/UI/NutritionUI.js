@@ -1,3 +1,5 @@
+import { $ } from '../utils/ScaleManager';
+
 import { GOOD_AMOUNT_OF_CARBOHYDRATES, GOOD_AMOUNT_OF_FATS, GOOD_AMOUNT_OF_PROTEINS } from '../constants/NutritionConstants';
 import { SUPER_THIN_BREAKPOINT, THIN_BREAKPOINT, FAT_BREAKPOINT, SUPER_FAT_BREAKPOINT } from '../constants/WeightBreakpoints';
 import { NUTRITION_BAR_WIDTH, NUTRITION_BAR_HEIGHT, NUTRITION_BAR_OFFSET, NUTRITION_BAR_X_FROM_LEFT, NUTRITION_BAR_Y_FROM_BOTTOM, NUTRITION_BAR_TEXT_OFFSET_X, NUTRITION_BAR_TEXT_OFFSET_Y, NUTRITION_BAR_INFO_FONT, NUTRITION_NUTRITION_ADDED_FONT } from '../constants/UIConstants';
@@ -56,16 +58,16 @@ export default class NutritionUI {
     const height = NUTRITION_BAR_HEIGHT;
     const offset = i * ( NUTRITION_BAR_OFFSET + height );
 
-    const textX = this.game.width - NUTRITION_BAR_X_FROM_LEFT - NUTRITION_BAR_TEXT_OFFSET_X;
-    const textY = this.game.height - NUTRITION_BAR_Y_FROM_BOTTOM - NUTRITION_BAR_TEXT_OFFSET_Y - offset;
-    const nutritionAdded = new Text( this.game, textX, textY, `+${val}`, NUTRITION_NUTRITION_ADDED_FONT, [ 1, 1 ] );
-    this.game.add.tween( nutritionAdded ).to( { alpha: 0, y: textY - 100 }, 1000, Phaser.Easing.Linear.None, true );
+    const textX = this.game.width - $( NUTRITION_BAR_X_FROM_LEFT - NUTRITION_BAR_TEXT_OFFSET_X );
+    const textY = this.game.height - $( NUTRITION_BAR_Y_FROM_BOTTOM - NUTRITION_BAR_TEXT_OFFSET_Y ) - offset;
+    const nutritionAdded = new Text( this.game, textX, textY, `+${val}`, $( NUTRITION_NUTRITION_ADDED_FONT ), [ 1, 1 ] );
+    this.game.add.tween( nutritionAdded ).to( { alpha: 0, y: $( textY - 100 ) }, 1000, Phaser.Easing.Linear.None, true );
   }
 
   updateBar( value, goodAmount, i ) {
-    const width = NUTRITION_BAR_WIDTH;
-    const height = NUTRITION_BAR_HEIGHT;
-    const offset = i * ( NUTRITION_BAR_OFFSET + height );
+    const width = $( NUTRITION_BAR_WIDTH );
+    const height = $( NUTRITION_BAR_HEIGHT );
+    const offset = i * ( $( NUTRITION_BAR_OFFSET ) + height );
     const doubleOfGoodAmount = goodAmount * 2;
 
     const status = this.NutritionBars[ i ];
@@ -89,7 +91,7 @@ export default class NutritionUI {
     const mask = this.NutritionMasks[ i ];
     mask.clear();
     mask.beginFill( 0x000000 );
-    mask.drawRect( this.game.width - NUTRITION_BAR_X_FROM_LEFT - width + ( width * ( 1 - NutritionBarValue ) ), this.game.height - NUTRITION_BAR_Y_FROM_BOTTOM - offset - height, width * NutritionBarValue, height );
+    mask.drawRect( this.game.width - NUTRITION_BAR_X_FROM_LEFT - width + ( width * ( 1 - NutritionBarValue ) ), this.game.height - $( NUTRITION_BAR_Y_FROM_BOTTOM ) - offset - height, width * NutritionBarValue, height );
     mask.endFill();
 
     const statusText = this.NutritionTexts[ i ];
@@ -97,33 +99,33 @@ export default class NutritionUI {
   }
 
   drawBar( value, goodAmount, i, text ) {
-    const width = NUTRITION_BAR_WIDTH;
-    const height = NUTRITION_BAR_HEIGHT;
-    const offset = i * ( NUTRITION_BAR_OFFSET + height );
+    const width = $( NUTRITION_BAR_WIDTH );
+    const height = $( NUTRITION_BAR_HEIGHT );
+    const offset = i * ( $( NUTRITION_BAR_OFFSET ) + height );
     const doubleOfGoodAmount = goodAmount * 2;
 
     const NutritionBarValue = Math.min( Math.max( ( value / doubleOfGoodAmount ), 0 ), 1 );
 
-    const background = this.game.add.sprite( this.game.width - NUTRITION_BAR_X_FROM_LEFT, this.game.height - NUTRITION_BAR_Y_FROM_BOTTOM - offset, 'nutrition-bar-background' );
+    const background = this.game.add.sprite( this.game.width - NUTRITION_BAR_X_FROM_LEFT, this.game.height - $( NUTRITION_BAR_Y_FROM_BOTTOM ) - offset, $( 'nutrition-bar-background' ) );
     background.anchor.setTo( 1, 1 );
 
     const mask = this.game.add.graphics( 0, 0 );
     mask.beginFill( 0x000000 );
-    mask.drawRect( this.game.width - NUTRITION_BAR_X_FROM_LEFT - width + ( width * ( 1 - NutritionBarValue ) ), this.game.height - NUTRITION_BAR_Y_FROM_BOTTOM - offset - height, width * NutritionBarValue, height );
+    mask.drawRect( this.game.width - NUTRITION_BAR_X_FROM_LEFT - width + ( width * ( 1 - NutritionBarValue ) ), this.game.height - $( NUTRITION_BAR_Y_FROM_BOTTOM ) - offset - height, width * NutritionBarValue, height );
     mask.endFill();
 
     this.NutritionMasks[ i ] = mask;
 
-    const status = this.game.add.sprite( this.game.width - NUTRITION_BAR_X_FROM_LEFT, this.game.height - NUTRITION_BAR_Y_FROM_BOTTOM - offset, 'nutrition-bar', 0 );
+    const status = this.game.add.sprite( this.game.width - NUTRITION_BAR_X_FROM_LEFT, this.game.height - $( NUTRITION_BAR_Y_FROM_BOTTOM ) - offset, $( 'nutrition-bar' ), 0 );
     status.anchor.setTo( 1, 1 );
     status.mask = mask;
 
     this.NutritionBars[ i ] = status;
 
     // descText
-    new Text( this.game, this.game.width - NUTRITION_BAR_X_FROM_LEFT + NUTRITION_BAR_TEXT_OFFSET_X - width, this.game.height - NUTRITION_BAR_Y_FROM_BOTTOM - offset - NUTRITION_BAR_TEXT_OFFSET_Y, text, NUTRITION_BAR_INFO_FONT, [ 0, 1 ] );
+    new Text( this.game, this.game.width - $( NUTRITION_BAR_X_FROM_LEFT ) + $( NUTRITION_BAR_TEXT_OFFSET_X ) - width - $( 10, 0.5 ), this.game.height - $( NUTRITION_BAR_Y_FROM_BOTTOM ) - offset - $( NUTRITION_BAR_TEXT_OFFSET_Y ) + $( 4, 0.5 ), text, $( NUTRITION_BAR_INFO_FONT ), [ 0, 1 ] );
 
-    const statusText = new Text( this.game, this.game.width - NUTRITION_BAR_X_FROM_LEFT - NUTRITION_BAR_TEXT_OFFSET_X, this.game.height - NUTRITION_BAR_Y_FROM_BOTTOM - NUTRITION_BAR_TEXT_OFFSET_Y - offset, `${Math.max( parseInt( value ), 0 )} / ${goodAmount}`, NUTRITION_BAR_INFO_FONT, [ 1, 1 ] );
+    const statusText = new Text( this.game, this.game.width - $( NUTRITION_BAR_X_FROM_LEFT ) - $( NUTRITION_BAR_TEXT_OFFSET_X ) - $( 10, 0.5 ), this.game.height - $( NUTRITION_BAR_Y_FROM_BOTTOM ) - offset - $( NUTRITION_BAR_TEXT_OFFSET_Y ) + $( 4, 0.5 ), `${Math.max( parseInt( value ), 0 )} / ${goodAmount}`, $( NUTRITION_BAR_INFO_FONT ), [ 1, 1 ] );
 
     this.NutritionTexts[ i ] = statusText;
   }
