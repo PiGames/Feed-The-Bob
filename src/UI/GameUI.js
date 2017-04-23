@@ -24,10 +24,22 @@ export default class GameUI {
     this.timeAdvance = new Phaser.Signal();
 
     this.game.add.sprite( 0, 0, $( 'background' ) );
+
     this.initScore();
     this.initHealthBar();
     this.initPauseScreen();
     this.initGameoverScreen();
+  }
+
+  initClock() {
+    const now = new Date();
+    this.minuteDial = this.game.add.sprite( 847, 243, $( 'minute-dial' ) );
+    this.minuteDial.anchor.setTo( 0.5, 1 );
+    this.minuteDial.angle = ( now.getMinutes() / 60 ) * 360;
+
+    this.hourDial = this.game.add.sprite( 847, 243, $( 'hour-dial' ) );
+    this.hourDial.anchor.setTo( 0.5, 1 );
+    this.hourDial.angle = ( ( now.getHours() % 12 ) / 12 ) * 360;
   }
 
   initScore() {
@@ -111,7 +123,16 @@ export default class GameUI {
     this.screenGameoverGroup.visible = false;
   }
 
+  updateClock() {
+    const now = new Date();
+    this.minuteDial.angle = ( now.getMinutes() / 60 ) * 360;
+
+    this.hourDial.angle = ( ( now.getHours() % 12 ) / 12 ) * 360;
+  }
+
   updateUI() {
+    this.updateClock();
+
     switch ( this.stateStatus ) {
     case 'paused': {
       if ( !this.runOnce ) {

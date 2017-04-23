@@ -190,9 +190,6 @@ function scaleAssets() {
 
 function scaleDefault() {
   gulp.src( STATIC_PATH + "/img/**/*-50.{jpg,png}" )
-    .pipe( imageResize( {
-      percentage: 50
-    } ) )
     .pipe( rename( function( path ) {
       path.basename = path.basename.replace( '-50', '' );
     } ) )

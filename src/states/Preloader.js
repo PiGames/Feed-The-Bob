@@ -9,6 +9,8 @@ const resources = {
 		[ 'overlay', 'img/ui/overlay.png' ],
 		[ 'sheet', 'img/ui/sheet.png' ],
 
+    [ 'minute-dial', 'img/assets/minute-dial.png' ],
+    [ 'hour-dial', 'img/assets/hour-dial.png' ],
     [ 'nutrition-bar-background', 'img/ui/nutrition-bar-background.png' ],
     [ 'heart', 'img/assets/heart.png' ],
   ],
