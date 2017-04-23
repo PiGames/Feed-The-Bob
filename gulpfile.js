@@ -14,6 +14,8 @@ var browserify = require('browserify');
 var browserSync = require('browser-sync');
 var ghPages = require('gulp-gh-pages');
 var watch = require('gulp-watch');
+var imageResize = require('gulp-image-resize');
+var rename = require('gulp-rename');
 
 /**
  * Using different folders/file names? Change these constants:
@@ -176,6 +178,27 @@ function serve() {
 
 }
 
+function scaleAssets() {
+  const stream = gulp.src( [ "!" + STATIC_PATH + "/img/**/*-50.{jpg,png}", STATIC_PATH + "/img/**/*.{jpg,png}" ] )
+    .pipe( imageResize( {
+      percentage: 50
+    } ) )
+    .pipe( gulp.dest( STATIC_PATH + "/img" + "50" ) );
+
+  stream.on( 'end', scaleDefault );
+}
+
+function scaleDefault() {
+  gulp.src( STATIC_PATH + "/img/**/*-50.{jpg,png}" )
+    .pipe( imageResize( {
+      percentage: 50
+    } ) )
+    .pipe( rename( function( path ) {
+      path.basename = path.basename.replace( '-50', '' );
+    } ) )
+    .pipe( gulp.dest( STATIC_PATH + "/img" + "50" ) );
+}
+
 
 gulp.task('cleanBuild', cleanBuild);
 gulp.task('copyStatic', ['cleanBuild'], copyStatic);
@@ -218,3 +241,5 @@ gulp.task( "deploy", () => {
     gutil.log( gutil.colors.red("To deploy to master on main repository confirm it with --confirm argument") );
   }
 } );
+
+gulp.task( 'scale', scaleAssets );
