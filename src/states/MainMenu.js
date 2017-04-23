@@ -48,11 +48,11 @@ export default class MainMenu extends Phaser.State {
 
   initClock() {
     const now = new Date();
-    this.minuteDial = this.game.add.sprite( 847, 243, $( 'minute-dial' ) );
+    this.minuteDial = this.game.add.sprite( $( 847 ), $( 243 ), $( 'minute-dial' ) );
     this.minuteDial.anchor.setTo( 0.5, 1 );
     this.minuteDial.angle = ( now.getMinutes() / 60 ) * 360;
 
-    this.hourDial = this.game.add.sprite( 847, 243, $( 'hour-dial' ) );
+    this.hourDial = this.game.add.sprite( $( 847 ), $( 243 ), $( 'hour-dial' ) );
     this.hourDial.anchor.setTo( 0.5, 1 );
     this.hourDial.angle = ( ( now.getHours() % 12 ) / 12 ) * 360;
   }
