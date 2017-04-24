@@ -3,12 +3,14 @@ import { playAudio, manageAudio, getStatusAudio } from '../utils/AudioManager';
 import { PPTStorage } from '../utils/StorageManager';
 import Text from '../UI/Text';
 
+import * as Clock from '../utils/ClockUtils';
+
 import { MENU_HIGHSCORE_FONT, TITLE_OFFSET_Y, MENU_BUTTON_OFFSET } from '../constants/UIConstants';
 
 export default class MainMenu extends Phaser.State {
   create() {
     this.game.add.sprite( 0, 0, $( 'background' ) );
-    this.initClock();
+    Clock.initClock( this );
 
     const title = this.add.sprite( this.world.width * 0.5, ( this.world.height - $( TITLE_OFFSET_Y ) ) * 0.5, $( 'title' ) );
     title.anchor.set( 0.5 );
@@ -44,17 +46,6 @@ export default class MainMenu extends Phaser.State {
     this.add.tween( buttonWiki ).to( { y: this.world.height - MENU_BUTTON_OFFSET }, 500, Phaser.Easing.Exponential.Out, true );
 
     this.camera.flash( 0x000000, 500, false );
-  }
-
-  initClock() {
-    const now = new Date();
-    this.minuteDial = this.game.add.sprite( $( 847 ), $( 243 ), $( 'minute-dial' ) );
-    this.minuteDial.anchor.setTo( 0.5, 1 );
-    this.minuteDial.angle = ( now.getMinutes() / 60 ) * 360;
-
-    this.hourDial = this.game.add.sprite( $( 847 ), $( 243 ), $( 'hour-dial' ) );
-    this.hourDial.anchor.setTo( 0.5, 1 );
-    this.hourDial.angle = ( ( now.getHours() % 12 ) / 12 ) * 360;
   }
 
   initOptions() {
@@ -161,9 +152,6 @@ export default class MainMenu extends Phaser.State {
   }
 
   update() {
-    const now = new Date();
-    this.minuteDial.angle = ( now.getMinutes() / 60 ) * 360;
-
-    this.hourDial.angle = ( ( now.getHours() % 12 ) / 12 ) * 360;
+    Clock.updateClock( this );
   }
 }
