@@ -47,11 +47,45 @@ export default class Bob extends Phaser.Sprite {
     } );
 
 
-    const status = Math.max.apply( null, nutritionStatuses );
-    this.onWeightChange.dispatch( status <= THIN_BREAKPOINT || status >= FAT_BREAKPOINT, status <= SUPER_THIN_BREAKPOINT || status >= SUPER_FAT_BREAKPOINT );
+    let isSuperThin = false;
+    let isThin = false;
+    let isFat = false;
+    let isSuperFat = false;
 
-    if ( status > 6 && status < 10 ) {
+    nutritionStatuses.forEach( ( v ) => {
+      if ( v <= THIN_BREAKPOINT ) {
+        isThin = true;
+      }
+
+      if ( v <= SUPER_THIN_BREAKPOINT ) {
+        isSuperThin = true;
+      }
+
+      if ( v >= FAT_BREAKPOINT ) {
+        isFat = true;
+      }
+
+      if ( v >= SUPER_FAT_BREAKPOINT ) {
+        isSuperFat = true;
+      }
+    } );
+
+
+    this.onWeightChange.dispatch( isThin || isFat, isSuperThin || isSuperFat );
+
+    if ( !isSuperThin && !isThin && !isFat && !isSuperFat ) {
       scoreValue++;
+    }
+
+    let status = 8;
+    if ( isFat ) {
+      status = Math.max.apply( null, nutritionStatuses );
+    } else if ( isThin ) {
+      nutritionStatuses.forEach( ( v ) => {
+        if ( v < 8 ) {
+          status = Math.min( status, v );
+        }
+      } );
     }
 
     this.frame = status;
