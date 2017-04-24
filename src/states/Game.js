@@ -7,6 +7,8 @@ import NutritionManager from '../objects/NutritionManager';
 import HealthHandler from '../objects/HealthHandler';
 import { initFoodDataManager } from '../objects/FoodDataManager';
 
+import * as Clock from '../utils/ClockUtils';
+
 import { BOB_OFFSET_Y } from '../constants/BobConstants';
 
 export default class Game extends Phaser.State {
@@ -27,6 +29,8 @@ export default class Game extends Phaser.State {
     this.gameUI.timeAdvance.add( () => healthHandler.doHarmToBob() );
     healthHandler.onHealthUpdate.add( ( ...args ) => this.gameUI.updateHealthBarValue( ...args ) );
     healthHandler.onHealthUpdate.add( ( ...args ) => this.checkForDeath( ...args ) );
+
+    Clock.initClock( this );
 
     this.camera.resetFX();
     this.camera.flash( 0x000000, 500, false );
@@ -51,6 +55,7 @@ export default class Game extends Phaser.State {
   }
 
   update() {
+    Clock.updateClock( this );
     this.gameUI.updateUI();
     this.bob.handleWeightChange();
   }
