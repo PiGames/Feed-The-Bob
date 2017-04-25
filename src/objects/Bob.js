@@ -38,27 +38,20 @@ export default class Bob extends Phaser.Sprite {
 
     resetFoodSpawnProbability();
 
-    makeProbabilityHigher.forEach( ( macro ) => {
-      if ( macro.makeHigher === true ) {
-        makeKeySpawnMoreFrequently( macro.name, 3 );
-      } else if ( macro.makeSuperHigher === true ) {
-        makeKeySpawnMoreFrequently( macro.name, 5 );
-      }
-    } );
-
-
     let isSuperThin = false;
     let isThin = false;
     let isFat = false;
     let isSuperFat = false;
 
-    nutritionStatuses.forEach( ( v ) => {
+    nutritionStatuses.forEach( ( v, index ) => {
       if ( v <= THIN_BREAKPOINT ) {
         isThin = true;
+        makeProbabilityHigher[ index ].makeHigher = true;
       }
 
       if ( v <= SUPER_THIN_BREAKPOINT ) {
         isSuperThin = true;
+        makeProbabilityHigher[ index ].makeSuperHigher = true;
       }
 
       if ( v >= FAT_BREAKPOINT ) {
@@ -67,6 +60,14 @@ export default class Bob extends Phaser.Sprite {
 
       if ( v >= SUPER_FAT_BREAKPOINT ) {
         isSuperFat = true;
+      }
+    } );
+
+    makeProbabilityHigher.forEach( ( macro ) => {
+      if ( macro.makeHigher === true ) {
+        makeKeySpawnMoreFrequently( macro.name, 3 );
+      } else if ( macro.makeSuperHigher === true ) {
+        makeKeySpawnMoreFrequently( macro.name, 5 );
       }
     } );
 
