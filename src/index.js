@@ -7,7 +7,6 @@ const states = {
   'Preloader': PPT.Preloader,
   'MainMenu': PPT.MainMenu,
   'Wiki': PPT.Wiki,
-  'Story': PPT.Story,
   'Game': PPT.Game,
   'Credits': PPT.Credits,
 };

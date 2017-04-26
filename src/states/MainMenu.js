@@ -18,7 +18,7 @@ export default class MainMenu extends Phaser.State {
     PPTStorage.initUnset( 'PPT-highscore', 0 );
     const highscore = PPTStorage.get( 'PPT-highscore' ) || 0;
 
-    const buttonEnclave = this.add.button( MENU_BUTTON_OFFSET, MENU_BUTTON_OFFSET, $( 'logo-pigames' ), this.clickPiGames, this );
+    const buttonPigames = this.add.button( MENU_BUTTON_OFFSET, MENU_BUTTON_OFFSET, $( 'logo-pigames' ), this.clickPiGames, this );
     const buttonStart = this.add.button( this.world.width - MENU_BUTTON_OFFSET, this.world.height - MENU_BUTTON_OFFSET, $( 'button-start' ), this.clickStart, this, 1, 0, 2 );
     buttonStart.anchor.set( 1 );
 
@@ -40,8 +40,8 @@ export default class MainMenu extends Phaser.State {
     this.add.tween( buttonStart ).to( { x: this.world.width - MENU_BUTTON_OFFSET }, 500, Phaser.Easing.Exponential.Out, true );
     this.buttonOptions.y = -this.buttonOptions.height - MENU_BUTTON_OFFSET;
     this.add.tween( this.buttonOptions ).to( { y: MENU_BUTTON_OFFSET }, 500, Phaser.Easing.Exponential.Out, true );
-    buttonEnclave.x = -buttonEnclave.width - MENU_BUTTON_OFFSET;
-    this.add.tween( buttonEnclave ).to( { x: MENU_BUTTON_OFFSET }, 500, Phaser.Easing.Exponential.Out, true );
+    buttonPigames.x = -buttonPigames.width - MENU_BUTTON_OFFSET;
+    this.add.tween( buttonPigames ).to( { x: MENU_BUTTON_OFFSET }, 500, Phaser.Easing.Exponential.Out, true );
     buttonWiki.y = this.world.height + buttonWiki.height + MENU_BUTTON_OFFSET;
     this.add.tween( buttonWiki ).to( { y: this.world.height - MENU_BUTTON_OFFSET }, 500, Phaser.Easing.Exponential.Out, true );
 
@@ -60,6 +60,11 @@ export default class MainMenu extends Phaser.State {
     this.buttonCredits.anchor.set( 1, 0 );
     this.buttonCredits.visible = false;
     this.ui.push( this.buttonCredits );
+
+    this.buttonHelp = this.add.button( this.world.width - MENU_BUTTON_OFFSET, MENU_BUTTON_OFFSET, $( 'button-help' ), this.clickHelp, this, 1, 0, 2 );
+    this.buttonHelp.anchor.set( 1, 0 );
+    this.buttonHelp.visible = false;
+    this.ui.push( this.buttonHelp );
 
     this.buttonQuality = this.add.button( this.world.width - MENU_BUTTON_OFFSET, MENU_BUTTON_OFFSET, $( 'button-quality' ), this.clickQuality, this, 1, 0, 2 );
     this.buttonQuality.anchor.set( 1, 0 );
@@ -130,7 +135,15 @@ export default class MainMenu extends Phaser.State {
     playAudio( 'click' );
     this.camera.fade( 0x000000, 200, false );
     this.time.events.add( 200, () => {
-      // this.game.state.start( 'Story' );
+      this.game.state.start( 'Game' );
+    } );
+  }
+
+  clickHelp() {
+    playAudio( 'click' );
+    this.camera.fade( 0x000000, 200, false );
+    PPTStorage.set( 'PPT-tutorial', false );
+    this.time.events.add( 200, () => {
       this.game.state.start( 'Game' );
     } );
   }

@@ -21,6 +21,7 @@ const resources = {
 		[ 'button-restart', 'img/ui/button-tryagain.png', 160, 160 ],
     [ 'button-options', 'img/ui/button-options.png', 160, 160 ],
     [ 'button-credits', 'img/ui/button-credits.png', 160, 160 ],
+    [ 'button-help', 'img/ui/button-help.png', 160, 160 ],
 		[ 'button-wiki', 'img/ui/button-wiki.png', 160, 160 ],
 		[ 'button-pause', 'img/ui/button-pause.png', 160, 160 ],
 		[ 'button-audio', 'img/ui/button-sound.png', 160, 160 ],
@@ -82,8 +83,7 @@ export default class Preloader extends Phaser.State {
       }
 
       document.body.removeChild( this.span );
-      // this.state.start( 'MainMenu' );
-      this.state.start( 'Game' );
+      this.state.start( 'MainMenu' );
     }
   }
 }
