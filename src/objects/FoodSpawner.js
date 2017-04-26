@@ -41,17 +41,19 @@ export default class FoodSpawner extends Phaser.Group {
 
     const foodType = getRandomWithWeight( getFoodData(), this.currentDifficultyLevelLastIndex + 1 );
 
-    const newFood = new Food( this.game, x, y, foodType.key, foodType.nutritionFacts, this.updateStatsSignal, this.removeChild.bind( this ) );
+    const newFood = new Food( this.game, x, y, foodType.key, foodType.nutritionFacts, this.updateStatsSignal, this.onFoodConsumption.bind( this ) );
     this.children.push( newFood );
   }
   update() {
     Phaser.Group.prototype.update.call( this );
   }
-  removeChild( child ) {
+  onFoodConsumption( food ) {
     if ( getStatusAudio() === true ) {
       this.biteSound.play();
     }
-
+    this.removeChild( food );
+  }
+  removeChild( child ) {
     const index = this.children.indexOf( child );
     this.children[ index ].destroy();
     this.children.splice( index, 1 );
