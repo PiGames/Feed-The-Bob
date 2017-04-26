@@ -241,7 +241,7 @@ export default class GameUI {
       break;
     }
     case 2: {
-      this.tutorialText.setText( 'Bob’s macroelements indicators will turn\nyellow and eventually red if you will overfeed\nhim with a certain type of macroelement\nor if you dont’t feed him with it.' );
+      this.tutorialText.setText( 'Bob’s macroelements indicators will turn\nyellow and eventually red if you overfeed\nhim with a certain type of macroelement\nor if you dont’t feed him with it.' );
 
       this.game.world.bringToTop( this.tutorialOverlay );
       this.game.world.bringToTop( this.NutritionUI.NutritionBarsGroup );
