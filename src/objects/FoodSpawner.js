@@ -3,6 +3,7 @@ import { getFoodData, getEasyLevelLastIndex, getMediumLevelLastIndex, getHardLev
 import { getRandomWithWeight } from '../utils/MathUtils.js';
 import { FOOD_SPAWN_INTERVAL, FOOD_SPAWN_BOUNDS_WIDTH, FOOD_SPAWN_BOUNDS_HEIGHT, FOOD_WIDTH, FOOD_HEIGHT } from '../constants/FoodConstants';
 import { TIME_TO_REACH_HARD_LEVEL, TIME_TO_REACH_MEDIUM_LEVEL } from '../constants/DifficultyLevelIntervals.js';
+import { getStatusAudio } from '../utils/AudioManager.js';
 
 export default class FoodSpawner extends Phaser.Group {
   constructor( game ) {
@@ -13,6 +14,9 @@ export default class FoodSpawner extends Phaser.Group {
     this.updateStatsSignal = new Phaser.Signal();
 
     this.currentDifficultyLevelLastIndex = getEasyLevelLastIndex();
+
+    this.biteSound = this.game.add.sound( 'audio-bite', 0.5 );
+    this.biteSound.allowMultiple = true;
   }
   create() {
     this.spawnFood();
@@ -44,6 +48,10 @@ export default class FoodSpawner extends Phaser.Group {
     Phaser.Group.prototype.update.call( this );
   }
   removeChild( child ) {
+    if ( getStatusAudio() === true ) {
+      this.biteSound.play();
+    }
+
     const index = this.children.indexOf( child );
     this.children[ index ].destroy();
     this.children.splice( index, 1 );

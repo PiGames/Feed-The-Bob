@@ -35,6 +35,7 @@ const resources = {
   'audio': [
 		[ 'audio-click', [ 'sfx/click.mp3', 'sfx/click.ogg' ] ],
 		[ 'audio-theme', [ 'sfx/farty-mcsty.m4a', 'sfx/farty-mcsty.mp3', 'sfx/farty-mcsty.ogg' ] ],
+    [ 'audio-bite', [ 'sfx/bite.mp3', 'sfx/bite.ogg' ] ],
   ],
 };
 
