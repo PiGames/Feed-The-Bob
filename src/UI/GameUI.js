@@ -1,16 +1,18 @@
 import { $ } from '../utils/ScaleManager';
-import { SCORE_FONT, SCORE_TEMPLATE, GAMEOVER_TITLE_FONT, GAMEOVER_SCORE_FONT, PAUSE_TITLE_FONT, MENU_BUTTON_OFFSET } from '../constants/UIConstants';
+import { SCORE_FONT, SCORE_TEMPLATE, GAMEOVER_TITLE_FONT, GAMEOVER_SCORE_FONT, PAUSE_TITLE_FONT, MENU_BUTTON_OFFSET, TUTORIAL_FONT } from '../constants/UIConstants';
 import { playAudio, manageAudio, getAudioOffset } from '../utils/AudioManager';
 import Text from './Text';
 
 import { PPTStorage } from '../utils/StorageManager';
 
 export default class GameUI {
-  constructor( state, Bob ) {
+  constructor( state, Bob, NutritionManager ) {
     this.state = state;
     this.game = state.game;
 
     this.Bob = Bob;
+    this.NutritionManager = NutritionManager;
+    this.NutritionUI = NutritionManager.UI;
 
     this.stateStatus = 'playing';
 
@@ -23,12 +25,14 @@ export default class GameUI {
 
     this.timeAdvance = new Phaser.Signal();
 
-    this.game.add.sprite( 0, 0, $( 'background' ) );
-
     this.initScore();
     this.initHealthBar();
     this.initPauseScreen();
     this.initGameoverScreen();
+
+    if ( PPTStorage.get( 'PPT-tutorial' ) !== true ) {
+      this.startTutorial();
+    }
   }
 
   initScore() {
@@ -38,9 +42,9 @@ export default class GameUI {
   }
 
   initHealthBar() {
-    const text = new Text( this.game, $( 30 ), this.game.world.height - $( 100 ), 'Health: ', $( SCORE_FONT ), [ 0, 1 ] );
+    this.healthBarText = new Text( this.game, $( 30 ), this.game.world.height - $( 100 ), 'Health: ', $( SCORE_FONT ), [ 0, 1 ] );
 
-    this.healthBar = this.game.add.tileSprite( text.x + text.width, this.game.world.height - $( 120 ), $( 300 ), $( 50 ), $( 'heart' ) );
+    this.healthBar = this.game.add.tileSprite( this.healthBarText.x + this.healthBarText.width, this.game.world.height - $( 120 ), $( 300 ), $( 50 ), $( 'heart' ) );
     this.healthBar.anchor.setTo( 0, 1 );
     this.healthBar.scale.setTo( 1.25 );
   }
@@ -128,6 +132,13 @@ export default class GameUI {
       }
       break;
     }
+    case 'tutorial': {
+      if ( !this.runOnce ) {
+        this.stateTutorial();
+        this.runOnce = true;
+      }
+      break;
+    }
     case 'playing': {
       if ( !this.runOnce ) {
         this.statePlaying();
@@ -165,6 +176,113 @@ export default class GameUI {
       this.stateStatus = 'playing';
       this.runOnce = false;
       this.state.restoreFoodMovement.call( this.state );
+    }
+  }
+
+  startTutorial() {
+    this.gamePaused = !this.gamePaused;
+    this.state.stopMovingFood.call( this.state );
+    this.stateStatus = 'tutorial';
+    this.runOnce = false;
+
+    this.tutorialStep = 0;
+    this.drawOverlay();
+  }
+
+  furtherTutorial() {
+    this.tutorialStep += 1;
+    this.runOnce = false;
+  }
+
+  drawOverlay() {
+    this.tutorialOverlay = this.game.add.group();
+
+    this.graphics = this.game.add.graphics( 0, 0 );
+    this.graphics.beginFill( 0x000000, 0.5 );
+    this.graphics.lineTo( this.game.world.width, 0 );
+    this.graphics.lineTo( this.game.world.width, this.game.world.height );
+    this.graphics.lineTo( 0, this.game.world.height );
+    this.graphics.endFill();
+    this.graphics.inputEnabled = true;
+    this.graphics.input.priorityID = 10;
+
+    this.tutorialText = new Text( this.game, 'center', $( 200 ), '', $( TUTORIAL_FONT ) );
+
+    this.continueTutorial = this.game.add.button( this.game.world.width - MENU_BUTTON_OFFSET, MENU_BUTTON_OFFSET, $( 'button-continue' ), this.furtherTutorial, this, 1, 0, 2 );
+    this.continueTutorial.anchor.set( 1, 0 );
+
+    this.continueTutorial.y = -this.continueTutorial.height - MENU_BUTTON_OFFSET;
+    this.game.add.tween( this.continueTutorial ).to( { y: MENU_BUTTON_OFFSET }, 1000, Phaser.Easing.Exponential.Out, true );
+
+    this.continueTutorial.input.priorityID = 11;
+
+    this.tutorialOverlay.add( this.graphics );
+    this.tutorialOverlay.add( this.continueTutorial );
+  }
+
+  stateTutorial() {
+    switch ( this.tutorialStep ) {
+    case 0: {
+      this.tutorialText.setText( 'This is Bob.\nYour job is to help him\nmaintain his current weight.' );
+
+      this.game.world.bringToTop( this.tutorialOverlay );
+      this.game.world.bringToTop( this.Bob );
+      this.game.world.bringToTop( this.tutorialText );
+
+      break;
+    }
+    case 1: {
+      this.tutorialText.setText( 'These are Bob’s current macroelements indicators.\nBy keeping them green you keep Bob healthy and score points.' );
+
+      this.game.world.bringToTop( this.tutorialOverlay );
+      this.game.world.bringToTop( this.NutritionUI.NutritionBarsGroup );
+      this.game.world.bringToTop( this.tutorialText );
+
+      break;
+    }
+    case 2: {
+      this.tutorialText.setText( 'Bob’s macroelements indicators will turn\nyellow and eventually red if you will overfeed\nhim with a certain type of macroelement\nor if you dont’t feed him with it.' );
+
+      this.game.world.bringToTop( this.tutorialOverlay );
+      this.game.world.bringToTop( this.NutritionUI.NutritionBarsGroup );
+      this.game.world.bringToTop( this.tutorialText );
+
+      this.NutritionManager.nutrition.carbohydrates = 200;
+      this.NutritionManager.nutrition.fats = 30;
+      this.NutritionUI.updateUI();
+
+      break;
+    }
+    case 3: {
+      this.tutorialText.setText( 'Bob has his own health bar,\nits value drops when you enter yellow\nor red zone on macroelement indicator.' );
+
+      this.game.world.bringToTop( this.tutorialOverlay );
+      this.game.world.bringToTop( this.textScore );
+      this.game.world.bringToTop( this.healthBar );
+      this.game.world.bringToTop( this.healthBar );
+      this.game.world.bringToTop( this.healthBarText );
+      this.game.world.bringToTop( this.tutorialText );
+      break;
+    }
+    case 4: {
+      this.tutorialText.setText( 'Every food has its own nutrition\ninfo in Wiki section availible from the menu.\nKnowing what macroelements food consists of,\nyou can be sure that you will feed Bob properly.' );
+
+      this.game.world.bringToTop( this.tutorialOverlay );
+      this.game.world.bringToTop( this.tutorialText );
+      break;
+    }
+    case 5: {
+      this.tutorialText.setText( 'This is the end of tutorial. You can now enjoy the game!' );
+
+      this.game.world.bringToTop( this.tutorialOverlay );
+      this.game.world.bringToTop( this.tutorialText );
+      break;
+    }
+    case 6: {
+      PPTStorage.set( 'PPT-tutorial', true );
+      this.stateRestart();
+      break;
+    }
     }
   }
 

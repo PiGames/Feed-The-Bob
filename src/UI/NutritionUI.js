@@ -17,6 +17,8 @@ export default class NutritionUI {
     this.NutritionMasks = [];
     this.NutritionTexts = [];
 
+    this.NutritionBarsGroup = this.game.add.group();
+
     this.drawAllBars();
   }
 
@@ -119,11 +121,16 @@ export default class NutritionUI {
 
     this.NutritionBars[ i ] = status;
 
-    // descText
-    new Text( this.game, this.game.width - $( NUTRITION_BAR_X_FROM_LEFT ) + $( NUTRITION_BAR_TEXT_OFFSET_X ) - width - $( 10, 0.5 ), this.game.height - $( NUTRITION_BAR_Y_FROM_BOTTOM ) - offset - $( NUTRITION_BAR_TEXT_OFFSET_Y ) + $( 4, 0.5 ), text, $( NUTRITION_BAR_INFO_FONT ), [ 0, 1 ] );
+    const descText = new Text( this.game, this.game.width - $( NUTRITION_BAR_X_FROM_LEFT ) + $( NUTRITION_BAR_TEXT_OFFSET_X ) - width - $( 10, 0.5 ), this.game.height - $( NUTRITION_BAR_Y_FROM_BOTTOM ) - offset - $( NUTRITION_BAR_TEXT_OFFSET_Y ) + $( 4, 0.5 ), text, $( NUTRITION_BAR_INFO_FONT ), [ 0, 1 ] );
 
     const statusText = new Text( this.game, this.game.width - $( NUTRITION_BAR_X_FROM_LEFT ) - $( NUTRITION_BAR_TEXT_OFFSET_X ) - $( 10, 0.5 ), this.game.height - $( NUTRITION_BAR_Y_FROM_BOTTOM ) - offset - $( NUTRITION_BAR_TEXT_OFFSET_Y ) + $( 4, 0.5 ), `${Math.max( parseInt( value ), 0 )} / ${goodAmount}`, $( NUTRITION_BAR_INFO_FONT ), [ 1, 1 ] );
 
     this.NutritionTexts[ i ] = statusText;
+
+    this.NutritionBarsGroup.add( background );
+    this.NutritionBarsGroup.add( mask );
+    this.NutritionBarsGroup.add( status );
+    this.NutritionBarsGroup.add( statusText );
+    this.NutritionBarsGroup.add( descText );
   }
 }

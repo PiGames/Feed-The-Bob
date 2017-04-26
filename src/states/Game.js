@@ -15,13 +15,16 @@ export default class Game extends Phaser.State {
   create() {
     initFoodDataManager();
 
+    this.game.add.sprite( 0, 0, $( 'background' ) );
+
     this.foodSpawner = new FoodSpawner( this.game, true );
     this.foodContainer = this.foodSpawner.children;
-    this.gameUI = new GameUI( this );
     this.NutritionManager = new NutritionManager( this.game );
     this.foodSpawner.updateStatsSignal.add( ( ...args ) => this.NutritionManager.updateStats( ...args ) );
 
     this.bob = new Bob( this.game, this.world.width / 2, this.world.height - $( BOB_OFFSET_Y ), $( 'bob' ), this.NutritionManager );
+    this.gameUI = new GameUI( this, this.bob, this.NutritionManager );
+
     this.bob.onScoreValueChange.add( ( ...args ) => this.gameUI.onScoreValueChange( ...args ) );
 
     const healthHandler = new HealthHandler();
@@ -38,7 +41,7 @@ export default class Game extends Phaser.State {
     this.game.physics.startSystem( Phaser.Physics.ARCADE );
 
     this.game.onResume.add( () => {
-      if ( this.gameUI.stateStatus !== 'playing' ) {
+      if ( this.gameUI.stateStatus === 'paused' || this.gameUI.stateStatus === 'gameover' || this.gameUI.stateStatus === 'tutorial' ) {
         this.game.time.events.pause();
       }
     } );
