@@ -22,7 +22,7 @@ export default class Wiki extends Phaser.State {
     const creditsCodingTitle = new Text( this.game, 'center', 0, 'Coding', $( CREDITS_FONT_SMALL ) );
     const creditsCoding = new Text( this.game, 'center', 0, 'Bartek „bibixx” Legięć\nKacper Pietrzak', $( CREDITS_FONT ) );
     const creditsGraphicsTitle = new Text( this.game, 'center', 0, 'Graphics', $( CREDITS_FONT_SMALL ) );
-    const creditsGraphics = new Text( this.game, 'center', 0, 'Magda „enna” Nowak', $( CREDITS_FONT ) );
+    const creditsGraphics = new Text( this.game, 'center', 0, 'Magda „Enna” Nowak', $( CREDITS_FONT ) );
     const creditsTextSound = new Text( this.game, 'center', 0, '\nSounds\n„Farty McSty”\nby Eric Matyas\nwww.soundimage.org\n\n„Click2 Sound”\nby Sebastian\nwww.soundbible.com', $( CREDITS_FONT_SMALL ) );
 
     textGroup.add( creditsTitle );
