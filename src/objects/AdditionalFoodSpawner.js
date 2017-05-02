@@ -10,9 +10,14 @@ export default class AdditionalFoodSpawner {
   }
   checkIfShouldSpawn() {
     for ( const macroKey in this.hasMacrosSpawnedData ) {
+      console.log( `should spawn ${macroKey} ?` );
       if ( this.hasMacrosSpawnedData[ macroKey ] === false ) {
         this.onSpawnNeed.dispatch( macroKey );
+        console.log( 'yep' );
+      } else {
+        console.log( 'nope' );
       }
+      this.hasMacrosSpawnedData[ macroKey ] = false;
     }
   }
 }

@@ -17,7 +17,7 @@ export const FOOD_SPAWN_BOUNDS_HEIGHT = 300;
 export const FOOD_WIDTH = 100;
 export const FOOD_HEIGHT = 75;
 
-export const ADDITIONAL_FOOD_SPAWN_INTERVAL = 2 * Phaser.Timer.SECOND;
+export const ADDITIONAL_FOOD_SPAWN_INTERVAL = 5 * Phaser.Timer.SECOND;
 
 export const FOOD_DATA = Object.freeze( [
   // Complexity lv. 1

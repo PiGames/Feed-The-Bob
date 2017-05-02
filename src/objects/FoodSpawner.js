@@ -5,7 +5,7 @@ import { FOOD_SPAWN_INTERVAL, FOOD_SPAWN_BOUNDS_WIDTH, FOOD_SPAWN_BOUNDS_HEIGHT,
 import { TIME_TO_REACH_HARD_LEVEL, TIME_TO_REACH_MEDIUM_LEVEL } from '../constants/DifficultyLevelIntervals.js';
 import { getStatusAudio } from '../utils/AudioManager.js';
 import AdditionalFoodSpawner from './AdditionalFoodSpawner';
-import { getDominatingMacro } from '../utils/NutritionUtils';
+import { getDominatingMacro, getFoodWithParticularMacros } from '../utils/NutritionUtils';
 
 export default class FoodSpawner extends Phaser.Group {
   constructor( game ) {
@@ -32,7 +32,12 @@ export default class FoodSpawner extends Phaser.Group {
   create() {
     this.spawnFood();
   }
-  spawnFood() {
+  spawnFood( foodType ) {
+    if ( foodType == null ) {
+      foodType = getRandomWithWeight( getFoodData(), this.currentDifficultyLevelLastIndex + 1 );
+      this.hasMacrosSpawnedData[ getDominatingMacro( foodType ) ] = true;
+    }
+
     if ( this.game.veryBadGlobalFlagToMakeAHotFixSorryButIHaveToUseIt === false ) {
       // I really don't know how to handle this differently, I'll ask on Slack or smth...
       return;
@@ -48,13 +53,8 @@ export default class FoodSpawner extends Phaser.Group {
       x = spawnSide === 'WEST' ? -FOOD_WIDTH : this.game.world.width + FOOD_WIDTH;
       y = FOOD_SPAWN_BOUNDS_HEIGHT / 2 + Math.random() * FOOD_SPAWN_BOUNDS_HEIGHT;
     }
+
     this.tryDifficultyLevelUp();
-
-    const foodType = getRandomWithWeight( getFoodData(), this.currentDifficultyLevelLastIndex + 1 );
-
-    console.log( getDominatingMacro( foodType ) );
-
-    this.hasMacrosSpawnedData[ getDominatingMacro( foodType ) ] = true;
 
     const newFood = new Food( this.game, x, y, foodType.key, foodType.nutritionFacts, this.updateStatsSignal, this.onFoodConsumption.bind( this ) );
     this.children.push( newFood );
@@ -85,6 +85,10 @@ export default class FoodSpawner extends Phaser.Group {
     }
   }
   spawnFoodWithParticularMacro( macroKey ) {
-    console.log( `Spawn food with ${macroKey} now.` );
+    const foodDataFilteredByComplexity = getFoodData().slice( 0, this.currentDifficultyLevelLastIndex + 1 );
+    const foodData = getFoodWithParticularMacros( foodDataFilteredByComplexity, macroKey );
+    const foodType = getRandomWithWeight( foodData );
+    console.log( foodType );
+    this.spawnFood( foodType );
   }
 }
