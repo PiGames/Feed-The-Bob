@@ -46,7 +46,10 @@ export default class Food extends Phaser.Sprite {
 
     this.game.world.add( this );
   }
-
+  speedUp( speedOffset ) {
+    this.body.velocity.x += speedOffset;
+    this.body.velocity.y += speedOffset;
+  }
   handleClick() {
     const tween = this.game.add.tween( this );
     const tweenScale = this.game.add.tween( this.scale );

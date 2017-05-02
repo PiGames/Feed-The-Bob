@@ -16,11 +16,12 @@ export default class Game extends Phaser.State {
     initFoodDataManager();
 
     this.game.add.sprite( 0, 0, $( 'background' ) );
-
     this.foodSpawner = new FoodSpawner( this.game, true );
     this.foodContainer = this.foodSpawner.children;
+
     this.NutritionManager = new NutritionManager( this.game );
     this.foodSpawner.updateStatsSignal.add( ( ...args ) => this.NutritionManager.updateStats( ...args ) );
+    this.foodSpawner.onDifficultyLevelUp.add( ( ...args ) => this.NutritionManager.growDifficulty( ...args ) );
 
     this.bob = new Bob( this.game, this.world.width / 2, this.world.height - $( BOB_OFFSET_Y ), $( 'bob' ), this.NutritionManager );
     this.gameUI = new GameUI( this, this.bob, this.NutritionManager );

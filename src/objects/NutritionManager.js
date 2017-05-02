@@ -1,6 +1,6 @@
 import NutritionUI from '../UI/NutritionUI';
 
-import { GOOD_AMOUNT_OF_CARBOHYDRATES, GOOD_AMOUNT_OF_FATS, GOOD_AMOUNT_OF_PROTEINS, AMOUNT_REDUCED_INTERVAL, AMOUNT_REDUCED_PERCENT } from '../constants/NutritionConstants';
+import { GOOD_AMOUNT_OF_CARBOHYDRATES, GOOD_AMOUNT_OF_FATS, GOOD_AMOUNT_OF_PROTEINS, AMOUNT_REDUCED_INTERVAL, AMOUNT_REDUCED_PERCENT, MEDIUM_LEVEL_DELAY_OFFSET, HARD_LEVEL_DELAY_OFFSET } from '../constants/NutritionConstants';
 
 export default class NutritionManager {
   constructor( game ) {
@@ -12,7 +12,7 @@ export default class NutritionManager {
 
     this.UI = new NutritionUI( game, this );
 
-    game.time.events.loop( AMOUNT_REDUCED_INTERVAL, this.reduceNutrition, this );
+    this.updateTimer = game.time.events.loop( AMOUNT_REDUCED_INTERVAL, this.reduceNutrition, this );
   }
 
   reduceNutrition() {
@@ -33,5 +33,17 @@ export default class NutritionManager {
     this.nutrition.proteins += data.proteins;
 
     this.UI.updateUI( data );
+  }
+
+  growDifficulty( level ) {
+    if ( level === 'MEDIUM' ) {
+      this.speedUp( MEDIUM_LEVEL_DELAY_OFFSET );
+    } else if ( level === 'HARD' ) {
+      this.speedUp( HARD_LEVEL_DELAY_OFFSET );
+    }
+  }
+
+  speedUp( delayOffset ) {
+    this.updateTimer.delay = AMOUNT_REDUCED_INTERVAL - delayOffset;
   }
 }

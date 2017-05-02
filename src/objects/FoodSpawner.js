@@ -1,7 +1,7 @@
 import Food from './Food';
 import { getFoodData, getEasyLevelLastIndex, getMediumLevelLastIndex, getHardLevelLastIndex } from './FoodDataManager';
 import { getRandomWithWeight } from '../utils/MathUtils.js';
-import { FOOD_SPAWN_INTERVAL, FOOD_SPAWN_BOUNDS_WIDTH, FOOD_SPAWN_BOUNDS_HEIGHT, FOOD_WIDTH, FOOD_HEIGHT } from '../constants/FoodConstants';
+import { FOOD_SPAWN_INTERVAL, FOOD_SPAWN_BOUNDS_WIDTH, FOOD_SPAWN_BOUNDS_HEIGHT, FOOD_WIDTH, FOOD_HEIGHT, MEDIUM_LEVEL_VELOCITY_OFFSET, HARD_LEVEL_VELOCITY_OFFSET, MEDIUM_LEVEL_FOOD_SPAWN_DELAY_OFFSET, HARD_LEVEL_FOOD_SPAWN_DELAY_OFFSET } from '../constants/FoodConstants';
 import { TIME_TO_REACH_HARD_LEVEL, TIME_TO_REACH_MEDIUM_LEVEL } from '../constants/DifficultyLevelIntervals.js';
 import { getStatusAudio } from '../utils/AudioManager.js';
 import AdditionalFoodSpawner from './AdditionalFoodSpawner';
@@ -15,6 +15,7 @@ export default class FoodSpawner extends Phaser.Group {
 
     this.updateStatsSignal = new Phaser.Signal();
 
+    this.currentDifficultyLevel = 'EASY';
     this.currentDifficultyLevelLastIndex = getEasyLevelLastIndex();
 
     this.biteSound = this.game.add.sound( 'audio-bite', 0.5 );
@@ -28,6 +29,8 @@ export default class FoodSpawner extends Phaser.Group {
 
     const additionalFoodSpawner = new AdditionalFoodSpawner( game, this.hasMacrosSpawnedData );
     additionalFoodSpawner.onSpawnNeed.add( this.spawnFoodWithParticularMacro, this );
+
+    this.onDifficultyLevelUp = new Phaser.Signal();
   }
   create() {
     this.spawnFood();
@@ -57,6 +60,13 @@ export default class FoodSpawner extends Phaser.Group {
     this.tryDifficultyLevelUp();
 
     const newFood = new Food( this.game, x, y, foodType.key, foodType.nutritionFacts, this.updateStatsSignal, this.onFoodConsumption.bind( this ) );
+
+    if ( this.currentDifficultyLevel === 'MEDIUM' ) {
+      newFood.speedUp( MEDIUM_LEVEL_VELOCITY_OFFSET );
+    } else if ( this.currentDifficultyLevel === 'HARD' ) {
+      newFood.speedUp( HARD_LEVEL_VELOCITY_OFFSET );
+    }
+
     this.children.push( newFood );
   }
   update() {
@@ -79,16 +89,22 @@ export default class FoodSpawner extends Phaser.Group {
        this.currentDifficultyLevelLastIndex !== getMediumLevelLastIndex() &&
        this.currentDifficultyLevelLastIndex !== getHardLevelLastIndex() ) {
       this.currentDifficultyLevelLastIndex = getMediumLevelLastIndex();
+      this.currentDifficultyLevel = 'MEDIUM';
+      this.timer.delay = FOOD_SPAWN_INTERVAL - MEDIUM_LEVEL_FOOD_SPAWN_DELAY_OFFSET;
+      this.onDifficultyLevelUp.dispatch( this.currentDifficultyLevel );
     } else if ( score >= TIME_TO_REACH_HARD_LEVEL &&
       this.currentDifficultyLevelLastIndex !== getHardLevelLastIndex() ) {
       this.currentDifficultyLevelLastIndex = getHardLevelLastIndex();
+      this.currentDifficultyLevel = 'HARD';
+      this.timer.delay = FOOD_SPAWN_INTERVAL - HARD_LEVEL_FOOD_SPAWN_DELAY_OFFSET;
+      this.onDifficultyLevelUp.dispatch( this.currentDifficultyLevel );
     }
   }
   spawnFoodWithParticularMacro( macroKey ) {
     const foodDataFilteredByComplexity = getFoodData().slice( 0, this.currentDifficultyLevelLastIndex + 1 );
     const foodData = getFoodWithParticularMacros( foodDataFilteredByComplexity, macroKey );
     const foodType = getRandomWithWeight( foodData );
-    console.log( foodType );
+
     this.spawnFood( foodType );
   }
 }
