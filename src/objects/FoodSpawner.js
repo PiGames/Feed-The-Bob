@@ -4,6 +4,8 @@ import { getRandomWithWeight } from '../utils/MathUtils.js';
 import { FOOD_SPAWN_INTERVAL, FOOD_SPAWN_BOUNDS_WIDTH, FOOD_SPAWN_BOUNDS_HEIGHT, FOOD_WIDTH, FOOD_HEIGHT } from '../constants/FoodConstants';
 import { TIME_TO_REACH_HARD_LEVEL, TIME_TO_REACH_MEDIUM_LEVEL } from '../constants/DifficultyLevelIntervals.js';
 import { getStatusAudio } from '../utils/AudioManager.js';
+import AdditionalFoodSpawner from './AdditionalFoodSpawner';
+import { getDominatingMacro } from '../utils/NutritionUtils';
 
 export default class FoodSpawner extends Phaser.Group {
   constructor( game ) {
@@ -17,6 +19,15 @@ export default class FoodSpawner extends Phaser.Group {
 
     this.biteSound = this.game.add.sound( 'audio-bite', 0.5 );
     this.biteSound.allowMultiple = true;
+
+    this.hasMacrosSpawnedData = {
+      carbohydrates: false,
+      fats: false,
+      proteins: false,
+    };
+
+    const additionalFoodSpawner = new AdditionalFoodSpawner( game, this.hasMacrosSpawnedData );
+    additionalFoodSpawner.onSpawnNeed.add( this.spawnFoodWithParticularMacro, this );
   }
   create() {
     this.spawnFood();
@@ -40,6 +51,10 @@ export default class FoodSpawner extends Phaser.Group {
     this.tryDifficultyLevelUp();
 
     const foodType = getRandomWithWeight( getFoodData(), this.currentDifficultyLevelLastIndex + 1 );
+
+    console.log( getDominatingMacro( foodType ) );
+
+    this.hasMacrosSpawnedData[ getDominatingMacro( foodType ) ] = true;
 
     const newFood = new Food( this.game, x, y, foodType.key, foodType.nutritionFacts, this.updateStatsSignal, this.onFoodConsumption.bind( this ) );
     this.children.push( newFood );
@@ -68,5 +83,8 @@ export default class FoodSpawner extends Phaser.Group {
       this.currentDifficultyLevelLastIndex !== getHardLevelLastIndex() ) {
       this.currentDifficultyLevelLastIndex = getHardLevelLastIndex();
     }
+  }
+  spawnFoodWithParticularMacro( macroKey ) {
+    console.log( `Spawn food with ${macroKey} now.` );
   }
 }

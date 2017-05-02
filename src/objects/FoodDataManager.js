@@ -1,4 +1,5 @@
 import { FOOD_DATA } from '../constants/FoodConstants';
+import { getFoodWithParticularMacros } from '../utils/NutritionUtils';
 
 let data;
 let easyLevelLastIndex;
@@ -22,10 +23,7 @@ export const getMediumLevelLastIndex = () => mediumLevelLastIndex;
 export const getHardLevelLastIndex = () => hardLevelLastIndex;
 
 export function makeKeySpawnMoreFrequently( macroKey, multiplier ) {
-  const keyMacros = data.filter( ( food ) => {
-    const macros = food.nutritionFacts;
-    return Math.max( macros.carbohydrates, macros.fats, macros.proteins ) === macros[ macroKey ];
-  } );
+  const keyMacros = getFoodWithParticularMacros( data, macroKey );
 
   keyMacros.forEach( ( keyFood ) => {
     keyFood.probability = FOOD_DATA.find( ( food ) => food.key === keyFood.key ).probability * multiplier;

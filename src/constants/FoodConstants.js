@@ -17,6 +17,8 @@ export const FOOD_SPAWN_BOUNDS_HEIGHT = 300;
 export const FOOD_WIDTH = 100;
 export const FOOD_HEIGHT = 75;
 
+export const ADDITIONAL_FOOD_SPAWN_INTERVAL = 2 * Phaser.Timer.SECOND;
+
 export const FOOD_DATA = Object.freeze( [
   // Complexity lv. 1
   { 'key': 0, 'name': 'Apple', 'nutritionFacts': { 'carbohydrates': 12, 'fats': 0, 'proteins': 0 }, 'complexityLevel': 1, 'probability': 2, 'quantity': '1 apple' },

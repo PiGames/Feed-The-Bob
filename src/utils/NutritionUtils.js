@@ -15,3 +15,24 @@ export function getStatus( value, goodAmount ) {
 
   return 8;
 }
+
+export function getFoodWithParticularMacros( foodData, macroKey ) {
+  return foodData.filter( ( food ) => {
+    return getDominatingMacroValue( food ) === food.nutritionFacts[ macroKey ];
+  } );
+}
+
+export function getDominatingMacroValue( food ) {
+  const macros = food.nutritionFacts;
+  return Math.max( macros.carbohydrates, macros.fats, macros.proteins );
+}
+
+export function getDominatingMacro( food ) {
+  const dominatingValue = getDominatingMacroValue( food );
+  const macros = food.nutritionFacts;
+  for ( const macroKey in food.nutritionFacts ) {
+    if ( macros[ macroKey ] === dominatingValue ) {
+      return macroKey;
+    }
+  }
+}
