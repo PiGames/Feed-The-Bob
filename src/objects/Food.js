@@ -39,18 +39,19 @@ export default class Food extends Phaser.Sprite {
     } );
     this.hasEnteredScreen = false;
     this.checkWorldBounds = true;
-    this.events.onEnterBounds.add( () => {
-      this.hasEnteredScreen = true;
-    } );
+
     this.events.onOutOfBounds.add( () => {
       if ( this.hasEnteredScreen ) {
-        console.log( 'destroy' );
         this.onDestroy( this, false );
       }
     } );
 
-
     this.game.world.add( this );
+  }
+  update() {
+    if ( !this.hasEnteredScreen && this.game.world.bounds.intersects( this._bounds ) ) {
+      this.hasEnteredScreen = true;
+    }
   }
   speedUp( speedOffset ) {
     this.body.velocity.x += speedOffset * this.directionX;
