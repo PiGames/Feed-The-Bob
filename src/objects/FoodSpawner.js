@@ -72,8 +72,8 @@ export default class FoodSpawner extends Phaser.Group {
   update() {
     Phaser.Group.prototype.update.call( this );
   }
-  onFoodConsumption( food ) {
-    if ( getStatusAudio() === true ) {
+  onFoodConsumption( food, wasEaten ) {
+    if ( getStatusAudio() === true && wasEaten ) {
       this.biteSound.play();
     }
     this.removeChild( food );

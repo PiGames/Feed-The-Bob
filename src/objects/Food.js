@@ -27,8 +27,6 @@ export default class Food extends Phaser.Sprite {
 
     this.body.velocity.y = this.velocityY;
 
-    console.log( this.body.velocity );
-
     this.inputEnabled = true;
     this.events.onInputDown.add( this.handleClick, this );
 
@@ -46,7 +44,8 @@ export default class Food extends Phaser.Sprite {
     } );
     this.events.onOutOfBounds.add( () => {
       if ( this.hasEnteredScreen ) {
-        this.onDestroy( this );
+        console.log( 'destroy' );
+        this.onDestroy( this, false );
       }
     } );
 
@@ -67,7 +66,7 @@ export default class Food extends Phaser.Sprite {
 
     tween.onComplete.add( () => {
       this.updateStatsSignal.dispatch( this.data );
-      this.onDestroy( this );
+      this.onDestroy( this, true );
     } );
   }
 }
