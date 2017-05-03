@@ -9,6 +9,9 @@ export default class Food extends Phaser.Sprite {
     this.updateStatsSignal = updateStatsSignal;
     this.scale.setTo( FOOD_SCALE );
     this.anchor.setTo( 0.5, 0.5 );
+
+    this.hitArea = ( new Phaser.Circle() ).setTo( 0, 0, 250 );
+
     this.game.physics.enable( this );
 
     const directionX = x > this.game.world.centerX ? -1 : 1;
