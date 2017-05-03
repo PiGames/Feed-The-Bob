@@ -3,8 +3,8 @@ import { BOB_OFFSET_Y, BOB_SCALE } from './BobConstants';
 export const MIN_FOOD_VELOCITY = 190;
 export const MAX_FOOD_VELOCITY = 230;
 
-export const MEDIUM_LEVEL_VELOCITY_OFFSET = 30;
-export const HARD_LEVEL_VELOCITY_OFFSET = 60;
+export const MEDIUM_LEVEL_VELOCITY_OFFSET = 60;
+export const HARD_LEVEL_VELOCITY_OFFSET = 120;
 
 export const FOOD_SCALE = 1;
 
@@ -15,7 +15,7 @@ export const FOOD_TWEEN_Y = 560 * BOB_SCALE + BOB_OFFSET_Y;
 
 export const FOOD_SPAWN_INTERVAL = 1.2 * Phaser.Timer.SECOND;
 export const MEDIUM_LEVEL_FOOD_SPAWN_DELAY_OFFSET = 0.2 * Phaser.Timer.SECOND;
-export const HARD_LEVEL_FOOD_SPAWN_DELAY_OFFSET = 0.4 * Phaser.Timer.SECOND;
+export const HARD_LEVEL_FOOD_SPAWN_DELAY_OFFSET = 0.6 * Phaser.Timer.SECOND;
 export const FOOD_SPAWN_BOUNDS_WIDTH = 500;
 export const FOOD_SPAWN_BOUNDS_HEIGHT = 300;
 
@@ -23,6 +23,8 @@ export const FOOD_WIDTH = 100;
 export const FOOD_HEIGHT = 75;
 
 export const ADDITIONAL_FOOD_SPAWN_INTERVAL = 5 * FOOD_SPAWN_INTERVAL;
+
+export const FOOD_HIT_AREA_DIAMETER = 250;
 
 export const FOOD_DATA = Object.freeze( [
   // Complexity lv. 1

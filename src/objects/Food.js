@@ -1,5 +1,5 @@
 import { $ } from '../utils/ScaleManager';
-import { MIN_FOOD_VELOCITY, MAX_FOOD_VELOCITY, FOOD_TWEEN_SPEED, FOOD_TWEEN_X, FOOD_TWEEN_Y, FOOD_SCALE, FOOD_TWEEN_SCALE } from '../constants/FoodConstants';
+import { MIN_FOOD_VELOCITY, MAX_FOOD_VELOCITY, FOOD_TWEEN_SPEED, FOOD_TWEEN_X, FOOD_TWEEN_Y, FOOD_SCALE, FOOD_TWEEN_SCALE, FOOD_HIT_AREA_DIAMETER } from '../constants/FoodConstants';
 
 export default class Food extends Phaser.Sprite {
   constructor( game, x, y, key, data, updateStatsSignal, onDestroy ) {
@@ -10,20 +10,24 @@ export default class Food extends Phaser.Sprite {
     this.scale.setTo( FOOD_SCALE );
     this.anchor.setTo( 0.5, 0.5 );
 
-    this.hitArea = ( new Phaser.Circle() ).setTo( 0, 0, 250 );
+    this.hitArea = ( new Phaser.Circle() ).setTo( 0, 0, FOOD_HIT_AREA_DIAMETER );
 
     this.game.physics.enable( this );
 
-    const directionX = x > this.game.world.centerX ? -1 : 1;
-    const directionY = y > this.game.world.centerY ? -1 : 1;
+    this.directionX = x > this.game.world.centerX ? -1 : 1;
+    this.directionY = y > this.game.world.centerY ? -1 : 1;
 
-    this.velocityX = directionX * ( Math.floor(
-      Math.random() * ( $( MAX_FOOD_VELOCITY ) - $( MIN_FOOD_VELOCITY ) ) ) + $( MIN_FOOD_VELOCITY ) );
+    this.velocityX = this.directionX * this.game.rnd.integerInRange( $( MIN_FOOD_VELOCITY ), $( MAX_FOOD_VELOCITY ) );
+
     this.body.velocity.x = this.velocityX;
 
-    this.velocityY = directionY * ( Math.floor(
-      Math.random() * ( $( MAX_FOOD_VELOCITY ) - $( MIN_FOOD_VELOCITY ) ) ) + $( MIN_FOOD_VELOCITY ) );
+    this.velocityY = this.directionY * this.game.rnd.integerInRange(
+      Math.max( $( MIN_FOOD_VELOCITY ), Math.abs( this.velocityX ) - 10 ),
+      Math.min( Math.abs( this.velocityX ) + 10, $( MAX_FOOD_VELOCITY ) ) );
+
     this.body.velocity.y = this.velocityY;
+
+    console.log( this.body.velocity );
 
     this.inputEnabled = true;
     this.events.onInputDown.add( this.handleClick, this );
@@ -50,8 +54,8 @@ export default class Food extends Phaser.Sprite {
     this.game.world.add( this );
   }
   speedUp( speedOffset ) {
-    this.body.velocity.x += speedOffset;
-    this.body.velocity.y += speedOffset;
+    this.body.velocity.x += speedOffset * this.directionX;
+    this.body.velocity.y += speedOffset * this.directionY;
   }
   handleClick() {
     const tween = this.game.add.tween( this );
