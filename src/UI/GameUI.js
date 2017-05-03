@@ -339,7 +339,7 @@ export default class GameUI {
     this.screenGameoverScore.setText( '' );
     const secondNumberSuffix = time => ( time === 1 ) ? '' : 's';
 
-    this.screenGameoverScore.setText( `You have survived for ${Math.floor( this.score )} second${secondNumberSuffix( this.score )}\nand died from ${deathmsg}` );
+    this.screenGameoverScore.setText( `You have scored ${Math.floor( this.score )} point${secondNumberSuffix( this.score )}\nand died from ${deathmsg}` );
   }
 
   clickAudio() {
