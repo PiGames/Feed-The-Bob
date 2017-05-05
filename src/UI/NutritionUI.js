@@ -4,7 +4,7 @@ import { getStatus } from '../utils/NutritionUtils';
 
 import { GOOD_AMOUNT_OF_CARBOHYDRATES, GOOD_AMOUNT_OF_FATS, GOOD_AMOUNT_OF_PROTEINS } from '../constants/NutritionConstants';
 import { SUPER_THIN_BREAKPOINT, THIN_BREAKPOINT, FAT_BREAKPOINT, SUPER_FAT_BREAKPOINT, THINNESS_LEVELS, FATNESS_LEVELS } from '../constants/WeightBreakpoints';
-import { NUTRITION_BAR_WIDTH, NUTRITION_BAR_HEIGHT, NUTRITION_BAR_OFFSET, NUTRITION_BAR_X_FROM_LEFT, NUTRITION_BAR_Y_FROM_BOTTOM, NUTRITION_BAR_TEXT_OFFSET_X, NUTRITION_BAR_TEXT_OFFSET_Y, NUTRITION_BAR_INFO_FONT, NUTRITION_NUTRITION_ADDED_FONT, NUTRITION_BAR_BORDER_WIDTH, NUTRITION_BAR_INDICATOR_WIDTH } from '../constants/UIConstants';
+import { NUTRITION_BAR_WIDTH, NUTRITION_BAR_HEIGHT, NUTRITION_BAR_OFFSET, NUTRITION_BAR_X_FROM_LEFT, NUTRITION_BAR_Y_FROM_BOTTOM, NUTRITION_BAR_TEXT_OFFSET_X, NUTRITION_BAR_TEXT_OFFSET_Y, NUTRITION_BAR_INFO_FONT, NUTRITION_NUTRITION_ADDED_FONT, NUTRITION_BAR_BORDER_WIDTH } from '../constants/UIConstants';
 import Text from './Text';
 
 export default class NutritionUI {
@@ -143,9 +143,9 @@ export default class NutritionUI {
 
     this.NutritionBars[ i ] = status;
 
-    const descText = new Text( this.game, this.game.width - $( NUTRITION_BAR_X_FROM_LEFT ) + $( NUTRITION_BAR_TEXT_OFFSET_X ) - width - $( 10, 0.5 ), this.game.height - $( NUTRITION_BAR_Y_FROM_BOTTOM ) - offset - $( NUTRITION_BAR_TEXT_OFFSET_Y ) + $( 4, 0.5 ), text, $( NUTRITION_BAR_INFO_FONT ), [ 0, 1 ] );
+    const descText = new Text( this.game, this.game.width - $( NUTRITION_BAR_X_FROM_LEFT ) + $( NUTRITION_BAR_TEXT_OFFSET_X ) - width - $( 10, 0.5 ), this.game.height - $( NUTRITION_BAR_Y_FROM_BOTTOM ) - offset - $( NUTRITION_BAR_TEXT_OFFSET_Y ) + $( 3, 0.5 ), text, $( NUTRITION_BAR_INFO_FONT ), [ 0, 1 ] );
 
-    const statusText = new Text( this.game, this.game.width - $( NUTRITION_BAR_X_FROM_LEFT ) - $( NUTRITION_BAR_TEXT_OFFSET_X ) - $( 10, 0.5 ), this.game.height - $( NUTRITION_BAR_Y_FROM_BOTTOM ) - offset - $( NUTRITION_BAR_TEXT_OFFSET_Y ) + $( 4, 0.5 ), `${Math.max( parseInt( value ), 0 )} / ${goodAmount}`, $( NUTRITION_BAR_INFO_FONT ), [ 1, 1 ] );
+    const statusText = new Text( this.game, this.game.width - $( NUTRITION_BAR_X_FROM_LEFT ) - $( NUTRITION_BAR_TEXT_OFFSET_X ) - $( 10, 0.5 ), this.game.height - $( NUTRITION_BAR_Y_FROM_BOTTOM ) - offset - $( NUTRITION_BAR_TEXT_OFFSET_Y ) + $( 3, 0.5 ), `${Math.max( parseInt( value ), 0 )} / ${goodAmount}`, $( NUTRITION_BAR_INFO_FONT ), [ 1, 1 ] );
 
     this.NutritionTexts[ i ] = statusText;
 
