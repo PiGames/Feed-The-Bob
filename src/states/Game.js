@@ -1,5 +1,6 @@
 import { $ } from '../utils/ScaleManager';
 import GameUI from '../UI/GameUI';
+import i18n from '../utils/i18n';
 
 import FoodSpawner from '../objects/FoodSpawner';
 import Bob from '../objects/Bob';
@@ -54,7 +55,7 @@ export default class Game extends Phaser.State {
 
   checkForDeath( health ) {
     if ( health <= 0 ) {
-      this.gameUI.stateGameover( 'dangerous nutrition style' );
+      this.gameUI.stateGameover( i18n.text( 'game_deathtype_dangerous_nutrition_style' ) );
       this.game.veryBadGlobalFlagToMakeAHotFixSorryButIHaveToUseIt = false;
     }
   }

@@ -1,7 +1,9 @@
 import { $, $set, scaleFactor } from '../utils/ScaleManager';
+import i18n from '../utils/i18n';
 import { playAudio, manageAudio, getStatusAudio } from '../utils/AudioManager';
 import { PPTStorage } from '../utils/StorageManager';
 import Text from '../UI/Text';
+
 
 import * as Clock from '../utils/ClockUtils';
 
@@ -25,7 +27,7 @@ export default class MainMenu extends Phaser.State {
     const buttonWiki = this.add.button( MENU_BUTTON_OFFSET, this.world.height - MENU_BUTTON_OFFSET, $( 'button-wiki' ), this.clickWiki, this, 1, 0, 2 );
     buttonWiki.anchor.set( 0, 1 );
 
-    const highscoreText = new Text( this.game, 'center', this.world.height - 50, 'Highscore: ' + highscore, $( MENU_HIGHSCORE_FONT ), [ null, 1 ] );
+    const highscoreText = new Text( this.game, 'center', this.world.height - 50, i18n.text( 'main_menu_highscore' ) + ': ' + highscore, $( MENU_HIGHSCORE_FONT ), [ null, 1 ] );
     highscoreText.padding.set( 0, 15 );
 
     this.initOptions();

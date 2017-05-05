@@ -1,5 +1,5 @@
 import { $ } from '../utils/ScaleManager';
-
+import i18n from '../utils/i18n';
 import { getStatus } from '../utils/NutritionUtils';
 
 import { GOOD_AMOUNT_OF_CARBOHYDRATES, GOOD_AMOUNT_OF_FATS, GOOD_AMOUNT_OF_PROTEINS } from '../constants/NutritionConstants';
@@ -38,9 +38,13 @@ export default class NutritionUI {
   }
 
   drawAllBars() {
-    this.drawBar( this.nutrition.carbohydrates, GOOD_AMOUNT_OF_CARBOHYDRATES, 2, 'Carbohydrates' );
-    this.drawBar( this.nutrition.fats, GOOD_AMOUNT_OF_FATS, 1, 'Fats' );
-    this.drawBar( this.nutrition.proteins, GOOD_AMOUNT_OF_PROTEINS, 0, 'Proteins' );
+    const capitalise = ( text ) => {
+      return text.substring( 0, 1 ).toUpperCase() + text.substring( 1 );
+    };
+
+    this.drawBar( this.nutrition.carbohydrates, GOOD_AMOUNT_OF_CARBOHYDRATES, 2, capitalise( i18n.text( 'carbohydrates_name' ) ) );
+    this.drawBar( this.nutrition.fats, GOOD_AMOUNT_OF_FATS, 1, capitalise( i18n.text( 'fats_name' ) ) );
+    this.drawBar( this.nutrition.proteins, GOOD_AMOUNT_OF_PROTEINS, 0, capitalise( i18n.text( 'proteins_name' ) ) );
   }
 
   displayAddition( key, val ) {

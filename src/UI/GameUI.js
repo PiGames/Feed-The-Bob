@@ -1,5 +1,6 @@
 import { $ } from '../utils/ScaleManager';
-import { SCORE_FONT, SCORE_TEMPLATE, GAMEOVER_TITLE_FONT, GAMEOVER_SCORE_FONT, PAUSE_TITLE_FONT, MENU_BUTTON_OFFSET, TUTORIAL_FONT, LEVEL_CHANGE_FONT, HEALTHBAR_WIDTH } from '../constants/UIConstants';
+import i18n from '../utils/i18n';
+import { SCORE_FONT, GAMEOVER_TITLE_FONT, GAMEOVER_SCORE_FONT, PAUSE_TITLE_FONT, MENU_BUTTON_OFFSET, TUTORIAL_FONT, LEVEL_CHANGE_FONT, HEALTHBAR_WIDTH } from '../constants/UIConstants';
 import { playAudio, manageAudio, getAudioOffset } from '../utils/AudioManager';
 import Text from './Text';
 
@@ -36,13 +37,13 @@ export default class GameUI {
   }
 
   initScore() {
-    this.textScore = new Text( this.game, $( 30 ), this.game.world.height - $( 20 ), SCORE_TEMPLATE( this.score ), $( SCORE_FONT ), [ 0, 1 ] );
+    this.textScore = new Text( this.game, $( 30 ), this.game.world.height - $( 20 ), `${i18n.text( 'game_score' )}: ${this.score}`, $( SCORE_FONT ), [ 0, 1 ] );
 
     this.game.time.events.loop( Phaser.Timer.SECOND * 1, this.handlePointsAddition, this );
   }
 
   initHealthBar() {
-    this.healthBarText = new Text( this.game, $( 30 ), this.game.world.height - $( 100 ), 'Health: ', $( SCORE_FONT ), [ 0, 1 ] );
+    this.healthBarText = new Text( this.game, $( 30 ), this.game.world.height - $( 100 ), `${i18n.text( 'game_health' )}: `, $( SCORE_FONT ), [ 0, 1 ] );
 
     this.healthBar = this.game.add.tileSprite( this.healthBarText.x + this.healthBarText.width, this.game.world.height - $( 120 ), $( 300 ), $( 50 ), $( 'heart' ) );
     this.healthBar.anchor.setTo( 0, 1 );
@@ -63,7 +64,7 @@ export default class GameUI {
     this.screenPausedBg.inputEnabled = true;
     this.screenPausedBg.input.priorityID = 1;
 
-    this.screenPausedText = new Text( this.game, 'center', 'center', 'Paused', $( PAUSE_TITLE_FONT ) );
+    this.screenPausedText = new Text( this.game, 'center', 'center', i18n.text( 'game_paused' ), $( PAUSE_TITLE_FONT ) );
 
     this.buttonAudio = this.game.add.button( this.game.world.width - MENU_BUTTON_OFFSET, MENU_BUTTON_OFFSET, $( 'button-audio' ), this.clickAudio, this, 1, 0, 2 );
     this.buttonAudio.anchor.set( 1, 0 );
@@ -95,7 +96,7 @@ export default class GameUI {
     this.screenGameoverBg.inputEnabled = true;
     this.screenGameoverBg.input.priorityID = 2;
 
-    this.screenGameoverText = new Text( this.game, 'center', $( 100 ), 'Game over', $( GAMEOVER_TITLE_FONT ) );
+    this.screenGameoverText = new Text( this.game, 'center', $( 100 ), i18n.text( 'game_over' ), $( GAMEOVER_TITLE_FONT ) );
 
     this.screenGameoverBack = this.game.add.button( $( 150 ), this.game.world.height - $( 100 ), $( 'button-mainmenu' ), this.stateBack, this, 1, 0, 2 );
     this.screenGameoverBack.anchor.set( 0, 1 );
@@ -105,7 +106,7 @@ export default class GameUI {
     this.screenGameoverRestart.anchor.set( 1, 1 );
     this.screenGameoverRestart.input.priorityID = 2;
 
-    this.screenGameoverScore = new Text( this.game, 'center', 'center', 'Score: ' + this.score, $( GAMEOVER_SCORE_FONT ) );
+    this.screenGameoverScore = new Text( this.game, 'center', 'center', `${i18n.text( 'game_score' )}: ` + this.score, $( GAMEOVER_SCORE_FONT ) );
 
     this.screenGameoverGroup.add( this.screenGameoverBg );
     this.screenGameoverGroup.add( this.screenGameoverText );
@@ -161,7 +162,7 @@ export default class GameUI {
   }
 
   difficultyChange() {
-    const text = new Text( this.game, 'center', $( 100 ), 'You are getting better!\nSo game is gonna become harder!', $( LEVEL_CHANGE_FONT ) );
+    const text = new Text( this.game, 'center', $( 100 ), i18n.text( 'game_level_up' ), $( LEVEL_CHANGE_FONT ) );
     text.alpha = 0;
     let done = false;
     const textTween = this.game.add.tween( text );
@@ -179,7 +180,7 @@ export default class GameUI {
   handlePointsAddition() {
     this.timePassed++;
     this.score += this.scoreValue;
-    this.textScore.setText( SCORE_TEMPLATE( this.score ) );
+    this.textScore.setText( `${i18n.text( 'game_score' )}: ${this.score}` );
     this.state.foodSpawner.tryDifficultyLevelUp( this.timePassed );
     this.timeAdvance.dispatch();
   }
@@ -243,7 +244,7 @@ export default class GameUI {
   stateTutorial() {
     switch ( this.tutorialStep ) {
     case 0: {
-      this.tutorialText.setText( 'This is Bob.\nYour job is to help him\nmaintain his current weight.' );
+      this.tutorialText.setText( i18n.text( `tutorial_step_${this.tutorialStep}` ) );
 
       this.game.world.bringToTop( this.tutorialOverlay );
       this.game.world.bringToTop( this.Bob );
@@ -252,7 +253,7 @@ export default class GameUI {
       break;
     }
     case 1: {
-      this.tutorialText.setText( 'These are Bob’s current macroelements indicators.\nBy keeping them green you keep Bob healthy and score points.' );
+      this.tutorialText.setText( i18n.text( `tutorial_step_${this.tutorialStep}` ) );
 
       this.game.world.bringToTop( this.tutorialOverlay );
       this.game.world.bringToTop( this.NutritionUI.NutritionBarsGroup );
@@ -261,7 +262,7 @@ export default class GameUI {
       break;
     }
     case 2: {
-      this.tutorialText.setText( 'Bob’s macroelements indicators will turn\nyellow and eventually red if you overfeed\nhim with a certain type of macroelement\nor if you dont’t feed him with it.' );
+      this.tutorialText.setText( i18n.text( `tutorial_step_${this.tutorialStep}` ) );
 
       this.game.world.bringToTop( this.tutorialOverlay );
       this.game.world.bringToTop( this.NutritionUI.NutritionBarsGroup );
@@ -274,7 +275,7 @@ export default class GameUI {
       break;
     }
     case 3: {
-      this.tutorialText.setText( 'Bob has his own health bar,\nits value drops when you enter yellow\nor red zone on macroelement indicator.' );
+      this.tutorialText.setText( i18n.text( `tutorial_step_${this.tutorialStep}` ) );
 
       this.game.world.bringToTop( this.tutorialOverlay );
       this.game.world.bringToTop( this.textScore );
@@ -285,14 +286,14 @@ export default class GameUI {
       break;
     }
     case 4: {
-      this.tutorialText.setText( 'Every food has its own nutrition\ninfo in Wiki section availible from the menu.\nKnowing what macroelements food consists of,\nyou can be sure that you will feed Bob properly.' );
+      this.tutorialText.setText( i18n.text( `tutorial_step_${this.tutorialStep}` ) );
 
       this.game.world.bringToTop( this.tutorialOverlay );
       this.game.world.bringToTop( this.tutorialText );
       break;
     }
     case 5: {
-      this.tutorialText.setText( 'This is the end of tutorial. You can now enjoy the game!' );
+      this.tutorialText.setText( i18n.text( `tutorial_step_${this.tutorialStep}` ) );
 
       this.game.world.bringToTop( this.tutorialOverlay );
       this.game.world.bringToTop( this.tutorialText );
@@ -335,7 +336,7 @@ export default class GameUI {
   stateGameover( msg ) {
     this.state.stopMovingFood.call( this.state );
     this.game.world.bringToTop( this.screenGameoverGroup );
-    this.screenGameoverScore.setText( 'Score: ' + this.score );
+    this.screenGameoverScore.setText( `${i18n.text( 'game_score' )}: ${this.score}` );
     this.gameoverScoreTween( msg );
 
     this.screenGameoverGroup.visible = true;
@@ -357,9 +358,8 @@ export default class GameUI {
 
   gameoverScoreTween( deathmsg = '' ) {
     this.screenGameoverScore.setText( '' );
-    const secondNumberSuffix = time => ( time === 1 ) ? '' : 's';
 
-    this.screenGameoverScore.setText( `You have scored ${Math.floor( this.score )} point${secondNumberSuffix( this.score )}\nand died from ${deathmsg}` );
+    this.screenGameoverScore.setText( i18n.text( 'game_over_text', this.score, deathmsg ) );
   }
 
   clickAudio() {

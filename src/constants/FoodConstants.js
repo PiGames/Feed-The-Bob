@@ -28,18 +28,18 @@ export const FOOD_HIT_AREA_DIAMETER = 250;
 
 export const FOOD_DATA = Object.freeze( [
   // Complexity lv. 1
-  { 'key': 0, 'name': 'Apple', 'nutritionFacts': { 'carbohydrates': 18, 'fats': 0, 'proteins': 0 }, 'complexityLevel': 1, 'probability': 2, 'quantity': '1 big apple' },
-  { 'key': 4, 'name': 'Butter', 'nutritionFacts': { 'carbohydrates': 0, 'fats': 20, 'proteins': 0 }, 'complexityLevel': 1, 'probability': 1, 'quantity': '2 spoons' },
-  { 'key': 7, 'name': 'Strawberry jam', 'nutritionFacts': { 'carbohydrates': 30, 'fats': 0, 'proteins': 0 }, 'complexityLevel': 1, 'probability': 1.5, 'quantity': '3 spoons' },
-  { 'key': 2, 'name': 'Chicken', 'nutritionFacts': { 'carbohydrates': 0, 'fats': 3, 'proteins': 15 }, 'complexityLevel': 1, 'probability': 1, 'quantity': '50 grams' },
+  { 'key': 0, 'name': 'products_apple', 'nutritionFacts': { 'carbohydrates': 18, 'fats': 0, 'proteins': 0 }, 'complexityLevel': 1, 'probability': 2, 'quantity': '1 big apple' },
+  { 'key': 4, 'name': 'products_butter', 'nutritionFacts': { 'carbohydrates': 0, 'fats': 20, 'proteins': 0 }, 'complexityLevel': 1, 'probability': 1, 'quantity': '2 spoons' },
+  { 'key': 7, 'name': 'products_strawberry_jam', 'nutritionFacts': { 'carbohydrates': 30, 'fats': 0, 'proteins': 0 }, 'complexityLevel': 1, 'probability': 1.5, 'quantity': '3 spoons' },
+  { 'key': 2, 'name': 'products_chicken', 'nutritionFacts': { 'carbohydrates': 0, 'fats': 3, 'proteins': 15 }, 'complexityLevel': 1, 'probability': 1, 'quantity': '50 grams' },
 
   // Complexity lv. 2
-  { 'key': 5, 'name': 'Donut', 'nutritionFacts': { 'carbohydrates': 25, 'fats': 12, 'proteins': 2 }, 'complexityLevel': 2, 'probability': 1, 'quantity': '1 donut' },
-  { 'key': 1, 'name': 'Banana', 'nutritionFacts': { 'carbohydrates': 30, 'fats': 2, 'proteins': 0 }, 'complexityLevel': 2, 'probability': 1.5, 'quantity': '1 banana' },
-  { 'key': 9, 'name': 'Eggs', 'nutritionFacts': { 'carbohydrates': 1, 'fats': 16, 'proteins': 15 }, 'complexityLevel': 2, 'probability': 1, 'quantity': '2 eggs' },
+  { 'key': 5, 'name': 'products_donut', 'nutritionFacts': { 'carbohydrates': 25, 'fats': 12, 'proteins': 2 }, 'complexityLevel': 2, 'probability': 1, 'quantity': '1 donut' },
+  { 'key': 1, 'name': 'products_banana', 'nutritionFacts': { 'carbohydrates': 30, 'fats': 2, 'proteins': 0 }, 'complexityLevel': 2, 'probability': 1.5, 'quantity': '1 banana' },
+  { 'key': 9, 'name': 'products_eggs', 'nutritionFacts': { 'carbohydrates': 1, 'fats': 16, 'proteins': 15 }, 'complexityLevel': 2, 'probability': 1, 'quantity': '2 eggs' },
 
   // Complexity lv. 3
-  { 'key': 3, 'name': 'Hamburger', 'nutritionFacts': { 'carbohydrates': 30, 'fats': 13, 'proteins': 16 }, 'complexityLevel': 3, 'probability': 1, 'quantity': '1 hamburger' },
-  { 'key': 8, 'name': 'Peanut butter', 'nutritionFacts': { 'carbohydrates': 6, 'fats': 16, 'proteins': 8 }, 'complexityLevel': 3, 'probability': 1, 'quantity': '2 spoons' },
-  { 'key': 6, 'name': 'Milk', 'nutritionFacts': { 'carbohydrates': 12, 'fats': 8, 'proteins': 8 }, 'complexityLevel': 3, 'probability': 1, 'quantity': '1 cup' },
+  { 'key': 3, 'name': 'products_hamburger', 'nutritionFacts': { 'carbohydrates': 30, 'fats': 13, 'proteins': 16 }, 'complexityLevel': 3, 'probability': 1, 'quantity': '1 hamburger' },
+  { 'key': 8, 'name': 'products_peanut_butter', 'nutritionFacts': { 'carbohydrates': 6, 'fats': 16, 'proteins': 8 }, 'complexityLevel': 3, 'probability': 1, 'quantity': '2 spoons' },
+  { 'key': 6, 'name': 'products_milk', 'nutritionFacts': { 'carbohydrates': 12, 'fats': 8, 'proteins': 8 }, 'complexityLevel': 3, 'probability': 1, 'quantity': '1 cup' },
 ] );

@@ -1,4 +1,5 @@
 import { $ } from '../utils/ScaleManager';
+import i18n from '../utils/i18n';
 import { playAudio } from '../utils/AudioManager';
 import { FOOD_DATA } from '../constants/FoodConstants';
 import { WIKI_TITLE_FONT, WIKI_FONT } from '../constants/UIConstants';
@@ -58,16 +59,20 @@ export default class Wiki extends Phaser.State {
     const sheet = this.add.sprite( this.game.width / 2, 0, $( 'sheet' ) );
     sheet.anchor.setTo( 0.5, 0 );
 
-    const title = new Text( this.game, 'center', $( 220 ), FOOD_DATA[ index ].name, $( WIKI_TITLE_FONT ), [ null, 1 ] );
+    const capitalise = ( text ) => {
+      return text.substring( 0, 1 ).toUpperCase() + text.substring( 1 );
+    };
+
+    const title = new Text( this.game, 'center', $( 220 ), `${capitalise( i18n.text( FOOD_DATA[ index ].name ) )}`, $( WIKI_TITLE_FONT ), [ null, 1 ] );
 
     const sprite = this.add.sprite( this.game.width / 2, $( 380 ), $( 'products' ), FOOD_DATA[ index ].key );
     sprite.scale.setTo( 1.5 );
     sprite.anchor.setTo( 0.5 );
 
-    const carbohydrates = new Text( this.game, 'center', $( 600 ), `Carbohydrates: ${FOOD_DATA[ index ].nutritionFacts.carbohydrates}g`, $( WIKI_FONT ), [ null, 1 ] );
-    const fats = new Text( this.game, 'center', $( 714 ), `Fats: ${FOOD_DATA[ index ].nutritionFacts.fats}g`, $( WIKI_FONT ), [ null, 1 ] );
-    const proteins = new Text( this.game, 'center', $( 828 ), `Proteins: ${FOOD_DATA[ index ].nutritionFacts.proteins}g`, $( WIKI_FONT ), [ null, 1 ] );
-    const quantity = new Text( this.game, 'center', $( 943 ), `Quantity: ${FOOD_DATA[ index ].quantity}`, $( WIKI_FONT ), [ null, 1 ] );
+    const carbohydrates = new Text( this.game, 'center', $( 600 ), `${capitalise( i18n.text( 'carbohydrates_name' ) )}: ${FOOD_DATA[ index ].nutritionFacts.carbohydrates}g`, $( WIKI_FONT ), [ null, 1 ] );
+    const fats = new Text( this.game, 'center', $( 714 ), `${capitalise( i18n.text( 'fats_name' ) )}: ${FOOD_DATA[ index ].nutritionFacts.fats}g`, $( WIKI_FONT ), [ null, 1 ] );
+    const proteins = new Text( this.game, 'center', $( 828 ), `${capitalise( i18n.text( 'proteins_name' ) )}: ${FOOD_DATA[ index ].nutritionFacts.proteins}g`, $( WIKI_FONT ), [ null, 1 ] );
+    const quantity = new Text( this.game, 'center', $( 943 ), `${capitalise( i18n.text( 'wiki_quantity' ) )}: ${FOOD_DATA[ index ].quantity}`, $( WIKI_FONT ), [ null, 1 ] );
 
     group.add( sheet );
     group.add( title );
