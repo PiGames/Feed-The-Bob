@@ -222,9 +222,9 @@ gulp.task( "deploy", () => {
   const msg = argv.message || argv.m || null;
   let options = {};
   if ( argv.ssh ) {
-    options = { remoteUrl: "git@github.com:PiGames/Feed-The-Bob.git", branch: "master", force: true };
+    options = { remoteUrl: "git@github.com:PiGames/Feed-The-Bob.git", branch: "games.pigam.es", force: true };
   } else {
-    options = { remoteUrl: "https://github.com/PiGames/Feed-The-Bob.git", branch: "master", force: true };
+    options = { remoteUrl: "https://github.com/PiGames/Feed-The-Bob.git", branch: "games.pigam.es", force: true };
   }
 
   if ( msg !== null ) {
