@@ -153,7 +153,11 @@ export default class GameUI {
   }
 
   updateHealthBarValue( health ) {
-    this.healthBar.width = $( 300 ) * ( health / 100 );
+    if ( health > 0 ) {
+      this.NutritionUI.flash( () => {
+        this.healthBar.width = $( 300 ) * ( health / 100 );
+      } );
+    }
   }
 
   handlePointsAddition() {

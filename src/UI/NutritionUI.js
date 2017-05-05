@@ -156,4 +156,34 @@ export default class NutritionUI {
     this.NutritionBarsGroup.add( statusText );
     this.NutritionBarsGroup.add( descText );
   }
+
+  flash( callback ) {
+    const flashLength = 100;
+    let status = 0;
+    this.NutritionBars.forEach( ( sprite ) => {
+      status = Math.max( sprite.frame, status );
+    } );
+
+    const flash = this.game.add.graphics( 0, 0 );
+    if ( status === 2 ) {
+      this.game.camera.shake( 0.002, 200 );
+      flash.beginFill( 0xc50000, 0.8 );
+    } else if ( status === 1 ) {
+      this.game.camera.shake( 0.001, 200 );
+      flash.beginFill( 0xf1d137, 0.75 );
+    }
+
+    flash.drawRect( 0, 0, this.game.world.width, this.game.world.height );
+    flash.alpha = 0;
+    let done = false;
+    const flashTween = this.game.add.tween( flash );
+    flashTween.to( { alpha: 1 }, flashLength / 2, Phaser.Easing.Linear.In, true );
+    flashTween.onComplete.add( () => {
+      if ( !done ) {
+        callback();
+        flashTween.to( { alpha: 0 }, flashLength / 2, Phaser.Easing.Linear.Out, true );
+        done = true;
+      }
+    }, this );
+  }
 }
