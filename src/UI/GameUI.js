@@ -1,5 +1,5 @@
 import { $ } from '../utils/ScaleManager';
-import { SCORE_FONT, SCORE_TEMPLATE, GAMEOVER_TITLE_FONT, GAMEOVER_SCORE_FONT, PAUSE_TITLE_FONT, MENU_BUTTON_OFFSET, TUTORIAL_FONT } from '../constants/UIConstants';
+import { SCORE_FONT, SCORE_TEMPLATE, GAMEOVER_TITLE_FONT, GAMEOVER_SCORE_FONT, PAUSE_TITLE_FONT, MENU_BUTTON_OFFSET, TUTORIAL_FONT, LEVEL_CHANGE_FONT, HEALTHBAR_WIDTH } from '../constants/UIConstants';
 import { playAudio, manageAudio, getAudioOffset } from '../utils/AudioManager';
 import Text from './Text';
 
@@ -155,9 +155,25 @@ export default class GameUI {
   updateHealthBarValue( health ) {
     if ( health > 0 ) {
       this.NutritionUI.flash( () => {
-        this.healthBar.width = $( 300 ) * ( health / 100 );
+        this.healthBar.width = $( HEALTHBAR_WIDTH ) * ( health / 100 );
       } );
     }
+  }
+
+  difficultyChange() {
+    const text = new Text( this.game, 'center', $( 100 ), 'You are getting better!\nSo game is gonna become harder!', $( LEVEL_CHANGE_FONT ) );
+    text.alpha = 0;
+    let done = false;
+    const textTween = this.game.add.tween( text );
+    textTween.to( { alpha: 1 }, 200, Phaser.Easing.Linear.InOut, true );
+    textTween.onComplete.add( () => {
+      if ( !done ) {
+        this.game.time.events.add( Phaser.Timer.SECOND * 4, () => {
+          textTween.to( { alpha: 0 }, 200, Phaser.Easing.Linear.InOut, true );
+        } );
+      }
+      done = true;
+    }, this );
   }
 
   handlePointsAddition() {
