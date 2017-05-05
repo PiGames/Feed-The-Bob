@@ -218,28 +218,18 @@ gulp.task('watch-static', ['copyPhaser'], browserSync.reload);
  */
 gulp.task('default', ['serve']);
 
-gulp.task( "deploy-for-testers", () => {
+gulp.task( "deploy", () => {
   const msg = argv.message || argv.m || null;
-  const options = { remoteUrl: "git@github.com:PiGames/PN-for-testers.git", branch: "master", force: true };
+  let options = {};
+  if ( argv.ssh ) {
+    options = { remoteUrl: "git@github.com:PiGames/Feed-The-Bob.git", branch: "master", force: true };
+  } else {
+    options = { remoteUrl: "https://github.com/PiGames/Feed-The-Bob.git", branch: "master", force: true };
+  }
+
   if ( msg !== null ) {
     options.message = msg;
   }
 
   return gulp.src( "./build/**/*" ).pipe( ghPages( options ) );
 } );
-
-gulp.task( "deploy", () => {
-  if ( argv.confirm ) {
-    const msg = argv.message || argv.m || null;
-    const options = { force: true };
-    if ( msg !== null ) {
-      options.message = msg;
-    }
-
-    return gulp.src( "./build/**/*" ).pipe( ghPages( options ) );
-  } else {
-    gutil.log( gutil.colors.red("To deploy to master on main repository confirm it with --confirm argument") );
-  }
-} );
-
-gulp.task( 'scale', scaleAssets );
