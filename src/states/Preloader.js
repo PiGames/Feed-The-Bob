@@ -12,6 +12,7 @@ const resources = {
     [ 'minute-dial', 'img/assets/minute-dial.png' ],
     [ 'hour-dial', 'img/assets/hour-dial.png' ],
     [ 'nutrition-bar-background', 'img/ui/nutrition-bar-background.png' ],
+    [ 'nutrition-bar-indicator', 'img/ui/nutrition-bar-indicator.png' ],
     [ 'heart', 'img/assets/heart.png' ],
   ],
   'spritesheet': [
@@ -83,7 +84,8 @@ export default class Preloader extends Phaser.State {
       }
 
       document.body.removeChild( this.span );
-      this.state.start( 'MainMenu' );
+      // this.state.start( 'MainMenu' );
+      this.state.start( 'Game' );
     }
   }
 }

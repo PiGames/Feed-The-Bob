@@ -3,8 +3,8 @@ import { $ } from '../utils/ScaleManager';
 import { getStatus } from '../utils/NutritionUtils';
 
 import { GOOD_AMOUNT_OF_CARBOHYDRATES, GOOD_AMOUNT_OF_FATS, GOOD_AMOUNT_OF_PROTEINS } from '../constants/NutritionConstants';
-import { SUPER_THIN_BREAKPOINT, THIN_BREAKPOINT, FAT_BREAKPOINT, SUPER_FAT_BREAKPOINT } from '../constants/WeightBreakpoints';
-import { NUTRITION_BAR_WIDTH, NUTRITION_BAR_HEIGHT, NUTRITION_BAR_OFFSET, NUTRITION_BAR_X_FROM_LEFT, NUTRITION_BAR_Y_FROM_BOTTOM, NUTRITION_BAR_TEXT_OFFSET_X, NUTRITION_BAR_TEXT_OFFSET_Y, NUTRITION_BAR_INFO_FONT, NUTRITION_NUTRITION_ADDED_FONT } from '../constants/UIConstants';
+import { SUPER_THIN_BREAKPOINT, THIN_BREAKPOINT, FAT_BREAKPOINT, SUPER_FAT_BREAKPOINT, THINNESS_LEVELS, FATNESS_LEVELS } from '../constants/WeightBreakpoints';
+import { NUTRITION_BAR_WIDTH, NUTRITION_BAR_HEIGHT, NUTRITION_BAR_OFFSET, NUTRITION_BAR_X_FROM_LEFT, NUTRITION_BAR_Y_FROM_BOTTOM, NUTRITION_BAR_TEXT_OFFSET_X, NUTRITION_BAR_TEXT_OFFSET_Y, NUTRITION_BAR_INFO_FONT, NUTRITION_NUTRITION_ADDED_FONT, NUTRITION_BAR_BORDER_WIDTH, NUTRITION_BAR_INDICATOR_WIDTH } from '../constants/UIConstants';
 import Text from './Text';
 
 export default class NutritionUI {
@@ -108,6 +108,28 @@ export default class NutritionUI {
     const background = this.game.add.sprite( this.game.width - NUTRITION_BAR_X_FROM_LEFT, this.game.height - $( NUTRITION_BAR_Y_FROM_BOTTOM ) - offset, $( 'nutrition-bar-background' ) );
     background.anchor.setTo( 1, 1 );
 
+    const indicators = this.game.add.group();
+
+    const backgroundNeutralX = background.x - background.width + NUTRITION_BAR_BORDER_WIDTH;
+    const backgroundNeutralY = background.y - background.height + NUTRITION_BAR_BORDER_WIDTH;
+
+    const superThinIndicator = this.game.add.sprite( background.width / 2 / ( THINNESS_LEVELS.length ) * ( THINNESS_LEVELS.length - SUPER_THIN_BREAKPOINT ) + ( background.width / 2 ) + backgroundNeutralX, backgroundNeutralY, $( 'nutrition-bar-indicator' ) );
+    superThinIndicator.anchor.setTo( 0.5, 0 );
+
+    const thinIndicator = this.game.add.sprite( background.width / 2 / ( THINNESS_LEVELS.length ) * ( THINNESS_LEVELS.length - THIN_BREAKPOINT ) + ( background.width / 2 ) + backgroundNeutralX, backgroundNeutralY, $( 'nutrition-bar-indicator' ) );
+    thinIndicator.anchor.setTo( 0.5, 0 );
+
+    const superFatIndicator = this.game.add.sprite( background.width / 2 / ( FATNESS_LEVELS.length ) * ( ( THINNESS_LEVELS.length + FATNESS_LEVELS.length ) - SUPER_FAT_BREAKPOINT ) + backgroundNeutralX, backgroundNeutralY, $( 'nutrition-bar-indicator' ) );
+    superFatIndicator.anchor.setTo( 0.5, 0 );
+
+    const fatIndicator = this.game.add.sprite( background.width / 2 / ( FATNESS_LEVELS.length ) * ( ( THINNESS_LEVELS.length + FATNESS_LEVELS.length ) - FAT_BREAKPOINT ) + backgroundNeutralX, backgroundNeutralY, $( 'nutrition-bar-indicator' ) );
+    fatIndicator.anchor.setTo( 0.5, 0 );
+
+    indicators.add( superThinIndicator );
+    indicators.add( thinIndicator );
+    indicators.add( superFatIndicator );
+    indicators.add( fatIndicator );
+
     const mask = this.game.add.graphics( 0, 0 );
     mask.beginFill( 0x000000 );
     mask.drawRect( this.game.width - NUTRITION_BAR_X_FROM_LEFT - width + ( width * ( 1 - NutritionBarValue ) ), this.game.height - $( NUTRITION_BAR_Y_FROM_BOTTOM ) - offset - height, width * NutritionBarValue, height );
@@ -128,6 +150,7 @@ export default class NutritionUI {
     this.NutritionTexts[ i ] = statusText;
 
     this.NutritionBarsGroup.add( background );
+    this.NutritionBarsGroup.add( indicators );
     this.NutritionBarsGroup.add( mask );
     this.NutritionBarsGroup.add( status );
     this.NutritionBarsGroup.add( statusText );
