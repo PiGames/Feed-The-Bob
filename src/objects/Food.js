@@ -1,9 +1,10 @@
 import { $ } from '../utils/ScaleManager';
+import i18n from '../utils/i18n';
 import { MIN_FOOD_VELOCITY, MAX_FOOD_VELOCITY, FOOD_TWEEN_SPEED, FOOD_TWEEN_X, FOOD_TWEEN_Y, FOOD_SCALE, FOOD_TWEEN_SCALE, FOOD_HIT_AREA_DIAMETER } from '../constants/FoodConstants';
 
 export default class Food extends Phaser.Sprite {
   constructor( game, x, y, key, data, updateStatsSignal, onDestroy ) {
-    super( game, x, y, $( 'products' ), key );
+    super( game, x, y, $( i18n.image( 'products' ) ), key );
     this.onDestroy = onDestroy;
     this.data = data;
     this.updateStatsSignal = updateStatsSignal;

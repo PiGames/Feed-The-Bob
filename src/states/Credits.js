@@ -24,13 +24,15 @@ export default class Wiki extends Phaser.State {
     const creditsCoding = new Text( this.game, 'center', 0, i18n.quotes( 'Bartek „bibixx” Legięć\nKacper Pietrzak' ), $( CREDITS_FONT ) );
     const creditsGraphicsTitle = new Text( this.game, 'center', 0, i18n.text( 'credits_graphics' ), $( CREDITS_FONT_SMALL ) );
     const creditsGraphics = new Text( this.game, 'center', 0, i18n.quotes( 'Magda „Enna” Nowak' ), $( CREDITS_FONT ) );
-    const creditsTextSound = new Text( this.game, 'center', 0, i18n.quotes( `\n${i18n.text( 'credits_sound' )}\n„Farty McSty”\n${i18n.text( 'credits_by' )} Eric Matyas\nwww.soundimage.org\n\n„Click2 Sound”\n${i18n.text( 'credits_by' )} Sebastian\nwww.soundbible.com` ), $( CREDITS_FONT_SMALL ) );
+    const creditsTextTranslate = new Text( this.game, 'center', 0, i18n.quotes( `\n${i18n.text( 'credits_translators' )}\nKrystian Kwiatkowski (${i18n.text( 'credits_lang_de' )})` ), $( CREDITS_FONT_SMALL ) );
+    const creditsTextSound = new Text( this.game, 'center', 0, i18n.quotes( `\n${i18n.text( 'credits_sound' )}\n„Farty McSty”\n${i18n.text( 'credits_by' )} Eric Matyas (www.soundimage.org)\n\n„Click2 Sound”\n${i18n.text( 'credits_by' )} Sebastian (www.soundbible.com)` ), $( CREDITS_FONT_SMALL ) );
 
     textGroup.add( creditsTitle );
     textGroup.add( creditsCodingTitle );
     textGroup.add( creditsCoding );
     textGroup.add( creditsGraphicsTitle );
     textGroup.add( creditsGraphics );
+    textGroup.add( creditsTextTranslate );
     textGroup.add( creditsTextSound );
 
     let prevText = null;

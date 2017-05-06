@@ -191,6 +191,12 @@ const en_gb = {
   credits_sound: {
     text: 'Sounds',
   },
+  credits_translators: {
+    text: 'Translators',
+  },
+  credits_lang_de: {
+    text: 'German',
+  },
   credits_by: {
     text: 'by',
     // eg. created by

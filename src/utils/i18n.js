@@ -32,6 +32,10 @@ class i18n {
   get() {
     return CURRENT_LANG;
   }
+
+  image( name ) {
+    return `${name}-${CURRENT_LANG}`;
+  }
 }
 
 export default new i18n();

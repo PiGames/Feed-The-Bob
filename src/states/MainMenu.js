@@ -66,7 +66,7 @@ export default class MainMenu extends Phaser.State {
     this.buttonAudio.visible = false;
     this.optionsUI.push( this.buttonAudio );
 
-    this.buttonCredits = this.add.button( this.buttonOptions.x, MENU_BUTTON_OFFSET, $( 'button-credits' ), this.clickCredits, this, 1, 0, 2 );
+    this.buttonCredits = this.add.button( this.buttonOptions.x, MENU_BUTTON_OFFSET, $( i18n.image( 'button-credits' ) ), this.clickCredits, this, 1, 0, 2 );
     this.buttonCredits.anchor.set( 1, 0 );
     this.buttonCredits.visible = false;
     this.optionsUI.push( this.buttonCredits );

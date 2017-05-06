@@ -206,6 +206,12 @@ const pl_pl = {
   credits_sound: {
     text: 'Dźwięki',
   },
+  credits_translators: {
+    text: 'Tłumaczenie',
+  },
+  credits_lang_de: {
+    text: 'niemiecki',
+  },
   credits_by: {
     text: 'przez',
     // np. stworzone przez ...

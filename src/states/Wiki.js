@@ -65,7 +65,7 @@ export default class Wiki extends Phaser.State {
 
     const title = new Text( this.game, 'center', $( 220 ), `${capitalise( i18n.text( FOOD_DATA[ index ].name ) )}`, $( WIKI_TITLE_FONT ), [ null, 1 ] );
 
-    const sprite = this.add.sprite( this.game.width / 2, $( 380 ), $( 'products' ), FOOD_DATA[ index ].key );
+    const sprite = this.add.sprite( this.game.width / 2, $( 380 ), $( i18n.image( 'products' ) ), FOOD_DATA[ index ].key );
     sprite.scale.setTo( 1.5 );
     sprite.anchor.setTo( 0.5 );
 
