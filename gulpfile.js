@@ -200,6 +200,8 @@ function scaleDefault() {
 }
 
 
+gulp.task('scale', scaleAssets);
+
 gulp.task('cleanBuild', cleanBuild);
 gulp.task('copyStatic', ['cleanBuild'], copyStatic);
 gulp.task('copyPhaser', ['copyStatic'], copyPhaser);

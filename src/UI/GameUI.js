@@ -77,6 +77,7 @@ export default class GameUI {
 
     this.screenPausedContinue = this.game.add.button( this.game.world.width - MENU_BUTTON_OFFSET, this.game.world.height - MENU_BUTTON_OFFSET, $( 'button-continue' ), this.managePause, this, 1, 0, 2 );
     this.screenPausedContinue.anchor.set( 1, 1 );
+    this.screenPausedContinue.scale.set( 0.5 );
     this.screenPausedContinue.input.priorityID = 1;
 
     this.screenPausedGroup.add( this.screenPausedBg );
@@ -231,6 +232,7 @@ export default class GameUI {
 
     this.continueTutorial = this.game.add.button( this.game.world.width - MENU_BUTTON_OFFSET, MENU_BUTTON_OFFSET, $( 'button-continue' ), this.furtherTutorial, this, 1, 0, 2 );
     this.continueTutorial.anchor.set( 1, 0 );
+    this.continueTutorial.scale.set( 0.5 );
 
     this.continueTutorial.y = -this.continueTutorial.height - MENU_BUTTON_OFFSET;
     this.game.add.tween( this.continueTutorial ).to( { y: MENU_BUTTON_OFFSET }, 1000, Phaser.Easing.Exponential.Out, true );

@@ -1,4 +1,5 @@
 import { $set } from '../utils/ScaleManager';
+import i18n from '../utils/i18n';
 import { PPTStorage, setStorage } from '../utils/StorageManager';
 
 const resources = {
@@ -16,8 +17,8 @@ const resources = {
     [ 'heart', 'img/assets/heart.png' ],
   ],
   'spritesheet': [
-		[ 'button-start', 'img/ui/button-start.png', 160, 160 ],
-		[ 'button-continue', 'img/ui/button-start.png', 160, 160 ],
+    [ 'button-start', 'img/ui/button-start.png', 320, 320 ],
+    [ 'button-continue', 'img/ui/button-start.png', 320, 320 ],
 		[ 'button-mainmenu', 'img/ui/button-mainmenu.png', 160, 160 ],
 		[ 'button-restart', 'img/ui/button-tryagain.png', 160, 160 ],
     [ 'button-options', 'img/ui/button-options.png', 160, 160 ],
@@ -28,10 +29,12 @@ const resources = {
 		[ 'button-audio', 'img/ui/button-sound.png', 160, 160 ],
     [ 'button-back', 'img/ui/button-back.png', 160, 170 ],
 		[ 'button-next', 'img/ui/button-next.png', 160, 170 ],
+		[ 'button-lang-pl_pl', 'img/ui/button-lang-pl_pl.png', 160, 160 ],
+		[ 'button-lang-en_gb', 'img/ui/button-lang-en_gb.png', 160, 160 ],
+		[ 'button-lang-de_de', 'img/ui/button-lang-de_de.png', 160, 160 ],
     [ 'bob', 'img/assets/bob.png', 458, 989 ],
     [ 'nutrition-bar', 'img/ui/nutrition-bar.png', 680, 56 ],
     [ 'products', 'img/assets/products-en.png', 200, 150 ],
-		[ 'button-start', 'img/ui/button-start.png', 160, 160 ],
 		[ 'button-quality', 'img/ui/button-quality.png', 160, 160 ],
   ],
   'audio': [
@@ -81,6 +84,28 @@ export default class Preloader extends Phaser.State {
 
       if ( PPTStorage.get( 'PPT-quality' ) === 0.5 ) {
         $set.call( this, 0.5 );
+      }
+
+      for ( let x = 0; x < navigator.languages.length; x++ ) {
+        const lang = navigator.languages[ x ];
+        if ( lang.toLowerCase().indexOf( 'en' ) >= 0 ) {
+          i18n.set( 'en_gb' );
+          break;
+        }
+
+        if ( lang.toLowerCase().indexOf( 'pl' ) >= 0 ) {
+          i18n.set( 'pl_pl' );
+          break;
+        }
+
+        if ( lang.toLowerCase().indexOf( 'de' ) >= 0 ) {
+          i18n.set( 'de_de' );
+          break;
+        }
+      }
+
+      if ( PPTStorage.get( 'PPT-lang' ) ) {
+        i18n.set( PPTStorage.get( 'PPT-lang' ) );
       }
 
       document.body.removeChild( this.span );

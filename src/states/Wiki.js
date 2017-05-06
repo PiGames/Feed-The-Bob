@@ -69,10 +69,12 @@ export default class Wiki extends Phaser.State {
     sprite.scale.setTo( 1.5 );
     sprite.anchor.setTo( 0.5 );
 
+    const iQuantity = ( args ) => i18n.text( args[ 0 ], args[ 1 ] );
+
     const carbohydrates = new Text( this.game, 'center', $( 600 ), `${capitalise( i18n.text( 'carbohydrates_name' ) )}: ${FOOD_DATA[ index ].nutritionFacts.carbohydrates}g`, $( WIKI_FONT ), [ null, 1 ] );
     const fats = new Text( this.game, 'center', $( 714 ), `${capitalise( i18n.text( 'fats_name' ) )}: ${FOOD_DATA[ index ].nutritionFacts.fats}g`, $( WIKI_FONT ), [ null, 1 ] );
     const proteins = new Text( this.game, 'center', $( 828 ), `${capitalise( i18n.text( 'proteins_name' ) )}: ${FOOD_DATA[ index ].nutritionFacts.proteins}g`, $( WIKI_FONT ), [ null, 1 ] );
-    const quantity = new Text( this.game, 'center', $( 943 ), `${capitalise( i18n.text( 'wiki_quantity' ) )}: ${FOOD_DATA[ index ].quantity}`, $( WIKI_FONT ), [ null, 1 ] );
+    const quantity = new Text( this.game, 'center', $( 943 ), `${capitalise( i18n.text( 'wiki_quantity' ) )}: ${iQuantity( FOOD_DATA[ index ].quantity )}`, $( WIKI_FONT ), [ null, 1 ] );
 
     group.add( sheet );
     group.add( title );
