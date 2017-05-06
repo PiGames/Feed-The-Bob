@@ -16,8 +16,8 @@ export const FOOD_TWEEN_Y = 560 * BOB_SCALE + BOB_OFFSET_Y;
 export const FOOD_SPAWN_INTERVAL = 1.2 * Phaser.Timer.SECOND;
 export const MEDIUM_LEVEL_FOOD_SPAWN_DELAY_OFFSET = 0.2 * Phaser.Timer.SECOND;
 export const HARD_LEVEL_FOOD_SPAWN_DELAY_OFFSET = 0.6 * Phaser.Timer.SECOND;
-export const FOOD_SPAWN_BOUNDS_WIDTH = 500;
-export const FOOD_SPAWN_BOUNDS_HEIGHT = 300;
+export const FOOD_SPAWN_BOUNDS_WIDTH_MARGIN = 200;
+export const FOOD_SPAWN_BOUNDS_HEIGHT_MARGIN = 100;
 
 export const FOOD_WIDTH = 100;
 export const FOOD_HEIGHT = 75;

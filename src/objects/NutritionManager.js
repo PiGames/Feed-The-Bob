@@ -5,7 +5,7 @@ import { GOOD_AMOUNT_OF_CARBOHYDRATES, GOOD_AMOUNT_OF_FATS, GOOD_AMOUNT_OF_PROTE
 export default class NutritionManager {
   constructor( game ) {
     this.nutrition = {
-      carbohydrates: GOOD_AMOUNT_OF_CARBOHYDRATES * 0.1,
+      carbohydrates: GOOD_AMOUNT_OF_CARBOHYDRATES,
       fats: GOOD_AMOUNT_OF_FATS,
       proteins: GOOD_AMOUNT_OF_PROTEINS,
     };

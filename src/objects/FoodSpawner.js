@@ -1,7 +1,7 @@
 import Food from './Food';
 import { getFoodData, getEasyLevelLastIndex, getMediumLevelLastIndex, getHardLevelLastIndex } from './FoodDataManager';
 import { getRandomWithWeight } from '../utils/MathUtils.js';
-import { FOOD_SPAWN_INTERVAL, FOOD_SPAWN_BOUNDS_WIDTH, FOOD_SPAWN_BOUNDS_HEIGHT, FOOD_WIDTH, FOOD_HEIGHT, MEDIUM_LEVEL_VELOCITY_OFFSET, HARD_LEVEL_VELOCITY_OFFSET, MEDIUM_LEVEL_FOOD_SPAWN_DELAY_OFFSET, HARD_LEVEL_FOOD_SPAWN_DELAY_OFFSET } from '../constants/FoodConstants';
+import { FOOD_SPAWN_INTERVAL, FOOD_SPAWN_BOUNDS_WIDTH_MARGIN, FOOD_SPAWN_BOUNDS_HEIGHT_MARGIN, FOOD_WIDTH, FOOD_HEIGHT, MEDIUM_LEVEL_VELOCITY_OFFSET, HARD_LEVEL_VELOCITY_OFFSET, MEDIUM_LEVEL_FOOD_SPAWN_DELAY_OFFSET, HARD_LEVEL_FOOD_SPAWN_DELAY_OFFSET } from '../constants/FoodConstants';
 import { TIME_TO_REACH_HARD_LEVEL, TIME_TO_REACH_MEDIUM_LEVEL } from '../constants/DifficultyLevelIntervals.js';
 import { getStatusAudio } from '../utils/AudioManager.js';
 import AdditionalFoodSpawner from './AdditionalFoodSpawner';
@@ -49,12 +49,14 @@ export default class FoodSpawner extends Phaser.Group {
     const spawnSide = sides[ Math.floor( Math.random() * 4 ) ];
     let x;
     let y;
+    const spawnWidth = this.game.world.width - FOOD_SPAWN_BOUNDS_WIDTH_MARGIN;
+    const spawnHeight = this.game.world.height - FOOD_SPAWN_BOUNDS_HEIGHT_MARGIN;
     if ( spawnSide === 'NORTH' || spawnSide === 'SOUTH' ) {
-      x = FOOD_SPAWN_BOUNDS_WIDTH / 2 + Math.random() * FOOD_SPAWN_BOUNDS_WIDTH;
+      x = spawnWidth / 2 + Math.random() * spawnWidth;
       y = spawnSide === 'NORTH' ? -FOOD_HEIGHT : this.game.world.height + FOOD_HEIGHT;
     } else {
       x = spawnSide === 'WEST' ? -FOOD_WIDTH : this.game.world.width + FOOD_WIDTH;
-      y = FOOD_SPAWN_BOUNDS_HEIGHT / 2 + Math.random() * FOOD_SPAWN_BOUNDS_HEIGHT;
+      y = spawnHeight / 2 + Math.random() * spawnHeight;
     }
 
     this.tryDifficultyLevelUp();

@@ -23,6 +23,7 @@ export default class MainMenu extends Phaser.State {
     const buttonPigames = this.add.button( MENU_BUTTON_OFFSET, MENU_BUTTON_OFFSET, $( 'logo-pigames' ), this.clickPiGames, this );
     const buttonStart = this.add.button( this.world.width - MENU_BUTTON_OFFSET, this.world.height - MENU_BUTTON_OFFSET, $( 'button-start' ), this.clickStart, this, 1, 0, 2 );
     buttonStart.anchor.set( 1 );
+    buttonStart.scale.setTo( 2 );
 
     const buttonWiki = this.add.button( MENU_BUTTON_OFFSET, this.world.height - MENU_BUTTON_OFFSET, $( 'button-wiki' ), this.clickWiki, this, 1, 0, 2 );
     buttonWiki.anchor.set( 0, 1 );
