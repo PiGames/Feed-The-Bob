@@ -1,61 +1,63 @@
-const en_gb = {
+const de_de = {
   quote_types: {
-    opening: '’',
-    closing: '’',
+    opening: '„',
+    closing: '”',
   },
   main_menu_highscore: {
-    text: 'Highscore',
+    text: 'Bestes Ergebnis',
   },
   carbohydrates_name: {
-    text: 'carbohydrates',
+    text: 'Kohlenhydrate',
   },
   fats_name: {
-    text: 'fats',
+    text: 'Fette',
   },
   proteins_name: {
-    text: 'proteins',
+    text: 'Proteine',
   },
   wiki_quantity: {
-    text: 'quantity',
+    text: 'Menge',
   },
 
   products_apple: {
-    text: 'apple',
+    text: 'Apfel',
   },
   products_butter: {
-    text: 'butter',
+    text: 'Butter',
   },
   products_strawberry_jam: {
-    text: 'strawberry jam',
+    text: 'Erdbeermarmelade',
   },
   products_chicken: {
-    text: 'chicken',
+    text: 'Chicken',
   },
   products_donut: {
-    text: 'donut',
+    text: 'Donut',
   },
   products_banana: {
-    text: 'banana',
+    text: 'Banane',
   },
   products_eggs: {
-    text: 'eggs',
+    text: 'Eier',
   },
   products_hamburger: {
-    text: 'hamburger',
+    text: 'Hamburger',
   },
   products_peanut_butter: {
-    text: 'peanut butter',
+    text: 'Nuss-Nugat-Creme',
   },
   products_milk: {
-    text: 'milk',
+    text: 'Milch',
   },
   products_quantity_big_apple: {
     text: ( args ) => {
       const quantity = args[ 0 ];
       if ( quantity === 1 ) {
-        return `${quantity} big apple`;
+        return `${quantity} ein großer Apfel`;
+      } else if ( quantity < 5 ) {
+        return `${quantity} große Apfel`;
       } else {
-        return `${quantity} big apples`;
+        return `${quantity} große Apfel`;
       }
     },
   },
@@ -63,9 +65,11 @@ const en_gb = {
     text: ( args ) => {
       const quantity = args[ 0 ];
       if ( quantity === 1 ) {
-        return `${quantity} spoon`;
+        return `${quantity} Löffel`;
+      } else if ( quantity < 5 ) {
+        return `${quantity} Löffel`;
       } else {
-        return `${quantity} spoons`;
+        return `${quantity} Löffel`;
       }
     },
   },
@@ -73,9 +77,11 @@ const en_gb = {
     text: ( args ) => {
       const quantity = args[ 0 ];
       if ( quantity === 1 ) {
-        return `${quantity} gram`;
+        return `${quantity} Gramm`;
+      } else if ( quantity < 5 ) {
+        return `${quantity} Gramm`;
       } else {
-        return `${quantity} grams`;
+        return `${quantity} Gramm`;
       }
     },
   },
@@ -83,9 +89,11 @@ const en_gb = {
     text: ( args ) => {
       const quantity = args[ 0 ];
       if ( quantity === 1 ) {
-        return `${quantity} donut`;
+        return `${quantity} Donat`;
+      } else if ( quantity < 5 ) {
+        return `${quantity} Donats`;
       } else {
-        return `${quantity} donuts`;
+        return `${quantity} Donats`;
       }
     },
   },
@@ -93,9 +101,11 @@ const en_gb = {
     text: ( args ) => {
       const quantity = args[ 0 ];
       if ( quantity === 1 ) {
-        return `${quantity} banana`;
+        return `${quantity} Banane`;
+      } else if ( quantity < 5 ) {
+        return `${quantity} Bananen`;
       } else {
-        return `${quantity} bananas`;
+        return `${quantity} Bananen`;
       }
     },
   },
@@ -103,9 +113,11 @@ const en_gb = {
     text: ( args ) => {
       const quantity = args[ 0 ];
       if ( quantity === 1 ) {
-        return `${quantity} egg`;
+        return `${quantity} Ei`;
+      } else if ( quantity < 5 ) {
+        return `${quantity} Eier`;
       } else {
-        return `${quantity} eggs`;
+        return `${quantity} Eier`;
       }
     },
   },
@@ -113,9 +125,11 @@ const en_gb = {
     text: ( args ) => {
       const quantity = args[ 0 ];
       if ( quantity === 1 ) {
-        return `${quantity} hamburger`;
+        return `${quantity} Hamburger`;
+      } else if ( quantity < 5 ) {
+        return `${quantity} Hamburger`;
       } else {
-        return `${quantity} hamburgers`;
+        return `${quantity} Hamburger`;
       }
     },
   },
@@ -123,78 +137,83 @@ const en_gb = {
     text: ( args ) => {
       const quantity = args[ 0 ];
       if ( quantity === 1 ) {
-        return `${quantity} cup`;
+        return `${quantity} Glas`;
+      } else if ( quantity < 5 ) {
+        return `${quantity} Gläser`;
       } else {
-        return `${quantity} cups`;
+        return `${quantity} Gläser`;
       }
     },
   },
 
   tutorial_step_0: {
-    text: 'This is Bob.\nYour job is to help him\nmaintain his current weight.',
+    text: 'Das ist Bob.\nHelf ihm dabei sein Körpergewicht zu halten. ',
   },
   tutorial_step_1: {
-    text: 'These are Bob’s current macroelements indicators.\nBy keeping them green you keep Bob healthy and score points.',
+    text: 'Das sind die Nährstoffanzeiger von Bob.\nWenn der Hintergrund der Anzeige grün ist, dann ist Bob gesund und du bekommst Punkte',
   },
   tutorial_step_2: {
-    text: 'Bob’s macroelements indicators will turn\nyellow and eventually red if you overfeed\nhim with a certain type of macroelement\nor if you dont’t feed him with it.',
-  },
-  tutorial_step_3: {
-    text: 'Bob has his own health bar,\nits value drops when you enter yellow\nor red zone on macroelement indicator.',
+    text: 'Die Anzeige wird gelb, wenn Bob zu wenige oder zu viele Nährstoffe bekommt. Wenn du dann nicht handelst, verliert Bob leben und die Anzeige kann auf rot wechseln!',
   },
   tutorial_step_4: {
-    text: 'Every food has its own nutrition\ninfo in Wiki section availible from the menu.\nKnowing what macroelements food consists of,\nyou can be sure that you will feed Bob properly.',
+    text: 'Jedes Essen hat bestimmte Eingeschafte,\ndie in der "Encyklopädie" im Hauptmenü zu fonden sind.\nWenn du die Eigenschaften des Essens kennst, weißt du wie du Bob füttern musst.',
   },
   tutorial_step_5: {
-    text: 'This is the end of tutorial. You can now enjoy the game!',
+    text: 'Das war das Tutorial, jetzt kannst du endlich anfangen zu spielen!',
   },
 
   game_health: {
-    text: 'Health',
+    text: 'Leben',
   },
   game_score: {
-    text: 'Score',
+    text: 'Ergebnis',
   },
   game_paused: {
-    text: 'Paused',
+    text: 'Pause',
   },
   game_level_up: {
-    text: 'You are getting better!\nSo game is gonna become harder!',
+    text: 'Es geht dir jedes mal besser!\n, das Spiel wird schwieriger!',
   },
   game_over: {
-    text: 'Game over',
+    text: 'Game Over',
   },
-
   game_over_text: {
     text: ( args ) => {
-      // args[ 0 ] => score
-      // args[ 1 ] => deathtype
+      // args[ 0 ] => wynik //Ergebnis
+      // args[ 1 ] => sposób śmierci  //Ursache des Todes
 
-      const secondNumberSuffix = time => ( time === 1 ) ? '' : 's';
+      const secondNumberSuffix = time => ( time > 5 ) ? 'y' : 'ów';
 
-      return `You have scored ${Math.floor( args[ 0 ] )} point${secondNumberSuffix( args[ 0 ] )}\nand died from ${args[ 1 ]}`;
+      return `Du hast ${Math.floor( args[ 0 ] )}eereicht  punkt${secondNumberSuffix( args[ 0 ] )}\ni Du bist wegen: ${args[ 1 ]}gestorben.`;
     },
   },
   game_deathtype_dangerous_nutrition_style: {
-    text: 'dangerous nutrition style',
+    text: 'Gefährlicher Ernährungstil',
   },
 
   credits_title: {
-    text: 'Credits',
+    text: 'Autoren',
   },
   credits_code: {
-    text: 'Coding',
+    text: 'Code',
   },
   credits_graphics: {
-    text: 'Graphics',
+    text: 'Grafik',
   },
   credits_sound: {
-    text: 'Sounds',
+    text: 'Sound',
   },
+  credits_translators: {
+    text: 'Übersetzung',
+  },
+  credits_lang_de: {
+    text: 'Deutsch',
+  },
+
   credits_by: {
-    text: 'by',
-    // eg. created by
+    text: 'von',
+    // np. gemacht durch ...
   },
 };
 
-export default en_gb;
+export default de_de;

@@ -122,8 +122,7 @@ export default class MainMenu extends Phaser.State {
   initLang() {
     this.langUI = [];
     const currentLang = i18n.get();
-    // const langs = [ 'en_gb', 'pl_pl', 'de_de' ];
-    const langs = [ 'en_gb', 'pl_pl' ];
+    const langs = [ 'en_gb', 'pl_pl', 'de_de' ];
 
     this.langsExpanded = false;
     this.buttonLangs = this.add.button( this.world.width - MENU_BUTTON_OFFSET, MENU_BUTTON_OFFSET, $( `button-lang-${currentLang}` ), this.clickLangOpen, this, 1, 0, 2 );
