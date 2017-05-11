@@ -38,7 +38,7 @@ const resources = {
     [ 'nutrition-bar', 'img/ui/nutrition-bar.png', 680, 56 ],
     [ 'products-en_gb', 'img/assets/products-en_gb.png', 200, 150 ],
     [ 'products-pl_pl', 'img/assets/products-pl_pl.png', 200, 150 ],
-    [ 'products-de_de', 'img/assets/products-en_gb.png', 200, 150 ],
+    [ 'products-de_de', 'img/assets/products-de_de.png', 200, 150 ],
 		[ 'button-quality', 'img/ui/button-quality.png', 160, 160 ],
   ],
   'audio': [
