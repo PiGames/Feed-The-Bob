@@ -7,7 +7,7 @@ import Text from '../UI/Text';
 
 import * as Clock from '../utils/ClockUtils';
 
-import { MENU_HIGHSCORE_FONT, TITLE_OFFSET_Y, MENU_BUTTON_OFFSET } from '../constants/UIConstants';
+import { /* MENU_HIGHSCORE_FONT,*/ TITLE_OFFSET_Y, MENU_BUTTON_OFFSET } from '../constants/UIConstants';
 
 export default class MainMenu extends Phaser.State {
   create() {
@@ -18,7 +18,7 @@ export default class MainMenu extends Phaser.State {
     title.anchor.set( 0.5 );
 
     PPTStorage.initUnset( 'PPT-highscore', 0 );
-    const highscore = PPTStorage.get( 'PPT-highscore' ) || 0;
+    //const highscore = PPTStorage.get( 'PPT-highscore' ) || 0;
 
     const buttonPigames = this.add.button( MENU_BUTTON_OFFSET, MENU_BUTTON_OFFSET, $( 'logo-pigames' ), this.clickPiGames, this );
     const buttonStart = this.add.button( this.world.width - MENU_BUTTON_OFFSET, this.world.height - MENU_BUTTON_OFFSET, $( 'button-start' ), this.clickStart, this, 1, 0, 2 );
@@ -27,8 +27,8 @@ export default class MainMenu extends Phaser.State {
     const buttonWiki = this.add.button( MENU_BUTTON_OFFSET, this.world.height - MENU_BUTTON_OFFSET, $( 'button-wiki' ), this.clickWiki, this, 1, 0, 2 );
     buttonWiki.anchor.set( 0, 1 );
 
-    const highscoreText = new Text( this.game, 'center', this.world.height - $( 50 ), i18n.text( 'main_menu_highscore' ) + ': ' + highscore, $( MENU_HIGHSCORE_FONT ), [ null, 1 ] );
-    highscoreText.padding.set( 0, 15 );
+    //const highscoreText = new Text( this.game, 'center', this.world.height - $( 50 ), i18n.text( 'main_menu_highscore' ) + ': ' + highscore, $( MENU_HIGHSCORE_FONT ), [ null, 1 ] );
+   // highscoreText.padding.set( 0, 15 );
 
     this.initOptions();
     this.initLang();
