@@ -1,4 +1,4 @@
-const DAMAGE_VALUE_PER_TICK = 7.25;
+const DAMAGE_VALUE_PER_TICK = 33.4;
 const CAN_BE_HARMED_REFRESH_INTERVAL = 2000;
 
 export default class HealthHandler {

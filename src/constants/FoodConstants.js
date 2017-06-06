@@ -39,7 +39,7 @@ export const FOOD_DATA = Object.freeze( [
   { 'key': 9, 'name': 'products_eggs', 'nutritionFacts': { 'carbohydrates': 1, 'fats': 16, 'proteins': 15 }, 'complexityLevel': 2, 'probability': 1, 'quantity': [ 'products_quantity_egg', 2 ] },
 
   // Complexity lv. 3
-  { 'key': 3, 'name': 'products_hamburger', 'nutritionFacts': { 'carbohydrates': 30, 'fats': 13, 'proteins': 16 }, 'complexityLevel': 3, 'probability': 1, 'quantity': [ 'products_quantity_hamburger', 1 ] },
-  { 'key': 8, 'name': 'products_peanut_butter', 'nutritionFacts': { 'carbohydrates': 6, 'fats': 16, 'proteins': 8 }, 'complexityLevel': 3, 'probability': 1, 'quantity': [ 'products_quantity_spoon', 2 ] },
-  { 'key': 6, 'name': 'products_milk', 'nutritionFacts': { 'carbohydrates': 12, 'fats': 8, 'proteins': 8 }, 'complexityLevel': 3, 'probability': 1, 'quantity': [ 'products_quantity_cup', 1 ] },
+  { 'key': 3, 'name': 'products_hamburger', 'nutritionFacts': { 'carbohydrates': 30, 'fats': 13, 'proteins': 16 }, 'complexityLevel': 2, 'probability': 1, 'quantity': [ 'products_quantity_hamburger', 1 ] },
+  { 'key': 8, 'name': 'products_peanut_butter', 'nutritionFacts': { 'carbohydrates': 6, 'fats': 16, 'proteins': 8 }, 'complexityLevel': 2, 'probability': 1, 'quantity': [ 'products_quantity_spoon', 2 ] },
+  { 'key': 6, 'name': 'products_milk', 'nutritionFacts': { 'carbohydrates': 12, 'fats': 8, 'proteins': 8 }, 'complexityLevel': 2, 'probability': 1, 'quantity': [ 'products_quantity_cup', 1 ] },
 ] );

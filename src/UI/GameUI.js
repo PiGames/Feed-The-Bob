@@ -45,7 +45,7 @@ export default class GameUI {
   initHealthBar() {
     this.healthBarText = new Text( this.game, $( 30 ), this.game.world.height - $( 100 ), `${i18n.text( 'game_health' )}: `, $( SCORE_FONT ), [ 0, 1 ] );
 
-    this.healthBar = this.game.add.tileSprite( this.healthBarText.x + this.healthBarText.width, this.game.world.height - $( 120 ), $( 300 ), $( 50 ), $( 'heart' ) );
+    this.healthBar = this.game.add.tileSprite( this.healthBarText.x + this.healthBarText.width, this.game.world.height - $( 120 ), $( 180 ), $( 50 ), $( 'heart' ) );
     this.healthBar.anchor.setTo( 0, 1 );
     this.healthBar.scale.setTo( 1.25 );
   }

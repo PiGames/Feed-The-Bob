@@ -13,6 +13,9 @@ export default class NutritionManager {
     this.UI = new NutritionUI( game, this );
 
     this.updateTimer = game.time.events.loop( AMOUNT_REDUCED_INTERVAL, this.reduceNutrition, this );
+
+    /// speed up for demo
+    this.speedUp( MEDIUM_LEVEL_DELAY_OFFSET );
   }
 
   reduceNutrition() {

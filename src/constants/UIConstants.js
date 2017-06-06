@@ -7,7 +7,7 @@ export const NUTRITION_BAR_X_FROM_LEFT = 24;
 export const NUTRITION_BAR_Y_FROM_BOTTOM = 24;
 export const NUTRITION_BAR_BORDER_WIDTH = 2;
 
-export const HEALTHBAR_WIDTH = 300;
+export const HEALTHBAR_WIDTH = 180;
 
 export const NUTRITION_BAR_INFO_FONT = { font: 'Bromine', fontSize: 32, fill: '#fff', shadow: '0 0 rgba(0, 0, 0, 0.5) 10' };
 export const NUTRITION_NUTRITION_ADDED_FONT = { font: 'Bromine', fontSize: 40, fill: '#fff', stroke: '#000', strokeThickness: 6, shadow: '0 0 rgba(0, 0, 0, 0.5) 10' };

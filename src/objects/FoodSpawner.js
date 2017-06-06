@@ -1,5 +1,5 @@
 import Food from './Food';
-import { getFoodData, getEasyLevelLastIndex, getMediumLevelLastIndex, getHardLevelLastIndex } from './FoodDataManager';
+import { getFoodData, getMediumLevelLastIndex, getHardLevelLastIndex } from './FoodDataManager';
 import { getRandomWithWeight } from '../utils/MathUtils.js';
 import { FOOD_SPAWN_INTERVAL, FOOD_SPAWN_BOUNDS_WIDTH_MARGIN, FOOD_SPAWN_BOUNDS_HEIGHT_MARGIN, FOOD_WIDTH, FOOD_HEIGHT, MEDIUM_LEVEL_VELOCITY_OFFSET, HARD_LEVEL_VELOCITY_OFFSET, MEDIUM_LEVEL_FOOD_SPAWN_DELAY_OFFSET, HARD_LEVEL_FOOD_SPAWN_DELAY_OFFSET } from '../constants/FoodConstants';
 import { TIME_TO_REACH_HARD_LEVEL, TIME_TO_REACH_MEDIUM_LEVEL } from '../constants/DifficultyLevelIntervals.js';
@@ -15,8 +15,9 @@ export default class FoodSpawner extends Phaser.Group {
 
     this.updateStatsSignal = new Phaser.Signal();
 
-    this.currentDifficultyLevel = 'EASY';
-    this.currentDifficultyLevelLastIndex = getEasyLevelLastIndex();
+    this.currentDifficultyLevel = 'MEDIUM';
+    this.currentDifficultyLevelLastIndex = getMediumLevelLastIndex();
+    this.timer.delay = FOOD_SPAWN_INTERVAL - MEDIUM_LEVEL_FOOD_SPAWN_DELAY_OFFSET;
 
     this.biteSound = this.game.add.sound( 'audio-bite', 0.5 );
     this.biteSound.allowMultiple = true;

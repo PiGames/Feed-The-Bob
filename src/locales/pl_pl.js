@@ -191,7 +191,7 @@ const pl_pl = {
     },
   },
   game_deathtype_dangerous_nutrition_style: {
-    text: 'niebezipecznego stylu żywienia',
+    text: 'niebezpiecznego stylu żywienia',
   },
 
   credits_title: {
