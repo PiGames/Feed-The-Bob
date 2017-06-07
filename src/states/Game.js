@@ -1,6 +1,7 @@
+/* global texta_close, texta_win */
+
 import { $ } from '../utils/ScaleManager';
 import GameUI from '../UI/GameUI';
-import i18n from '../utils/i18n';
 
 import FoodSpawner from '../objects/FoodSpawner';
 import Bob from '../objects/Bob';
@@ -29,6 +30,7 @@ export default class Game extends Phaser.State {
     this.foodSpawner.onDifficultyLevelUp.add( ( ...args ) => this.gameUI.difficultyChange( ...args ) );
 
     this.bob.onScoreValueChange.add( ( ...args ) => this.gameUI.onScoreValueChange( ...args ) );
+    this.bob.onScoreValueChange.add( ( ...args ) => this.onScoreValueChange( ...args ) );
 
     const healthHandler = new HealthHandler();
     this.bob.onWeightChange.add( ( ...args ) => healthHandler.setShouldBobBeHarmed( ...args ) );
@@ -51,12 +53,16 @@ export default class Game extends Phaser.State {
 
     // don't bother it's just a hot fix, or not...
     this.game.veryBadGlobalFlagToMakeAHotFixSorryButIHaveToUseIt = true;
+
+    this.gameUI.onScoreUpdate.add( this.onScoreValueChange, this );
   }
 
   checkForDeath( health ) {
     if ( health <= 0 ) {
-      this.gameUI.stateGameover( i18n.text( 'game_deathtype_dangerous_nutrition_style' ) );
-      this.game.veryBadGlobalFlagToMakeAHotFixSorryButIHaveToUseIt = false;
+      // API LOSE CALL
+      texta_close();
+      // this.gameUI.stateGameover( i18n.text( 'game_deathtype_dangerous_nutrition_style' ) );
+      // this.game.veryBadGlobalFlagToMakeAHotFixSorryButIHaveToUseIt = false;
     }
   }
 
@@ -80,5 +86,14 @@ export default class Game extends Phaser.State {
       food.body.velocity.y = food.velocityY;
     } );
     this.game.time.events.resume();
+  }
+  onScoreValueChange( score ) {
+    console.log( 'change' );
+    if ( score > 30 ) {
+      alert( 'win' );
+      this.stopMovingFood();
+      // API WIN CALL
+      texta_win();
+    }
   }
 }

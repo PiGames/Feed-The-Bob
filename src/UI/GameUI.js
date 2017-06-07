@@ -34,6 +34,8 @@ export default class GameUI {
     if ( PPTStorage.get( 'PPT-tutorial' ) !== true ) {
       this.startTutorial();
     }
+
+    this.onScoreUpdate = new Phaser.Signal();
   }
 
   initScore() {
@@ -184,6 +186,7 @@ export default class GameUI {
     this.textScore.setText( `${i18n.text( 'game_score' )}: ${this.score}` );
     this.state.foodSpawner.tryDifficultyLevelUp( this.timePassed );
     this.timeAdvance.dispatch();
+    this.onScoreUpdate.dispatch( this.score );
   }
 
   managePause() {
@@ -357,7 +360,7 @@ export default class GameUI {
     this.state.restoreFoodMovement.call( this.state );
     this.state.state.restart( true );
   }
-
+  
   gameoverScoreTween( deathmsg = '' ) {
     this.screenGameoverScore.setText( '' );
 
