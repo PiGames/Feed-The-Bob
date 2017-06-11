@@ -19,7 +19,6 @@ export default class HealthHandler {
       return;
     }
 
-    console.log( DAMAGE_VALUE_PER_TICK );
     this.health -= DAMAGE_VALUE_PER_TICK * this.punishementMultiplier;
     this.canBeHarmed = false;
     window.setTimeout( () => this.canBeHarmed = true, CAN_BE_HARMED_REFRESH_INTERVAL );

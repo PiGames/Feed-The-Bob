@@ -29,8 +29,8 @@ export default class GameUI {
 
     this.initScore();
     this.initHealthBar();
-    this.initWinScreen();
     this.initPauseScreen();
+    this.initWinScreen();
     this.initGameoverScreen();
   }
 
@@ -43,7 +43,7 @@ export default class GameUI {
   initHealthBar() {
     this.healthBarText = new Text( this.game, $( 30 ), this.game.world.height - $( 100 ), `${i18n.text( 'game_health' )}: `, $( SCORE_FONT ), [ 0, 1 ] );
 
-    this.healthBar = this.game.add.tileSprite( this.healthBarText.x + this.healthBarText.width, this.game.world.height - $( 120 ), $( 180 ), $( 50 ), $( 'heart' ) );
+    this.healthBar = this.game.add.tileSprite( this.healthBarText.x + this.healthBarText.width, this.game.world.height - $( 120 ), $( HEALTHBAR_WIDTH ), $( 50 ), $( 'heart' ) );
     this.healthBar.anchor.setTo( 0, 1 );
     this.healthBar.scale.setTo( 1.25 );
   }
@@ -62,6 +62,9 @@ export default class GameUI {
     this.screenPausedBg.inputEnabled = true;
     this.screenPausedBg.input.priorityID = 1;
 
+    const buttonPigames = this.game.add.sprite( MENU_BUTTON_OFFSET, this.game.world.height - MENU_BUTTON_OFFSET, $( 'logo-pigames' ), this );
+    buttonPigames.anchor.set( 0, 1 );
+
     this.screenPausedText = new Text( this.game, 'center', 'center', i18n.text( 'game_paused' ), $( PAUSE_TITLE_FONT ) );
 
     this.buttonAudio = this.game.add.button( this.game.world.width - MENU_BUTTON_OFFSET, MENU_BUTTON_OFFSET, $( 'button-audio' ), this.clickAudio, this, 1, 0, 2 );
@@ -78,6 +81,7 @@ export default class GameUI {
     this.screenPausedGroup.add( this.screenPausedText );
     this.screenPausedGroup.add( this.buttonAudio );
     this.screenPausedGroup.add( this.screenPausedContinue );
+    this.screenPausedGroup.add( buttonPigames );
     this.screenPausedGroup.alpha = 0;
     this.screenPausedGroup.visible = false;
   }
@@ -89,6 +93,9 @@ export default class GameUI {
     this.screenGameoverBg.scale.setTo( 2 );
     this.screenGameoverBg.inputEnabled = true;
     this.screenGameoverBg.input.priorityID = 2;
+
+    const buttonPigames = this.game.add.sprite( MENU_BUTTON_OFFSET, this.game.world.height - MENU_BUTTON_OFFSET, $( 'logo-pigames' ), this );
+    buttonPigames.anchor.set( 0, 1 );
 
     this.screenGameoverText = new Text( this.game, 'center', $( 100 ), i18n.text( 'game_over' ), $( GAMEOVER_TITLE_FONT ) );
 
@@ -102,6 +109,7 @@ export default class GameUI {
     this.screenGameoverGroup.add( this.screenGameoverText );
     this.screenGameoverGroup.add( this.screenGameoverBack );
     this.screenGameoverGroup.add( this.screenGameoverScore );
+    this.screenGameoverGroup.add( buttonPigames );
     this.screenGameoverGroup.alpha = 0;
     this.screenGameoverGroup.visible = false;
   }
@@ -114,7 +122,10 @@ export default class GameUI {
     this.screenWinBg.inputEnabled = true;
     this.screenWinBg.input.priorityID = 2;
 
-    this.screenWinText = new Text( this.game, 'center', $( 100 ), 'You have won!', $( GAMEOVER_SCORE_FONT ) );
+    const buttonPigames = this.game.add.sprite( MENU_BUTTON_OFFSET, this.game.world.height - MENU_BUTTON_OFFSET, $( 'logo-pigames' ), this );
+    buttonPigames.anchor.set( 0, 1 );
+
+    this.screenWinText = new Text( this.game, 'center', $( 100 ), 'You have won!', $( GAMEOVER_TITLE_FONT ) );
 
     this.screenWinBack = this.game.add.button( this.game.world.width / 2, this.game.world.height - $( 100 ), $( 'button-mainmenu' ), this.stateWinBack, this, 1, 0, 2 );
     this.screenWinBack.anchor.set( 0.5, 1 );
@@ -126,6 +137,7 @@ export default class GameUI {
     this.screenWinGroup.add( this.screenWinText );
     this.screenWinGroup.add( this.screenWinBack );
     this.screenWinGroup.add( this.screenWinScore );
+    this.screenWinGroup.add( buttonPigames );
     this.screenWinGroup.alpha = 0;
     this.screenWinGroup.visible = false;
   }
