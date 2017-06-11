@@ -5,8 +5,6 @@ const game = new Phaser.Game( CANVAS_WIDTH, CANVAS_HEIGHT, Phaser.AUTO );
 const states = {
   'Boot': PPT.Boot,
   'Preloader': PPT.Preloader,
-  'MainMenu': PPT.MainMenu,
-  'Wiki': PPT.Wiki,
   'Game': PPT.Game,
   'Credits': PPT.Credits,
 };

@@ -30,6 +30,4 @@ export const CREDITS_TITLE_FONT = { font: 'Bromine', fontSize: 104, fill: '#fff'
 export const CREDITS_FONT = { font: 'Bromine', fontSize: 56, fill: '#fff', align: 'center', shadow: '0 0 rgba(0, 0, 0, 0.5) 10', stroke: '#000', strokeThickness: 3 };
 export const CREDITS_FONT_SMALL = { font: 'Bromine', fontSize: 36, fill: '#fff', align: 'center', shadow: '0 0 rgba(0, 0, 0, 0.5) 10', stroke: '#000', strokeThickness: 3 };
 
-export const TUTORIAL_FONT = { font: 'Bromine', fontSize: 56, fill: '#fff', align: 'center', shadow: '0 0 rgba(0, 0, 0, 0.5) 10', stroke: '#000', strokeThickness: 3 };
-
 export const LEVEL_CHANGE_FONT = { font: 'Bromine', fontSize: 80, fill: '#fff', align: 'center', shadow: '0 0 rgba(0, 0, 0, 0.5) 10', stroke: '#000', strokeThickness: 3 };

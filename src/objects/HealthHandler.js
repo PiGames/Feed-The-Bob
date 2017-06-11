@@ -1,4 +1,4 @@
-const DAMAGE_VALUE_PER_TICK = 33.4;
+const DAMAGE_VALUE_PER_TICK = ( 3 / 4 ) * ( 1 / 3 ) * 100;
 const CAN_BE_HARMED_REFRESH_INTERVAL = 2000;
 
 export default class HealthHandler {
@@ -18,6 +18,8 @@ export default class HealthHandler {
     if ( this.shouldBobBeHarmed === false || this.canBeHarmed === false ) {
       return;
     }
+
+    console.log( DAMAGE_VALUE_PER_TICK );
     this.health -= DAMAGE_VALUE_PER_TICK * this.punishementMultiplier;
     this.canBeHarmed = false;
     window.setTimeout( () => this.canBeHarmed = true, CAN_BE_HARMED_REFRESH_INTERVAL );

@@ -1,6 +1,6 @@
 import { $set } from '../utils/ScaleManager';
 import i18n from '../utils/i18n';
-import { PPTStorage, setStorage } from '../utils/StorageManager';
+import { setStorage } from '../utils/StorageManager';
 
 const resources = {
   'image': [
@@ -19,27 +19,15 @@ const resources = {
   'spritesheet': [
     [ 'button-start', 'img/ui/button-start.png', 320, 320 ],
     [ 'button-continue', 'img/ui/button-start.png', 320, 320 ],
-		[ 'button-mainmenu', 'img/ui/button-mainmenu.png', 160, 160 ],
-		[ 'button-restart', 'img/ui/button-tryagain.png', 160, 160 ],
-    [ 'button-options', 'img/ui/button-options.png', 160, 160 ],
+		[ 'button-mainmenu', 'img/ui/button-close.png', 160, 160 ],
     [ 'button-credits-en_gb', 'img/ui/button-credits-en_gb.png', 160, 160 ],
-    [ 'button-credits-pl_pl', 'img/ui/button-credits-pl_pl.png', 160, 160 ],
-    [ 'button-credits-de_de', 'img/ui/button-credits-pl_pl.png', 160, 160 ],
-    [ 'button-help', 'img/ui/button-help.png', 160, 160 ],
-		[ 'button-wiki', 'img/ui/button-wiki.png', 160, 160 ],
 		[ 'button-pause', 'img/ui/button-pause.png', 160, 160 ],
 		[ 'button-audio', 'img/ui/button-sound.png', 160, 160 ],
     [ 'button-back', 'img/ui/button-back.png', 160, 170 ],
 		[ 'button-next', 'img/ui/button-next.png', 160, 170 ],
-    [ 'button-lang-en_gb', 'img/ui/button-lang-en_gb.png', 160, 160 ],
-		[ 'button-lang-pl_pl', 'img/ui/button-lang-pl_pl.png', 160, 160 ],
-		[ 'button-lang-de_de', 'img/ui/button-lang-de_de.png', 160, 160 ],
     [ 'bob', 'img/assets/bob.png', 458, 989 ],
     [ 'nutrition-bar', 'img/ui/nutrition-bar.png', 680, 56 ],
     [ 'products-en_gb', 'img/assets/products-en_gb.png', 200, 150 ],
-    [ 'products-pl_pl', 'img/assets/products-pl_pl.png', 200, 150 ],
-    [ 'products-de_de', 'img/assets/products-de_de.png', 200, 150 ],
-		[ 'button-quality', 'img/ui/button-quality.png', 160, 160 ],
   ],
   'audio': [
 		[ 'audio-click', [ 'sfx/click.mp3', 'sfx/click.ogg' ] ],
@@ -50,7 +38,7 @@ const resources = {
 
 export default class Preloader extends Phaser.State {
   preload() {
-    this.add.sprite( 0, 0, 'loadingbg' );
+    // this.add.sprite( 0, 0, 'loadingbg' );
     this.add.sprite( ( this.world.width - 580 ) * 0.5, ( this.world.height + 150 ) * 0.5, 'loading-background' );
     const preloadProgress = this.add.sprite( ( this.world.width - 540 ) * 0.5, ( this.world.height + 170 ) * 0.5, 'loading-progress' );
     this.load.setPreloadSprite( preloadProgress );
@@ -71,14 +59,13 @@ export default class Preloader extends Phaser.State {
         if ( method === 'image' || method === 'spritesheet' ) {
           const args50 = args.concat();
           args50[ 0 ] += '-50';
-          args50[ 1 ] = args50[ 1 ].replace( 'img/', 'img50/' );
           args50[ 2 ] /= 2;
           args50[ 3 ] /= 2;
 
           loader && loader.apply( this.load, args50 );
+        } else {
+          loader && loader.apply( this.load, args );
         }
-
-        loader && loader.apply( this.load, args );
       }, this );
     }
   }
@@ -86,35 +73,12 @@ export default class Preloader extends Phaser.State {
     if ( this.initialFontSize !== this.span.clientHeight ) {
       setStorage( this.game.plugins.add( Phaser.Plugin.Storage ) );
 
-      if ( PPTStorage.get( 'PPT-quality' ) === 0.5 ) {
-        $set.call( this, 0.5 );
-      }
+      $set.call( this, 0.5 );
 
-      for ( let x = 0; x < navigator.languages.length; x++ ) {
-        const lang = navigator.languages[ x ];
-        if ( lang.toLowerCase().indexOf( 'en' ) >= 0 ) {
-          i18n.set( 'en_gb' );
-          break;
-        }
-
-        if ( lang.toLowerCase().indexOf( 'pl' ) >= 0 ) {
-          i18n.set( 'pl_pl' );
-          break;
-        }
-
-        if ( lang.toLowerCase().indexOf( 'de' ) >= 0 ) {
-          i18n.set( 'de_de' );
-          break;
-        }
-      }
-
-      if ( PPTStorage.get( 'PPT-lang' ) ) {
-        i18n.set( PPTStorage.get( 'PPT-lang' ) );
-      }
+      i18n.set( 'en_gb' );
 
       document.body.removeChild( this.span );
-      this.state.start( 'MainMenu' );
-      // this.state.start( 'Game' );
+      this.state.start( 'Game' );
     }
   }
 }
