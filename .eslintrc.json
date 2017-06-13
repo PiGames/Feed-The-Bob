@@ -5,7 +5,9 @@
   },
   "globals": {
     "Phaser": true,
-    "EPTStorage": true
+    "EPTStorage": true,
+    "texta_close": true,
+    "texta_win": true
   },
   "parserOptions": {
 		"sourceType": "module",

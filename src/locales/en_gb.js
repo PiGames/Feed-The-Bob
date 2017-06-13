@@ -178,6 +178,9 @@ const en_gb = {
   game_deathtype_dangerous_nutrition_style: {
     text: 'dangerous nutrition style',
   },
+  game_win: {
+    text: 'You have won!',
+  },
 
   credits_title: {
     text: 'Credits',

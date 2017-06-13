@@ -1,6 +1,7 @@
 import { $ } from '../utils/ScaleManager';
 import i18n from '../utils/i18n';
-import { SCORE_FONT, GAMEOVER_TITLE_FONT, GAMEOVER_SCORE_FONT, PAUSE_TITLE_FONT, MENU_BUTTON_OFFSET, TUTORIAL_FONT, LEVEL_CHANGE_FONT, HEALTHBAR_WIDTH } from '../constants/UIConstants';
+import { SCORE_FONT, GAMEOVER_TITLE_FONT, GAMEOVER_SCORE_FONT, PAUSE_TITLE_FONT, MENU_BUTTON_OFFSET, LEVEL_CHANGE_FONT, HEALTHBAR_WIDTH } from '../constants/UIConstants';
+import { WIN_SCORE } from '../constants/DemoConstants';
 import { playAudio, manageAudio, getAudioOffset } from '../utils/AudioManager';
 import Text from './Text';
 
@@ -29,6 +30,7 @@ export default class GameUI {
     this.initScore();
     this.initHealthBar();
     this.initPauseScreen();
+    this.initWinScreen();
     this.initGameoverScreen();
 
     if ( PPTStorage.get( 'PPT-tutorial' ) !== true ) {
@@ -47,7 +49,7 @@ export default class GameUI {
   initHealthBar() {
     this.healthBarText = new Text( this.game, $( 30 ), this.game.world.height - $( 100 ), `${i18n.text( 'game_health' )}: `, $( SCORE_FONT ), [ 0, 1 ] );
 
-    this.healthBar = this.game.add.tileSprite( this.healthBarText.x + this.healthBarText.width, this.game.world.height - $( 120 ), $( 180 ), $( 50 ), $( 'heart' ) );
+    this.healthBar = this.game.add.tileSprite( this.healthBarText.x + this.healthBarText.width, this.game.world.height - $( 120 ), $( HEALTHBAR_WIDTH ), $( 50 ), $( 'heart' ) );
     this.healthBar.anchor.setTo( 0, 1 );
     this.healthBar.scale.setTo( 1.25 );
   }
@@ -66,16 +68,15 @@ export default class GameUI {
     this.screenPausedBg.inputEnabled = true;
     this.screenPausedBg.input.priorityID = 1;
 
+    const buttonPigames = this.game.add.sprite( MENU_BUTTON_OFFSET, this.game.world.height - MENU_BUTTON_OFFSET, $( 'logo-pigames' ), this );
+    buttonPigames.anchor.set( 0, 1 );
+
     this.screenPausedText = new Text( this.game, 'center', 'center', i18n.text( 'game_paused' ), $( PAUSE_TITLE_FONT ) );
 
     this.buttonAudio = this.game.add.button( this.game.world.width - MENU_BUTTON_OFFSET, MENU_BUTTON_OFFSET, $( 'button-audio' ), this.clickAudio, this, 1, 0, 2 );
     this.buttonAudio.anchor.set( 1, 0 );
     this.buttonAudio.setFrames( getAudioOffset() + 1, getAudioOffset() + 0, getAudioOffset() + 2 );
     this.buttonAudio.input.priorityID = 1;
-
-    this.screenPausedBack = this.game.add.button( MENU_BUTTON_OFFSET, this.game.world.height - MENU_BUTTON_OFFSET, $( 'button-mainmenu' ), this.stateBack, this, 1, 0, 2 );
-    this.screenPausedBack.anchor.set( 0, 1 );
-    this.screenPausedBack.input.priorityID = 1;
 
     this.screenPausedContinue = this.game.add.button( this.game.world.width - MENU_BUTTON_OFFSET, this.game.world.height - MENU_BUTTON_OFFSET, $( 'button-continue' ), this.managePause, this, 1, 0, 2 );
     this.screenPausedContinue.anchor.set( 1, 1 );
@@ -85,8 +86,8 @@ export default class GameUI {
     this.screenPausedGroup.add( this.screenPausedBg );
     this.screenPausedGroup.add( this.screenPausedText );
     this.screenPausedGroup.add( this.buttonAudio );
-    this.screenPausedGroup.add( this.screenPausedBack );
     this.screenPausedGroup.add( this.screenPausedContinue );
+    this.screenPausedGroup.add( buttonPigames );
     this.screenPausedGroup.alpha = 0;
     this.screenPausedGroup.visible = false;
   }
@@ -99,25 +100,52 @@ export default class GameUI {
     this.screenGameoverBg.inputEnabled = true;
     this.screenGameoverBg.input.priorityID = 2;
 
+    const buttonPigames = this.game.add.sprite( MENU_BUTTON_OFFSET, this.game.world.height - MENU_BUTTON_OFFSET, $( 'logo-pigames' ), this );
+    buttonPigames.anchor.set( 0, 1 );
+
     this.screenGameoverText = new Text( this.game, 'center', $( 100 ), i18n.text( 'game_over' ), $( GAMEOVER_TITLE_FONT ) );
 
-    this.screenGameoverBack = this.game.add.button( $( 150 ), this.game.world.height - $( 100 ), $( 'button-mainmenu' ), this.stateBack, this, 1, 0, 2 );
-    this.screenGameoverBack.anchor.set( 0, 1 );
+    this.screenGameoverBack = this.game.add.button( this.game.world.width / 2, this.game.world.height - $( 100 ), $( 'button-mainmenu' ), this.stateBack, this, 1, 0, 2 );
+    this.screenGameoverBack.anchor.set( 0.5, 1 );
     this.screenGameoverBack.input.priorityID = 2;
-
-    this.screenGameoverRestart = this.game.add.button( this.game.world.width - $( 150 ), this.game.world.height - $( 100 ), $( 'button-restart' ), this.stateRestart, this, 1, 0, 2 );
-    this.screenGameoverRestart.anchor.set( 1, 1 );
-    this.screenGameoverRestart.input.priorityID = 2;
 
     this.screenGameoverScore = new Text( this.game, 'center', 'center', `${i18n.text( 'game_score' )}: ` + this.score, $( GAMEOVER_SCORE_FONT ) );
 
     this.screenGameoverGroup.add( this.screenGameoverBg );
     this.screenGameoverGroup.add( this.screenGameoverText );
     this.screenGameoverGroup.add( this.screenGameoverBack );
-    this.screenGameoverGroup.add( this.screenGameoverRestart );
     this.screenGameoverGroup.add( this.screenGameoverScore );
+    this.screenGameoverGroup.add( buttonPigames );
     this.screenGameoverGroup.alpha = 0;
     this.screenGameoverGroup.visible = false;
+  }
+
+  initWinScreen() {
+    this.screenWinGroup = this.game.add.group();
+
+    this.screenWinBg = this.game.add.sprite( 0, 0, $( 'overlay' ) );
+    this.screenWinBg.scale.setTo( 2 );
+    this.screenWinBg.inputEnabled = true;
+    this.screenWinBg.input.priorityID = 2;
+
+    const buttonPigames = this.game.add.sprite( MENU_BUTTON_OFFSET, this.game.world.height - MENU_BUTTON_OFFSET, $( 'logo-pigames' ), this );
+    buttonPigames.anchor.set( 0, 1 );
+
+    this.screenWinText = new Text( this.game, 'center', $( 100 ), 'You have won!', $( GAMEOVER_TITLE_FONT ) );
+
+    this.screenWinBack = this.game.add.button( this.game.world.width / 2, this.game.world.height - $( 100 ), $( 'button-mainmenu' ), this.stateWinBack, this, 1, 0, 2 );
+    this.screenWinBack.anchor.set( 0.5, 1 );
+    this.screenWinBack.input.priorityID = 2;
+
+    this.screenWinScore = new Text( this.game, 'center', 'center', `${i18n.text( 'game_score' )}: ` + this.score, $( GAMEOVER_SCORE_FONT ) );
+
+    this.screenWinGroup.add( this.screenWinBg );
+    this.screenWinGroup.add( this.screenWinText );
+    this.screenWinGroup.add( this.screenWinBack );
+    this.screenWinGroup.add( this.screenWinScore );
+    this.screenWinGroup.add( buttonPigames );
+    this.screenWinGroup.alpha = 0;
+    this.screenWinGroup.visible = false;
   }
 
   updateUI() {
@@ -136,9 +164,9 @@ export default class GameUI {
       }
       break;
     }
-    case 'tutorial': {
+    case 'win': {
       if ( !this.runOnce ) {
-        this.stateTutorial();
+        this.stateWin();
         this.runOnce = true;
       }
       break;
@@ -187,6 +215,10 @@ export default class GameUI {
     this.state.foodSpawner.tryDifficultyLevelUp( this.timePassed );
     this.timeAdvance.dispatch();
     this.onScoreUpdate.dispatch( this.score );
+
+    if ( this.score >= WIN_SCORE ) {
+      this.stateWin();
+    }
   }
 
   managePause() {
@@ -204,24 +236,7 @@ export default class GameUI {
     }
   }
 
-  startTutorial() {
-    this.gamePaused = !this.gamePaused;
-    this.state.stopMovingFood.call( this.state );
-    this.stateStatus = 'tutorial';
-    this.runOnce = false;
-
-    this.tutorialStep = 0;
-    this.drawOverlay();
-  }
-
-  furtherTutorial() {
-    this.tutorialStep += 1;
-    this.runOnce = false;
-  }
-
   drawOverlay() {
-    this.tutorialOverlay = this.game.add.group();
-
     this.graphics = this.game.add.graphics( 0, 0 );
     this.graphics.beginFill( 0x000000, 0.5 );
     this.graphics.lineTo( this.game.world.width, 0 );
@@ -230,86 +245,6 @@ export default class GameUI {
     this.graphics.endFill();
     this.graphics.inputEnabled = true;
     this.graphics.input.priorityID = 10;
-
-    this.tutorialText = new Text( this.game, 'center', $( 200 ), '', $( TUTORIAL_FONT ) );
-
-    this.continueTutorial = this.game.add.button( this.game.world.width - MENU_BUTTON_OFFSET, MENU_BUTTON_OFFSET, $( 'button-continue' ), this.furtherTutorial, this, 1, 0, 2 );
-    this.continueTutorial.anchor.set( 1, 0 );
-    this.continueTutorial.scale.set( 0.5 );
-
-    this.continueTutorial.y = -this.continueTutorial.height - MENU_BUTTON_OFFSET;
-    this.game.add.tween( this.continueTutorial ).to( { y: MENU_BUTTON_OFFSET }, 1000, Phaser.Easing.Exponential.Out, true );
-
-    this.continueTutorial.input.priorityID = 11;
-
-    this.tutorialOverlay.add( this.graphics );
-    this.tutorialOverlay.add( this.continueTutorial );
-  }
-
-  stateTutorial() {
-    switch ( this.tutorialStep ) {
-    case 0: {
-      this.tutorialText.setText( i18n.text( `tutorial_step_${this.tutorialStep}` ) );
-
-      this.game.world.bringToTop( this.tutorialOverlay );
-      this.game.world.bringToTop( this.Bob );
-      this.game.world.bringToTop( this.tutorialText );
-
-      break;
-    }
-    case 1: {
-      this.tutorialText.setText( i18n.text( `tutorial_step_${this.tutorialStep}` ) );
-
-      this.game.world.bringToTop( this.tutorialOverlay );
-      this.game.world.bringToTop( this.NutritionUI.NutritionBarsGroup );
-      this.game.world.bringToTop( this.tutorialText );
-
-      break;
-    }
-    case 2: {
-      this.tutorialText.setText( i18n.text( `tutorial_step_${this.tutorialStep}` ) );
-
-      this.game.world.bringToTop( this.tutorialOverlay );
-      this.game.world.bringToTop( this.NutritionUI.NutritionBarsGroup );
-      this.game.world.bringToTop( this.tutorialText );
-
-      this.NutritionManager.nutrition.carbohydrates = 200;
-      this.NutritionManager.nutrition.fats = 30;
-      this.NutritionUI.updateUI();
-
-      break;
-    }
-    case 3: {
-      this.tutorialText.setText( i18n.text( `tutorial_step_${this.tutorialStep}` ) );
-
-      this.game.world.bringToTop( this.tutorialOverlay );
-      this.game.world.bringToTop( this.textScore );
-      this.game.world.bringToTop( this.healthBar );
-      this.game.world.bringToTop( this.healthBar );
-      this.game.world.bringToTop( this.healthBarText );
-      this.game.world.bringToTop( this.tutorialText );
-      break;
-    }
-    case 4: {
-      this.tutorialText.setText( i18n.text( `tutorial_step_${this.tutorialStep}` ) );
-
-      this.game.world.bringToTop( this.tutorialOverlay );
-      this.game.world.bringToTop( this.tutorialText );
-      break;
-    }
-    case 5: {
-      this.tutorialText.setText( i18n.text( `tutorial_step_${this.tutorialStep}` ) );
-
-      this.game.world.bringToTop( this.tutorialOverlay );
-      this.game.world.bringToTop( this.tutorialText );
-      break;
-    }
-    case 6: {
-      PPTStorage.set( 'PPT-tutorial', true );
-      this.stateRestart();
-      break;
-    }
-    }
   }
 
   statePlaying() {
@@ -330,12 +265,12 @@ export default class GameUI {
 
   stateBack() {
     playAudio( 'click' );
-    this.screenGameoverGroup.visible = false;
-    this.gamePaused = false;
-    this.runOnce = false;
-    this.stateStatus = 'playing';
-    this.game.time.events.resume();
-    this.state.state.start( 'MainMenu' );
+    texta_close();
+  }
+
+  stateWinBack() {
+    playAudio( 'click' );
+    texta_win();
   }
 
   stateGameover( msg ) {
@@ -351,14 +286,21 @@ export default class GameUI {
     PPTStorage.setHighscore( 'PPT-highscore', this.score );
   }
 
+  stateWin() {
+    this.state.stopMovingFood.call( this.state );
+    this.game.world.bringToTop( this.screenWinGroup );
+    this.screenWinScore.setText( `${i18n.text( 'game_score' )}: ${this.score}` );
+
+    this.screenWinGroup.visible = true;
+    const tween = this.game.add.tween( this.screenWinGroup );
+    tween.to( { alpha: 1 }, 100, Phaser.Easing.Linear.None, true );
+
+    PPTStorage.setHighscore( 'PPT-highscore', this.score );
+  }
+
   stateRestart() {
     playAudio( 'click' );
-    this.screenGameoverGroup.visible = false;
-    this.gamePaused = false;
-    this.runOnce = false;
-    this.stateStatus = 'playing';
-    this.state.restoreFoodMovement.call( this.state );
-    this.state.state.restart( true );
+    texta_close();
   }
   
   gameoverScoreTween( deathmsg = '' ) {

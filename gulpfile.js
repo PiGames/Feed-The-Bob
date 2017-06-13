@@ -159,10 +159,6 @@ function serve() {
         open: argv.open || argv.o // Change it to true if you wish to allow Browsersync to open a browser window.
     };
 
-    options.snippetOptions.rule.fn = function() {
-      return `<link rel='stylesheet' href='./browser-sync-client-transition/browser-sync-client.min.css' /><script async src='./browser-sync-client-transition/browser-sync-client.min.js'></script>`;
-    };
-
     browserSync(options);
 
     // Watches for changes in files inside the './src' folder.
