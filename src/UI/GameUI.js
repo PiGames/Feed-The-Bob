@@ -166,6 +166,7 @@ export default class GameUI {
     }
     case 'win': {
       if ( !this.runOnce ) {
+        this.game.veryBadGlobalFlagToMakeAHotFixSorryButIHaveToUseIt = false;
         this.stateWin();
         this.runOnce = true;
       }
@@ -217,6 +218,7 @@ export default class GameUI {
     this.onScoreUpdate.dispatch( this.score );
 
     if ( this.score >= WIN_SCORE ) {
+      this.game.veryBadGlobalFlagToMakeAHotFixSorryButIHaveToUseIt = false;
       this.stateWin();
     }
   }
@@ -302,7 +304,7 @@ export default class GameUI {
     playAudio( 'click' );
     texta_close();
   }
-  
+
   gameoverScoreTween( deathmsg = '' ) {
     this.screenGameoverScore.setText( '' );
 

@@ -62,7 +62,7 @@ export default class Game extends Phaser.State {
       // API LOSE CALL
       texta_close();
       // this.gameUI.stateGameover( i18n.text( 'game_deathtype_dangerous_nutrition_style' ) );
-      // this.game.veryBadGlobalFlagToMakeAHotFixSorryButIHaveToUseIt = false;
+
     }
   }
 
@@ -88,9 +88,7 @@ export default class Game extends Phaser.State {
     this.game.time.events.resume();
   }
   onScoreValueChange( score ) {
-    console.log( 'change' );
     if ( score > 30 ) {
-      alert( 'win' );
       this.stopMovingFood();
       // API WIN CALL
       texta_win();

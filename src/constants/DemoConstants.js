@@ -1,1 +1,1 @@
-export const WIN_SCORE = 10;
+export const WIN_SCORE = 30;
