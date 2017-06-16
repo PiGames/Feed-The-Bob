@@ -33,9 +33,9 @@ export default class GameUI {
     this.initWinScreen();
     this.initGameoverScreen();
 
-    if ( PPTStorage.get( 'PPT-tutorial' ) !== true ) {
-      this.startTutorial();
-    }
+    // if ( PPTStorage.get( 'PPT-tutorial' ) !== true ) {
+    //   this.startTutorial();
+    // }
 
     this.onScoreUpdate = new Phaser.Signal();
   }
