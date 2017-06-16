@@ -2,6 +2,7 @@
 
 import { $ } from '../utils/ScaleManager';
 import GameUI from '../UI/GameUI';
+import { playAudio, manageAudio, getStatusAudio } from '../utils/AudioManager';
 
 import FoodSpawner from '../objects/FoodSpawner';
 import Bob from '../objects/Bob';
@@ -50,6 +51,14 @@ export default class Game extends Phaser.State {
         this.game.time.events.pause();
       }
     } );
+
+    this.buttonAudio = this.gameUI.buttonAudio;
+
+    manageAudio( 'init', this );
+
+    if ( getStatusAudio() !== true ) {
+      manageAudio( 'off', this );
+    }
 
     // don't bother it's just a hot fix, or not...
     this.game.veryBadGlobalFlagToMakeAHotFixSorryButIHaveToUseIt = true;
