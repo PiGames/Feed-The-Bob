@@ -1,1 +1,3952 @@
-var _0x1e60=["\x75\x73\x65\x20\x73\x74\x72\x69\x63\x74","\x5F\x5F\x65\x73\x4D\x6F\x64\x75\x6C\x65","\x64\x65\x66\x69\x6E\x65\x50\x72\x6F\x70\x65\x72\x74\x79","\x6C\x65\x6E\x67\x74\x68","\x65\x6E\x75\x6D\x65\x72\x61\x62\x6C\x65","\x63\x6F\x6E\x66\x69\x67\x75\x72\x61\x62\x6C\x65","\x76\x61\x6C\x75\x65","\x77\x72\x69\x74\x61\x62\x6C\x65","\x6B\x65\x79","\x70\x72\x6F\x74\x6F\x74\x79\x70\x65","\x2E\x2E\x2F\x75\x74\x69\x6C\x73\x2F\x53\x63\x61\x6C\x65\x4D\x61\x6E\x61\x67\x65\x72","\x2E\x2E\x2F\x75\x74\x69\x6C\x73\x2F\x69\x31\x38\x6E","\x2E\x2E\x2F\x63\x6F\x6E\x73\x74\x61\x6E\x74\x73\x2F\x55\x49\x43\x6F\x6E\x73\x74\x61\x6E\x74\x73","\x2E\x2E\x2F\x75\x74\x69\x6C\x73\x2F\x41\x75\x64\x69\x6F\x4D\x61\x6E\x61\x67\x65\x72","\x2E\x2F\x54\x65\x78\x74","\x2E\x2E\x2F\x75\x74\x69\x6C\x73\x2F\x53\x74\x6F\x72\x61\x67\x65\x4D\x61\x6E\x61\x67\x65\x72","\x43\x61\x6E\x6E\x6F\x74\x20\x63\x61\x6C\x6C\x20\x61\x20\x63\x6C\x61\x73\x73\x20\x61\x73\x20\x61\x20\x66\x75\x6E\x63\x74\x69\x6F\x6E","\x73\x74\x61\x74\x65","\x67\x61\x6D\x65","\x42\x6F\x62","\x4E\x75\x74\x72\x69\x74\x69\x6F\x6E\x4D\x61\x6E\x61\x67\x65\x72","\x4E\x75\x74\x72\x69\x74\x69\x6F\x6E\x55\x49","\x55\x49","\x73\x74\x61\x74\x65\x53\x74\x61\x74\x75\x73","\x70\x6C\x61\x79\x69\x6E\x67","\x73\x63\x6F\x72\x65","\x74\x69\x6D\x65\x50\x61\x73\x73\x65\x64","\x72\x75\x6E\x4F\x6E\x63\x65","\x67\x61\x6D\x65\x50\x61\x75\x73\x65\x64","\x73\x63\x6F\x72\x65\x56\x61\x6C\x75\x65","\x74\x69\x6D\x65\x41\x64\x76\x61\x6E\x63\x65","\x69\x6E\x69\x74\x53\x63\x6F\x72\x65","\x69\x6E\x69\x74\x48\x65\x61\x6C\x74\x68\x42\x61\x72","\x69\x6E\x69\x74\x50\x61\x75\x73\x65\x53\x63\x72\x65\x65\x6E","\x69\x6E\x69\x74\x47\x61\x6D\x65\x6F\x76\x65\x72\x53\x63\x72\x65\x65\x6E","\x50\x50\x54\x2D\x74\x75\x74\x6F\x72\x69\x61\x6C","\x67\x65\x74","\x50\x50\x54\x53\x74\x6F\x72\x61\x67\x65","\x73\x74\x61\x72\x74\x54\x75\x74\x6F\x72\x69\x61\x6C","\x74\x65\x78\x74\x53\x63\x6F\x72\x65","\x24","\x68\x65\x69\x67\x68\x74","\x77\x6F\x72\x6C\x64","\x67\x61\x6D\x65\x5F\x73\x63\x6F\x72\x65","\x74\x65\x78\x74","\x64\x65\x66\x61\x75\x6C\x74","\x3A\x20","\x53\x45\x43\x4F\x4E\x44","\x54\x69\x6D\x65\x72","\x68\x61\x6E\x64\x6C\x65\x50\x6F\x69\x6E\x74\x73\x41\x64\x64\x69\x74\x69\x6F\x6E","\x6C\x6F\x6F\x70","\x65\x76\x65\x6E\x74\x73","\x74\x69\x6D\x65","\x68\x65\x61\x6C\x74\x68\x42\x61\x72\x54\x65\x78\x74","\x67\x61\x6D\x65\x5F\x68\x65\x61\x6C\x74\x68","\x68\x65\x61\x6C\x74\x68\x42\x61\x72","\x78","\x77\x69\x64\x74\x68","\x68\x65\x61\x72\x74","\x74\x69\x6C\x65\x53\x70\x72\x69\x74\x65","\x61\x64\x64","\x73\x65\x74\x54\x6F","\x61\x6E\x63\x68\x6F\x72","\x73\x63\x61\x6C\x65","\x62\x75\x74\x74\x6F\x6E\x50\x61\x75\x73\x65","\x4D\x45\x4E\x55\x5F\x42\x55\x54\x54\x4F\x4E\x5F\x4F\x46\x46\x53\x45\x54","\x62\x75\x74\x74\x6F\x6E\x2D\x70\x61\x75\x73\x65","\x6D\x61\x6E\x61\x67\x65\x50\x61\x75\x73\x65","\x62\x75\x74\x74\x6F\x6E","\x73\x65\x74","\x70\x72\x69\x6F\x72\x69\x74\x79\x49\x44","\x69\x6E\x70\x75\x74","\x79","\x45\x78\x70\x6F\x6E\x65\x6E\x74\x69\x61\x6C","\x45\x61\x73\x69\x6E\x67","\x74\x6F","\x74\x77\x65\x65\x6E","\x73\x63\x72\x65\x65\x6E\x50\x61\x75\x73\x65\x64\x47\x72\x6F\x75\x70","\x67\x72\x6F\x75\x70","\x73\x63\x72\x65\x65\x6E\x50\x61\x75\x73\x65\x64\x42\x67","\x6F\x76\x65\x72\x6C\x61\x79","\x73\x70\x72\x69\x74\x65","\x69\x6E\x70\x75\x74\x45\x6E\x61\x62\x6C\x65\x64","\x73\x63\x72\x65\x65\x6E\x50\x61\x75\x73\x65\x64\x54\x65\x78\x74","\x63\x65\x6E\x74\x65\x72","\x67\x61\x6D\x65\x5F\x70\x61\x75\x73\x65\x64","\x62\x75\x74\x74\x6F\x6E\x41\x75\x64\x69\x6F","\x62\x75\x74\x74\x6F\x6E\x2D\x61\x75\x64\x69\x6F","\x63\x6C\x69\x63\x6B\x41\x75\x64\x69\x6F","\x67\x65\x74\x41\x75\x64\x69\x6F\x4F\x66\x66\x73\x65\x74","\x73\x65\x74\x46\x72\x61\x6D\x65\x73","\x73\x63\x72\x65\x65\x6E\x50\x61\x75\x73\x65\x64\x42\x61\x63\x6B","\x62\x75\x74\x74\x6F\x6E\x2D\x6D\x61\x69\x6E\x6D\x65\x6E\x75","\x73\x74\x61\x74\x65\x42\x61\x63\x6B","\x73\x63\x72\x65\x65\x6E\x50\x61\x75\x73\x65\x64\x43\x6F\x6E\x74\x69\x6E\x75\x65","\x62\x75\x74\x74\x6F\x6E\x2D\x63\x6F\x6E\x74\x69\x6E\x75\x65","\x61\x6C\x70\x68\x61","\x76\x69\x73\x69\x62\x6C\x65","\x73\x63\x72\x65\x65\x6E\x47\x61\x6D\x65\x6F\x76\x65\x72\x47\x72\x6F\x75\x70","\x73\x63\x72\x65\x65\x6E\x47\x61\x6D\x65\x6F\x76\x65\x72\x42\x67","\x73\x63\x72\x65\x65\x6E\x47\x61\x6D\x65\x6F\x76\x65\x72\x54\x65\x78\x74","\x67\x61\x6D\x65\x5F\x6F\x76\x65\x72","\x73\x63\x72\x65\x65\x6E\x47\x61\x6D\x65\x6F\x76\x65\x72\x42\x61\x63\x6B","\x73\x63\x72\x65\x65\x6E\x47\x61\x6D\x65\x6F\x76\x65\x72\x52\x65\x73\x74\x61\x72\x74","\x62\x75\x74\x74\x6F\x6E\x2D\x72\x65\x73\x74\x61\x72\x74","\x73\x74\x61\x74\x65\x52\x65\x73\x74\x61\x72\x74","\x73\x63\x72\x65\x65\x6E\x47\x61\x6D\x65\x6F\x76\x65\x72\x53\x63\x6F\x72\x65","\x75\x70\x64\x61\x74\x65\x55\x49","\x73\x74\x61\x74\x65\x50\x61\x75\x73\x65\x64","\x70\x61\x75\x73\x65\x64","\x73\x74\x61\x74\x65\x47\x61\x6D\x65\x6F\x76\x65\x72","\x67\x61\x6D\x65\x6F\x76\x65\x72","\x73\x74\x61\x74\x65\x54\x75\x74\x6F\x72\x69\x61\x6C","\x74\x75\x74\x6F\x72\x69\x61\x6C","\x73\x74\x61\x74\x65\x50\x6C\x61\x79\x69\x6E\x67","\x6F\x6E\x53\x63\x6F\x72\x65\x56\x61\x6C\x75\x65\x43\x68\x61\x6E\x67\x65","\x75\x70\x64\x61\x74\x65\x48\x65\x61\x6C\x74\x68\x42\x61\x72\x56\x61\x6C\x75\x65","\x66\x6C\x61\x73\x68","\x64\x69\x66\x66\x69\x63\x75\x6C\x74\x79\x43\x68\x61\x6E\x67\x65","\x67\x61\x6D\x65\x5F\x6C\x65\x76\x65\x6C\x5F\x75\x70","\x4C\x69\x6E\x65\x61\x72","\x6F\x6E\x43\x6F\x6D\x70\x6C\x65\x74\x65","\x73\x65\x74\x54\x65\x78\x74","\x74\x72\x79\x44\x69\x66\x66\x69\x63\x75\x6C\x74\x79\x4C\x65\x76\x65\x6C\x55\x70","\x66\x6F\x6F\x64\x53\x70\x61\x77\x6E\x65\x72","\x64\x69\x73\x70\x61\x74\x63\x68","\x63\x6C\x69\x63\x6B","\x70\x6C\x61\x79\x41\x75\x64\x69\x6F","\x62\x72\x69\x6E\x67\x54\x6F\x54\x6F\x70","\x63\x61\x6C\x6C","\x73\x74\x6F\x70\x4D\x6F\x76\x69\x6E\x67\x46\x6F\x6F\x64","\x72\x65\x73\x74\x6F\x72\x65\x46\x6F\x6F\x64\x4D\x6F\x76\x65\x6D\x65\x6E\x74","\x74\x75\x74\x6F\x72\x69\x61\x6C\x53\x74\x65\x70","\x64\x72\x61\x77\x4F\x76\x65\x72\x6C\x61\x79","\x66\x75\x72\x74\x68\x65\x72\x54\x75\x74\x6F\x72\x69\x61\x6C","\x74\x75\x74\x6F\x72\x69\x61\x6C\x4F\x76\x65\x72\x6C\x61\x79","\x67\x72\x61\x70\x68\x69\x63\x73","\x62\x65\x67\x69\x6E\x46\x69\x6C\x6C","\x6C\x69\x6E\x65\x54\x6F","\x65\x6E\x64\x46\x69\x6C\x6C","\x74\x75\x74\x6F\x72\x69\x61\x6C\x54\x65\x78\x74","","\x63\x6F\x6E\x74\x69\x6E\x75\x65\x54\x75\x74\x6F\x72\x69\x61\x6C","\x74\x75\x74\x6F\x72\x69\x61\x6C\x5F\x73\x74\x65\x70\x5F","\x63\x61\x72\x62\x6F\x68\x79\x64\x72\x61\x74\x65\x73","\x6E\x75\x74\x72\x69\x74\x69\x6F\x6E","\x66\x61\x74\x73","\x72\x65\x73\x75\x6D\x65","\x4D\x61\x69\x6E\x4D\x65\x6E\x75","\x73\x74\x61\x72\x74","\x67\x61\x6D\x65\x6F\x76\x65\x72\x53\x63\x6F\x72\x65\x54\x77\x65\x65\x6E","\x50\x50\x54\x2D\x68\x69\x67\x68\x73\x63\x6F\x72\x65","\x73\x65\x74\x48\x69\x67\x68\x73\x63\x6F\x72\x65","\x72\x65\x73\x74\x61\x72\x74","\x67\x61\x6D\x65\x5F\x6F\x76\x65\x72\x5F\x74\x65\x78\x74","\x73\x77\x69\x74\x63\x68","\x6D\x61\x6E\x61\x67\x65\x41\x75\x64\x69\x6F","\x2E\x2E\x2F\x75\x74\x69\x6C\x73\x2F\x4E\x75\x74\x72\x69\x74\x69\x6F\x6E\x55\x74\x69\x6C\x73","\x2E\x2E\x2F\x63\x6F\x6E\x73\x74\x61\x6E\x74\x73\x2F\x4E\x75\x74\x72\x69\x74\x69\x6F\x6E\x43\x6F\x6E\x73\x74\x61\x6E\x74\x73","\x2E\x2E\x2F\x63\x6F\x6E\x73\x74\x61\x6E\x74\x73\x2F\x57\x65\x69\x67\x68\x74\x42\x72\x65\x61\x6B\x70\x6F\x69\x6E\x74\x73","\x4E\x75\x74\x72\x69\x74\x69\x6F\x6E\x42\x61\x72\x73","\x4E\x75\x74\x72\x69\x74\x69\x6F\x6E\x4D\x61\x73\x6B\x73","\x4E\x75\x74\x72\x69\x74\x69\x6F\x6E\x54\x65\x78\x74\x73","\x4E\x75\x74\x72\x69\x74\x69\x6F\x6E\x42\x61\x72\x73\x47\x72\x6F\x75\x70","\x64\x72\x61\x77\x41\x6C\x6C\x42\x61\x72\x73","\x75\x70\x64\x61\x74\x65\x42\x61\x72","\x70\x72\x6F\x74\x65\x69\x6E\x73","\x64\x69\x73\x70\x6C\x61\x79\x41\x64\x64\x69\x74\x69\x6F\x6E","\x74\x6F\x55\x70\x70\x65\x72\x43\x61\x73\x65","\x73\x75\x62\x73\x74\x72\x69\x6E\x67","\x63\x61\x72\x62\x6F\x68\x79\x64\x72\x61\x74\x65\x73\x5F\x6E\x61\x6D\x65","\x64\x72\x61\x77\x42\x61\x72","\x66\x61\x74\x73\x5F\x6E\x61\x6D\x65","\x70\x72\x6F\x74\x65\x69\x6E\x73\x5F\x6E\x61\x6D\x65","\x2B","\x67\x65\x74\x53\x74\x61\x74\x75\x73","\x53\x55\x50\x45\x52\x5F\x54\x48\x49\x4E\x5F\x42\x52\x45\x41\x4B\x50\x4F\x49\x4E\x54","\x53\x55\x50\x45\x52\x5F\x46\x41\x54\x5F\x42\x52\x45\x41\x4B\x50\x4F\x49\x4E\x54","\x66\x72\x61\x6D\x65","\x54\x48\x49\x4E\x5F\x42\x52\x45\x41\x4B\x50\x4F\x49\x4E\x54","\x46\x41\x54\x5F\x42\x52\x45\x41\x4B\x50\x4F\x49\x4E\x54","\x6D\x61\x78","\x6D\x69\x6E","\x63\x6C\x65\x61\x72","\x4E\x55\x54\x52\x49\x54\x49\x4F\x4E\x5F\x42\x41\x52\x5F\x58\x5F\x46\x52\x4F\x4D\x5F\x4C\x45\x46\x54","\x64\x72\x61\x77\x52\x65\x63\x74","\x20\x2F\x20","\x6E\x75\x74\x72\x69\x74\x69\x6F\x6E\x2D\x62\x61\x72\x2D\x62\x61\x63\x6B\x67\x72\x6F\x75\x6E\x64","\x4E\x55\x54\x52\x49\x54\x49\x4F\x4E\x5F\x42\x41\x52\x5F\x42\x4F\x52\x44\x45\x52\x5F\x57\x49\x44\x54\x48","\x54\x48\x49\x4E\x4E\x45\x53\x53\x5F\x4C\x45\x56\x45\x4C\x53","\x6E\x75\x74\x72\x69\x74\x69\x6F\x6E\x2D\x62\x61\x72\x2D\x69\x6E\x64\x69\x63\x61\x74\x6F\x72","\x46\x41\x54\x4E\x45\x53\x53\x5F\x4C\x45\x56\x45\x4C\x53","\x6E\x75\x74\x72\x69\x74\x69\x6F\x6E\x2D\x62\x61\x72","\x6D\x61\x73\x6B","\x66\x6F\x72\x45\x61\x63\x68","\x73\x68\x61\x6B\x65","\x63\x61\x6D\x65\x72\x61","\x74\x68\x69\x73\x20\x68\x61\x73\x6E\x27\x74\x20\x62\x65\x65\x6E\x20\x69\x6E\x69\x74\x69\x61\x6C\x69\x73\x65\x64\x20\x2D\x20\x73\x75\x70\x65\x72\x28\x29\x20\x68\x61\x73\x6E\x27\x74\x20\x62\x65\x65\x6E\x20\x63\x61\x6C\x6C\x65\x64","\x6F\x62\x6A\x65\x63\x74","\x66\x75\x6E\x63\x74\x69\x6F\x6E","\x53\x75\x70\x65\x72\x20\x65\x78\x70\x72\x65\x73\x73\x69\x6F\x6E\x20\x6D\x75\x73\x74\x20\x65\x69\x74\x68\x65\x72\x20\x62\x65\x20\x6E\x75\x6C\x6C\x20\x6F\x72\x20\x61\x20\x66\x75\x6E\x63\x74\x69\x6F\x6E\x2C\x20\x6E\x6F\x74\x20","\x63\x72\x65\x61\x74\x65","\x73\x65\x74\x50\x72\x6F\x74\x6F\x74\x79\x70\x65\x4F\x66","\x5F\x5F\x70\x72\x6F\x74\x6F\x5F\x5F","\x67\x65\x74\x50\x72\x6F\x74\x6F\x74\x79\x70\x65\x4F\x66","\x63\x65\x6E\x74\x65\x72\x58","\x63\x65\x6E\x74\x65\x72\x59","\x73\x68\x61\x64\x6F\x77","\x6D\x61\x74\x63\x68","\x61\x70\x70\x6C\x79","\x73\x65\x74\x53\x68\x61\x64\x6F\x77","\x65\x78\x69\x73\x74\x69\x6E\x67","\x42\x4F\x42\x5F\x4F\x46\x46\x53\x45\x54\x5F\x59","\x42\x4F\x42\x5F\x53\x43\x41\x4C\x45","\x43\x41\x4E\x56\x41\x53\x5F\x57\x49\x44\x54\x48","\x43\x41\x4E\x56\x41\x53\x5F\x48\x45\x49\x47\x48\x54","\x54\x49\x4D\x45\x5F\x54\x4F\x5F\x52\x45\x41\x43\x48\x5F\x4D\x45\x44\x49\x55\x4D\x5F\x4C\x45\x56\x45\x4C","\x54\x49\x4D\x45\x5F\x54\x4F\x5F\x52\x45\x41\x43\x48\x5F\x48\x41\x52\x44\x5F\x4C\x45\x56\x45\x4C","\x46\x4F\x4F\x44\x5F\x44\x41\x54\x41","\x46\x4F\x4F\x44\x5F\x48\x49\x54\x5F\x41\x52\x45\x41\x5F\x44\x49\x41\x4D\x45\x54\x45\x52","\x41\x44\x44\x49\x54\x49\x4F\x4E\x41\x4C\x5F\x46\x4F\x4F\x44\x5F\x53\x50\x41\x57\x4E\x5F\x49\x4E\x54\x45\x52\x56\x41\x4C","\x46\x4F\x4F\x44\x5F\x48\x45\x49\x47\x48\x54","\x46\x4F\x4F\x44\x5F\x57\x49\x44\x54\x48","\x46\x4F\x4F\x44\x5F\x53\x50\x41\x57\x4E\x5F\x42\x4F\x55\x4E\x44\x53\x5F\x48\x45\x49\x47\x48\x54\x5F\x4D\x41\x52\x47\x49\x4E","\x46\x4F\x4F\x44\x5F\x53\x50\x41\x57\x4E\x5F\x42\x4F\x55\x4E\x44\x53\x5F\x57\x49\x44\x54\x48\x5F\x4D\x41\x52\x47\x49\x4E","\x48\x41\x52\x44\x5F\x4C\x45\x56\x45\x4C\x5F\x46\x4F\x4F\x44\x5F\x53\x50\x41\x57\x4E\x5F\x44\x45\x4C\x41\x59\x5F\x4F\x46\x46\x53\x45\x54","\x4D\x45\x44\x49\x55\x4D\x5F\x4C\x45\x56\x45\x4C\x5F\x46\x4F\x4F\x44\x5F\x53\x50\x41\x57\x4E\x5F\x44\x45\x4C\x41\x59\x5F\x4F\x46\x46\x53\x45\x54","\x46\x4F\x4F\x44\x5F\x53\x50\x41\x57\x4E\x5F\x49\x4E\x54\x45\x52\x56\x41\x4C","\x46\x4F\x4F\x44\x5F\x54\x57\x45\x45\x4E\x5F\x59","\x46\x4F\x4F\x44\x5F\x54\x57\x45\x45\x4E\x5F\x58","\x46\x4F\x4F\x44\x5F\x54\x57\x45\x45\x4E\x5F\x53\x43\x41\x4C\x45","\x46\x4F\x4F\x44\x5F\x54\x57\x45\x45\x4E\x5F\x53\x50\x45\x45\x44","\x46\x4F\x4F\x44\x5F\x53\x43\x41\x4C\x45","\x48\x41\x52\x44\x5F\x4C\x45\x56\x45\x4C\x5F\x56\x45\x4C\x4F\x43\x49\x54\x59\x5F\x4F\x46\x46\x53\x45\x54","\x4D\x45\x44\x49\x55\x4D\x5F\x4C\x45\x56\x45\x4C\x5F\x56\x45\x4C\x4F\x43\x49\x54\x59\x5F\x4F\x46\x46\x53\x45\x54","\x4D\x41\x58\x5F\x46\x4F\x4F\x44\x5F\x56\x45\x4C\x4F\x43\x49\x54\x59","\x4D\x49\x4E\x5F\x46\x4F\x4F\x44\x5F\x56\x45\x4C\x4F\x43\x49\x54\x59","\x2E\x2F\x42\x6F\x62\x43\x6F\x6E\x73\x74\x61\x6E\x74\x73","\x70\x72\x6F\x64\x75\x63\x74\x73\x5F\x61\x70\x70\x6C\x65","\x70\x72\x6F\x64\x75\x63\x74\x73\x5F\x71\x75\x61\x6E\x74\x69\x74\x79\x5F\x62\x69\x67\x5F\x61\x70\x70\x6C\x65","\x70\x72\x6F\x64\x75\x63\x74\x73\x5F\x62\x75\x74\x74\x65\x72","\x70\x72\x6F\x64\x75\x63\x74\x73\x5F\x71\x75\x61\x6E\x74\x69\x74\x79\x5F\x73\x70\x6F\x6F\x6E","\x70\x72\x6F\x64\x75\x63\x74\x73\x5F\x73\x74\x72\x61\x77\x62\x65\x72\x72\x79\x5F\x6A\x61\x6D","\x70\x72\x6F\x64\x75\x63\x74\x73\x5F\x63\x68\x69\x63\x6B\x65\x6E","\x70\x72\x6F\x64\x75\x63\x74\x73\x5F\x71\x75\x61\x6E\x74\x69\x74\x79\x5F\x67\x72\x61\x6D","\x70\x72\x6F\x64\x75\x63\x74\x73\x5F\x64\x6F\x6E\x75\x74","\x70\x72\x6F\x64\x75\x63\x74\x73\x5F\x71\x75\x61\x6E\x74\x69\x74\x79\x5F\x64\x6F\x6E\x75\x74","\x70\x72\x6F\x64\x75\x63\x74\x73\x5F\x62\x61\x6E\x61\x6E\x61","\x70\x72\x6F\x64\x75\x63\x74\x73\x5F\x71\x75\x61\x6E\x74\x69\x74\x79\x5F\x62\x61\x6E\x61\x6E\x61","\x70\x72\x6F\x64\x75\x63\x74\x73\x5F\x65\x67\x67\x73","\x70\x72\x6F\x64\x75\x63\x74\x73\x5F\x71\x75\x61\x6E\x74\x69\x74\x79\x5F\x65\x67\x67","\x70\x72\x6F\x64\x75\x63\x74\x73\x5F\x68\x61\x6D\x62\x75\x72\x67\x65\x72","\x70\x72\x6F\x64\x75\x63\x74\x73\x5F\x71\x75\x61\x6E\x74\x69\x74\x79\x5F\x68\x61\x6D\x62\x75\x72\x67\x65\x72","\x70\x72\x6F\x64\x75\x63\x74\x73\x5F\x70\x65\x61\x6E\x75\x74\x5F\x62\x75\x74\x74\x65\x72","\x70\x72\x6F\x64\x75\x63\x74\x73\x5F\x6D\x69\x6C\x6B","\x70\x72\x6F\x64\x75\x63\x74\x73\x5F\x71\x75\x61\x6E\x74\x69\x74\x79\x5F\x63\x75\x70","\x66\x72\x65\x65\x7A\x65","\x47\x4F\x4F\x44\x5F\x41\x4D\x4F\x55\x4E\x54\x5F\x4F\x46\x5F\x43\x41\x52\x42\x4F\x48\x59\x44\x52\x41\x54\x45\x53","\x47\x4F\x4F\x44\x5F\x41\x4D\x4F\x55\x4E\x54\x5F\x4F\x46\x5F\x46\x41\x54\x53","\x47\x4F\x4F\x44\x5F\x41\x4D\x4F\x55\x4E\x54\x5F\x4F\x46\x5F\x50\x52\x4F\x54\x45\x49\x4E\x53","\x41\x4D\x4F\x55\x4E\x54\x5F\x52\x45\x44\x55\x43\x45\x44\x5F\x49\x4E\x54\x45\x52\x56\x41\x4C","\x41\x4D\x4F\x55\x4E\x54\x5F\x52\x45\x44\x55\x43\x45\x44\x5F\x50\x45\x52\x43\x45\x4E\x54","\x4D\x45\x44\x49\x55\x4D\x5F\x4C\x45\x56\x45\x4C\x5F\x44\x45\x4C\x41\x59\x5F\x4F\x46\x46\x53\x45\x54","\x48\x41\x52\x44\x5F\x4C\x45\x56\x45\x4C\x5F\x44\x45\x4C\x41\x59\x5F\x4F\x46\x46\x53\x45\x54","\x4E\x55\x54\x52\x49\x54\x49\x4F\x4E\x5F\x42\x41\x52\x5F\x57\x49\x44\x54\x48","\x4E\x55\x54\x52\x49\x54\x49\x4F\x4E\x5F\x42\x41\x52\x5F\x48\x45\x49\x47\x48\x54","\x4E\x55\x54\x52\x49\x54\x49\x4F\x4E\x5F\x42\x41\x52\x5F\x4F\x46\x46\x53\x45\x54","\x4E\x55\x54\x52\x49\x54\x49\x4F\x4E\x5F\x42\x41\x52\x5F\x54\x45\x58\x54\x5F\x4F\x46\x46\x53\x45\x54\x5F\x58","\x4E\x55\x54\x52\x49\x54\x49\x4F\x4E\x5F\x42\x41\x52\x5F\x54\x45\x58\x54\x5F\x4F\x46\x46\x53\x45\x54\x5F\x59","\x4E\x55\x54\x52\x49\x54\x49\x4F\x4E\x5F\x42\x41\x52\x5F\x59\x5F\x46\x52\x4F\x4D\x5F\x42\x4F\x54\x54\x4F\x4D","\x48\x45\x41\x4C\x54\x48\x42\x41\x52\x5F\x57\x49\x44\x54\x48","\x4E\x55\x54\x52\x49\x54\x49\x4F\x4E\x5F\x42\x41\x52\x5F\x49\x4E\x46\x4F\x5F\x46\x4F\x4E\x54","\x42\x72\x6F\x6D\x69\x6E\x65","\x23\x66\x66\x66","\x30\x20\x30\x20\x72\x67\x62\x61\x28\x30\x2C\x20\x30\x2C\x20\x30\x2C\x20\x30\x2E\x35\x29\x20\x31\x30","\x4E\x55\x54\x52\x49\x54\x49\x4F\x4E\x5F\x4E\x55\x54\x52\x49\x54\x49\x4F\x4E\x5F\x41\x44\x44\x45\x44\x5F\x46\x4F\x4E\x54","\x23\x30\x30\x30","\x53\x43\x4F\x52\x45\x5F\x46\x4F\x4E\x54","\x50\x41\x55\x53\x45\x5F\x54\x49\x54\x4C\x45\x5F\x46\x4F\x4E\x54","\x30\x20\x30\x20\x72\x67\x62\x61\x28\x30\x2C\x20\x30\x2C\x20\x30\x2C\x20\x30\x2E\x35\x29\x20\x33\x30","\x47\x41\x4D\x45\x4F\x56\x45\x52\x5F\x54\x49\x54\x4C\x45\x5F\x46\x4F\x4E\x54","\x47\x41\x4D\x45\x4F\x56\x45\x52\x5F\x53\x43\x4F\x52\x45\x5F\x46\x4F\x4E\x54","\x4D\x45\x4E\x55\x5F\x48\x49\x47\x48\x53\x43\x4F\x52\x45\x5F\x46\x4F\x4E\x54","\x54\x49\x54\x4C\x45\x5F\x4F\x46\x46\x53\x45\x54\x5F\x59","\x57\x49\x4B\x49\x5F\x54\x49\x54\x4C\x45\x5F\x46\x4F\x4E\x54","\x57\x49\x4B\x49\x5F\x46\x4F\x4E\x54","\x43\x52\x45\x44\x49\x54\x53\x5F\x54\x49\x54\x4C\x45\x5F\x46\x4F\x4E\x54","\x43\x52\x45\x44\x49\x54\x53\x5F\x46\x4F\x4E\x54","\x43\x52\x45\x44\x49\x54\x53\x5F\x46\x4F\x4E\x54\x5F\x53\x4D\x41\x4C\x4C","\x54\x55\x54\x4F\x52\x49\x41\x4C\x5F\x46\x4F\x4E\x54","\x4C\x45\x56\x45\x4C\x5F\x43\x48\x41\x4E\x47\x45\x5F\x46\x4F\x4E\x54","\x70\x75\x73\x68","\x72\x65\x76\x65\x72\x73\x65","\x2E\x2F\x73\x74\x61\x74\x65\x73","\x2E\x2F\x63\x6F\x6E\x73\x74\x61\x6E\x74\x73\x2F\x43\x61\x6E\x76\x61\x73\x43\x6F\x6E\x73\x74\x61\x6E\x74\x73","\x42\x6F\x6F\x74","\x50\x72\x65\x6C\x6F\x61\x64\x65\x72","\x57\x69\x6B\x69","\x47\x61\x6D\x65","\x43\x72\x65\x64\x69\x74\x73","\u201E","\u201D","\x42\x65\x73\x74\x65\x73\x20\x45\x72\x67\x65\x62\x6E\x69\x73","\x4B\x6F\x68\x6C\x65\x6E\x68\x79\x64\x72\x61\x74\x65","\x46\x65\x74\x74\x65","\x50\x72\x6F\x74\x65\x69\x6E\x65","\x4D\x65\x6E\x67\x65","\x41\x70\x66\x65\x6C","\x42\x75\x74\x74\x65\x72","\x45\x72\x64\x62\x65\x65\x72\x6D\x61\x72\x6D\x65\x6C\x61\x64\x65","\x43\x68\x69\x63\x6B\x65\x6E","\x44\x6F\x6E\x75\x74","\x42\x61\x6E\x61\x6E\x65","\x45\x69\x65\x72","\x48\x61\x6D\x62\x75\x72\x67\x65\x72","\x4E\x75\x73\x73\x2D\x4E\x75\x67\x61\x74\x2D\x43\x72\x65\x6D\x65","\x4D\x69\x6C\x63\x68","\x20\x65\x69\x6E\x20\x67\x72\x6F\xDF\x65\x72\x20\x41\x70\x66\x65\x6C","\x20\x67\x72\x6F\xDF\x65\x20\x41\x70\x66\x65\x6C","\x20\x4C\xF6\x66\x66\x65\x6C","\x20\x47\x72\x61\x6D\x6D","\x20\x44\x6F\x6E\x61\x74","\x20\x44\x6F\x6E\x61\x74\x73","\x20\x42\x61\x6E\x61\x6E\x65","\x20\x42\x61\x6E\x61\x6E\x65\x6E","\x20\x45\x69","\x20\x45\x69\x65\x72","\x20\x48\x61\x6D\x62\x75\x72\x67\x65\x72","\x20\x47\x6C\x61\x73","\x20\x47\x6C\xE4\x73\x65\x72","\x44\x61\x73\x20\x69\x73\x74\x20\x42\x6F\x62\x2E\x0A\x48\x65\x6C\x66\x20\x69\x68\x6D\x20\x64\x61\x62\x65\x69\x20\x73\x65\x69\x6E\x20\x4B\xF6\x72\x70\x65\x72\x67\x65\x77\x69\x63\x68\x74\x20\x7A\x75\x20\x68\x61\x6C\x74\x65\x6E\x2E\x20","\x44\x61\x73\x20\x73\x69\x6E\x64\x20\x64\x69\x65\x20\x4E\xE4\x68\x72\x73\x74\x6F\x66\x66\x61\x6E\x7A\x65\x69\x67\x65\x72\x20\x76\x6F\x6E\x20\x42\x6F\x62\x2E\x0A\x57\x65\x6E\x6E\x20\x64\x65\x72\x20\x48\x69\x6E\x74\x65\x72\x67\x72\x75\x6E\x64\x20\x64\x65\x72\x20\x41\x6E\x7A\x65\x69\x67\x65\x20\x67\x72\xFC\x6E\x20\x69\x73\x74\x2C\x20\x64\x61\x6E\x6E\x20\x69\x73\x74\x20\x42\x6F\x62\x20\x67\x65\x73\x75\x6E\x64\x20\x75\x6E\x64\x20\x64\x75\x20\x62\x65\x6B\x6F\x6D\x6D\x73\x74\x20\x50\x75\x6E\x6B\x74\x65","\x44\x69\x65\x20\x41\x6E\x7A\x65\x69\x67\x65\x20\x77\x69\x72\x64\x20\x67\x65\x6C\x62\x2C\x20\x77\x65\x6E\x6E\x20\x42\x6F\x62\x20\x7A\x75\x20\x77\x65\x6E\x69\x67\x65\x20\x6F\x64\x65\x72\x20\x7A\x75\x20\x76\x69\x65\x6C\x65\x20\x4E\xE4\x68\x72\x73\x74\x6F\x66\x66\x65\x20\x62\x65\x6B\x6F\x6D\x6D\x74\x2E\x20\x57\x65\x6E\x6E\x20\x64\x75\x20\x64\x61\x6E\x6E\x20\x6E\x69\x63\x68\x74\x20\x68\x61\x6E\x64\x65\x6C\x73\x74\x2C\x20\x76\x65\x72\x6C\x69\x65\x72\x74\x20\x42\x6F\x62\x20\x6C\x65\x62\x65\x6E\x20\x75\x6E\x64\x20\x64\x69\x65\x20\x41\x6E\x7A\x65\x69\x67\x65\x20\x6B\x61\x6E\x6E\x20\x61\x75\x66\x20\x72\x6F\x74\x20\x77\x65\x63\x68\x73\x65\x6C\x6E\x21","\x4A\x65\x64\x65\x73\x20\x45\x73\x73\x65\x6E\x20\x68\x61\x74\x20\x62\x65\x73\x74\x69\x6D\x6D\x74\x65\x20\x45\x69\x6E\x67\x65\x73\x63\x68\x61\x66\x74\x65\x2C\x0A\x64\x69\x65\x20\x69\x6E\x20\x64\x65\x72\x20\x22\x45\x6E\x63\x79\x6B\x6C\x6F\x70\xE4\x64\x69\x65\x22\x20\x69\x6D\x20\x48\x61\x75\x70\x74\x6D\x65\x6E\xFC\x20\x7A\x75\x20\x66\x6F\x6E\x64\x65\x6E\x20\x73\x69\x6E\x64\x2E\x0A\x57\x65\x6E\x6E\x20\x64\x75\x20\x64\x69\x65\x20\x45\x69\x67\x65\x6E\x73\x63\x68\x61\x66\x74\x65\x6E\x20\x64\x65\x73\x20\x45\x73\x73\x65\x6E\x73\x20\x6B\x65\x6E\x6E\x73\x74\x2C\x20\x77\x65\x69\xDF\x74\x20\x64\x75\x20\x77\x69\x65\x20\x64\x75\x20\x42\x6F\x62\x20\x66\xFC\x74\x74\x65\x72\x6E\x20\x6D\x75\x73\x73\x74\x2E","\x44\x61\x73\x20\x77\x61\x72\x20\x64\x61\x73\x20\x54\x75\x74\x6F\x72\x69\x61\x6C\x2C\x20\x6A\x65\x74\x7A\x74\x20\x6B\x61\x6E\x6E\x73\x74\x20\x64\x75\x20\x65\x6E\x64\x6C\x69\x63\x68\x20\x61\x6E\x66\x61\x6E\x67\x65\x6E\x20\x7A\x75\x20\x73\x70\x69\x65\x6C\x65\x6E\x21","\x4C\x65\x62\x65\x6E","\x45\x72\x67\x65\x62\x6E\x69\x73","\x50\x61\x75\x73\x65","\x45\x73\x20\x67\x65\x68\x74\x20\x64\x69\x72\x20\x6A\x65\x64\x65\x73\x20\x6D\x61\x6C\x20\x62\x65\x73\x73\x65\x72\x21\x0A\x2C\x20\x64\x61\x73\x20\x53\x70\x69\x65\x6C\x20\x77\x69\x72\x64\x20\x73\x63\x68\x77\x69\x65\x72\x69\x67\x65\x72\x21","\x47\x61\x6D\x65\x20\x4F\x76\x65\x72","\xF3\x77","\x44\x75\x20\x68\x61\x73\x74\x20","\x66\x6C\x6F\x6F\x72","\x65\x65\x72\x65\x69\x63\x68\x74\x20\x20\x70\x75\x6E\x6B\x74","\x0A\x69\x20\x44\x75\x20\x62\x69\x73\x74\x20\x77\x65\x67\x65\x6E\x3A\x20","\x67\x65\x73\x74\x6F\x72\x62\x65\x6E\x2E","\x47\x65\x66\xE4\x68\x72\x6C\x69\x63\x68\x65\x72\x20\x45\x72\x6E\xE4\x68\x72\x75\x6E\x67\x73\x74\x69\x6C","\x41\x75\x74\x6F\x72\x65\x6E","\x43\x6F\x64\x65","\x47\x72\x61\x66\x69\x6B","\x53\x6F\x75\x6E\x64","\xDC\x62\x65\x72\x73\x65\x74\x7A\x75\x6E\x67","\x44\x65\x75\x74\x73\x63\x68","\x76\x6F\x6E","\u2019","\x48\x69\x67\x68\x73\x63\x6F\x72\x65","\x71\x75\x61\x6E\x74\x69\x74\x79","\x61\x70\x70\x6C\x65","\x62\x75\x74\x74\x65\x72","\x73\x74\x72\x61\x77\x62\x65\x72\x72\x79\x20\x6A\x61\x6D","\x63\x68\x69\x63\x6B\x65\x6E","\x64\x6F\x6E\x75\x74","\x62\x61\x6E\x61\x6E\x61","\x65\x67\x67\x73","\x68\x61\x6D\x62\x75\x72\x67\x65\x72","\x70\x65\x61\x6E\x75\x74\x20\x62\x75\x74\x74\x65\x72","\x6D\x69\x6C\x6B","\x20\x62\x69\x67\x20\x61\x70\x70\x6C\x65","\x20\x62\x69\x67\x20\x61\x70\x70\x6C\x65\x73","\x20\x73\x70\x6F\x6F\x6E","\x20\x73\x70\x6F\x6F\x6E\x73","\x20\x67\x72\x61\x6D","\x20\x67\x72\x61\x6D\x73","\x20\x64\x6F\x6E\x75\x74","\x20\x64\x6F\x6E\x75\x74\x73","\x20\x62\x61\x6E\x61\x6E\x61","\x20\x62\x61\x6E\x61\x6E\x61\x73","\x20\x65\x67\x67","\x20\x65\x67\x67\x73","\x20\x68\x61\x6D\x62\x75\x72\x67\x65\x72","\x20\x68\x61\x6D\x62\x75\x72\x67\x65\x72\x73","\x20\x63\x75\x70","\x20\x63\x75\x70\x73","\x54\x68\x69\x73\x20\x69\x73\x20\x42\x6F\x62\x2E\x0A\x59\x6F\x75\x72\x20\x6A\x6F\x62\x20\x69\x73\x20\x74\x6F\x20\x68\x65\x6C\x70\x20\x68\x69\x6D\x0A\x6D\x61\x69\x6E\x74\x61\x69\x6E\x20\x68\x69\x73\x20\x63\x75\x72\x72\x65\x6E\x74\x20\x77\x65\x69\x67\x68\x74\x2E","\x54\x68\x65\x73\x65\x20\x61\x72\x65\x20\x42\x6F\x62\u2019\x73\x20\x63\x75\x72\x72\x65\x6E\x74\x20\x6D\x61\x63\x72\x6F\x65\x6C\x65\x6D\x65\x6E\x74\x73\x20\x69\x6E\x64\x69\x63\x61\x74\x6F\x72\x73\x2E\x0A\x42\x79\x20\x6B\x65\x65\x70\x69\x6E\x67\x20\x74\x68\x65\x6D\x20\x67\x72\x65\x65\x6E\x20\x79\x6F\x75\x20\x6B\x65\x65\x70\x20\x42\x6F\x62\x20\x68\x65\x61\x6C\x74\x68\x79\x20\x61\x6E\x64\x20\x73\x63\x6F\x72\x65\x20\x70\x6F\x69\x6E\x74\x73\x2E","\x42\x6F\x62\u2019\x73\x20\x6D\x61\x63\x72\x6F\x65\x6C\x65\x6D\x65\x6E\x74\x73\x20\x69\x6E\x64\x69\x63\x61\x74\x6F\x72\x73\x20\x77\x69\x6C\x6C\x20\x74\x75\x72\x6E\x0A\x79\x65\x6C\x6C\x6F\x77\x20\x61\x6E\x64\x20\x65\x76\x65\x6E\x74\x75\x61\x6C\x6C\x79\x20\x72\x65\x64\x20\x69\x66\x20\x79\x6F\x75\x20\x6F\x76\x65\x72\x66\x65\x65\x64\x0A\x68\x69\x6D\x20\x77\x69\x74\x68\x20\x61\x20\x63\x65\x72\x74\x61\x69\x6E\x20\x74\x79\x70\x65\x20\x6F\x66\x20\x6D\x61\x63\x72\x6F\x65\x6C\x65\x6D\x65\x6E\x74\x0A\x6F\x72\x20\x69\x66\x20\x79\x6F\x75\x20\x64\x6F\x6E\x74\u2019\x74\x20\x66\x65\x65\x64\x20\x68\x69\x6D\x20\x77\x69\x74\x68\x20\x69\x74\x2E","\x42\x6F\x62\x20\x68\x61\x73\x20\x68\x69\x73\x20\x6F\x77\x6E\x20\x68\x65\x61\x6C\x74\x68\x20\x62\x61\x72\x2C\x0A\x69\x74\x73\x20\x76\x61\x6C\x75\x65\x20\x64\x72\x6F\x70\x73\x20\x77\x68\x65\x6E\x20\x79\x6F\x75\x20\x65\x6E\x74\x65\x72\x20\x79\x65\x6C\x6C\x6F\x77\x0A\x6F\x72\x20\x72\x65\x64\x20\x7A\x6F\x6E\x65\x20\x6F\x6E\x20\x6D\x61\x63\x72\x6F\x65\x6C\x65\x6D\x65\x6E\x74\x20\x69\x6E\x64\x69\x63\x61\x74\x6F\x72\x2E","\x45\x76\x65\x72\x79\x20\x66\x6F\x6F\x64\x20\x68\x61\x73\x20\x69\x74\x73\x20\x6F\x77\x6E\x20\x6E\x75\x74\x72\x69\x74\x69\x6F\x6E\x0A\x69\x6E\x66\x6F\x20\x69\x6E\x20\x57\x69\x6B\x69\x20\x73\x65\x63\x74\x69\x6F\x6E\x20\x61\x76\x61\x69\x6C\x69\x62\x6C\x65\x20\x66\x72\x6F\x6D\x20\x74\x68\x65\x20\x6D\x65\x6E\x75\x2E\x0A\x4B\x6E\x6F\x77\x69\x6E\x67\x20\x77\x68\x61\x74\x20\x6D\x61\x63\x72\x6F\x65\x6C\x65\x6D\x65\x6E\x74\x73\x20\x66\x6F\x6F\x64\x20\x63\x6F\x6E\x73\x69\x73\x74\x73\x20\x6F\x66\x2C\x0A\x79\x6F\x75\x20\x63\x61\x6E\x20\x62\x65\x20\x73\x75\x72\x65\x20\x74\x68\x61\x74\x20\x79\x6F\x75\x20\x77\x69\x6C\x6C\x20\x66\x65\x65\x64\x20\x42\x6F\x62\x20\x70\x72\x6F\x70\x65\x72\x6C\x79\x2E","\x54\x68\x69\x73\x20\x69\x73\x20\x74\x68\x65\x20\x65\x6E\x64\x20\x6F\x66\x20\x74\x75\x74\x6F\x72\x69\x61\x6C\x2E\x20\x59\x6F\x75\x20\x63\x61\x6E\x20\x6E\x6F\x77\x20\x65\x6E\x6A\x6F\x79\x20\x74\x68\x65\x20\x67\x61\x6D\x65\x21","\x48\x65\x61\x6C\x74\x68","\x53\x63\x6F\x72\x65","\x50\x61\x75\x73\x65\x64","\x59\x6F\x75\x20\x61\x72\x65\x20\x67\x65\x74\x74\x69\x6E\x67\x20\x62\x65\x74\x74\x65\x72\x21\x0A\x53\x6F\x20\x67\x61\x6D\x65\x20\x69\x73\x20\x67\x6F\x6E\x6E\x61\x20\x62\x65\x63\x6F\x6D\x65\x20\x68\x61\x72\x64\x65\x72\x21","\x47\x61\x6D\x65\x20\x6F\x76\x65\x72","\x73","\x59\x6F\x75\x20\x68\x61\x76\x65\x20\x73\x63\x6F\x72\x65\x64\x20","\x20\x70\x6F\x69\x6E\x74","\x0A\x61\x6E\x64\x20\x64\x69\x65\x64\x20\x66\x72\x6F\x6D\x20","\x64\x61\x6E\x67\x65\x72\x6F\x75\x73\x20\x6E\x75\x74\x72\x69\x74\x69\x6F\x6E\x20\x73\x74\x79\x6C\x65","\x43\x6F\x64\x69\x6E\x67","\x47\x72\x61\x70\x68\x69\x63\x73","\x53\x6F\x75\x6E\x64\x73","\x54\x72\x61\x6E\x73\x6C\x61\x74\x6F\x72\x73","\x47\x65\x72\x6D\x61\x6E","\x62\x79","\x2E\x2F\x65\x6E\x5F\x67\x62\x2E\x6A\x73","\x2E\x2F\x70\x6C\x5F\x70\x6C\x2E\x6A\x73","\x2E\x2F\x64\x65\x5F\x64\x65\x2E\x6A\x73","\x4E\x61\x6A\x77\x79\u017C\x73\x7A\x79\x20\x77\x79\x6E\x69\x6B","\x77\u0119\x67\x6C\x6F\x77\x6F\x64\x61\x6E\x79","\x74\u0142\x75\x73\x7A\x63\x7A\x65","\x62\x69\x61\u0142\x6B\x6F","\x69\x6C\x6F\u015B\u0107","\x6A\x61\x62\u0142\x6B\x6F","\x6D\x61\x73\u0142\x6F","\x64\u017C\x65\x6D\x20\x74\x72\x75\x73\x6B\x61\x77\x6B\x6F\x77\x79","\x6B\x75\x72\x63\x7A\x61\x6B","\x62\x61\x6E\x61\x6E","\x6A\x61\x6A\x6B\x61","\x6D\x61\x73\u0142\x6F\x20\x6F\x72\x7A\x65\x63\x68\x6F\x77\x65","\x6D\x6C\x65\x6B\x6F","\x20\x64\x75\u017C\x65\x20\x6A\x61\x62\u0142\x6B\x6F","\x20\x64\x75\u017C\x65\x20\x6A\x61\x62\u0142\x6B\x61","\x20\x64\x75\u017C\x79\x63\x68\x20\x6A\x61\x62\u0142\x65\x6B","\x20\u0142\x79\u017C\x6B\x61","\x20\u0142\x79\u017C\x6B\x69","\x20\u0142\x79\u017C\x65\x6B","\x20\x67\x72\x61\x6D\x79","\x20\x67\x72\x61\x6D\xF3\x77","\x20\x64\x6F\x6E\x75\x74\x79","\x20\x64\x6F\x6E\x75\x74\xF3\x77","\x20\x62\x61\x6E\x61\x6E","\x20\x62\x61\x6E\x61\x6E\x79","\x20\x62\x61\x6E\x61\x6E\xF3\x77","\x20\x6A\x61\x6A\x6B\x6F","\x20\x6A\x61\x6A\x6B\x61","\x20\x6A\x61\x6A\x65\x6B","\x20\x68\x61\x6D\x62\x75\x72\x67\x65\x72\x79","\x20\x68\x61\x6D\x62\x75\x72\x67\x65\x72\xF3\x77","\x20\x73\x7A\x6B\x6C\x61\x6E\x6B\x61","\x20\x73\x7A\x6B\x6C\x61\x6E\x6B\x69","\x20\x73\x7A\x6B\x6C\x61\x6E\x65\x6B","\x54\x6F\x20\x6A\x65\x73\x74\x20\x42\x6F\x62\x2E\x0A\x54\x77\x6F\x69\x6D\x20\x7A\x61\x64\x61\x6E\x69\x65\x6D\x20\x6A\x65\x73\x74\x20\x70\x6F\x6D\xF3\x63\x20\x6D\x75\x0A\x75\x74\x72\x7A\x79\x6D\x61\u0107\x20\x6A\x65\x67\x6F\x20\x6F\x62\x65\x63\x6E\u0105\x20\x77\x61\x67\u0119\x2E","\x54\x6F\x20\x73\u0105\x20\x77\x73\x6B\x61\u017A\x6E\x69\x6B\x69\x20\x73\x74\x61\x6E\x75\x20\x6D\x61\x6B\x72\x6F\x65\x6C\x65\x6D\x65\x6E\x74\xF3\x77\x20\x42\x6F\x62\x61\x2E\x0A\x50\x6F\x70\x72\x7A\x65\x7A\x20\x75\x74\x72\x7A\x79\x6D\x79\x77\x61\x6E\x69\x65\x20\x69\x63\x68\x20\x6E\x61\x20\x7A\x69\x65\x6C\x6F\x6E\x79\x6D\x20\x74\x6C\x65\x20\x42\x6F\x62\x20\x6A\x65\x73\x74\x20\x7A\x64\x72\x6F\x77\x79\x2C\x0A\x61\x20\x74\x79\x20\x64\x6F\x73\x74\x61\x6A\x65\x73\x7A\x20\x70\x75\x6E\x6B\x74\x79\x2E","\x57\x73\x6B\x61\u017A\x6E\x69\x6B\x20\x6D\x61\x6B\x72\x6F\x65\x6C\x65\x6D\x65\x6E\x74\xF3\x77\x20\x7A\x6D\x69\x65\x6E\x69\x20\x6B\x6F\x6C\x6F\x72\x20\x6E\x61\x20\u017C\xF3\u0142\x74\x79\x2C\x0A\x61\x20\x77\x20\x6B\x6F\u0144\x63\x75\x20\x6E\x61\x20\x63\x7A\x65\x72\x77\x6F\x6E\x79\x20\x6A\x65\u015B\x6C\x69\x20\x70\x72\x7A\x65\x6B\x72\x61\x6D\x69\x73\x7A\x20\x42\x6F\x62\x61\x0A\x6D\x61\x6B\x72\x6F\x65\x6C\x65\x6D\x65\x6E\x74\x61\x6D\x69\x20\x6C\x75\x62\x20\x67\x64\x79\x20\x67\x6F\x20\x6E\x69\x65\x20\x62\u0119\x64\x7A\x69\x65\x73\x7A\x20\x6E\x69\x6D\x69\x20\x6B\x61\x72\x6D\x69\u0142\x2E","\x42\x6F\x62\x20\x6D\x61\x20\x73\x77\xF3\x6A\x20\x77\u0142\x61\x73\x6E\x79\x20\x70\x61\x73\x65\x6B\x20\u017C\x79\x63\x69\x61\x2E\x0A\x4A\x65\x67\x6F\x20\x77\x61\x72\x74\x6F\u015B\u0107\x20\x73\x70\x61\x64\x61\x20\x67\x64\x79\x20\x77\x6B\x72\x6F\x63\x7A\x79\x73\x7A\x20\x6E\x61\x20\u017C\xF3\u0142\x74\x65\x0A\x20\x6C\x75\x62\x20\x63\x7A\x65\x72\x6F\x77\x6E\x65\x20\x70\x6F\x6C\x65\x20\x6E\x61\x20\x77\x73\x6B\x61\u017A\x6E\x69\x6B\x75\x20\x6D\x61\x6B\x72\x6F\x65\x6C\x65\x6D\x65\x6E\x74\xF3\x77\x2E","\x4B\x61\u017C\x64\x65\x20\x6A\x65\x64\x7A\x65\x6E\x69\x65\x20\x6D\x61\x20\x73\x77\x6F\x6A\x65\x20\x77\u0142\x61\u015B\x63\x69\x77\x6F\u015B\x63\x69\x0A\x6F\x70\x69\x73\x61\x6E\x65\x20\x77\x20\x73\x65\x6B\x63\x6A\x69\x20\u201E\x45\x6E\x63\x79\x6B\x6C\x6F\x70\x65\x64\x69\x61\u201D\x20\x77\x20\x6D\x65\x6E\x75\x20\x67\u0142\xF3\x77\x6E\x79\x6D\x2E\x0A\x5A\x6E\x61\x6A\u0105\x63\x20\x6A\x61\x6B\x69\x65\x20\x6D\x61\x6B\x72\x6F\x65\x6C\x65\x6D\x65\x6E\x74\x79\x20\x64\x61\x6E\x65\x20\x6A\x65\x64\x7A\x65\x6E\x69\x65\x20\x70\x6F\x73\x69\x61\x64\x61\x0A\x6D\x6F\u017C\x65\x73\x7A\x20\x62\x79\u0107\x20\x70\x65\x77\x69\x65\x6E\x2C\x20\u017C\x65\x20\x6E\x61\x6B\x61\x72\x6D\x69\x73\x7A\x20\x42\x6F\x62\x61\x20\x70\x6F\x70\x72\x61\x77\x6E\x69\x65\x2E","\x54\x6F\x20\x6B\x6F\x6E\x69\x65\x63\x20\x73\x61\x6D\x6F\x75\x63\x7A\x6B\x61\x2E\x0A\x4D\x6F\u017C\x65\x73\x7A\x20\x74\x65\x72\x61\x7A\x20\x63\x69\x65\x73\x7A\x79\u0107\x20\x73\x69\u0119\x20\x67\x72\u0105\x21","\u017B\x79\x63\x69\x65","\x57\x79\x6E\x69\x6B","\x50\x61\x75\x7A\x61","\x49\x64\x7A\x69\x65\x20\x63\x69\x20\x63\x6F\x72\x61\x7A\x20\x6C\x65\x70\x69\x65\x6A\x21\x0A\x57\x69\u0119\x63\x20\x67\x72\x61\x20\x73\x74\x61\x6A\x65\x20\x73\x69\u0119\x20\x74\x72\x75\x64\x6E\x69\x65\x6A\x73\x7A\x61\x21","\x4B\x6F\x6E\x69\x65\x63\x20\x67\x72\x79","\x5A\x64\x6F\x62\x79\u0142\x65\u015B\x20","\x20\x70\x75\x6E\x6B\x74","\x0A\x69\x20\x75\x6D\x61\x72\u0142\x65\u015B\x20\x6F\x64\x20","\x6E\x69\x65\x62\x65\x7A\x69\x70\x65\x63\x7A\x6E\x65\x67\x6F\x20\x73\x74\x79\x6C\x75\x20\u017C\x79\x77\x69\x65\x6E\x69\x61","\x41\x75\x74\x6F\x72\x7A\x79","\x4B\x6F\x64","\x47\x72\x61\x66\x69\x6B\x61","\x44\u017A\x77\x69\u0119\x6B\x69","\x54\u0142\x75\x6D\x61\x63\x7A\x65\x6E\x69\x65","\x6E\x69\x65\x6D\x69\x65\x63\x6B\x69","\x70\x72\x7A\x65\x7A","\x2E\x2E\x2F\x63\x6F\x6E\x73\x74\x61\x6E\x74\x73\x2F\x46\x6F\x6F\x64\x43\x6F\x6E\x73\x74\x61\x6E\x74\x73","\x68\x61\x73\x4D\x61\x63\x72\x6F\x73\x53\x70\x61\x77\x6E\x65\x64\x44\x61\x74\x61","\x63\x68\x65\x63\x6B\x49\x66\x53\x68\x6F\x75\x6C\x64\x53\x70\x61\x77\x6E\x54\x69\x6D\x65\x72","\x63\x68\x65\x63\x6B\x49\x66\x53\x68\x6F\x75\x6C\x64\x53\x70\x61\x77\x6E","\x6F\x6E\x53\x70\x61\x77\x6E\x4E\x65\x65\x64","\x2E\x2E\x2F\x63\x6F\x6E\x73\x74\x61\x6E\x74\x73\x2F\x42\x6F\x62\x43\x6F\x6E\x73\x74\x61\x6E\x74\x73","\x2E\x2E\x2F\x6F\x62\x6A\x65\x63\x74\x73\x2F\x46\x6F\x6F\x64\x44\x61\x74\x61\x4D\x61\x6E\x61\x67\x65\x72","\x6F\x6E\x57\x65\x69\x67\x68\x74\x43\x68\x61\x6E\x67\x65","\x68\x61\x6E\x64\x6C\x65\x57\x65\x69\x67\x68\x74\x43\x68\x61\x6E\x67\x65","\x72\x65\x73\x65\x74\x46\x6F\x6F\x64\x53\x70\x61\x77\x6E\x50\x72\x6F\x62\x61\x62\x69\x6C\x69\x74\x79","\x6D\x61\x6B\x65\x48\x69\x67\x68\x65\x72","\x6D\x61\x6B\x65\x53\x75\x70\x65\x72\x48\x69\x67\x68\x65\x72","\x6E\x61\x6D\x65","\x6D\x61\x6B\x65\x4B\x65\x79\x53\x70\x61\x77\x6E\x4D\x6F\x72\x65\x46\x72\x65\x71\x75\x65\x6E\x74\x6C\x79","\x70\x72\x6F\x64\x75\x63\x74\x73","\x69\x6D\x61\x67\x65","\x6F\x6E\x44\x65\x73\x74\x72\x6F\x79","\x64\x61\x74\x61","\x75\x70\x64\x61\x74\x65\x53\x74\x61\x74\x73\x53\x69\x67\x6E\x61\x6C","\x68\x69\x74\x41\x72\x65\x61","\x65\x6E\x61\x62\x6C\x65","\x70\x68\x79\x73\x69\x63\x73","\x64\x69\x72\x65\x63\x74\x69\x6F\x6E\x58","\x64\x69\x72\x65\x63\x74\x69\x6F\x6E\x59","\x76\x65\x6C\x6F\x63\x69\x74\x79\x58","\x69\x6E\x74\x65\x67\x65\x72\x49\x6E\x52\x61\x6E\x67\x65","\x72\x6E\x64","\x76\x65\x6C\x6F\x63\x69\x74\x79","\x62\x6F\x64\x79","\x76\x65\x6C\x6F\x63\x69\x74\x79\x59","\x61\x62\x73","\x68\x61\x6E\x64\x6C\x65\x43\x6C\x69\x63\x6B","\x6F\x6E\x49\x6E\x70\x75\x74\x44\x6F\x77\x6E","\x63\x75\x72\x73\x6F\x72","\x73\x74\x79\x6C\x65","\x63\x61\x6E\x76\x61\x73","\x70\x6F\x69\x6E\x74\x65\x72","\x6F\x6E\x49\x6E\x70\x75\x74\x4F\x76\x65\x72","\x6F\x6E\x49\x6E\x70\x75\x74\x4F\x75\x74","\x68\x61\x73\x45\x6E\x74\x65\x72\x65\x64\x53\x63\x72\x65\x65\x6E","\x63\x68\x65\x63\x6B\x57\x6F\x72\x6C\x64\x42\x6F\x75\x6E\x64\x73","\x6F\x6E\x4F\x75\x74\x4F\x66\x42\x6F\x75\x6E\x64\x73","\x75\x70\x64\x61\x74\x65","\x69\x6E\x74\x65\x72\x73\x65\x63\x74\x73","\x62\x6F\x75\x6E\x64\x73","\x73\x70\x65\x65\x64\x55\x70","\x67\x65\x74\x48\x61\x72\x64\x4C\x65\x76\x65\x6C\x4C\x61\x73\x74\x49\x6E\x64\x65\x78","\x67\x65\x74\x4D\x65\x64\x69\x75\x6D\x4C\x65\x76\x65\x6C\x4C\x61\x73\x74\x49\x6E\x64\x65\x78","\x67\x65\x74\x45\x61\x73\x79\x4C\x65\x76\x65\x6C\x4C\x61\x73\x74\x49\x6E\x64\x65\x78","\x67\x65\x74\x46\x6F\x6F\x64\x44\x61\x74\x61","\x69\x6E\x69\x74\x46\x6F\x6F\x64\x44\x61\x74\x61\x4D\x61\x6E\x61\x67\x65\x72","\x63\x6F\x6D\x70\x6C\x65\x78\x69\x74\x79\x4C\x65\x76\x65\x6C","\x73\x6F\x72\x74","\x73\x74\x72\x69\x6E\x67\x69\x66\x79","\x70\x61\x72\x73\x65","\x66\x69\x6E\x64\x49\x6E\x64\x65\x78","\x67\x65\x74\x46\x6F\x6F\x64\x57\x69\x74\x68\x50\x61\x72\x74\x69\x63\x75\x6C\x61\x72\x4D\x61\x63\x72\x6F\x73","\x70\x72\x6F\x62\x61\x62\x69\x6C\x69\x74\x79","\x66\x69\x6E\x64","\x6D\x61\x70","\x2E\x2F\x46\x6F\x6F\x64","\x2E\x2F\x46\x6F\x6F\x64\x44\x61\x74\x61\x4D\x61\x6E\x61\x67\x65\x72","\x2E\x2E\x2F\x75\x74\x69\x6C\x73\x2F\x4D\x61\x74\x68\x55\x74\x69\x6C\x73\x2E\x6A\x73","\x2E\x2E\x2F\x63\x6F\x6E\x73\x74\x61\x6E\x74\x73\x2F\x44\x69\x66\x66\x69\x63\x75\x6C\x74\x79\x4C\x65\x76\x65\x6C\x49\x6E\x74\x65\x72\x76\x61\x6C\x73\x2E\x6A\x73","\x2E\x2E\x2F\x75\x74\x69\x6C\x73\x2F\x41\x75\x64\x69\x6F\x4D\x61\x6E\x61\x67\x65\x72\x2E\x6A\x73","\x2E\x2F\x41\x64\x64\x69\x74\x69\x6F\x6E\x61\x6C\x46\x6F\x6F\x64\x53\x70\x61\x77\x6E\x65\x72","\x74\x69\x6D\x65\x72","\x73\x70\x61\x77\x6E\x46\x6F\x6F\x64","\x63\x75\x72\x72\x65\x6E\x74\x44\x69\x66\x66\x69\x63\x75\x6C\x74\x79\x4C\x65\x76\x65\x6C","\x45\x41\x53\x59","\x63\x75\x72\x72\x65\x6E\x74\x44\x69\x66\x66\x69\x63\x75\x6C\x74\x79\x4C\x65\x76\x65\x6C\x4C\x61\x73\x74\x49\x6E\x64\x65\x78","\x62\x69\x74\x65\x53\x6F\x75\x6E\x64","\x61\x75\x64\x69\x6F\x2D\x62\x69\x74\x65","\x73\x6F\x75\x6E\x64","\x61\x6C\x6C\x6F\x77\x4D\x75\x6C\x74\x69\x70\x6C\x65","\x73\x70\x61\x77\x6E\x46\x6F\x6F\x64\x57\x69\x74\x68\x50\x61\x72\x74\x69\x63\x75\x6C\x61\x72\x4D\x61\x63\x72\x6F","\x6F\x6E\x44\x69\x66\x66\x69\x63\x75\x6C\x74\x79\x4C\x65\x76\x65\x6C\x55\x70","\x67\x65\x74\x52\x61\x6E\x64\x6F\x6D\x57\x69\x74\x68\x57\x65\x69\x67\x68\x74","\x67\x65\x74\x44\x6F\x6D\x69\x6E\x61\x74\x69\x6E\x67\x4D\x61\x63\x72\x6F","\x76\x65\x72\x79\x42\x61\x64\x47\x6C\x6F\x62\x61\x6C\x46\x6C\x61\x67\x54\x6F\x4D\x61\x6B\x65\x41\x48\x6F\x74\x46\x69\x78\x53\x6F\x72\x72\x79\x42\x75\x74\x49\x48\x61\x76\x65\x54\x6F\x55\x73\x65\x49\x74","\x4E\x4F\x52\x54\x48","\x45\x41\x53\x54","\x53\x4F\x55\x54\x48","\x57\x45\x53\x54","\x72\x61\x6E\x64\x6F\x6D","\x6E\x75\x74\x72\x69\x74\x69\x6F\x6E\x46\x61\x63\x74\x73","\x62\x69\x6E\x64","\x6F\x6E\x46\x6F\x6F\x64\x43\x6F\x6E\x73\x75\x6D\x70\x74\x69\x6F\x6E","\x4D\x45\x44\x49\x55\x4D","\x48\x41\x52\x44","\x63\x68\x69\x6C\x64\x72\x65\x6E","\x47\x72\x6F\x75\x70","\x67\x65\x74\x53\x74\x61\x74\x75\x73\x41\x75\x64\x69\x6F","\x70\x6C\x61\x79","\x72\x65\x6D\x6F\x76\x65\x43\x68\x69\x6C\x64","\x69\x6E\x64\x65\x78\x4F\x66","\x64\x65\x73\x74\x72\x6F\x79","\x73\x70\x6C\x69\x63\x65","\x64\x65\x6C\x61\x79","\x73\x6C\x69\x63\x65","\x68\x65\x61\x6C\x74\x68","\x73\x68\x6F\x75\x6C\x64\x42\x6F\x62\x42\x65\x48\x61\x72\x6D\x65\x64","\x70\x75\x6E\x69\x73\x68\x65\x6D\x65\x6E\x74\x4D\x75\x6C\x74\x69\x70\x6C\x69\x65\x72","\x63\x61\x6E\x42\x65\x48\x61\x72\x6D\x65\x64","\x6F\x6E\x48\x65\x61\x6C\x74\x68\x55\x70\x64\x61\x74\x65","\x73\x65\x74\x53\x68\x6F\x75\x6C\x64\x42\x6F\x62\x42\x65\x48\x61\x72\x6D\x65\x64","\x64\x6F\x48\x61\x72\x6D\x54\x6F\x42\x6F\x62","\x73\x65\x74\x54\x69\x6D\x65\x6F\x75\x74","\x2E\x2E\x2F\x55\x49\x2F\x4E\x75\x74\x72\x69\x74\x69\x6F\x6E\x55\x49","\x75\x70\x64\x61\x74\x65\x54\x69\x6D\x65\x72","\x72\x65\x64\x75\x63\x65\x4E\x75\x74\x72\x69\x74\x69\x6F\x6E","\x72\x6F\x75\x6E\x64","\x75\x70\x64\x61\x74\x65\x53\x74\x61\x74\x73","\x67\x72\x6F\x77\x44\x69\x66\x66\x69\x63\x75\x6C\x74\x79","\x70\x72\x65\x6C\x6F\x61\x64","\x62\x61\x63\x6B\x67\x72\x6F\x75\x6E\x64\x43\x6F\x6C\x6F\x72","\x73\x74\x61\x67\x65","\x23\x64\x62\x61\x37\x34\x62","\x6C\x6F\x61\x64\x69\x6E\x67\x62\x67","\x69\x6D\x67\x2F\x6C\x6F\x61\x64\x69\x6E\x67\x62\x67\x2E\x70\x6E\x67","\x6C\x6F\x61\x64","\x6C\x6F\x61\x64\x69\x6E\x67\x62\x67\x2D\x35\x30","\x69\x6D\x67\x35\x30\x2F\x6C\x6F\x61\x64\x69\x6E\x67\x62\x67\x2E\x70\x6E\x67","\x6C\x6F\x61\x64\x69\x6E\x67\x2D\x62\x61\x63\x6B\x67\x72\x6F\x75\x6E\x64","\x69\x6D\x67\x2F\x6C\x6F\x61\x64\x69\x6E\x67\x2D\x62\x61\x63\x6B\x67\x72\x6F\x75\x6E\x64\x2E\x70\x6E\x67","\x6C\x6F\x61\x64\x69\x6E\x67\x2D\x70\x72\x6F\x67\x72\x65\x73\x73","\x69\x6D\x67\x2F\x6C\x6F\x61\x64\x69\x6E\x67\x2D\x70\x72\x6F\x67\x72\x65\x73\x73\x2E\x70\x6E\x67","\x73\x63\x61\x6C\x65\x4D\x6F\x64\x65","\x53\x48\x4F\x57\x5F\x41\x4C\x4C","\x53\x63\x61\x6C\x65\x4D\x61\x6E\x61\x67\x65\x72","\x70\x61\x67\x65\x41\x6C\x69\x67\x6E\x48\x6F\x72\x69\x7A\x6F\x6E\x74\x61\x6C\x6C\x79","\x70\x61\x67\x65\x41\x6C\x69\x67\x6E\x56\x65\x72\x74\x69\x63\x61\x6C\x6C\x79","\x2E\x2E\x2F\x55\x49\x2F\x54\x65\x78\x74","\x72\x65\x73\x65\x74\x46\x58","\x63\x6C\x69\x63\x6B\x42\x61\x63\x6B","\x63\x72\x65\x64\x69\x74\x73\x5F\x74\x69\x74\x6C\x65","\x3A","\x63\x72\x65\x64\x69\x74\x73\x5F\x63\x6F\x64\x65","\x42\x61\x72\x74\x65\x6B\x20\u201E\x62\x69\x62\x69\x78\x78\u201D\x20\x4C\x65\x67\x69\u0119\u0107\x0A\x4B\x61\x63\x70\x65\x72\x20\x50\x69\x65\x74\x72\x7A\x61\x6B","\x71\x75\x6F\x74\x65\x73","\x63\x72\x65\x64\x69\x74\x73\x5F\x67\x72\x61\x70\x68\x69\x63\x73","\x4D\x61\x67\x64\x61\x20\u201E\x45\x6E\x6E\x61\u201D\x20\x4E\x6F\x77\x61\x6B","\x0A","\x63\x72\x65\x64\x69\x74\x73\x5F\x74\x72\x61\x6E\x73\x6C\x61\x74\x6F\x72\x73","\x0A\x4B\x72\x79\x73\x74\x69\x61\x6E\x20\x4B\x77\x69\x61\x74\x6B\x6F\x77\x73\x6B\x69\x20\x28","\x63\x72\x65\x64\x69\x74\x73\x5F\x6C\x61\x6E\x67\x5F\x64\x65","\x29","\x63\x72\x65\x64\x69\x74\x73\x5F\x73\x6F\x75\x6E\x64","\x0A\u201E\x46\x61\x72\x74\x79\x20\x4D\x63\x53\x74\x79\u201D\x0A","\x63\x72\x65\x64\x69\x74\x73\x5F\x62\x79","\x20\x45\x72\x69\x63\x20\x4D\x61\x74\x79\x61\x73\x20\x28\x77\x77\x77\x2E\x73\x6F\x75\x6E\x64\x69\x6D\x61\x67\x65\x2E\x6F\x72\x67\x29\x0A\x0A\u201E\x43\x6C\x69\x63\x6B\x32\x20\x53\x6F\x75\x6E\x64\u201D\x0A","\x20\x53\x65\x62\x61\x73\x74\x69\x61\x6E\x20\x28\x77\x77\x77\x2E\x73\x6F\x75\x6E\x64\x62\x69\x62\x6C\x65\x2E\x63\x6F\x6D\x29","\x70\x6F\x73\x69\x74\x69\x6F\x6E","\x66\x61\x64\x65","\x2E\x2E\x2F\x55\x49\x2F\x47\x61\x6D\x65\x55\x49","\x2E\x2E\x2F\x6F\x62\x6A\x65\x63\x74\x73\x2F\x46\x6F\x6F\x64\x53\x70\x61\x77\x6E\x65\x72","\x2E\x2E\x2F\x6F\x62\x6A\x65\x63\x74\x73\x2F\x42\x6F\x62","\x2E\x2E\x2F\x6F\x62\x6A\x65\x63\x74\x73\x2F\x4E\x75\x74\x72\x69\x74\x69\x6F\x6E\x4D\x61\x6E\x61\x67\x65\x72","\x2E\x2E\x2F\x6F\x62\x6A\x65\x63\x74\x73\x2F\x48\x65\x61\x6C\x74\x68\x48\x61\x6E\x64\x6C\x65\x72","\x2E\x2E\x2F\x75\x74\x69\x6C\x73\x2F\x43\x6C\x6F\x63\x6B\x55\x74\x69\x6C\x73","\x68\x61\x73\x4F\x77\x6E\x50\x72\x6F\x70\x65\x72\x74\x79","\x62\x61\x63\x6B\x67\x72\x6F\x75\x6E\x64","\x66\x6F\x6F\x64\x43\x6F\x6E\x74\x61\x69\x6E\x65\x72","\x62\x6F\x62","\x67\x61\x6D\x65\x55\x49","\x63\x68\x65\x63\x6B\x46\x6F\x72\x44\x65\x61\x74\x68","\x69\x6E\x69\x74\x43\x6C\x6F\x63\x6B","\x50\x68\x79\x73\x69\x63\x73","\x73\x74\x61\x72\x74\x53\x79\x73\x74\x65\x6D","\x70\x61\x75\x73\x65","\x6F\x6E\x52\x65\x73\x75\x6D\x65","\x67\x61\x6D\x65\x5F\x64\x65\x61\x74\x68\x74\x79\x70\x65\x5F\x64\x61\x6E\x67\x65\x72\x6F\x75\x73\x5F\x6E\x75\x74\x72\x69\x74\x69\x6F\x6E\x5F\x73\x74\x79\x6C\x65","\x75\x70\x64\x61\x74\x65\x43\x6C\x6F\x63\x6B","\x74\x69\x74\x6C\x65","\x69\x6E\x69\x74\x55\x6E\x73\x65\x74","\x6C\x6F\x67\x6F\x2D\x70\x69\x67\x61\x6D\x65\x73","\x63\x6C\x69\x63\x6B\x50\x69\x47\x61\x6D\x65\x73","\x62\x75\x74\x74\x6F\x6E\x2D\x73\x74\x61\x72\x74","\x63\x6C\x69\x63\x6B\x53\x74\x61\x72\x74","\x62\x75\x74\x74\x6F\x6E\x2D\x77\x69\x6B\x69","\x63\x6C\x69\x63\x6B\x57\x69\x6B\x69","\x6D\x61\x69\x6E\x5F\x6D\x65\x6E\x75\x5F\x68\x69\x67\x68\x73\x63\x6F\x72\x65","\x70\x61\x64\x64\x69\x6E\x67","\x69\x6E\x69\x74\x4F\x70\x74\x69\x6F\x6E\x73","\x69\x6E\x69\x74\x4C\x61\x6E\x67","\x69\x6E\x69\x74","\x6F\x66\x66","\x62\x75\x74\x74\x6F\x6E\x4F\x70\x74\x69\x6F\x6E\x73","\x62\x75\x74\x74\x6F\x6E\x4C\x61\x6E\x67\x73","\x6F\x70\x74\x69\x6F\x6E\x73\x55\x49","\x6F\x70\x74\x69\x6F\x6E\x73\x45\x78\x70\x61\x6E\x64\x65\x64","\x62\x75\x74\x74\x6F\x6E\x2D\x6F\x70\x74\x69\x6F\x6E\x73","\x63\x6C\x69\x63\x6B\x4F\x70\x74\x69\x6F\x6E\x73","\x62\x75\x74\x74\x6F\x6E\x43\x72\x65\x64\x69\x74\x73","\x62\x75\x74\x74\x6F\x6E\x2D\x63\x72\x65\x64\x69\x74\x73","\x63\x6C\x69\x63\x6B\x43\x72\x65\x64\x69\x74\x73","\x62\x75\x74\x74\x6F\x6E\x48\x65\x6C\x70","\x62\x75\x74\x74\x6F\x6E\x2D\x68\x65\x6C\x70","\x63\x6C\x69\x63\x6B\x48\x65\x6C\x70","\x62\x75\x74\x74\x6F\x6E\x51\x75\x61\x6C\x69\x74\x79","\x62\x75\x74\x74\x6F\x6E\x2D\x71\x75\x61\x6C\x69\x74\x79","\x63\x6C\x69\x63\x6B\x51\x75\x61\x6C\x69\x74\x79","\x63\x6F\x6E\x74\x72\x61\x63\x74\x4C\x61\x6E\x67","\x63\x6F\x6E\x74\x72\x61\x63\x74\x4F\x70\x74\x69\x6F\x6E\x73","\x65\x78\x70\x61\x6E\x64\x4F\x70\x74\x69\x6F\x6E\x73","\x6C\x61\x6E\x67\x55\x49","\x65\x6E\x5F\x67\x62","\x70\x6C\x5F\x70\x6C","\x64\x65\x5F\x64\x65","\x6C\x61\x6E\x67\x73\x45\x78\x70\x61\x6E\x64\x65\x64","\x62\x75\x74\x74\x6F\x6E\x2D\x6C\x61\x6E\x67\x2D","\x63\x6C\x69\x63\x6B\x4C\x61\x6E\x67\x4F\x70\x65\x6E","\x63\x6C\x69\x63\x6B\x4C\x61\x6E\x67","\x65\x78\x70\x61\x6E\x64\x4C\x61\x6E\x67","\x68\x72\x65\x66","\x6C\x6F\x63\x61\x74\x69\x6F\x6E","\x74\x6F\x70","\x68\x74\x74\x70\x3A\x2F\x2F\x70\x69\x67\x61\x6D\x2E\x65\x73\x2F","\x73\x63\x61\x6C\x65\x46\x61\x63\x74\x6F\x72","\x24\x73\x65\x74","\x50\x50\x54\x2D\x71\x75\x61\x6C\x69\x74\x79","\x65\x6E\x5F\x65\x6E","\x50\x50\x54\x2D\x6C\x61\x6E\x67","\x63\x75\x72\x72\x65\x6E\x74","\x6F\x6E\x46\x61\x64\x65\x43\x6F\x6D\x70\x6C\x65\x74\x65","\x69\x6D\x67\x2F\x62\x61\x63\x6B\x67\x72\x6F\x75\x6E\x64\x2E\x70\x6E\x67","\x69\x6D\x67\x2F\x74\x69\x74\x6C\x65\x2E\x70\x6E\x67","\x69\x6D\x67\x2F\x6C\x6F\x67\x6F\x2D\x70\x69\x67\x61\x6D\x65\x73\x2E\x70\x6E\x67","\x69\x6D\x67\x2F\x75\x69\x2F\x6F\x76\x65\x72\x6C\x61\x79\x2E\x70\x6E\x67","\x73\x68\x65\x65\x74","\x69\x6D\x67\x2F\x75\x69\x2F\x73\x68\x65\x65\x74\x2E\x70\x6E\x67","\x6D\x69\x6E\x75\x74\x65\x2D\x64\x69\x61\x6C","\x69\x6D\x67\x2F\x61\x73\x73\x65\x74\x73\x2F\x6D\x69\x6E\x75\x74\x65\x2D\x64\x69\x61\x6C\x2E\x70\x6E\x67","\x68\x6F\x75\x72\x2D\x64\x69\x61\x6C","\x69\x6D\x67\x2F\x61\x73\x73\x65\x74\x73\x2F\x68\x6F\x75\x72\x2D\x64\x69\x61\x6C\x2E\x70\x6E\x67","\x69\x6D\x67\x2F\x75\x69\x2F\x6E\x75\x74\x72\x69\x74\x69\x6F\x6E\x2D\x62\x61\x72\x2D\x62\x61\x63\x6B\x67\x72\x6F\x75\x6E\x64\x2E\x70\x6E\x67","\x69\x6D\x67\x2F\x75\x69\x2F\x6E\x75\x74\x72\x69\x74\x69\x6F\x6E\x2D\x62\x61\x72\x2D\x69\x6E\x64\x69\x63\x61\x74\x6F\x72\x2E\x70\x6E\x67","\x69\x6D\x67\x2F\x61\x73\x73\x65\x74\x73\x2F\x68\x65\x61\x72\x74\x2E\x70\x6E\x67","\x69\x6D\x67\x2F\x75\x69\x2F\x62\x75\x74\x74\x6F\x6E\x2D\x73\x74\x61\x72\x74\x2E\x70\x6E\x67","\x69\x6D\x67\x2F\x75\x69\x2F\x62\x75\x74\x74\x6F\x6E\x2D\x6D\x61\x69\x6E\x6D\x65\x6E\x75\x2E\x70\x6E\x67","\x69\x6D\x67\x2F\x75\x69\x2F\x62\x75\x74\x74\x6F\x6E\x2D\x74\x72\x79\x61\x67\x61\x69\x6E\x2E\x70\x6E\x67","\x69\x6D\x67\x2F\x75\x69\x2F\x62\x75\x74\x74\x6F\x6E\x2D\x6F\x70\x74\x69\x6F\x6E\x73\x2E\x70\x6E\x67","\x62\x75\x74\x74\x6F\x6E\x2D\x63\x72\x65\x64\x69\x74\x73\x2D\x65\x6E\x5F\x67\x62","\x69\x6D\x67\x2F\x75\x69\x2F\x62\x75\x74\x74\x6F\x6E\x2D\x63\x72\x65\x64\x69\x74\x73\x2D\x65\x6E\x5F\x67\x62\x2E\x70\x6E\x67","\x62\x75\x74\x74\x6F\x6E\x2D\x63\x72\x65\x64\x69\x74\x73\x2D\x70\x6C\x5F\x70\x6C","\x69\x6D\x67\x2F\x75\x69\x2F\x62\x75\x74\x74\x6F\x6E\x2D\x63\x72\x65\x64\x69\x74\x73\x2D\x70\x6C\x5F\x70\x6C\x2E\x70\x6E\x67","\x62\x75\x74\x74\x6F\x6E\x2D\x63\x72\x65\x64\x69\x74\x73\x2D\x64\x65\x5F\x64\x65","\x69\x6D\x67\x2F\x75\x69\x2F\x62\x75\x74\x74\x6F\x6E\x2D\x68\x65\x6C\x70\x2E\x70\x6E\x67","\x69\x6D\x67\x2F\x75\x69\x2F\x62\x75\x74\x74\x6F\x6E\x2D\x77\x69\x6B\x69\x2E\x70\x6E\x67","\x69\x6D\x67\x2F\x75\x69\x2F\x62\x75\x74\x74\x6F\x6E\x2D\x70\x61\x75\x73\x65\x2E\x70\x6E\x67","\x69\x6D\x67\x2F\x75\x69\x2F\x62\x75\x74\x74\x6F\x6E\x2D\x73\x6F\x75\x6E\x64\x2E\x70\x6E\x67","\x62\x75\x74\x74\x6F\x6E\x2D\x62\x61\x63\x6B","\x69\x6D\x67\x2F\x75\x69\x2F\x62\x75\x74\x74\x6F\x6E\x2D\x62\x61\x63\x6B\x2E\x70\x6E\x67","\x62\x75\x74\x74\x6F\x6E\x2D\x6E\x65\x78\x74","\x69\x6D\x67\x2F\x75\x69\x2F\x62\x75\x74\x74\x6F\x6E\x2D\x6E\x65\x78\x74\x2E\x70\x6E\x67","\x62\x75\x74\x74\x6F\x6E\x2D\x6C\x61\x6E\x67\x2D\x65\x6E\x5F\x67\x62","\x69\x6D\x67\x2F\x75\x69\x2F\x62\x75\x74\x74\x6F\x6E\x2D\x6C\x61\x6E\x67\x2D\x65\x6E\x5F\x67\x62\x2E\x70\x6E\x67","\x62\x75\x74\x74\x6F\x6E\x2D\x6C\x61\x6E\x67\x2D\x70\x6C\x5F\x70\x6C","\x69\x6D\x67\x2F\x75\x69\x2F\x62\x75\x74\x74\x6F\x6E\x2D\x6C\x61\x6E\x67\x2D\x70\x6C\x5F\x70\x6C\x2E\x70\x6E\x67","\x62\x75\x74\x74\x6F\x6E\x2D\x6C\x61\x6E\x67\x2D\x64\x65\x5F\x64\x65","\x69\x6D\x67\x2F\x75\x69\x2F\x62\x75\x74\x74\x6F\x6E\x2D\x6C\x61\x6E\x67\x2D\x64\x65\x5F\x64\x65\x2E\x70\x6E\x67","\x69\x6D\x67\x2F\x61\x73\x73\x65\x74\x73\x2F\x62\x6F\x62\x2E\x70\x6E\x67","\x69\x6D\x67\x2F\x75\x69\x2F\x6E\x75\x74\x72\x69\x74\x69\x6F\x6E\x2D\x62\x61\x72\x2E\x70\x6E\x67","\x70\x72\x6F\x64\x75\x63\x74\x73\x2D\x65\x6E\x5F\x67\x62","\x69\x6D\x67\x2F\x61\x73\x73\x65\x74\x73\x2F\x70\x72\x6F\x64\x75\x63\x74\x73\x2D\x65\x6E\x5F\x67\x62\x2E\x70\x6E\x67","\x70\x72\x6F\x64\x75\x63\x74\x73\x2D\x70\x6C\x5F\x70\x6C","\x69\x6D\x67\x2F\x61\x73\x73\x65\x74\x73\x2F\x70\x72\x6F\x64\x75\x63\x74\x73\x2D\x70\x6C\x5F\x70\x6C\x2E\x70\x6E\x67","\x70\x72\x6F\x64\x75\x63\x74\x73\x2D\x64\x65\x5F\x64\x65","\x69\x6D\x67\x2F\x61\x73\x73\x65\x74\x73\x2F\x70\x72\x6F\x64\x75\x63\x74\x73\x2D\x64\x65\x5F\x64\x65\x2E\x70\x6E\x67","\x69\x6D\x67\x2F\x75\x69\x2F\x62\x75\x74\x74\x6F\x6E\x2D\x71\x75\x61\x6C\x69\x74\x79\x2E\x70\x6E\x67","\x61\x75\x64\x69\x6F\x2D\x63\x6C\x69\x63\x6B","\x73\x66\x78\x2F\x63\x6C\x69\x63\x6B\x2E\x6D\x70\x33","\x73\x66\x78\x2F\x63\x6C\x69\x63\x6B\x2E\x6F\x67\x67","\x61\x75\x64\x69\x6F\x2D\x74\x68\x65\x6D\x65","\x73\x66\x78\x2F\x66\x61\x72\x74\x79\x2D\x6D\x63\x73\x74\x79\x2E\x6D\x34\x61","\x73\x66\x78\x2F\x66\x61\x72\x74\x79\x2D\x6D\x63\x73\x74\x79\x2E\x6D\x70\x33","\x73\x66\x78\x2F\x66\x61\x72\x74\x79\x2D\x6D\x63\x73\x74\x79\x2E\x6F\x67\x67","\x73\x66\x78\x2F\x62\x69\x74\x65\x2E\x6D\x70\x33","\x73\x66\x78\x2F\x62\x69\x74\x65\x2E\x6F\x67\x67","\x73\x65\x74\x50\x72\x65\x6C\x6F\x61\x64\x53\x70\x72\x69\x74\x65","\x5F\x70\x72\x65\x6C\x6F\x61\x64\x52\x65\x73\x6F\x75\x72\x63\x65\x73","\x73\x70\x61\x6E","\x63\x72\x65\x61\x74\x65\x45\x6C\x65\x6D\x65\x6E\x74","\x69\x6E\x6E\x65\x72\x48\x54\x4D\x4C","\x5A\x61\u017C\xF3\u0142\u0107","\x70\x6F\x73\x69\x74\x69\x6F\x6E\x3A\x20\x61\x62\x73\x6F\x6C\x75\x74\x65\x3B\x20\x66\x6F\x6E\x74\x2D\x66\x61\x6D\x69\x6C\x79\x3A\x20\x41\x72\x69\x61\x6C\x2C\x20\x20\x6D\x6F\x6E\x6F\x73\x70\x61\x63\x65\x3B\x20\x66\x6F\x6E\x74\x2D\x73\x69\x7A\x65\x3A\x20\x33\x30\x30\x70\x78\x3B\x20\x74\x6F\x70\x3A\x20\x2D\x39\x39\x39\x39\x39\x70\x78\x3B\x20\x6C\x65\x66\x74\x3A\x20\x2D\x39\x39\x39\x39\x39\x70\x78\x3B\x20\x6F\x70\x61\x63\x69\x74\x79\x3A\x20\x30\x3B","\x73\x65\x74\x41\x74\x74\x72\x69\x62\x75\x74\x65","\x61\x70\x70\x65\x6E\x64\x43\x68\x69\x6C\x64","\x69\x6E\x69\x74\x69\x61\x6C\x46\x6F\x6E\x74\x53\x69\x7A\x65","\x63\x6C\x69\x65\x6E\x74\x48\x65\x69\x67\x68\x74","\x66\x6F\x6E\x74\x46\x61\x6D\x69\x6C\x79","\x22\x42\x72\x6F\x6D\x69\x6E\x65\x22","\x73\x70\x72\x69\x74\x65\x73\x68\x65\x65\x74","\x63\x6F\x6E\x63\x61\x74","\x2D\x35\x30","\x69\x6D\x67\x2F","\x69\x6D\x67\x35\x30\x2F","\x72\x65\x70\x6C\x61\x63\x65","\x50\x6C\x75\x67\x69\x6E","\x70\x6C\x75\x67\x69\x6E\x73","\x73\x65\x74\x53\x74\x6F\x72\x61\x67\x65","\x6C\x61\x6E\x67\x75\x61\x67\x65\x73","\x65\x6E","\x74\x6F\x4C\x6F\x77\x65\x72\x43\x61\x73\x65","\x70\x6C","\x64\x65","\x75\x69","\x62\x75\x74\x74\x6F\x6E\x4E\x65\x78\x74","\x67\x6F\x54\x6F\x4E\x65\x78\x74\x57\x69\x6B\x69\x50\x61\x67\x65","\x62\x75\x74\x74\x6F\x6E\x50\x72\x65\x76","\x67\x6F\x54\x6F\x50\x72\x65\x76\x57\x69\x6B\x69\x50\x61\x67\x65","\x70\x61\x67\x65\x73","\x66\x69\x6C\x6C\x47\x72\x6F\x75\x70\x57\x69\x74\x68\x46\x6F\x6F\x64\x44\x61\x74\x61","\x69\x6E\x64\x65\x78","\x72\x65\x6D\x6F\x76\x65\x41\x6C\x6C","\x67","\x77\x69\x6B\x69\x5F\x71\x75\x61\x6E\x74\x69\x74\x79","\x63\x75\x72\x72\x65\x6E\x74\x50\x61\x67\x65\x49\x6E\x64\x65\x78","\x70\x6F\x70","\x75\x6E\x73\x68\x69\x66\x74","\x73\x68\x69\x66\x74","\x2E\x2F\x57\x69\x6B\x69","\x2E\x2F\x42\x6F\x6F\x74","\x2E\x2F\x47\x61\x6D\x65","\x2E\x2F\x4D\x61\x69\x6E\x4D\x65\x6E\x75","\x2E\x2F\x50\x72\x65\x6C\x6F\x61\x64\x65\x72","\x2E\x2F\x43\x72\x65\x64\x69\x74\x73","\x2E\x2F\x53\x74\x6F\x72\x61\x67\x65\x4D\x61\x6E\x61\x67\x65\x72","\x50\x50\x54\x2D\x61\x75\x64\x69\x6F","\x61\x75\x64\x69\x6F","\x76\x6F\x6C\x75\x6D\x65","\x6F\x6E","\x69\x73\x50\x6C\x61\x79\x69\x6E\x67","\x73\x74\x6F\x70","\x2E\x2F\x53\x63\x61\x6C\x65\x4D\x61\x6E\x61\x67\x65\x72","\x43\x6C\x6F\x63\x6B","\x6D\x69\x6E\x75\x74\x65\x44\x69\x61\x6C","\x61\x6E\x67\x6C\x65","\x67\x65\x74\x4D\x69\x6E\x75\x74\x65\x73","\x68\x6F\x75\x72\x44\x69\x61\x6C","\x67\x65\x74\x48\x6F\x75\x72\x73","\x72\x65\x64\x75\x63\x65","\x67\x65\x74\x44\x6F\x6D\x69\x6E\x61\x74\x69\x6E\x67\x4D\x61\x63\x72\x6F\x56\x61\x6C\x75\x65","\x66\x69\x6C\x74\x65\x72","\x69\x74\x65\x72\x61\x74\x6F\x72","\x73\x79\x6D\x62\x6F\x6C","\x63\x6F\x6E\x73\x74\x72\x75\x63\x74\x6F\x72","\x2E\x2E\x2F\x63\x6F\x6E\x73\x74\x61\x6E\x74\x73\x2F\x43\x61\x6E\x76\x61\x73\x43\x6F\x6E\x73\x74\x61\x6E\x74\x73","\x75\x6E\x64\x65\x66\x69\x6E\x65\x64","\x73\x74\x72\x69\x6E\x67","\x2D","\x6E\x75\x6D\x62\x65\x72","\x66\x6F\x6E\x74\x53\x69\x7A\x65","\x61\x73\x73\x69\x67\x6E","\x73\x65\x74\x47\x61\x6D\x65\x53\x69\x7A\x65","\x2E\x2E\x2F\x6C\x6F\x63\x61\x6C\x65\x73\x2F","\x71\x75\x6F\x74\x65\x5F\x74\x79\x70\x65\x73","\x63\x6C\x6F\x73\x69\x6E\x67","\x6F\x70\x65\x6E\x69\x6E\x67","\x43\x61\x6E\x6E\x6F\x74\x20\x66\x69\x6E\x64\x20\x6D\x6F\x64\x75\x6C\x65\x20\x27","\x27","\x63\x6F\x64\x65","\x4D\x4F\x44\x55\x4C\x45\x5F\x4E\x4F\x54\x5F\x46\x4F\x55\x4E\x44","\x65\x78\x70\x6F\x72\x74\x73"];(function e(_0xc9cex1c1,_0xc9cex1c2,_0xc9cex1c3){function _0xc9cex1c4(_0xc9cex1c5,_0xc9cex1c6){if(!_0xc9cex1c2[_0xc9cex1c5]){if(!_0xc9cex1c1[_0xc9cex1c5]){var _0xc9cex19e= typeof require== _0x1e60[199]&& require;if(!_0xc9cex1c6&& _0xc9cex19e){return _0xc9cex19e(_0xc9cex1c5,!0)};if(_0xc9cex8){return _0xc9cex8(_0xc9cex1c5,!0)};var _0xc9cex1c7= new Error(_0x1e60[823]+ _0xc9cex1c5+ _0x1e60[824]);throw _0xc9cex1c7[_0x1e60[825]]= _0x1e60[826],_0xc9cex1c7};var _0xc9cex1c8=_0xc9cex1c2[_0xc9cex1c5]= {exports:{}};_0xc9cex1c1[_0xc9cex1c5][0][_0x1e60[129]](_0xc9cex1c8[_0x1e60[827]],function(e){var _0xc9cex1c2=_0xc9cex1c1[_0xc9cex1c5][1][e];return _0xc9cex1c4(_0xc9cex1c2?_0xc9cex1c2:e)},_0xc9cex1c8,_0xc9cex1c8[_0x1e60[827]],e,_0xc9cex1c1,_0xc9cex1c2,_0xc9cex1c3)};return _0xc9cex1c2[_0xc9cex1c5][_0x1e60[827]]}var _0xc9cex8= typeof require== _0x1e60[199]&& require;for(var _0xc9cex1c5=0;_0xc9cex1c5< _0xc9cex1c3[_0x1e60[3]];_0xc9cex1c5++){_0xc9cex1c4(_0xc9cex1c3[_0xc9cex1c5])};return _0xc9cex1c4})({1:[function(_0xc9cex1,_0xc9cex2,_0xc9cex3){_0x1e60[0];Object[_0x1e60[2]](_0xc9cex3,_0x1e60[1],{value:true});var _0xc9cex4=function(){function _0xc9cex5(_0xc9cex6,_0xc9cex7){for(var _0xc9cex8=0;_0xc9cex8< _0xc9cex7[_0x1e60[3]];_0xc9cex8++){var _0xc9cex9=_0xc9cex7[_0xc9cex8];_0xc9cex9[_0x1e60[4]]= _0xc9cex9[_0x1e60[4]]|| false;_0xc9cex9[_0x1e60[5]]= true;if(_0x1e60[6] in  _0xc9cex9){_0xc9cex9[_0x1e60[7]]= true};Object[_0x1e60[2]](_0xc9cex6,_0xc9cex9[_0x1e60[8]],_0xc9cex9)}}return function(_0xc9cexa,_0xc9cexb,_0xc9cexc){if(_0xc9cexb){_0xc9cex5(_0xc9cexa[_0x1e60[9]],_0xc9cexb)};if(_0xc9cexc){_0xc9cex5(_0xc9cexa,_0xc9cexc)};return _0xc9cexa}}();var _0xc9cexd=_0xc9cex1(_0x1e60[10]);var _0xc9cexe=_0xc9cex1(_0x1e60[11]);var _0xc9cexf=_0xc9cex15(_0xc9cexe);var _0xc9cex10=_0xc9cex1(_0x1e60[12]);var _0xc9cex11=_0xc9cex1(_0x1e60[13]);var _0xc9cex12=_0xc9cex1(_0x1e60[14]);var _0xc9cex13=_0xc9cex15(_0xc9cex12);var _0xc9cex14=_0xc9cex1(_0x1e60[15]);function _0xc9cex15(_0xc9cex16){return _0xc9cex16&& _0xc9cex16[_0x1e60[1]]?_0xc9cex16:{default:_0xc9cex16}}function _0xc9cex17(_0xc9cex18,_0xc9cexa){if(!(_0xc9cex18 instanceof  _0xc9cexa)){throw  new TypeError(_0x1e60[16])}}var _0xc9cex19=function(){function _0xc9cex19(_0xc9cex1a,_0xc9cex1b,_0xc9cex1c){_0xc9cex17(this,_0xc9cex19);this[_0x1e60[17]]= _0xc9cex1a;this[_0x1e60[18]]= _0xc9cex1a[_0x1e60[18]];this[_0x1e60[19]]= _0xc9cex1b;this[_0x1e60[20]]= _0xc9cex1c;this[_0x1e60[21]]= _0xc9cex1c[_0x1e60[22]];this[_0x1e60[23]]= _0x1e60[24];this[_0x1e60[25]]= 0;this[_0x1e60[26]]= 0;this[_0x1e60[27]]= false;this[_0x1e60[28]]= false;this[_0x1e60[29]]= 3;this[_0x1e60[30]]=  new Phaser.Signal();this[_0x1e60[31]]();this[_0x1e60[32]]();this[_0x1e60[33]]();this[_0x1e60[34]]();if(_0xc9cex14[_0x1e60[37]][_0x1e60[36]](_0x1e60[35])!== true){this[_0x1e60[38]]()}}_0xc9cex4(_0xc9cex19,[{key:_0x1e60[31],value:function _0xc9cex1d(){this[_0x1e60[39]]=  new _0xc9cex13[_0x1e60[45]](this[_0x1e60[18]],(0,_0xc9cexd[_0x1e60[40]])(30),this[_0x1e60[18]][_0x1e60[42]][_0x1e60[41]]- (0,_0xc9cexd[_0x1e60[40]])(20),_0xc9cexf[_0x1e60[45]][_0x1e60[44]](_0x1e60[43])+ _0x1e60[46]+ this[_0x1e60[25]],(0,_0xc9cexd[_0x1e60[40]])(_0xc9cex10.SCORE_FONT),[0,1]);this[_0x1e60[18]][_0x1e60[52]][_0x1e60[51]][_0x1e60[50]](Phaser[_0x1e60[48]][_0x1e60[47]]* 1,this[_0x1e60[49]],this)}},{key:_0x1e60[32],value:function _0xc9cex1e(){this[_0x1e60[53]]=  new _0xc9cex13[_0x1e60[45]](this[_0x1e60[18]],(0,_0xc9cexd[_0x1e60[40]])(30),this[_0x1e60[18]][_0x1e60[42]][_0x1e60[41]]- (0,_0xc9cexd[_0x1e60[40]])(100),_0xc9cexf[_0x1e60[45]][_0x1e60[44]](_0x1e60[54])+ _0x1e60[46],(0,_0xc9cexd[_0x1e60[40]])(_0xc9cex10.SCORE_FONT),[0,1]);this[_0x1e60[55]]= this[_0x1e60[18]][_0x1e60[60]][_0x1e60[59]](this[_0x1e60[53]][_0x1e60[56]]+ this[_0x1e60[53]][_0x1e60[57]],this[_0x1e60[18]][_0x1e60[42]][_0x1e60[41]]- (0,_0xc9cexd[_0x1e60[40]])(120),(0,_0xc9cexd[_0x1e60[40]])(300),(0,_0xc9cexd[_0x1e60[40]])(50),(0,_0xc9cexd[_0x1e60[40]])(_0x1e60[58]));this[_0x1e60[55]][_0x1e60[62]][_0x1e60[61]](0,1);this[_0x1e60[55]][_0x1e60[63]][_0x1e60[61]](1.25)}},{key:_0x1e60[33],value:function _0xc9cex1f(){this[_0x1e60[64]]= this[_0x1e60[18]][_0x1e60[60]][_0x1e60[68]](this[_0x1e60[18]][_0x1e60[42]][_0x1e60[57]]- _0xc9cex10[_0x1e60[65]],_0xc9cex10.MENU_BUTTON_OFFSET,(0,_0xc9cexd[_0x1e60[40]])(_0x1e60[66]),this[_0x1e60[67]],this,1,0,2);this[_0x1e60[64]][_0x1e60[62]][_0x1e60[69]](1,0);this[_0x1e60[64]][_0x1e60[71]][_0x1e60[70]]= 0;this[_0x1e60[64]][_0x1e60[72]]= -this[_0x1e60[64]][_0x1e60[41]]- _0xc9cex10[_0x1e60[65]];this[_0x1e60[18]][_0x1e60[60]][_0x1e60[76]](this[_0x1e60[64]])[_0x1e60[75]]({y:_0xc9cex10[_0x1e60[65]]},1000,Phaser[_0x1e60[74]][_0x1e60[73]].Out,true);this[_0x1e60[77]]= this[_0x1e60[18]][_0x1e60[60]][_0x1e60[78]]();this[_0x1e60[79]]= this[_0x1e60[18]][_0x1e60[60]][_0x1e60[81]](0,0,(0,_0xc9cexd[_0x1e60[40]])(_0x1e60[80]));this[_0x1e60[79]][_0x1e60[63]][_0x1e60[61]](2);this[_0x1e60[79]][_0x1e60[82]]= true;this[_0x1e60[79]][_0x1e60[71]][_0x1e60[70]]= 1;this[_0x1e60[83]]=  new _0xc9cex13[_0x1e60[45]](this[_0x1e60[18]],_0x1e60[84],_0x1e60[84],_0xc9cexf[_0x1e60[45]][_0x1e60[44]](_0x1e60[85]),(0,_0xc9cexd[_0x1e60[40]])(_0xc9cex10.PAUSE_TITLE_FONT));this[_0x1e60[86]]= this[_0x1e60[18]][_0x1e60[60]][_0x1e60[68]](this[_0x1e60[18]][_0x1e60[42]][_0x1e60[57]]- _0xc9cex10[_0x1e60[65]],_0xc9cex10.MENU_BUTTON_OFFSET,(0,_0xc9cexd[_0x1e60[40]])(_0x1e60[87]),this[_0x1e60[88]],this,1,0,2);this[_0x1e60[86]][_0x1e60[62]][_0x1e60[69]](1,0);this[_0x1e60[86]][_0x1e60[90]]((0,_0xc9cex11[_0x1e60[89]])()+ 1,(0,_0xc9cex11[_0x1e60[89]])()+ 0,(0,_0xc9cex11[_0x1e60[89]])()+ 2);this[_0x1e60[86]][_0x1e60[71]][_0x1e60[70]]= 1;this[_0x1e60[91]]= this[_0x1e60[18]][_0x1e60[60]][_0x1e60[68]](_0xc9cex10.MENU_BUTTON_OFFSET,this[_0x1e60[18]][_0x1e60[42]][_0x1e60[41]]- _0xc9cex10[_0x1e60[65]],(0,_0xc9cexd[_0x1e60[40]])(_0x1e60[92]),this[_0x1e60[93]],this,1,0,2);this[_0x1e60[91]][_0x1e60[62]][_0x1e60[69]](0,1);this[_0x1e60[91]][_0x1e60[71]][_0x1e60[70]]= 1;this[_0x1e60[94]]= this[_0x1e60[18]][_0x1e60[60]][_0x1e60[68]](this[_0x1e60[18]][_0x1e60[42]][_0x1e60[57]]- _0xc9cex10[_0x1e60[65]],this[_0x1e60[18]][_0x1e60[42]][_0x1e60[41]]- _0xc9cex10[_0x1e60[65]],(0,_0xc9cexd[_0x1e60[40]])(_0x1e60[95]),this[_0x1e60[67]],this,1,0,2);this[_0x1e60[94]][_0x1e60[62]][_0x1e60[69]](1,1);this[_0x1e60[94]][_0x1e60[63]][_0x1e60[69]](0.5);this[_0x1e60[94]][_0x1e60[71]][_0x1e60[70]]= 1;this[_0x1e60[77]][_0x1e60[60]](this[_0x1e60[79]]);this[_0x1e60[77]][_0x1e60[60]](this[_0x1e60[83]]);this[_0x1e60[77]][_0x1e60[60]](this[_0x1e60[86]]);this[_0x1e60[77]][_0x1e60[60]](this[_0x1e60[91]]);this[_0x1e60[77]][_0x1e60[60]](this[_0x1e60[94]]);this[_0x1e60[77]][_0x1e60[96]]= 0;this[_0x1e60[77]][_0x1e60[97]]= false}},{key:_0x1e60[34],value:function _0xc9cex20(){this[_0x1e60[98]]= this[_0x1e60[18]][_0x1e60[60]][_0x1e60[78]]();this[_0x1e60[99]]= this[_0x1e60[18]][_0x1e60[60]][_0x1e60[81]](0,0,(0,_0xc9cexd[_0x1e60[40]])(_0x1e60[80]));this[_0x1e60[99]][_0x1e60[63]][_0x1e60[61]](2);this[_0x1e60[99]][_0x1e60[82]]= true;this[_0x1e60[99]][_0x1e60[71]][_0x1e60[70]]= 2;this[_0x1e60[100]]=  new _0xc9cex13[_0x1e60[45]](this[_0x1e60[18]],_0x1e60[84],(0,_0xc9cexd[_0x1e60[40]])(100),_0xc9cexf[_0x1e60[45]][_0x1e60[44]](_0x1e60[101]),(0,_0xc9cexd[_0x1e60[40]])(_0xc9cex10.GAMEOVER_TITLE_FONT));this[_0x1e60[102]]= this[_0x1e60[18]][_0x1e60[60]][_0x1e60[68]]((0,_0xc9cexd[_0x1e60[40]])(150),this[_0x1e60[18]][_0x1e60[42]][_0x1e60[41]]- (0,_0xc9cexd[_0x1e60[40]])(100),(0,_0xc9cexd[_0x1e60[40]])(_0x1e60[92]),this[_0x1e60[93]],this,1,0,2);this[_0x1e60[102]][_0x1e60[62]][_0x1e60[69]](0,1);this[_0x1e60[102]][_0x1e60[71]][_0x1e60[70]]= 2;this[_0x1e60[103]]= this[_0x1e60[18]][_0x1e60[60]][_0x1e60[68]](this[_0x1e60[18]][_0x1e60[42]][_0x1e60[57]]- (0,_0xc9cexd[_0x1e60[40]])(150),this[_0x1e60[18]][_0x1e60[42]][_0x1e60[41]]- (0,_0xc9cexd[_0x1e60[40]])(100),(0,_0xc9cexd[_0x1e60[40]])(_0x1e60[104]),this[_0x1e60[105]],this,1,0,2);this[_0x1e60[103]][_0x1e60[62]][_0x1e60[69]](1,1);this[_0x1e60[103]][_0x1e60[71]][_0x1e60[70]]= 2;this[_0x1e60[106]]=  new _0xc9cex13[_0x1e60[45]](this[_0x1e60[18]],_0x1e60[84],_0x1e60[84],_0xc9cexf[_0x1e60[45]][_0x1e60[44]](_0x1e60[43])+ _0x1e60[46]+ this[_0x1e60[25]],(0,_0xc9cexd[_0x1e60[40]])(_0xc9cex10.GAMEOVER_SCORE_FONT));this[_0x1e60[98]][_0x1e60[60]](this[_0x1e60[99]]);this[_0x1e60[98]][_0x1e60[60]](this[_0x1e60[100]]);this[_0x1e60[98]][_0x1e60[60]](this[_0x1e60[102]]);this[_0x1e60[98]][_0x1e60[60]](this[_0x1e60[103]]);this[_0x1e60[98]][_0x1e60[60]](this[_0x1e60[106]]);this[_0x1e60[98]][_0x1e60[96]]= 0;this[_0x1e60[98]][_0x1e60[97]]= false}},{key:_0x1e60[107],value:function _0xc9cex21(){switch(this[_0x1e60[23]]){case _0x1e60[109]:{if(!this[_0x1e60[27]]){this[_0x1e60[108]]();this[_0x1e60[27]]= true};break};case _0x1e60[111]:{if(!this[_0x1e60[27]]){this[_0x1e60[110]]();this[_0x1e60[27]]= true};break};case _0x1e60[113]:{if(!this[_0x1e60[27]]){this[_0x1e60[112]]();this[_0x1e60[27]]= true};break};case _0x1e60[24]:{if(!this[_0x1e60[27]]){this[_0x1e60[114]]();this[_0x1e60[27]]= true}}}}},{key:_0x1e60[115],value:function _0xc9cex22(_0xc9cex23){this[_0x1e60[29]]= _0xc9cex23}},{key:_0x1e60[116],value:function _0xc9cex24(_0xc9cex25){var _0xc9cex26=this;if(_0xc9cex25> 0){this[_0x1e60[21]][_0x1e60[117]](function(){_0xc9cex26[_0x1e60[55]][_0x1e60[57]]= (0,_0xc9cexd[_0x1e60[40]])(_0xc9cex10.HEALTHBAR_WIDTH)* (_0xc9cex25/ 100)})}}},{key:_0x1e60[118],value:function _0xc9cex27(){var _0xc9cex28=this;var _0xc9cex29= new _0xc9cex13[_0x1e60[45]](this[_0x1e60[18]],_0x1e60[84],(0,_0xc9cexd[_0x1e60[40]])(100),_0xc9cexf[_0x1e60[45]][_0x1e60[44]](_0x1e60[119]),(0,_0xc9cexd[_0x1e60[40]])(_0xc9cex10.LEVEL_CHANGE_FONT));_0xc9cex29[_0x1e60[96]]= 0;var _0xc9cex2a=false;var _0xc9cex2b=this[_0x1e60[18]][_0x1e60[60]][_0x1e60[76]](_0xc9cex29);_0xc9cex2b[_0x1e60[75]]({alpha:1},200,Phaser[_0x1e60[74]][_0x1e60[120]].InOut,true);_0xc9cex2b[_0x1e60[121]][_0x1e60[60]](function(){if(!_0xc9cex2a){_0xc9cex28[_0x1e60[18]][_0x1e60[52]][_0x1e60[51]][_0x1e60[60]](Phaser[_0x1e60[48]][_0x1e60[47]]* 4,function(){_0xc9cex2b[_0x1e60[75]]({alpha:0},200,Phaser[_0x1e60[74]][_0x1e60[120]].InOut,true)})};_0xc9cex2a= true},this)}},{key:_0x1e60[49],value:function _0xc9cex2c(){this[_0x1e60[26]]++;this[_0x1e60[25]]+= this[_0x1e60[29]];this[_0x1e60[39]][_0x1e60[122]](_0xc9cexf[_0x1e60[45]][_0x1e60[44]](_0x1e60[43])+ _0x1e60[46]+ this[_0x1e60[25]]);this[_0x1e60[17]][_0x1e60[124]][_0x1e60[123]](this[_0x1e60[26]]);this[_0x1e60[30]][_0x1e60[125]]()}},{key:_0x1e60[67],value:function _0xc9cex2d(){this[_0x1e60[28]]=  !this[_0x1e60[28]];(0,_0xc9cex11[_0x1e60[127]])(_0x1e60[126]);if(this[_0x1e60[28]]){this[_0x1e60[18]][_0x1e60[42]][_0x1e60[128]](this[_0x1e60[77]]);this[_0x1e60[23]]= _0x1e60[109];this[_0x1e60[27]]= false;this[_0x1e60[17]][_0x1e60[130]][_0x1e60[129]](this[_0x1e60[17]])}else {this[_0x1e60[23]]= _0x1e60[24];this[_0x1e60[27]]= false;this[_0x1e60[17]][_0x1e60[131]][_0x1e60[129]](this[_0x1e60[17]])}}},{key:_0x1e60[38],value:function _0xc9cex2e(){this[_0x1e60[28]]=  !this[_0x1e60[28]];this[_0x1e60[17]][_0x1e60[130]][_0x1e60[129]](this[_0x1e60[17]]);this[_0x1e60[23]]= _0x1e60[113];this[_0x1e60[27]]= false;this[_0x1e60[132]]= 0;this[_0x1e60[133]]()}},{key:_0x1e60[134],value:function _0xc9cex2f(){this[_0x1e60[132]]+= 1;this[_0x1e60[27]]= false}},{key:_0x1e60[133],value:function _0xc9cex30(){this[_0x1e60[135]]= this[_0x1e60[18]][_0x1e60[60]][_0x1e60[78]]();this[_0x1e60[136]]= this[_0x1e60[18]][_0x1e60[60]][_0x1e60[136]](0,0);this[_0x1e60[136]][_0x1e60[137]](0x000000,0.5);this[_0x1e60[136]][_0x1e60[138]](this[_0x1e60[18]][_0x1e60[42]][_0x1e60[57]],0);this[_0x1e60[136]][_0x1e60[138]](this[_0x1e60[18]][_0x1e60[42]][_0x1e60[57]],this[_0x1e60[18]][_0x1e60[42]][_0x1e60[41]]);this[_0x1e60[136]][_0x1e60[138]](0,this[_0x1e60[18]][_0x1e60[42]][_0x1e60[41]]);this[_0x1e60[136]][_0x1e60[139]]();this[_0x1e60[136]][_0x1e60[82]]= true;this[_0x1e60[136]][_0x1e60[71]][_0x1e60[70]]= 10;this[_0x1e60[140]]=  new _0xc9cex13[_0x1e60[45]](this[_0x1e60[18]],_0x1e60[84],(0,_0xc9cexd[_0x1e60[40]])(200),_0x1e60[141],(0,_0xc9cexd[_0x1e60[40]])(_0xc9cex10.TUTORIAL_FONT));this[_0x1e60[142]]= this[_0x1e60[18]][_0x1e60[60]][_0x1e60[68]](this[_0x1e60[18]][_0x1e60[42]][_0x1e60[57]]- _0xc9cex10[_0x1e60[65]],_0xc9cex10.MENU_BUTTON_OFFSET,(0,_0xc9cexd[_0x1e60[40]])(_0x1e60[95]),this[_0x1e60[134]],this,1,0,2);this[_0x1e60[142]][_0x1e60[62]][_0x1e60[69]](1,0);this[_0x1e60[142]][_0x1e60[63]][_0x1e60[69]](0.5);this[_0x1e60[142]][_0x1e60[72]]= -this[_0x1e60[142]][_0x1e60[41]]- _0xc9cex10[_0x1e60[65]];this[_0x1e60[18]][_0x1e60[60]][_0x1e60[76]](this[_0x1e60[142]])[_0x1e60[75]]({y:_0xc9cex10[_0x1e60[65]]},1000,Phaser[_0x1e60[74]][_0x1e60[73]].Out,true);this[_0x1e60[142]][_0x1e60[71]][_0x1e60[70]]= 11;this[_0x1e60[135]][_0x1e60[60]](this[_0x1e60[136]]);this[_0x1e60[135]][_0x1e60[60]](this[_0x1e60[142]])}},{key:_0x1e60[112],value:function _0xc9cex31(){switch(this[_0x1e60[132]]){case 0:{this[_0x1e60[140]][_0x1e60[122]](_0xc9cexf[_0x1e60[45]][_0x1e60[44]](_0x1e60[143]+ this[_0x1e60[132]]));this[_0x1e60[18]][_0x1e60[42]][_0x1e60[128]](this[_0x1e60[135]]);this[_0x1e60[18]][_0x1e60[42]][_0x1e60[128]](this.Bob);this[_0x1e60[18]][_0x1e60[42]][_0x1e60[128]](this[_0x1e60[140]]);break};case 1:{this[_0x1e60[140]][_0x1e60[122]](_0xc9cexf[_0x1e60[45]][_0x1e60[44]](_0x1e60[143]+ this[_0x1e60[132]]));this[_0x1e60[18]][_0x1e60[42]][_0x1e60[128]](this[_0x1e60[135]]);this[_0x1e60[18]][_0x1e60[42]][_0x1e60[128]](this[_0x1e60[21]].NutritionBarsGroup);this[_0x1e60[18]][_0x1e60[42]][_0x1e60[128]](this[_0x1e60[140]]);break};case 2:{this[_0x1e60[140]][_0x1e60[122]](_0xc9cexf[_0x1e60[45]][_0x1e60[44]](_0x1e60[143]+ this[_0x1e60[132]]));this[_0x1e60[18]][_0x1e60[42]][_0x1e60[128]](this[_0x1e60[135]]);this[_0x1e60[18]][_0x1e60[42]][_0x1e60[128]](this[_0x1e60[21]].NutritionBarsGroup);this[_0x1e60[18]][_0x1e60[42]][_0x1e60[128]](this[_0x1e60[140]]);this[_0x1e60[20]][_0x1e60[145]][_0x1e60[144]]= 200;this[_0x1e60[20]][_0x1e60[145]][_0x1e60[146]]= 30;this[_0x1e60[21]][_0x1e60[107]]();break};case 3:{this[_0x1e60[140]][_0x1e60[122]](_0xc9cexf[_0x1e60[45]][_0x1e60[44]](_0x1e60[143]+ this[_0x1e60[132]]));this[_0x1e60[18]][_0x1e60[42]][_0x1e60[128]](this[_0x1e60[135]]);this[_0x1e60[18]][_0x1e60[42]][_0x1e60[128]](this[_0x1e60[39]]);this[_0x1e60[18]][_0x1e60[42]][_0x1e60[128]](this[_0x1e60[55]]);this[_0x1e60[18]][_0x1e60[42]][_0x1e60[128]](this[_0x1e60[55]]);this[_0x1e60[18]][_0x1e60[42]][_0x1e60[128]](this[_0x1e60[53]]);this[_0x1e60[18]][_0x1e60[42]][_0x1e60[128]](this[_0x1e60[140]]);break};case 4:{this[_0x1e60[140]][_0x1e60[122]](_0xc9cexf[_0x1e60[45]][_0x1e60[44]](_0x1e60[143]+ this[_0x1e60[132]]));this[_0x1e60[18]][_0x1e60[42]][_0x1e60[128]](this[_0x1e60[135]]);this[_0x1e60[18]][_0x1e60[42]][_0x1e60[128]](this[_0x1e60[140]]);break};case 5:{this[_0x1e60[140]][_0x1e60[122]](_0xc9cexf[_0x1e60[45]][_0x1e60[44]](_0x1e60[143]+ this[_0x1e60[132]]));this[_0x1e60[18]][_0x1e60[42]][_0x1e60[128]](this[_0x1e60[135]]);this[_0x1e60[18]][_0x1e60[42]][_0x1e60[128]](this[_0x1e60[140]]);break};case 6:{_0xc9cex14[_0x1e60[37]][_0x1e60[69]](_0x1e60[35],true);this[_0x1e60[105]]();break}}}},{key:_0x1e60[114],value:function _0xc9cex32(){var _0xc9cex33=this;var _0xc9cex34=this[_0x1e60[18]][_0x1e60[60]][_0x1e60[76]](this[_0x1e60[77]]);_0xc9cex34[_0x1e60[75]]({alpha:0},100,Phaser[_0x1e60[74]][_0x1e60[120]].None,true);_0xc9cex34[_0x1e60[121]][_0x1e60[60]](function(){if(_0xc9cex33[_0x1e60[77]][_0x1e60[97]]){_0xc9cex33[_0x1e60[77]][_0x1e60[97]]= false}},this)}},{key:_0x1e60[108],value:function _0xc9cex35(){this[_0x1e60[77]][_0x1e60[97]]= true;var _0xc9cex34=this[_0x1e60[18]][_0x1e60[60]][_0x1e60[76]](this[_0x1e60[77]]);_0xc9cex34[_0x1e60[75]]({alpha:1},100,Phaser[_0x1e60[74]][_0x1e60[120]].None,true)}},{key:_0x1e60[93],value:function _0xc9cex36(){(0,_0xc9cex11[_0x1e60[127]])(_0x1e60[126]);this[_0x1e60[98]][_0x1e60[97]]= false;this[_0x1e60[28]]= false;this[_0x1e60[27]]= false;this[_0x1e60[23]]= _0x1e60[24];this[_0x1e60[18]][_0x1e60[52]][_0x1e60[51]][_0x1e60[147]]();this[_0x1e60[17]][_0x1e60[17]][_0x1e60[149]](_0x1e60[148])}},{key:_0x1e60[110],value:function _0xc9cex37(_0xc9cex38){this[_0x1e60[17]][_0x1e60[130]][_0x1e60[129]](this[_0x1e60[17]]);this[_0x1e60[18]][_0x1e60[42]][_0x1e60[128]](this[_0x1e60[98]]);this[_0x1e60[106]][_0x1e60[122]](_0xc9cexf[_0x1e60[45]][_0x1e60[44]](_0x1e60[43])+ _0x1e60[46]+ this[_0x1e60[25]]);this[_0x1e60[150]](_0xc9cex38);this[_0x1e60[98]][_0x1e60[97]]= true;var _0xc9cex34=this[_0x1e60[18]][_0x1e60[60]][_0x1e60[76]](this[_0x1e60[98]]);_0xc9cex34[_0x1e60[75]]({alpha:1},100,Phaser[_0x1e60[74]][_0x1e60[120]].None,true);_0xc9cex14[_0x1e60[37]][_0x1e60[152]](_0x1e60[151],this[_0x1e60[25]])}},{key:_0x1e60[105],value:function _0xc9cex39(){(0,_0xc9cex11[_0x1e60[127]])(_0x1e60[126]);this[_0x1e60[98]][_0x1e60[97]]= false;this[_0x1e60[28]]= false;this[_0x1e60[27]]= false;this[_0x1e60[23]]= _0x1e60[24];this[_0x1e60[17]][_0x1e60[131]][_0x1e60[129]](this[_0x1e60[17]]);this[_0x1e60[17]][_0x1e60[17]][_0x1e60[153]](true)}},{key:_0x1e60[150],value:function _0xc9cex3a(){var _0xc9cex3b=arguments[_0x1e60[3]]> 0&& arguments[0]!== undefined?arguments[0]:_0x1e60[141];this[_0x1e60[106]][_0x1e60[122]](_0x1e60[141]);this[_0x1e60[106]][_0x1e60[122]](_0xc9cexf[_0x1e60[45]][_0x1e60[44]](_0x1e60[154],this[_0x1e60[25]],_0xc9cex3b))}},{key:_0x1e60[88],value:function _0xc9cex3c(){(0,_0xc9cex11[_0x1e60[127]])(_0x1e60[126]);(0,_0xc9cex11[_0x1e60[156]])(_0x1e60[155],this)}}]);return _0xc9cex19}();_0xc9cex3[_0x1e60[45]]= _0xc9cex19},{"\x2E\x2E\x2F\x63\x6F\x6E\x73\x74\x61\x6E\x74\x73\x2F\x55\x49\x43\x6F\x6E\x73\x74\x61\x6E\x74\x73":9,"\x2E\x2E\x2F\x75\x74\x69\x6C\x73\x2F\x41\x75\x64\x69\x6F\x4D\x61\x6E\x61\x67\x65\x72":30,"\x2E\x2E\x2F\x75\x74\x69\x6C\x73\x2F\x53\x63\x61\x6C\x65\x4D\x61\x6E\x61\x67\x65\x72":34,"\x2E\x2E\x2F\x75\x74\x69\x6C\x73\x2F\x53\x74\x6F\x72\x61\x67\x65\x4D\x61\x6E\x61\x67\x65\x72":35,"\x2E\x2E\x2F\x75\x74\x69\x6C\x73\x2F\x69\x31\x38\x6E":36,"\x2E\x2F\x54\x65\x78\x74":3}],2:[function(_0xc9cex1,_0xc9cex2,_0xc9cex3){_0x1e60[0];Object[_0x1e60[2]](_0xc9cex3,_0x1e60[1],{value:true});var _0xc9cex4=function(){function _0xc9cex5(_0xc9cex6,_0xc9cex7){for(var _0xc9cex8=0;_0xc9cex8< _0xc9cex7[_0x1e60[3]];_0xc9cex8++){var _0xc9cex9=_0xc9cex7[_0xc9cex8];_0xc9cex9[_0x1e60[4]]= _0xc9cex9[_0x1e60[4]]|| false;_0xc9cex9[_0x1e60[5]]= true;if(_0x1e60[6] in  _0xc9cex9){_0xc9cex9[_0x1e60[7]]= true};Object[_0x1e60[2]](_0xc9cex6,_0xc9cex9[_0x1e60[8]],_0xc9cex9)}}return function(_0xc9cexa,_0xc9cexb,_0xc9cexc){if(_0xc9cexb){_0xc9cex5(_0xc9cexa[_0x1e60[9]],_0xc9cexb)};if(_0xc9cexc){_0xc9cex5(_0xc9cexa,_0xc9cexc)};return _0xc9cexa}}();var _0xc9cexd=_0xc9cex1(_0x1e60[10]);var _0xc9cexe=_0xc9cex1(_0x1e60[11]);var _0xc9cexf=_0xc9cex15(_0xc9cexe);var _0xc9cex3d=_0xc9cex1(_0x1e60[157]);var _0xc9cex3e=_0xc9cex1(_0x1e60[158]);var _0xc9cex3f=_0xc9cex1(_0x1e60[159]);var _0xc9cex10=_0xc9cex1(_0x1e60[12]);var _0xc9cex12=_0xc9cex1(_0x1e60[14]);var _0xc9cex13=_0xc9cex15(_0xc9cex12);function _0xc9cex15(_0xc9cex16){return _0xc9cex16&& _0xc9cex16[_0x1e60[1]]?_0xc9cex16:{default:_0xc9cex16}}function _0xc9cex17(_0xc9cex18,_0xc9cexa){if(!(_0xc9cex18 instanceof  _0xc9cexa)){throw  new TypeError(_0x1e60[16])}}var _0xc9cex40=function(){function _0xc9cex40(_0xc9cex41,_0xc9cex1c){_0xc9cex17(this,_0xc9cex40);this[_0x1e60[18]]= _0xc9cex41;this[_0x1e60[145]]= _0xc9cex1c[_0x1e60[145]];this[_0x1e60[160]]= [];this[_0x1e60[161]]= [];this[_0x1e60[162]]= [];this[_0x1e60[163]]= this[_0x1e60[18]][_0x1e60[60]][_0x1e60[78]]();this[_0x1e60[164]]()}_0xc9cex4(_0xc9cex40,[{key:_0x1e60[107],value:function _0xc9cex21(_0xc9cex42){this[_0x1e60[165]](this[_0x1e60[145]][_0x1e60[144]],_0xc9cex3e.GOOD_AMOUNT_OF_CARBOHYDRATES,2);this[_0x1e60[165]](this[_0x1e60[145]][_0x1e60[146]],_0xc9cex3e.GOOD_AMOUNT_OF_FATS,1);this[_0x1e60[165]](this[_0x1e60[145]][_0x1e60[166]],_0xc9cex3e.GOOD_AMOUNT_OF_PROTEINS,0);if(_0xc9cex42){for(var _0xc9cex43 in _0xc9cex42){var _0xc9cex44=_0xc9cex42[_0xc9cex43];if(_0xc9cex44!== 0){this[_0x1e60[167]](_0xc9cex43,_0xc9cex44)}}}}},{key:_0x1e60[164],value:function _0xc9cex45(){var _0xc9cex46=function _0xc9cex46(_0xc9cex29){return _0xc9cex29[_0x1e60[169]](0,1)[_0x1e60[168]]()+ _0xc9cex29[_0x1e60[169]](1)};this[_0x1e60[171]](this[_0x1e60[145]][_0x1e60[144]],_0xc9cex3e.GOOD_AMOUNT_OF_CARBOHYDRATES,2,_0xc9cex46(_0xc9cexf[_0x1e60[45]][_0x1e60[44]](_0x1e60[170])));this[_0x1e60[171]](this[_0x1e60[145]][_0x1e60[146]],_0xc9cex3e.GOOD_AMOUNT_OF_FATS,1,_0xc9cex46(_0xc9cexf[_0x1e60[45]][_0x1e60[44]](_0x1e60[172])));this[_0x1e60[171]](this[_0x1e60[145]][_0x1e60[166]],_0xc9cex3e.GOOD_AMOUNT_OF_PROTEINS,0,_0xc9cex46(_0xc9cexf[_0x1e60[45]][_0x1e60[44]](_0x1e60[173])))}},{key:_0x1e60[167],value:function _0xc9cex47(_0xc9cex43,_0xc9cex48){var _0xc9cex8=0;switch(_0xc9cex43){case _0x1e60[144]:_0xc9cex8= 2;break;case _0x1e60[146]:_0xc9cex8= 1;break;case _0x1e60[166]:_0xc9cex8= 0;break};var _0xc9cex49=(0,_0xc9cexd[_0x1e60[40]])(_0xc9cex10.NUTRITION_BAR_HEIGHT);var _0xc9cex4a=_0xc9cex8* ((0,_0xc9cexd[_0x1e60[40]])(_0xc9cex10.NUTRITION_BAR_OFFSET)+ _0xc9cex49);var _0xc9cex4b=this[_0x1e60[18]][_0x1e60[57]]- (0,_0xc9cexd[_0x1e60[40]])(_0xc9cex10.NUTRITION_BAR_X_FROM_LEFT)- (0,_0xc9cexd[_0x1e60[40]])(_0xc9cex10.NUTRITION_BAR_TEXT_OFFSET_X)- (0,_0xc9cexd[_0x1e60[40]])(10,0.5);var _0xc9cex4c=this[_0x1e60[18]][_0x1e60[41]]- (0,_0xc9cexd[_0x1e60[40]])(_0xc9cex10.NUTRITION_BAR_Y_FROM_BOTTOM)- (0,_0xc9cexd[_0x1e60[40]])(_0xc9cex10.NUTRITION_BAR_TEXT_OFFSET_Y)- _0xc9cex4a;var _0xc9cex4d= new _0xc9cex13[_0x1e60[45]](this[_0x1e60[18]],_0xc9cex4b,_0xc9cex4c,_0x1e60[174]+ _0xc9cex48,(0,_0xc9cexd[_0x1e60[40]])(_0xc9cex10.NUTRITION_NUTRITION_ADDED_FONT),[1,1]);this[_0x1e60[18]][_0x1e60[60]][_0x1e60[76]](_0xc9cex4d)[_0x1e60[75]]({alpha:0,y:_0xc9cex4c- (0,_0xc9cexd[_0x1e60[40]])(100)},(0,_0xc9cexd[_0x1e60[40]])(1000),Phaser[_0x1e60[74]][_0x1e60[120]].None,true)}},{key:_0x1e60[165],value:function _0xc9cex4e(_0xc9cex44,_0xc9cex4f,_0xc9cex8){var _0xc9cex50=(0,_0xc9cexd[_0x1e60[40]])(_0xc9cex10.NUTRITION_BAR_WIDTH);var _0xc9cex49=(0,_0xc9cexd[_0x1e60[40]])(_0xc9cex10.NUTRITION_BAR_HEIGHT);var _0xc9cex4a=_0xc9cex8* ((0,_0xc9cexd[_0x1e60[40]])(_0xc9cex10.NUTRITION_BAR_OFFSET)+ _0xc9cex49);var _0xc9cex51=_0xc9cex4f* 2;var _0xc9cex52=this[_0x1e60[160]][_0xc9cex8];var _0xc9cex53=(0,_0xc9cex3d[_0x1e60[175]])(_0xc9cex44,_0xc9cex4f);if(_0xc9cex53<= _0xc9cex3f[_0x1e60[176]]|| _0xc9cex53>= _0xc9cex3f[_0x1e60[177]]){_0xc9cex52[_0x1e60[178]]= 2}else {if(_0xc9cex53<= _0xc9cex3f[_0x1e60[179]]|| _0xc9cex53>= _0xc9cex3f[_0x1e60[180]]){_0xc9cex52[_0x1e60[178]]= 1}else {_0xc9cex52[_0x1e60[178]]= 0}};var _0xc9cex54=Math[_0x1e60[182]](Math[_0x1e60[181]](_0xc9cex44/ _0xc9cex51,0),1);var _0xc9cex55=this[_0x1e60[161]][_0xc9cex8];_0xc9cex55[_0x1e60[183]]();_0xc9cex55[_0x1e60[137]](0x000000);_0xc9cex55[_0x1e60[185]](this[_0x1e60[18]][_0x1e60[57]]- _0xc9cex10[_0x1e60[184]]- _0xc9cex50+ _0xc9cex50* (1- _0xc9cex54),this[_0x1e60[18]][_0x1e60[41]]- (0,_0xc9cexd[_0x1e60[40]])(_0xc9cex10.NUTRITION_BAR_Y_FROM_BOTTOM)- _0xc9cex4a- _0xc9cex49,_0xc9cex50* _0xc9cex54,_0xc9cex49);_0xc9cex55[_0x1e60[139]]();var _0xc9cex56=this[_0x1e60[162]][_0xc9cex8];_0xc9cex56[_0x1e60[122]](parseInt(Math[_0x1e60[181]](_0xc9cex44,0))+ _0x1e60[186]+ _0xc9cex4f)}},{key:_0x1e60[171],value:function _0xc9cex57(_0xc9cex44,_0xc9cex4f,_0xc9cex8,_0xc9cex29){var _0xc9cex50=(0,_0xc9cexd[_0x1e60[40]])(_0xc9cex10.NUTRITION_BAR_WIDTH);var _0xc9cex49=(0,_0xc9cexd[_0x1e60[40]])(_0xc9cex10.NUTRITION_BAR_HEIGHT);var _0xc9cex4a=_0xc9cex8* ((0,_0xc9cexd[_0x1e60[40]])(_0xc9cex10.NUTRITION_BAR_OFFSET)+ _0xc9cex49);var _0xc9cex51=_0xc9cex4f* 2;var _0xc9cex54=Math[_0x1e60[182]](Math[_0x1e60[181]](_0xc9cex44/ _0xc9cex51,0),1);var _0xc9cex58=this[_0x1e60[18]][_0x1e60[60]][_0x1e60[81]](this[_0x1e60[18]][_0x1e60[57]]- _0xc9cex10[_0x1e60[184]],this[_0x1e60[18]][_0x1e60[41]]- (0,_0xc9cexd[_0x1e60[40]])(_0xc9cex10.NUTRITION_BAR_Y_FROM_BOTTOM)- _0xc9cex4a,(0,_0xc9cexd[_0x1e60[40]])(_0x1e60[187]));_0xc9cex58[_0x1e60[62]][_0x1e60[61]](1,1);var _0xc9cex59=this[_0x1e60[18]][_0x1e60[60]][_0x1e60[78]]();var _0xc9cex5a=_0xc9cex58[_0x1e60[56]]- _0xc9cex58[_0x1e60[57]]+ _0xc9cex10[_0x1e60[188]];var _0xc9cex5b=_0xc9cex58[_0x1e60[72]]- _0xc9cex58[_0x1e60[41]]+ _0xc9cex10[_0x1e60[188]];var _0xc9cex5c=this[_0x1e60[18]][_0x1e60[60]][_0x1e60[81]](_0xc9cex58[_0x1e60[57]]/ 2/ _0xc9cex3f[_0x1e60[189]][_0x1e60[3]]* (_0xc9cex3f[_0x1e60[189]][_0x1e60[3]]- _0xc9cex3f[_0x1e60[176]])+ _0xc9cex58[_0x1e60[57]]/ 2+ _0xc9cex5a,_0xc9cex5b,(0,_0xc9cexd[_0x1e60[40]])(_0x1e60[190]));_0xc9cex5c[_0x1e60[62]][_0x1e60[61]](0.5,0);var _0xc9cex5d=this[_0x1e60[18]][_0x1e60[60]][_0x1e60[81]](_0xc9cex58[_0x1e60[57]]/ 2/ _0xc9cex3f[_0x1e60[189]][_0x1e60[3]]* (_0xc9cex3f[_0x1e60[189]][_0x1e60[3]]- _0xc9cex3f[_0x1e60[179]])+ _0xc9cex58[_0x1e60[57]]/ 2+ _0xc9cex5a,_0xc9cex5b,(0,_0xc9cexd[_0x1e60[40]])(_0x1e60[190]));_0xc9cex5d[_0x1e60[62]][_0x1e60[61]](0.5,0);var _0xc9cex5e=this[_0x1e60[18]][_0x1e60[60]][_0x1e60[81]](_0xc9cex58[_0x1e60[57]]/ 2/ _0xc9cex3f[_0x1e60[191]][_0x1e60[3]]* (_0xc9cex3f[_0x1e60[189]][_0x1e60[3]]+ _0xc9cex3f[_0x1e60[191]][_0x1e60[3]]- _0xc9cex3f[_0x1e60[177]])+ _0xc9cex5a,_0xc9cex5b,(0,_0xc9cexd[_0x1e60[40]])(_0x1e60[190]));_0xc9cex5e[_0x1e60[62]][_0x1e60[61]](0.5,0);var _0xc9cex5f=this[_0x1e60[18]][_0x1e60[60]][_0x1e60[81]](_0xc9cex58[_0x1e60[57]]/ 2/ _0xc9cex3f[_0x1e60[191]][_0x1e60[3]]* (_0xc9cex3f[_0x1e60[189]][_0x1e60[3]]+ _0xc9cex3f[_0x1e60[191]][_0x1e60[3]]- _0xc9cex3f[_0x1e60[180]])+ _0xc9cex5a,_0xc9cex5b,(0,_0xc9cexd[_0x1e60[40]])(_0x1e60[190]));_0xc9cex5f[_0x1e60[62]][_0x1e60[61]](0.5,0);_0xc9cex59[_0x1e60[60]](_0xc9cex5c);_0xc9cex59[_0x1e60[60]](_0xc9cex5d);_0xc9cex59[_0x1e60[60]](_0xc9cex5e);_0xc9cex59[_0x1e60[60]](_0xc9cex5f);var _0xc9cex55=this[_0x1e60[18]][_0x1e60[60]][_0x1e60[136]](0,0);_0xc9cex55[_0x1e60[137]](0x000000);_0xc9cex55[_0x1e60[185]](this[_0x1e60[18]][_0x1e60[57]]- _0xc9cex10[_0x1e60[184]]- _0xc9cex50+ _0xc9cex50* (1- _0xc9cex54),this[_0x1e60[18]][_0x1e60[41]]- (0,_0xc9cexd[_0x1e60[40]])(_0xc9cex10.NUTRITION_BAR_Y_FROM_BOTTOM)- _0xc9cex4a- _0xc9cex49,_0xc9cex50* _0xc9cex54,_0xc9cex49);_0xc9cex55[_0x1e60[139]]();this[_0x1e60[161]][_0xc9cex8]= _0xc9cex55;var _0xc9cex52=this[_0x1e60[18]][_0x1e60[60]][_0x1e60[81]](this[_0x1e60[18]][_0x1e60[57]]- _0xc9cex10[_0x1e60[184]],this[_0x1e60[18]][_0x1e60[41]]- (0,_0xc9cexd[_0x1e60[40]])(_0xc9cex10.NUTRITION_BAR_Y_FROM_BOTTOM)- _0xc9cex4a,(0,_0xc9cexd[_0x1e60[40]])(_0x1e60[192]),0);_0xc9cex52[_0x1e60[62]][_0x1e60[61]](1,1);_0xc9cex52[_0x1e60[193]]= _0xc9cex55;this[_0x1e60[160]][_0xc9cex8]= _0xc9cex52;var _0xc9cex60= new _0xc9cex13[_0x1e60[45]](this[_0x1e60[18]],this[_0x1e60[18]][_0x1e60[57]]- (0,_0xc9cexd[_0x1e60[40]])(_0xc9cex10.NUTRITION_BAR_X_FROM_LEFT)+ (0,_0xc9cexd[_0x1e60[40]])(_0xc9cex10.NUTRITION_BAR_TEXT_OFFSET_X)- _0xc9cex50- (0,_0xc9cexd[_0x1e60[40]])(10,0.5),this[_0x1e60[18]][_0x1e60[41]]- (0,_0xc9cexd[_0x1e60[40]])(_0xc9cex10.NUTRITION_BAR_Y_FROM_BOTTOM)- _0xc9cex4a- (0,_0xc9cexd[_0x1e60[40]])(_0xc9cex10.NUTRITION_BAR_TEXT_OFFSET_Y)+ (0,_0xc9cexd[_0x1e60[40]])(3,0.5),_0xc9cex29,(0,_0xc9cexd[_0x1e60[40]])(_0xc9cex10.NUTRITION_BAR_INFO_FONT),[0,1]);var _0xc9cex56= new _0xc9cex13[_0x1e60[45]](this[_0x1e60[18]],this[_0x1e60[18]][_0x1e60[57]]- (0,_0xc9cexd[_0x1e60[40]])(_0xc9cex10.NUTRITION_BAR_X_FROM_LEFT)- (0,_0xc9cexd[_0x1e60[40]])(_0xc9cex10.NUTRITION_BAR_TEXT_OFFSET_X)- (0,_0xc9cexd[_0x1e60[40]])(10,0.5),this[_0x1e60[18]][_0x1e60[41]]- (0,_0xc9cexd[_0x1e60[40]])(_0xc9cex10.NUTRITION_BAR_Y_FROM_BOTTOM)- _0xc9cex4a- (0,_0xc9cexd[_0x1e60[40]])(_0xc9cex10.NUTRITION_BAR_TEXT_OFFSET_Y)+ (0,_0xc9cexd[_0x1e60[40]])(3,0.5),Math[_0x1e60[181]](parseInt(_0xc9cex44),0)+ _0x1e60[186]+ _0xc9cex4f,(0,_0xc9cexd[_0x1e60[40]])(_0xc9cex10.NUTRITION_BAR_INFO_FONT),[1,1]);this[_0x1e60[162]][_0xc9cex8]= _0xc9cex56;this[_0x1e60[163]][_0x1e60[60]](_0xc9cex58);this[_0x1e60[163]][_0x1e60[60]](_0xc9cex59);this[_0x1e60[163]][_0x1e60[60]](_0xc9cex55);this[_0x1e60[163]][_0x1e60[60]](_0xc9cex52);this[_0x1e60[163]][_0x1e60[60]](_0xc9cex56);this[_0x1e60[163]][_0x1e60[60]](_0xc9cex60)}},{key:_0x1e60[117],value:function _0xc9cex61(_0xc9cex62){var _0xc9cex63=100;var _0xc9cex52=0;this[_0x1e60[160]][_0x1e60[194]](function(_0xc9cex64){_0xc9cex52= Math[_0x1e60[181]](_0xc9cex64[_0x1e60[178]],_0xc9cex52)});var _0xc9cex61=this[_0x1e60[18]][_0x1e60[60]][_0x1e60[136]](0,0);if(_0xc9cex52=== 2){this[_0x1e60[18]][_0x1e60[196]][_0x1e60[195]](0.002,200);_0xc9cex61[_0x1e60[137]](0xc50000,0.8)}else {if(_0xc9cex52=== 1){this[_0x1e60[18]][_0x1e60[196]][_0x1e60[195]](0.001,200);_0xc9cex61[_0x1e60[137]](0xf1d137,0.75)}};_0xc9cex61[_0x1e60[185]](0,0,this[_0x1e60[18]][_0x1e60[42]][_0x1e60[57]],this[_0x1e60[18]][_0x1e60[42]][_0x1e60[41]]);_0xc9cex61[_0x1e60[96]]= 0;var _0xc9cex2a=false;var _0xc9cex65=this[_0x1e60[18]][_0x1e60[60]][_0x1e60[76]](_0xc9cex61);_0xc9cex65[_0x1e60[75]]({alpha:1},_0xc9cex63/ 2,Phaser[_0x1e60[74]][_0x1e60[120]].In,true);_0xc9cex65[_0x1e60[121]][_0x1e60[60]](function(){if(!_0xc9cex2a){_0xc9cex62();_0xc9cex65[_0x1e60[75]]({alpha:0},_0xc9cex63/ 2,Phaser[_0x1e60[74]][_0x1e60[120]].Out,true);_0xc9cex2a= true}},this)}}]);return _0xc9cex40}();_0xc9cex3[_0x1e60[45]]= _0xc9cex40},{"\x2E\x2E\x2F\x63\x6F\x6E\x73\x74\x61\x6E\x74\x73\x2F\x4E\x75\x74\x72\x69\x74\x69\x6F\x6E\x43\x6F\x6E\x73\x74\x61\x6E\x74\x73":8,"\x2E\x2E\x2F\x63\x6F\x6E\x73\x74\x61\x6E\x74\x73\x2F\x55\x49\x43\x6F\x6E\x73\x74\x61\x6E\x74\x73":9,"\x2E\x2E\x2F\x63\x6F\x6E\x73\x74\x61\x6E\x74\x73\x2F\x57\x65\x69\x67\x68\x74\x42\x72\x65\x61\x6B\x70\x6F\x69\x6E\x74\x73":10,"\x2E\x2E\x2F\x75\x74\x69\x6C\x73\x2F\x4E\x75\x74\x72\x69\x74\x69\x6F\x6E\x55\x74\x69\x6C\x73":33,"\x2E\x2E\x2F\x75\x74\x69\x6C\x73\x2F\x53\x63\x61\x6C\x65\x4D\x61\x6E\x61\x67\x65\x72":34,"\x2E\x2E\x2F\x75\x74\x69\x6C\x73\x2F\x69\x31\x38\x6E":36,"\x2E\x2F\x54\x65\x78\x74":3}],3:[function(_0xc9cex1,_0xc9cex2,_0xc9cex3){_0x1e60[0];Object[_0x1e60[2]](_0xc9cex3,_0x1e60[1],{value:true});function _0xc9cex17(_0xc9cex18,_0xc9cexa){if(!(_0xc9cex18 instanceof  _0xc9cexa)){throw  new TypeError(_0x1e60[16])}}function _0xc9cex66(_0xc9cex67,_0xc9cex68){if(!_0xc9cex67){throw  new ReferenceError(_0x1e60[197])};return _0xc9cex68&& ( typeof _0xc9cex68=== _0x1e60[198]||  typeof _0xc9cex68=== _0x1e60[199])?_0xc9cex68:_0xc9cex67}function _0xc9cex69(_0xc9cex6a,_0xc9cex6b){if( typeof _0xc9cex6b!== _0x1e60[199]&& _0xc9cex6b!== null){throw  new TypeError(_0x1e60[200]+  typeof _0xc9cex6b)};_0xc9cex6a[_0x1e60[9]]= Object[_0x1e60[201]](_0xc9cex6b&& _0xc9cex6b[_0x1e60[9]],{constructor:{value:_0xc9cex6a,enumerable:false,writable:true,configurable:true}});if(_0xc9cex6b){Object[_0x1e60[202]]?Object[_0x1e60[202]](_0xc9cex6a,_0xc9cex6b):_0xc9cex6a[_0x1e60[203]]= _0xc9cex6b}}var _0xc9cex6c=function(_0xc9cex6d){_0xc9cex69(_0xc9cex6c,_0xc9cex6d);function _0xc9cex6c(_0xc9cex41){var _0xc9cex6e=arguments[_0x1e60[3]]> 1&& arguments[1]!== undefined?arguments[1]:0;var _0xc9cex6f=arguments[_0x1e60[3]]> 2&& arguments[2]!== undefined?arguments[2]:0;var _0xc9cex29=arguments[_0x1e60[3]]> 3&& arguments[3]!== undefined?arguments[3]:_0x1e60[141];var _0xc9cex70=arguments[_0x1e60[3]]> 4&& arguments[4]!== undefined?arguments[4]:{};var _0xc9cex71=arguments[_0x1e60[3]]> 5&& arguments[5]!== undefined?arguments[5]:[0,0];_0xc9cex17(this,_0xc9cex6c);var _0xc9cex26=_0xc9cex66(this,(_0xc9cex6c[_0x1e60[203]]|| Object[_0x1e60[204]](_0xc9cex6c))[_0x1e60[129]](this,_0xc9cex41,_0xc9cex6e,_0xc9cex6f,_0xc9cex29,_0xc9cex70));var _0xc9cex72=_0xc9cex71;if(_0xc9cex6e=== _0x1e60[84]){_0xc9cex26[_0x1e60[56]]= _0xc9cex41[_0x1e60[42]][_0x1e60[205]];_0xc9cex72[0]= _0xc9cex72[0]|| 0.5};if(_0xc9cex6f=== _0x1e60[84]){_0xc9cex26[_0x1e60[72]]= _0xc9cex41[_0x1e60[42]][_0x1e60[206]];_0xc9cex72[1]= _0xc9cex72[1]|| 0.5};if(_0xc9cex70[_0x1e60[207]]){var _0xc9cex73=_0xc9cex70[_0x1e60[207]][_0x1e60[208]](/rgba\(.+\)|[^ ]+/g);_0xc9cex26[_0x1e60[210]][_0x1e60[209]](_0xc9cex26,_0xc9cex73)};_0xc9cex26[_0x1e60[62]][_0x1e60[61]](_0xc9cex72[0],_0xc9cex72[1]);_0xc9cex41[_0x1e60[60]][_0x1e60[211]](_0xc9cex26);return _0xc9cex26}return _0xc9cex6c}(Phaser.Text);_0xc9cex3[_0x1e60[45]]= _0xc9cex6c},{}],4:[function(_0xc9cex1,_0xc9cex2,_0xc9cex3){_0x1e60[0];Object[_0x1e60[2]](_0xc9cex3,_0x1e60[1],{value:true});var _0xc9cex74=_0xc9cex3[_0x1e60[212]]= 10;var _0xc9cex75=_0xc9cex3[_0x1e60[213]]= 0.75},{}],5:[function(_0xc9cex1,_0xc9cex2,_0xc9cex3){_0x1e60[0];Object[_0x1e60[2]](_0xc9cex3,_0x1e60[1],{value:true});var _0xc9cex76=_0xc9cex3[_0x1e60[214]]= 1920;var _0xc9cex77=_0xc9cex3[_0x1e60[215]]= 1280},{}],6:[function(_0xc9cex1,_0xc9cex2,_0xc9cex3){_0x1e60[0];Object[_0x1e60[2]](_0xc9cex3,_0x1e60[1],{value:true});var _0xc9cex78=_0xc9cex3[_0x1e60[216]]= 30;var _0xc9cex79=_0xc9cex3[_0x1e60[217]]= 60},{}],7:[function(_0xc9cex1,_0xc9cex2,_0xc9cex3){_0x1e60[0];Object[_0x1e60[2]](_0xc9cex3,_0x1e60[1],{value:true});_0xc9cex3[_0x1e60[218]]= _0xc9cex3[_0x1e60[219]]= _0xc9cex3[_0x1e60[220]]= _0xc9cex3[_0x1e60[221]]= _0xc9cex3[_0x1e60[222]]= _0xc9cex3[_0x1e60[223]]= _0xc9cex3[_0x1e60[224]]= _0xc9cex3[_0x1e60[225]]= _0xc9cex3[_0x1e60[226]]= _0xc9cex3[_0x1e60[227]]= _0xc9cex3[_0x1e60[228]]= _0xc9cex3[_0x1e60[229]]= _0xc9cex3[_0x1e60[230]]= _0xc9cex3[_0x1e60[231]]= _0xc9cex3[_0x1e60[232]]= _0xc9cex3[_0x1e60[233]]= _0xc9cex3[_0x1e60[234]]= _0xc9cex3[_0x1e60[235]]= _0xc9cex3[_0x1e60[236]]= undefined;var _0xc9cex7a=_0xc9cex1(_0x1e60[237]);var _0xc9cex7b=_0xc9cex3[_0x1e60[236]]= 190;var _0xc9cex7c=_0xc9cex3[_0x1e60[235]]= 230;var _0xc9cex7d=_0xc9cex3[_0x1e60[234]]= 60;var _0xc9cex7e=_0xc9cex3[_0x1e60[233]]= 120;var _0xc9cex7f=_0xc9cex3[_0x1e60[232]]= 1;var _0xc9cex80=_0xc9cex3[_0x1e60[231]]= 500;var _0xc9cex81=_0xc9cex3[_0x1e60[230]]= 0.75;var _0xc9cex82=_0xc9cex3[_0x1e60[229]]= 0;var _0xc9cex83=_0xc9cex3[_0x1e60[228]]= 560* _0xc9cex7a[_0x1e60[213]]+ _0xc9cex7a[_0x1e60[212]];var _0xc9cex84=_0xc9cex3[_0x1e60[227]]= 1.2* Phaser[_0x1e60[48]][_0x1e60[47]];var _0xc9cex85=_0xc9cex3[_0x1e60[226]]= 0.2* Phaser[_0x1e60[48]][_0x1e60[47]];var _0xc9cex86=_0xc9cex3[_0x1e60[225]]= 0.6* Phaser[_0x1e60[48]][_0x1e60[47]];var _0xc9cex87=_0xc9cex3[_0x1e60[224]]= 200;var _0xc9cex88=_0xc9cex3[_0x1e60[223]]= 100;var _0xc9cex89=_0xc9cex3[_0x1e60[222]]= 100;var _0xc9cex8a=_0xc9cex3[_0x1e60[221]]= 75;var _0xc9cex8b=_0xc9cex3[_0x1e60[220]]= 5* _0xc9cex84;var _0xc9cex8c=_0xc9cex3[_0x1e60[219]]= 250;var _0xc9cex8d=_0xc9cex3[_0x1e60[218]]= Object[_0x1e60[256]]([{"\x6B\x65\x79":0,"\x6E\x61\x6D\x65":_0x1e60[238],"\x6E\x75\x74\x72\x69\x74\x69\x6F\x6E\x46\x61\x63\x74\x73":{"\x63\x61\x72\x62\x6F\x68\x79\x64\x72\x61\x74\x65\x73":18,"\x66\x61\x74\x73":0,"\x70\x72\x6F\x74\x65\x69\x6E\x73":0},"\x63\x6F\x6D\x70\x6C\x65\x78\x69\x74\x79\x4C\x65\x76\x65\x6C":1,"\x70\x72\x6F\x62\x61\x62\x69\x6C\x69\x74\x79":2,"\x71\x75\x61\x6E\x74\x69\x74\x79":[_0x1e60[239],1]},{"\x6B\x65\x79":4,"\x6E\x61\x6D\x65":_0x1e60[240],"\x6E\x75\x74\x72\x69\x74\x69\x6F\x6E\x46\x61\x63\x74\x73":{"\x63\x61\x72\x62\x6F\x68\x79\x64\x72\x61\x74\x65\x73":0,"\x66\x61\x74\x73":20,"\x70\x72\x6F\x74\x65\x69\x6E\x73":0},"\x63\x6F\x6D\x70\x6C\x65\x78\x69\x74\x79\x4C\x65\x76\x65\x6C":1,"\x70\x72\x6F\x62\x61\x62\x69\x6C\x69\x74\x79":1,"\x71\x75\x61\x6E\x74\x69\x74\x79":[_0x1e60[241],2]},{"\x6B\x65\x79":7,"\x6E\x61\x6D\x65":_0x1e60[242],"\x6E\x75\x74\x72\x69\x74\x69\x6F\x6E\x46\x61\x63\x74\x73":{"\x63\x61\x72\x62\x6F\x68\x79\x64\x72\x61\x74\x65\x73":30,"\x66\x61\x74\x73":0,"\x70\x72\x6F\x74\x65\x69\x6E\x73":0},"\x63\x6F\x6D\x70\x6C\x65\x78\x69\x74\x79\x4C\x65\x76\x65\x6C":1,"\x70\x72\x6F\x62\x61\x62\x69\x6C\x69\x74\x79":1.5,"\x71\x75\x61\x6E\x74\x69\x74\x79":[_0x1e60[241],3]},{"\x6B\x65\x79":2,"\x6E\x61\x6D\x65":_0x1e60[243],"\x6E\x75\x74\x72\x69\x74\x69\x6F\x6E\x46\x61\x63\x74\x73":{"\x63\x61\x72\x62\x6F\x68\x79\x64\x72\x61\x74\x65\x73":0,"\x66\x61\x74\x73":3,"\x70\x72\x6F\x74\x65\x69\x6E\x73":15},"\x63\x6F\x6D\x70\x6C\x65\x78\x69\x74\x79\x4C\x65\x76\x65\x6C":1,"\x70\x72\x6F\x62\x61\x62\x69\x6C\x69\x74\x79":1,"\x71\x75\x61\x6E\x74\x69\x74\x79":[_0x1e60[244],50]},{"\x6B\x65\x79":5,"\x6E\x61\x6D\x65":_0x1e60[245],"\x6E\x75\x74\x72\x69\x74\x69\x6F\x6E\x46\x61\x63\x74\x73":{"\x63\x61\x72\x62\x6F\x68\x79\x64\x72\x61\x74\x65\x73":25,"\x66\x61\x74\x73":12,"\x70\x72\x6F\x74\x65\x69\x6E\x73":2},"\x63\x6F\x6D\x70\x6C\x65\x78\x69\x74\x79\x4C\x65\x76\x65\x6C":2,"\x70\x72\x6F\x62\x61\x62\x69\x6C\x69\x74\x79":1,"\x71\x75\x61\x6E\x74\x69\x74\x79":[_0x1e60[246],1]},{"\x6B\x65\x79":1,"\x6E\x61\x6D\x65":_0x1e60[247],"\x6E\x75\x74\x72\x69\x74\x69\x6F\x6E\x46\x61\x63\x74\x73":{"\x63\x61\x72\x62\x6F\x68\x79\x64\x72\x61\x74\x65\x73":30,"\x66\x61\x74\x73":2,"\x70\x72\x6F\x74\x65\x69\x6E\x73":0},"\x63\x6F\x6D\x70\x6C\x65\x78\x69\x74\x79\x4C\x65\x76\x65\x6C":2,"\x70\x72\x6F\x62\x61\x62\x69\x6C\x69\x74\x79":1.5,"\x71\x75\x61\x6E\x74\x69\x74\x79":[_0x1e60[248],1]},{"\x6B\x65\x79":9,"\x6E\x61\x6D\x65":_0x1e60[249],"\x6E\x75\x74\x72\x69\x74\x69\x6F\x6E\x46\x61\x63\x74\x73":{"\x63\x61\x72\x62\x6F\x68\x79\x64\x72\x61\x74\x65\x73":1,"\x66\x61\x74\x73":16,"\x70\x72\x6F\x74\x65\x69\x6E\x73":15},"\x63\x6F\x6D\x70\x6C\x65\x78\x69\x74\x79\x4C\x65\x76\x65\x6C":2,"\x70\x72\x6F\x62\x61\x62\x69\x6C\x69\x74\x79":1,"\x71\x75\x61\x6E\x74\x69\x74\x79":[_0x1e60[250],2]},{"\x6B\x65\x79":3,"\x6E\x61\x6D\x65":_0x1e60[251],"\x6E\x75\x74\x72\x69\x74\x69\x6F\x6E\x46\x61\x63\x74\x73":{"\x63\x61\x72\x62\x6F\x68\x79\x64\x72\x61\x74\x65\x73":30,"\x66\x61\x74\x73":13,"\x70\x72\x6F\x74\x65\x69\x6E\x73":16},"\x63\x6F\x6D\x70\x6C\x65\x78\x69\x74\x79\x4C\x65\x76\x65\x6C":3,"\x70\x72\x6F\x62\x61\x62\x69\x6C\x69\x74\x79":1,"\x71\x75\x61\x6E\x74\x69\x74\x79":[_0x1e60[252],1]},{"\x6B\x65\x79":8,"\x6E\x61\x6D\x65":_0x1e60[253],"\x6E\x75\x74\x72\x69\x74\x69\x6F\x6E\x46\x61\x63\x74\x73":{"\x63\x61\x72\x62\x6F\x68\x79\x64\x72\x61\x74\x65\x73":6,"\x66\x61\x74\x73":16,"\x70\x72\x6F\x74\x65\x69\x6E\x73":8},"\x63\x6F\x6D\x70\x6C\x65\x78\x69\x74\x79\x4C\x65\x76\x65\x6C":3,"\x70\x72\x6F\x62\x61\x62\x69\x6C\x69\x74\x79":1,"\x71\x75\x61\x6E\x74\x69\x74\x79":[_0x1e60[241],2]},{"\x6B\x65\x79":6,"\x6E\x61\x6D\x65":_0x1e60[254],"\x6E\x75\x74\x72\x69\x74\x69\x6F\x6E\x46\x61\x63\x74\x73":{"\x63\x61\x72\x62\x6F\x68\x79\x64\x72\x61\x74\x65\x73":12,"\x66\x61\x74\x73":8,"\x70\x72\x6F\x74\x65\x69\x6E\x73":8},"\x63\x6F\x6D\x70\x6C\x65\x78\x69\x74\x79\x4C\x65\x76\x65\x6C":3,"\x70\x72\x6F\x62\x61\x62\x69\x6C\x69\x74\x79":1,"\x71\x75\x61\x6E\x74\x69\x74\x79":[_0x1e60[255],1]}])},{"\x2E\x2F\x42\x6F\x62\x43\x6F\x6E\x73\x74\x61\x6E\x74\x73":4}],8:[function(_0xc9cex1,_0xc9cex2,_0xc9cex3){_0x1e60[0];Object[_0x1e60[2]](_0xc9cex3,_0x1e60[1],{value:true});var _0xc9cex8e=_0xc9cex3[_0x1e60[257]]= 270;var _0xc9cex8f=_0xc9cex3[_0x1e60[258]]= 70;var _0xc9cex90=_0xc9cex3[_0x1e60[259]]= 50;var _0xc9cex91=_0xc9cex3[_0x1e60[260]]= Phaser[_0x1e60[48]][_0x1e60[47]];var _0xc9cex92=_0xc9cex3[_0x1e60[261]]= 0.03;var _0xc9cex93=_0xc9cex3[_0x1e60[262]]= 0.2* Phaser[_0x1e60[48]][_0x1e60[47]];var _0xc9cex94=_0xc9cex3[_0x1e60[263]]= 0.4* Phaser[_0x1e60[48]][_0x1e60[47]]},{}],9:[function(_0xc9cex1,_0xc9cex2,_0xc9cex3){_0x1e60[0];Object[_0x1e60[2]](_0xc9cex3,_0x1e60[1],{value:true});var _0xc9cex95=_0xc9cex3[_0x1e60[264]]= 680;var _0xc9cex96=_0xc9cex3[_0x1e60[265]]= 56;var _0xc9cex97=_0xc9cex3[_0x1e60[266]]= 24;var _0xc9cex98=_0xc9cex3[_0x1e60[267]]= 24;var _0xc9cex99=_0xc9cex3[_0x1e60[268]]= 4;var _0xc9cex9a=_0xc9cex3[_0x1e60[184]]= 24;var _0xc9cex9b=_0xc9cex3[_0x1e60[269]]= 24;var _0xc9cex9c=_0xc9cex3[_0x1e60[188]]= 2;var _0xc9cex9d=_0xc9cex3[_0x1e60[270]]= 300;var _0xc9cex9e=_0xc9cex3[_0x1e60[271]]= {font:_0x1e60[272],fontSize:32,fill:_0x1e60[273],shadow:_0x1e60[274]};var _0xc9cex9f=_0xc9cex3[_0x1e60[275]]= {font:_0x1e60[272],fontSize:40,fill:_0x1e60[273],stroke:_0x1e60[276],strokeThickness:6,shadow:_0x1e60[274]};var _0xc9cexa0=_0xc9cex3[_0x1e60[277]]= {font:_0x1e60[272],fontSize:64,fill:_0x1e60[273],stroke:_0x1e60[276],strokeThickness:6,shadow:_0x1e60[274]};var _0xc9cexa1=_0xc9cex3[_0x1e60[278]]= {font:_0x1e60[272],fontSize:112,fill:_0x1e60[273],shadow:_0x1e60[279]};var _0xc9cexa2=_0xc9cex3[_0x1e60[280]]= {font:_0x1e60[272],fontSize:112,fill:_0x1e60[273],shadow:_0x1e60[274]};var _0xc9cexa3=_0xc9cex3[_0x1e60[281]]= {font:_0x1e60[272],fontSize:64,fill:_0x1e60[273],align:_0x1e60[84],shadow:_0x1e60[274]};var _0xc9cexa4=_0xc9cex3[_0x1e60[282]]= {font:_0x1e60[272],fontSize:56,fill:_0x1e60[273],stroke:_0x1e60[276],strokeThickness:3,align:_0x1e60[84],shadow:_0x1e60[274]};var _0xc9cexa5=_0xc9cex3[_0x1e60[283]]= 100;var _0xc9cexa6=_0xc9cex3[_0x1e60[65]]= 20;var _0xc9cexa7=_0xc9cex3[_0x1e60[284]]= {font:_0x1e60[272],fontSize:96,fill:_0x1e60[276],align:_0x1e60[84]};var _0xc9cexa8=_0xc9cex3[_0x1e60[285]]= {font:_0x1e60[272],fontSize:56,fill:_0x1e60[276],align:_0x1e60[84]};var _0xc9cexa9=_0xc9cex3[_0x1e60[286]]= {font:_0x1e60[272],fontSize:104,fill:_0x1e60[273],align:_0x1e60[84],shadow:_0x1e60[274],stroke:_0x1e60[276],strokeThickness:3};var _0xc9cexaa=_0xc9cex3[_0x1e60[287]]= {font:_0x1e60[272],fontSize:56,fill:_0x1e60[273],align:_0x1e60[84],shadow:_0x1e60[274],stroke:_0x1e60[276],strokeThickness:3};var _0xc9cexab=_0xc9cex3[_0x1e60[288]]= {font:_0x1e60[272],fontSize:36,fill:_0x1e60[273],align:_0x1e60[84],shadow:_0x1e60[274],stroke:_0x1e60[276],strokeThickness:3};var _0xc9cexac=_0xc9cex3[_0x1e60[289]]= {font:_0x1e60[272],fontSize:56,fill:_0x1e60[273],align:_0x1e60[84],shadow:_0x1e60[274],stroke:_0x1e60[276],strokeThickness:3};var _0xc9cexad=_0xc9cex3[_0x1e60[290]]= {font:_0x1e60[272],fontSize:80,fill:_0x1e60[273],align:_0x1e60[84],shadow:_0x1e60[274],stroke:_0x1e60[276],strokeThickness:3}},{}],10:[function(_0xc9cex1,_0xc9cex2,_0xc9cex3){_0x1e60[0];Object[_0x1e60[2]](_0xc9cex3,_0x1e60[1],{value:true});var _0xc9cexae=_0xc9cex3[_0x1e60[176]]= 4;var _0xc9cexaf=_0xc9cex3[_0x1e60[179]]= 6;var _0xc9cexb0=_0xc9cex3[_0x1e60[180]]= 10;var _0xc9cexb1=_0xc9cex3[_0x1e60[177]]= 12;var _0xc9cexb2=_0xc9cex3[_0x1e60[189]]= [];var _0xc9cexb3=0;for(var _0xc9cex8=0;_0xc9cex8< 8;_0xc9cex8++){_0xc9cexb2[_0x1e60[291]](_0xc9cexb3++ / 8)};var _0xc9cexb4=_0xc9cex3[_0x1e60[191]]= [];_0xc9cexb3= 7;for(var _0xc9cexb5=0;_0xc9cexb5< 6;_0xc9cexb5++){_0xc9cexb4[_0x1e60[291]](_0xc9cexb3++ / 6)};_0xc9cexb4[_0x1e60[292]]()},{}],11:[function(_0xc9cex1,_0xc9cex2,_0xc9cex3){_0x1e60[0];var _0xc9cexb6=_0xc9cex1(_0x1e60[293]);var _0xc9cexb7=_0xc9cex15(_0xc9cexb6);var _0xc9cexb8=_0xc9cex1(_0x1e60[294]);function _0xc9cex15(_0xc9cex16){return _0xc9cex16&& _0xc9cex16[_0x1e60[1]]?_0xc9cex16:{default:_0xc9cex16}}var _0xc9cex41= new Phaser.Game(_0xc9cexb8.CANVAS_WIDTH,_0xc9cexb8.CANVAS_HEIGHT,Phaser.AUTO);var _0xc9cexb9={"\x42\x6F\x6F\x74":_0xc9cexb7[_0x1e60[45]][_0x1e60[295]],"\x50\x72\x65\x6C\x6F\x61\x64\x65\x72":_0xc9cexb7[_0x1e60[45]][_0x1e60[296]],"\x4D\x61\x69\x6E\x4D\x65\x6E\x75":_0xc9cexb7[_0x1e60[45]][_0x1e60[148]],"\x57\x69\x6B\x69":_0xc9cexb7[_0x1e60[45]][_0x1e60[297]],"\x47\x61\x6D\x65":_0xc9cexb7[_0x1e60[45]][_0x1e60[298]],"\x43\x72\x65\x64\x69\x74\x73":_0xc9cexb7[_0x1e60[45]][_0x1e60[299]]};for(var _0xc9cexba in _0xc9cexb9){_0xc9cex41[_0x1e60[17]][_0x1e60[60]](_0xc9cexba,_0xc9cexb9[_0xc9cexba])};_0xc9cex41[_0x1e60[17]][_0x1e60[149]](_0x1e60[295])},{"\x2E\x2F\x63\x6F\x6E\x73\x74\x61\x6E\x74\x73\x2F\x43\x61\x6E\x76\x61\x73\x43\x6F\x6E\x73\x74\x61\x6E\x74\x73":5,"\x2E\x2F\x73\x74\x61\x74\x65\x73":29}],12:[function(_0xc9cex1,_0xc9cex2,_0xc9cex3){_0x1e60[0];Object[_0x1e60[2]](_0xc9cex3,_0x1e60[1],{value:true});var _0xc9cexbb={quote_types:{opening:_0x1e60[300],closing:_0x1e60[301]},main_menu_highscore:{text:_0x1e60[302]},carbohydrates_name:{text:_0x1e60[303]},fats_name:{text:_0x1e60[304]},proteins_name:{text:_0x1e60[305]},wiki_quantity:{text:_0x1e60[306]},products_apple:{text:_0x1e60[307]},products_butter:{text:_0x1e60[308]},products_strawberry_jam:{text:_0x1e60[309]},products_chicken:{text:_0x1e60[310]},products_donut:{text:_0x1e60[311]},products_banana:{text:_0x1e60[312]},products_eggs:{text:_0x1e60[313]},products_hamburger:{text:_0x1e60[314]},products_peanut_butter:{text:_0x1e60[315]},products_milk:{text:_0x1e60[316]},products_quantity_big_apple:{text:function _0xc9cex29(_0xc9cexbc){var _0xc9cexbd=_0xc9cexbc[0];if(_0xc9cexbd=== 1){return _0xc9cexbd+ _0x1e60[317]}else {if(_0xc9cexbd< 5){return _0xc9cexbd+ _0x1e60[318]}else {return _0xc9cexbd+ _0x1e60[318]}}}},products_quantity_spoon:{text:function _0xc9cex29(_0xc9cexbc){var _0xc9cexbd=_0xc9cexbc[0];if(_0xc9cexbd=== 1){return _0xc9cexbd+ _0x1e60[319]}else {if(_0xc9cexbd< 5){return _0xc9cexbd+ _0x1e60[319]}else {return _0xc9cexbd+ _0x1e60[319]}}}},products_quantity_gram:{text:function _0xc9cex29(_0xc9cexbc){var _0xc9cexbd=_0xc9cexbc[0];if(_0xc9cexbd=== 1){return _0xc9cexbd+ _0x1e60[320]}else {if(_0xc9cexbd< 5){return _0xc9cexbd+ _0x1e60[320]}else {return _0xc9cexbd+ _0x1e60[320]}}}},products_quantity_donut:{text:function _0xc9cex29(_0xc9cexbc){var _0xc9cexbd=_0xc9cexbc[0];if(_0xc9cexbd=== 1){return _0xc9cexbd+ _0x1e60[321]}else {if(_0xc9cexbd< 5){return _0xc9cexbd+ _0x1e60[322]}else {return _0xc9cexbd+ _0x1e60[322]}}}},products_quantity_banana:{text:function _0xc9cex29(_0xc9cexbc){var _0xc9cexbd=_0xc9cexbc[0];if(_0xc9cexbd=== 1){return _0xc9cexbd+ _0x1e60[323]}else {if(_0xc9cexbd< 5){return _0xc9cexbd+ _0x1e60[324]}else {return _0xc9cexbd+ _0x1e60[324]}}}},products_quantity_egg:{text:function _0xc9cex29(_0xc9cexbc){var _0xc9cexbd=_0xc9cexbc[0];if(_0xc9cexbd=== 1){return _0xc9cexbd+ _0x1e60[325]}else {if(_0xc9cexbd< 5){return _0xc9cexbd+ _0x1e60[326]}else {return _0xc9cexbd+ _0x1e60[326]}}}},products_quantity_hamburger:{text:function _0xc9cex29(_0xc9cexbc){var _0xc9cexbd=_0xc9cexbc[0];if(_0xc9cexbd=== 1){return _0xc9cexbd+ _0x1e60[327]}else {if(_0xc9cexbd< 5){return _0xc9cexbd+ _0x1e60[327]}else {return _0xc9cexbd+ _0x1e60[327]}}}},products_quantity_cup:{text:function _0xc9cex29(_0xc9cexbc){var _0xc9cexbd=_0xc9cexbc[0];if(_0xc9cexbd=== 1){return _0xc9cexbd+ _0x1e60[328]}else {if(_0xc9cexbd< 5){return _0xc9cexbd+ _0x1e60[329]}else {return _0xc9cexbd+ _0x1e60[329]}}}},tutorial_step_0:{text:_0x1e60[330]},tutorial_step_1:{text:_0x1e60[331]},tutorial_step_2:{text:_0x1e60[332]},tutorial_step_4:{text:_0x1e60[333]},tutorial_step_5:{text:_0x1e60[334]},game_health:{text:_0x1e60[335]},game_score:{text:_0x1e60[336]},game_paused:{text:_0x1e60[337]},game_level_up:{text:_0x1e60[338]},game_over:{text:_0x1e60[339]},game_over_text:{text:function _0xc9cex29(_0xc9cexbc){var _0xc9cexbe=function _0xc9cexbe(_0xc9cexbf){return _0xc9cexbf> 5?_0x1e60[72]:_0x1e60[340]};return _0x1e60[341]+ Math[_0x1e60[342]](_0xc9cexbc[0])+ _0x1e60[343]+ _0xc9cexbe(_0xc9cexbc[0])+ _0x1e60[344]+ _0xc9cexbc[1]+ _0x1e60[345]}},game_deathtype_dangerous_nutrition_style:{text:_0x1e60[346]},credits_title:{text:_0x1e60[347]},credits_code:{text:_0x1e60[348]},credits_graphics:{text:_0x1e60[349]},credits_sound:{text:_0x1e60[350]},credits_translators:{text:_0x1e60[351]},credits_lang_de:{text:_0x1e60[352]},credits_by:{text:_0x1e60[353]}};_0xc9cex3[_0x1e60[45]]= _0xc9cexbb},{}],13:[function(_0xc9cex1,_0xc9cex2,_0xc9cex3){_0x1e60[0];Object[_0x1e60[2]](_0xc9cex3,_0x1e60[1],{value:true});var _0xc9cexc0={quote_types:{opening:_0x1e60[354],closing:_0x1e60[354]},main_menu_highscore:{text:_0x1e60[355]},carbohydrates_name:{text:_0x1e60[144]},fats_name:{text:_0x1e60[146]},proteins_name:{text:_0x1e60[166]},wiki_quantity:{text:_0x1e60[356]},products_apple:{text:_0x1e60[357]},products_butter:{text:_0x1e60[358]},products_strawberry_jam:{text:_0x1e60[359]},products_chicken:{text:_0x1e60[360]},products_donut:{text:_0x1e60[361]},products_banana:{text:_0x1e60[362]},products_eggs:{text:_0x1e60[363]},products_hamburger:{text:_0x1e60[364]},products_peanut_butter:{text:_0x1e60[365]},products_milk:{text:_0x1e60[366]},products_quantity_big_apple:{text:function _0xc9cex29(_0xc9cexbc){var _0xc9cexbd=_0xc9cexbc[0];if(_0xc9cexbd=== 1){return _0xc9cexbd+ _0x1e60[367]}else {return _0xc9cexbd+ _0x1e60[368]}}},products_quantity_spoon:{text:function _0xc9cex29(_0xc9cexbc){var _0xc9cexbd=_0xc9cexbc[0];if(_0xc9cexbd=== 1){return _0xc9cexbd+ _0x1e60[369]}else {return _0xc9cexbd+ _0x1e60[370]}}},products_quantity_gram:{text:function _0xc9cex29(_0xc9cexbc){var _0xc9cexbd=_0xc9cexbc[0];if(_0xc9cexbd=== 1){return _0xc9cexbd+ _0x1e60[371]}else {return _0xc9cexbd+ _0x1e60[372]}}},products_quantity_donut:{text:function _0xc9cex29(_0xc9cexbc){var _0xc9cexbd=_0xc9cexbc[0];if(_0xc9cexbd=== 1){return _0xc9cexbd+ _0x1e60[373]}else {return _0xc9cexbd+ _0x1e60[374]}}},products_quantity_banana:{text:function _0xc9cex29(_0xc9cexbc){var _0xc9cexbd=_0xc9cexbc[0];if(_0xc9cexbd=== 1){return _0xc9cexbd+ _0x1e60[375]}else {return _0xc9cexbd+ _0x1e60[376]}}},products_quantity_egg:{text:function _0xc9cex29(_0xc9cexbc){var _0xc9cexbd=_0xc9cexbc[0];if(_0xc9cexbd=== 1){return _0xc9cexbd+ _0x1e60[377]}else {return _0xc9cexbd+ _0x1e60[378]}}},products_quantity_hamburger:{text:function _0xc9cex29(_0xc9cexbc){var _0xc9cexbd=_0xc9cexbc[0];if(_0xc9cexbd=== 1){return _0xc9cexbd+ _0x1e60[379]}else {return _0xc9cexbd+ _0x1e60[380]}}},products_quantity_cup:{text:function _0xc9cex29(_0xc9cexbc){var _0xc9cexbd=_0xc9cexbc[0];if(_0xc9cexbd=== 1){return _0xc9cexbd+ _0x1e60[381]}else {return _0xc9cexbd+ _0x1e60[382]}}},tutorial_step_0:{text:_0x1e60[383]},tutorial_step_1:{text:_0x1e60[384]},tutorial_step_2:{text:_0x1e60[385]},tutorial_step_3:{text:_0x1e60[386]},tutorial_step_4:{text:_0x1e60[387]},tutorial_step_5:{text:_0x1e60[388]},game_health:{text:_0x1e60[389]},game_score:{text:_0x1e60[390]},game_paused:{text:_0x1e60[391]},game_level_up:{text:_0x1e60[392]},game_over:{text:_0x1e60[393]},game_over_text:{text:function _0xc9cex29(_0xc9cexbc){var _0xc9cexbe=function _0xc9cexbe(_0xc9cexbf){return _0xc9cexbf=== 1?_0x1e60[141]:_0x1e60[394]};return _0x1e60[395]+ Math[_0x1e60[342]](_0xc9cexbc[0])+ _0x1e60[396]+ _0xc9cexbe(_0xc9cexbc[0])+ _0x1e60[397]+ _0xc9cexbc[1]}},game_deathtype_dangerous_nutrition_style:{text:_0x1e60[398]},credits_title:{text:_0x1e60[299]},credits_code:{text:_0x1e60[399]},credits_graphics:{text:_0x1e60[400]},credits_sound:{text:_0x1e60[401]},credits_translators:{text:_0x1e60[402]},credits_lang_de:{text:_0x1e60[403]},credits_by:{text:_0x1e60[404]}};_0xc9cex3[_0x1e60[45]]= _0xc9cexc0},{}],14:[function(_0xc9cex1,_0xc9cex2,_0xc9cex3){_0x1e60[0];Object[_0x1e60[2]](_0xc9cex3,_0x1e60[1],{value:true});var _0xc9cexc1=_0xc9cex1(_0x1e60[405]);var _0xc9cexc2=_0xc9cex15(_0xc9cexc1);var _0xc9cexc3=_0xc9cex1(_0x1e60[406]);var _0xc9cexc4=_0xc9cex15(_0xc9cexc3);var _0xc9cexc5=_0xc9cex1(_0x1e60[407]);var _0xc9cexc6=_0xc9cex15(_0xc9cexc5);function _0xc9cex15(_0xc9cex16){return _0xc9cex16&& _0xc9cex16[_0x1e60[1]]?_0xc9cex16:{default:_0xc9cex16}}var _0xc9cexc7={en_gb:_0xc9cexc2[_0x1e60[45]],pl_pl:_0xc9cexc4[_0x1e60[45]],de_de:_0xc9cexc6[_0x1e60[45]]};_0xc9cex3[_0x1e60[45]]= _0xc9cexc7},{"\x2E\x2F\x64\x65\x5F\x64\x65\x2E\x6A\x73":12,"\x2E\x2F\x65\x6E\x5F\x67\x62\x2E\x6A\x73":13,"\x2E\x2F\x70\x6C\x5F\x70\x6C\x2E\x6A\x73":15}],15:[function(_0xc9cex1,_0xc9cex2,_0xc9cex3){_0x1e60[0];Object[_0x1e60[2]](_0xc9cex3,_0x1e60[1],{value:true});var _0xc9cexc8={quote_types:{opening:_0x1e60[300],closing:_0x1e60[301]},main_menu_highscore:{text:_0x1e60[408]},carbohydrates_name:{text:_0x1e60[409]},fats_name:{text:_0x1e60[410]},proteins_name:{text:_0x1e60[411]},wiki_quantity:{text:_0x1e60[412]},products_apple:{text:_0x1e60[413]},products_butter:{text:_0x1e60[414]},products_strawberry_jam:{text:_0x1e60[415]},products_chicken:{text:_0x1e60[416]},products_donut:{text:_0x1e60[361]},products_banana:{text:_0x1e60[417]},products_eggs:{text:_0x1e60[418]},products_hamburger:{text:_0x1e60[364]},products_peanut_butter:{text:_0x1e60[419]},products_milk:{text:_0x1e60[420]},products_quantity_big_apple:{text:function _0xc9cex29(_0xc9cexbc){var _0xc9cexbd=_0xc9cexbc[0];if(_0xc9cexbd=== 1){return _0xc9cexbd+ _0x1e60[421]}else {if(_0xc9cexbd< 5){return _0xc9cexbd+ _0x1e60[422]}else {return _0xc9cexbd+ _0x1e60[423]}}}},products_quantity_spoon:{text:function _0xc9cex29(_0xc9cexbc){var _0xc9cexbd=_0xc9cexbc[0];if(_0xc9cexbd=== 1){return _0xc9cexbd+ _0x1e60[424]}else {if(_0xc9cexbd< 5){return _0xc9cexbd+ _0x1e60[425]}else {return _0xc9cexbd+ _0x1e60[426]}}}},products_quantity_gram:{text:function _0xc9cex29(_0xc9cexbc){var _0xc9cexbd=_0xc9cexbc[0];if(_0xc9cexbd=== 1){return _0xc9cexbd+ _0x1e60[371]}else {if(_0xc9cexbd< 5){return _0xc9cexbd+ _0x1e60[427]}else {return _0xc9cexbd+ _0x1e60[428]}}}},products_quantity_donut:{text:function _0xc9cex29(_0xc9cexbc){var _0xc9cexbd=_0xc9cexbc[0];if(_0xc9cexbd=== 1){return _0xc9cexbd+ _0x1e60[373]}else {if(_0xc9cexbd< 5){return _0xc9cexbd+ _0x1e60[429]}else {return _0xc9cexbd+ _0x1e60[430]}}}},products_quantity_banana:{text:function _0xc9cex29(_0xc9cexbc){var _0xc9cexbd=_0xc9cexbc[0];if(_0xc9cexbd=== 1){return _0xc9cexbd+ _0x1e60[431]}else {if(_0xc9cexbd< 5){return _0xc9cexbd+ _0x1e60[432]}else {return _0xc9cexbd+ _0x1e60[433]}}}},products_quantity_egg:{text:function _0xc9cex29(_0xc9cexbc){var _0xc9cexbd=_0xc9cexbc[0];if(_0xc9cexbd=== 1){return _0xc9cexbd+ _0x1e60[434]}else {if(_0xc9cexbd< 5){return _0xc9cexbd+ _0x1e60[435]}else {return _0xc9cexbd+ _0x1e60[436]}}}},products_quantity_hamburger:{text:function _0xc9cex29(_0xc9cexbc){var _0xc9cexbd=_0xc9cexbc[0];if(_0xc9cexbd=== 1){return _0xc9cexbd+ _0x1e60[379]}else {if(_0xc9cexbd< 5){return _0xc9cexbd+ _0x1e60[437]}else {return _0xc9cexbd+ _0x1e60[438]}}}},products_quantity_cup:{text:function _0xc9cex29(_0xc9cexbc){var _0xc9cexbd=_0xc9cexbc[0];if(_0xc9cexbd=== 1){return _0xc9cexbd+ _0x1e60[439]}else {if(_0xc9cexbd< 5){return _0xc9cexbd+ _0x1e60[440]}else {return _0xc9cexbd+ _0x1e60[441]}}}},tutorial_step_0:{text:_0x1e60[442]},tutorial_step_1:{text:_0x1e60[443]},tutorial_step_2:{text:_0x1e60[444]},tutorial_step_3:{text:_0x1e60[445]},tutorial_step_4:{text:_0x1e60[446]},tutorial_step_5:{text:_0x1e60[447]},game_health:{text:_0x1e60[448]},game_score:{text:_0x1e60[449]},game_paused:{text:_0x1e60[450]},game_level_up:{text:_0x1e60[451]},game_over:{text:_0x1e60[452]},game_over_text:{text:function _0xc9cex29(_0xc9cexbc){var _0xc9cexbe=function _0xc9cexbe(_0xc9cexbf){return _0xc9cexbf> 5?_0x1e60[72]:_0x1e60[340]};return _0x1e60[453]+ Math[_0x1e60[342]](_0xc9cexbc[0])+ _0x1e60[454]+ _0xc9cexbe(_0xc9cexbc[0])+ _0x1e60[455]+ _0xc9cexbc[1]}},game_deathtype_dangerous_nutrition_style:{text:_0x1e60[456]},credits_title:{text:_0x1e60[457]},credits_code:{text:_0x1e60[458]},credits_graphics:{text:_0x1e60[459]},credits_sound:{text:_0x1e60[460]},credits_translators:{text:_0x1e60[461]},credits_lang_de:{text:_0x1e60[462]},credits_by:{text:_0x1e60[463]}};_0xc9cex3[_0x1e60[45]]= _0xc9cexc8},{}],16:[function(_0xc9cex1,_0xc9cex2,_0xc9cex3){_0x1e60[0];Object[_0x1e60[2]](_0xc9cex3,_0x1e60[1],{value:true});var _0xc9cex4=function(){function _0xc9cex5(_0xc9cex6,_0xc9cex7){for(var _0xc9cex8=0;_0xc9cex8< _0xc9cex7[_0x1e60[3]];_0xc9cex8++){var _0xc9cex9=_0xc9cex7[_0xc9cex8];_0xc9cex9[_0x1e60[4]]= _0xc9cex9[_0x1e60[4]]|| false;_0xc9cex9[_0x1e60[5]]= true;if(_0x1e60[6] in  _0xc9cex9){_0xc9cex9[_0x1e60[7]]= true};Object[_0x1e60[2]](_0xc9cex6,_0xc9cex9[_0x1e60[8]],_0xc9cex9)}}return function(_0xc9cexa,_0xc9cexb,_0xc9cexc){if(_0xc9cexb){_0xc9cex5(_0xc9cexa[_0x1e60[9]],_0xc9cexb)};if(_0xc9cexc){_0xc9cex5(_0xc9cexa,_0xc9cexc)};return _0xc9cexa}}();var _0xc9cexc9=_0xc9cex1(_0x1e60[464]);function _0xc9cex17(_0xc9cex18,_0xc9cexa){if(!(_0xc9cex18 instanceof  _0xc9cexa)){throw  new TypeError(_0x1e60[16])}}var _0xc9cexca=function(){function _0xc9cexca(_0xc9cex41,_0xc9cexcb){_0xc9cex17(this,_0xc9cexca);this[_0x1e60[465]]= _0xc9cexcb;this[_0x1e60[466]]= _0xc9cex41[_0x1e60[52]][_0x1e60[51]][_0x1e60[50]](_0xc9cexc9.ADDITIONAL_FOOD_SPAWN_INTERVAL,this[_0x1e60[467]],this);this[_0x1e60[468]]=  new Phaser.Signal()}_0xc9cex4(_0xc9cexca,[{key:_0x1e60[467],value:function _0xc9cexcc(){for(var _0xc9cexcd in this[_0x1e60[465]]){if(this[_0x1e60[465]][_0xc9cexcd]=== false){this[_0x1e60[468]][_0x1e60[125]](_0xc9cexcd)};this[_0x1e60[465]][_0xc9cexcd]= false}}}]);return _0xc9cexca}();_0xc9cex3[_0x1e60[45]]= _0xc9cexca},{"\x2E\x2E\x2F\x63\x6F\x6E\x73\x74\x61\x6E\x74\x73\x2F\x46\x6F\x6F\x64\x43\x6F\x6E\x73\x74\x61\x6E\x74\x73":7}],17:[function(_0xc9cex1,_0xc9cex2,_0xc9cex3){_0x1e60[0];Object[_0x1e60[2]](_0xc9cex3,_0x1e60[1],{value:true});var _0xc9cex4=function(){function _0xc9cex5(_0xc9cex6,_0xc9cex7){for(var _0xc9cex8=0;_0xc9cex8< _0xc9cex7[_0x1e60[3]];_0xc9cex8++){var _0xc9cex9=_0xc9cex7[_0xc9cex8];_0xc9cex9[_0x1e60[4]]= _0xc9cex9[_0x1e60[4]]|| false;_0xc9cex9[_0x1e60[5]]= true;if(_0x1e60[6] in  _0xc9cex9){_0xc9cex9[_0x1e60[7]]= true};Object[_0x1e60[2]](_0xc9cex6,_0xc9cex9[_0x1e60[8]],_0xc9cex9)}}return function(_0xc9cexa,_0xc9cexb,_0xc9cexc){if(_0xc9cexb){_0xc9cex5(_0xc9cexa[_0x1e60[9]],_0xc9cexb)};if(_0xc9cexc){_0xc9cex5(_0xc9cexa,_0xc9cexc)};return _0xc9cexa}}();var _0xc9cex3e=_0xc9cex1(_0x1e60[158]);var _0xc9cex7a=_0xc9cex1(_0x1e60[469]);var _0xc9cex3d=_0xc9cex1(_0x1e60[157]);var _0xc9cex3f=_0xc9cex1(_0x1e60[159]);var _0xc9cexce=_0xc9cex1(_0x1e60[470]);function _0xc9cex17(_0xc9cex18,_0xc9cexa){if(!(_0xc9cex18 instanceof  _0xc9cexa)){throw  new TypeError(_0x1e60[16])}}function _0xc9cex66(_0xc9cex67,_0xc9cex68){if(!_0xc9cex67){throw  new ReferenceError(_0x1e60[197])};return _0xc9cex68&& ( typeof _0xc9cex68=== _0x1e60[198]||  typeof _0xc9cex68=== _0x1e60[199])?_0xc9cex68:_0xc9cex67}function _0xc9cex69(_0xc9cex6a,_0xc9cex6b){if( typeof _0xc9cex6b!== _0x1e60[199]&& _0xc9cex6b!== null){throw  new TypeError(_0x1e60[200]+  typeof _0xc9cex6b)};_0xc9cex6a[_0x1e60[9]]= Object[_0x1e60[201]](_0xc9cex6b&& _0xc9cex6b[_0x1e60[9]],{constructor:{value:_0xc9cex6a,enumerable:false,writable:true,configurable:true}});if(_0xc9cex6b){Object[_0x1e60[202]]?Object[_0x1e60[202]](_0xc9cex6a,_0xc9cex6b):_0xc9cex6a[_0x1e60[203]]= _0xc9cex6b}}var _0xc9cex1b=function(_0xc9cexcf){_0xc9cex69(_0xc9cex1b,_0xc9cexcf);function _0xc9cex1b(_0xc9cex41,_0xc9cex6e,_0xc9cex6f,_0xc9cexd0,_0xc9cex1c){_0xc9cex17(this,_0xc9cex1b);var _0xc9cex26=_0xc9cex66(this,(_0xc9cex1b[_0x1e60[203]]|| Object[_0x1e60[204]](_0xc9cex1b))[_0x1e60[129]](this,_0xc9cex41,_0xc9cex6e,_0xc9cex6f,_0xc9cexd0));_0xc9cex26[_0x1e60[20]]= _0xc9cex1c;_0xc9cex26[_0x1e60[62]][_0x1e60[61]](0.5,1);_0xc9cex26[_0x1e60[63]][_0x1e60[61]](_0xc9cex7a.BOB_SCALE);_0xc9cex26[_0x1e60[18]][_0x1e60[42]][_0x1e60[60]](_0xc9cex26);_0xc9cex26[_0x1e60[29]]= 0;_0xc9cex26[_0x1e60[115]]=  new Phaser.Signal();_0xc9cex26[_0x1e60[471]]=  new Phaser.Signal();return _0xc9cex26}_0xc9cex4(_0xc9cex1b,[{key:_0x1e60[472],value:function _0xc9cexd1(){var _0xc9cexd2=this[_0x1e60[20]][_0x1e60[145]];var _0xc9cexd3=[(0,_0xc9cex3d[_0x1e60[175]])(_0xc9cexd2[_0x1e60[144]],_0xc9cex3e.GOOD_AMOUNT_OF_CARBOHYDRATES),(0,_0xc9cex3d[_0x1e60[175]])(_0xc9cexd2[_0x1e60[146]],_0xc9cex3e.GOOD_AMOUNT_OF_FATS),(0,_0xc9cex3d[_0x1e60[175]])(_0xc9cexd2[_0x1e60[166]],_0xc9cex3e.GOOD_AMOUNT_OF_PROTEINS)];var _0xc9cex23=0;var _0xc9cexd4=[{name:_0x1e60[144],makeHigher:false,makeSuperHigher:false},{name:_0x1e60[146],makeHigher:false,makeSuperHigher:false},{name:_0x1e60[166],makeHigher:false,makeSuperHigher:false}];(0,_0xc9cexce[_0x1e60[473]])();var _0xc9cexd5=false;var _0xc9cexd6=false;var _0xc9cexd7=false;var _0xc9cexd8=false;_0xc9cexd3[_0x1e60[194]](function(_0xc9cexd9,_0xc9cexda){if(_0xc9cexd9<= _0xc9cex3f[_0x1e60[179]]){_0xc9cexd6= true;_0xc9cexd4[_0xc9cexda][_0x1e60[474]]= true};if(_0xc9cexd9<= _0xc9cex3f[_0x1e60[176]]){_0xc9cexd5= true;_0xc9cexd4[_0xc9cexda][_0x1e60[475]]= true};if(_0xc9cexd9>= _0xc9cex3f[_0x1e60[180]]){_0xc9cexd7= true};if(_0xc9cexd9>= _0xc9cex3f[_0x1e60[177]]){_0xc9cexd8= true}});_0xc9cexd4[_0x1e60[194]](function(_0xc9cexdb){if(_0xc9cexdb[_0x1e60[474]]=== true){(0,_0xc9cexce[_0x1e60[477]])(_0xc9cexdb[_0x1e60[476]],3)}else {if(_0xc9cexdb[_0x1e60[475]]=== true){(0,_0xc9cexce[_0x1e60[477]])(_0xc9cexdb[_0x1e60[476]],5)}}});this[_0x1e60[471]][_0x1e60[125]](_0xc9cexd6|| _0xc9cexd7,_0xc9cexd5|| _0xc9cexd8);if(!_0xc9cexd5&&  !_0xc9cexd6 &&  !_0xc9cexd7 &&  !_0xc9cexd8){_0xc9cex23++};var _0xc9cex52=8;if(_0xc9cexd7){_0xc9cex52= Math[_0x1e60[181]][_0x1e60[209]](null,_0xc9cexd3)}else {if(_0xc9cexd6){_0xc9cexd3[_0x1e60[194]](function(_0xc9cexd9){if(_0xc9cexd9< 8){_0xc9cex52= Math[_0x1e60[182]](_0xc9cex52,_0xc9cexd9)}})}};this[_0x1e60[178]]= _0xc9cex52;if(this[_0x1e60[29]]!== _0xc9cex23){this[_0x1e60[29]]= _0xc9cex23;this[_0x1e60[115]][_0x1e60[125]](_0xc9cex23)}}}]);return _0xc9cex1b}(Phaser.Sprite);_0xc9cex3[_0x1e60[45]]= _0xc9cex1b},{"\x2E\x2E\x2F\x63\x6F\x6E\x73\x74\x61\x6E\x74\x73\x2F\x42\x6F\x62\x43\x6F\x6E\x73\x74\x61\x6E\x74\x73":4,"\x2E\x2E\x2F\x63\x6F\x6E\x73\x74\x61\x6E\x74\x73\x2F\x4E\x75\x74\x72\x69\x74\x69\x6F\x6E\x43\x6F\x6E\x73\x74\x61\x6E\x74\x73":8,"\x2E\x2E\x2F\x63\x6F\x6E\x73\x74\x61\x6E\x74\x73\x2F\x57\x65\x69\x67\x68\x74\x42\x72\x65\x61\x6B\x70\x6F\x69\x6E\x74\x73":10,"\x2E\x2E\x2F\x6F\x62\x6A\x65\x63\x74\x73\x2F\x46\x6F\x6F\x64\x44\x61\x74\x61\x4D\x61\x6E\x61\x67\x65\x72":19,"\x2E\x2E\x2F\x75\x74\x69\x6C\x73\x2F\x4E\x75\x74\x72\x69\x74\x69\x6F\x6E\x55\x74\x69\x6C\x73":33}],18:[function(_0xc9cex1,_0xc9cex2,_0xc9cex3){_0x1e60[0];Object[_0x1e60[2]](_0xc9cex3,_0x1e60[1],{value:true});var _0xc9cex4=function(){function _0xc9cex5(_0xc9cex6,_0xc9cex7){for(var _0xc9cex8=0;_0xc9cex8< _0xc9cex7[_0x1e60[3]];_0xc9cex8++){var _0xc9cex9=_0xc9cex7[_0xc9cex8];_0xc9cex9[_0x1e60[4]]= _0xc9cex9[_0x1e60[4]]|| false;_0xc9cex9[_0x1e60[5]]= true;if(_0x1e60[6] in  _0xc9cex9){_0xc9cex9[_0x1e60[7]]= true};Object[_0x1e60[2]](_0xc9cex6,_0xc9cex9[_0x1e60[8]],_0xc9cex9)}}return function(_0xc9cexa,_0xc9cexb,_0xc9cexc){if(_0xc9cexb){_0xc9cex5(_0xc9cexa[_0x1e60[9]],_0xc9cexb)};if(_0xc9cexc){_0xc9cex5(_0xc9cexa,_0xc9cexc)};return _0xc9cexa}}();var _0xc9cexd=_0xc9cex1(_0x1e60[10]);var _0xc9cexe=_0xc9cex1(_0x1e60[11]);var _0xc9cexf=_0xc9cex15(_0xc9cexe);var _0xc9cexc9=_0xc9cex1(_0x1e60[464]);function _0xc9cex15(_0xc9cex16){return _0xc9cex16&& _0xc9cex16[_0x1e60[1]]?_0xc9cex16:{default:_0xc9cex16}}function _0xc9cex17(_0xc9cex18,_0xc9cexa){if(!(_0xc9cex18 instanceof  _0xc9cexa)){throw  new TypeError(_0x1e60[16])}}function _0xc9cex66(_0xc9cex67,_0xc9cex68){if(!_0xc9cex67){throw  new ReferenceError(_0x1e60[197])};return _0xc9cex68&& ( typeof _0xc9cex68=== _0x1e60[198]||  typeof _0xc9cex68=== _0x1e60[199])?_0xc9cex68:_0xc9cex67}function _0xc9cex69(_0xc9cex6a,_0xc9cex6b){if( typeof _0xc9cex6b!== _0x1e60[199]&& _0xc9cex6b!== null){throw  new TypeError(_0x1e60[200]+  typeof _0xc9cex6b)};_0xc9cex6a[_0x1e60[9]]= Object[_0x1e60[201]](_0xc9cex6b&& _0xc9cex6b[_0x1e60[9]],{constructor:{value:_0xc9cex6a,enumerable:false,writable:true,configurable:true}});if(_0xc9cex6b){Object[_0x1e60[202]]?Object[_0x1e60[202]](_0xc9cex6a,_0xc9cex6b):_0xc9cex6a[_0x1e60[203]]= _0xc9cex6b}}var _0xc9cexdc=function(_0xc9cexcf){_0xc9cex69(_0xc9cexdc,_0xc9cexcf);function _0xc9cexdc(_0xc9cex41,_0xc9cex6e,_0xc9cex6f,_0xc9cex43,_0xc9cexdd,_0xc9cexde,_0xc9cexdf){_0xc9cex17(this,_0xc9cexdc);var _0xc9cex26=_0xc9cex66(this,(_0xc9cexdc[_0x1e60[203]]|| Object[_0x1e60[204]](_0xc9cexdc))[_0x1e60[129]](this,_0xc9cex41,_0xc9cex6e,_0xc9cex6f,(0,_0xc9cexd[_0x1e60[40]])(_0xc9cexf[_0x1e60[45]][_0x1e60[479]](_0x1e60[478])),_0xc9cex43));_0xc9cex26[_0x1e60[480]]= _0xc9cexdf;_0xc9cex26[_0x1e60[481]]= _0xc9cexdd;_0xc9cex26[_0x1e60[482]]= _0xc9cexde;_0xc9cex26[_0x1e60[63]][_0x1e60[61]](_0xc9cexc9.FOOD_SCALE);_0xc9cex26[_0x1e60[62]][_0x1e60[61]](0.5,0.5);_0xc9cex26[_0x1e60[483]]=  new Phaser.Circle()[_0x1e60[61]](0,0,_0xc9cexc9.FOOD_HIT_AREA_DIAMETER);_0xc9cex26[_0x1e60[18]][_0x1e60[485]][_0x1e60[484]](_0xc9cex26);_0xc9cex26[_0x1e60[486]]= _0xc9cex6e> _0xc9cex26[_0x1e60[18]][_0x1e60[42]][_0x1e60[205]]?-1:1;_0xc9cex26[_0x1e60[487]]= _0xc9cex6f> _0xc9cex26[_0x1e60[18]][_0x1e60[42]][_0x1e60[206]]?-1:1;_0xc9cex26[_0x1e60[488]]= _0xc9cex26[_0x1e60[486]]* _0xc9cex26[_0x1e60[18]][_0x1e60[490]][_0x1e60[489]]((0,_0xc9cexd[_0x1e60[40]])(_0xc9cexc9.MIN_FOOD_VELOCITY),(0,_0xc9cexd[_0x1e60[40]])(_0xc9cexc9.MAX_FOOD_VELOCITY));_0xc9cex26[_0x1e60[492]][_0x1e60[491]][_0x1e60[56]]= _0xc9cex26[_0x1e60[488]];_0xc9cex26[_0x1e60[493]]= _0xc9cex26[_0x1e60[487]]* _0xc9cex26[_0x1e60[18]][_0x1e60[490]][_0x1e60[489]](Math[_0x1e60[181]]((0,_0xc9cexd[_0x1e60[40]])(_0xc9cexc9.MIN_FOOD_VELOCITY),Math[_0x1e60[494]](_0xc9cex26[_0x1e60[488]])- 10),Math[_0x1e60[182]](Math[_0x1e60[494]](_0xc9cex26[_0x1e60[488]])+ 10,(0,_0xc9cexd[_0x1e60[40]])(_0xc9cexc9.MAX_FOOD_VELOCITY)));_0xc9cex26[_0x1e60[492]][_0x1e60[491]][_0x1e60[72]]= _0xc9cex26[_0x1e60[493]];_0xc9cex26[_0x1e60[82]]= true;_0xc9cex26[_0x1e60[51]][_0x1e60[496]][_0x1e60[60]](_0xc9cex26[_0x1e60[495]],_0xc9cex26);_0xc9cex26[_0x1e60[51]][_0x1e60[501]][_0x1e60[60]](function(){_0xc9cex41[_0x1e60[499]][_0x1e60[498]][_0x1e60[497]]= _0x1e60[500]});_0xc9cex26[_0x1e60[51]][_0x1e60[502]][_0x1e60[60]](function(){_0xc9cex41[_0x1e60[499]][_0x1e60[498]][_0x1e60[497]]= _0x1e60[45]});_0xc9cex26[_0x1e60[503]]= false;_0xc9cex26[_0x1e60[504]]= true;_0xc9cex26[_0x1e60[51]][_0x1e60[505]][_0x1e60[60]](function(){if(_0xc9cex26[_0x1e60[503]]){_0xc9cex26[_0x1e60[480]](_0xc9cex26,false)}});_0xc9cex26[_0x1e60[18]][_0x1e60[42]][_0x1e60[60]](_0xc9cex26);return _0xc9cex26}_0xc9cex4(_0xc9cexdc,[{key:_0x1e60[506],value:function _0xc9cexe0(){if(!this[_0x1e60[503]]&& this[_0x1e60[18]][_0x1e60[42]][_0x1e60[508]][_0x1e60[507]](this._bounds)){this[_0x1e60[503]]= true}}},{key:_0x1e60[509],value:function _0xc9cexe1(_0xc9cexe2){this[_0x1e60[492]][_0x1e60[491]][_0x1e60[56]]+= _0xc9cexe2* this[_0x1e60[486]];this[_0x1e60[492]][_0x1e60[491]][_0x1e60[72]]+= _0xc9cexe2* this[_0x1e60[487]]}},{key:_0x1e60[495],value:function _0xc9cexe3(){var _0xc9cex28=this;var _0xc9cex34=this[_0x1e60[18]][_0x1e60[60]][_0x1e60[76]](this);var _0xc9cexe4=this[_0x1e60[18]][_0x1e60[60]][_0x1e60[76]](this[_0x1e60[63]]);var _0xc9cexe5=this[_0x1e60[18]][_0x1e60[60]][_0x1e60[76]](this);_0xc9cex34[_0x1e60[75]]({x:this[_0x1e60[18]][_0x1e60[42]][_0x1e60[205]]- (0,_0xc9cexd[_0x1e60[40]])(_0xc9cexc9.FOOD_TWEEN_X),y:this[_0x1e60[18]][_0x1e60[42]][_0x1e60[41]]- (0,_0xc9cexd[_0x1e60[40]])(_0xc9cexc9.FOOD_TWEEN_Y)},_0xc9cexc9.FOOD_TWEEN_SPEED,Phaser[_0x1e60[74]][_0x1e60[120]].None,true);_0xc9cexe4[_0x1e60[75]]({x:(0,_0xc9cexd[_0x1e60[40]])(_0xc9cexc9.FOOD_TWEEN_SCALE),y:(0,_0xc9cexd[_0x1e60[40]])(_0xc9cexc9.FOOD_TWEEN_SCALE)},_0xc9cexc9.FOOD_TWEEN_SPEED,Phaser[_0x1e60[74]][_0x1e60[120]].None,true);_0xc9cexe5[_0x1e60[75]]({angle:360},_0xc9cexc9.FOOD_TWEEN_SPEED,Phaser[_0x1e60[74]][_0x1e60[120]].None,true);_0xc9cex34[_0x1e60[121]][_0x1e60[60]](function(){_0xc9cex28[_0x1e60[482]][_0x1e60[125]](_0xc9cex28[_0x1e60[481]]);_0xc9cex28[_0x1e60[480]](_0xc9cex28,true)})}}]);return _0xc9cexdc}(Phaser.Sprite);_0xc9cex3[_0x1e60[45]]= _0xc9cexdc},{"\x2E\x2E\x2F\x63\x6F\x6E\x73\x74\x61\x6E\x74\x73\x2F\x46\x6F\x6F\x64\x43\x6F\x6E\x73\x74\x61\x6E\x74\x73":7,"\x2E\x2E\x2F\x75\x74\x69\x6C\x73\x2F\x53\x63\x61\x6C\x65\x4D\x61\x6E\x61\x67\x65\x72":34,"\x2E\x2E\x2F\x75\x74\x69\x6C\x73\x2F\x69\x31\x38\x6E":36}],19:[function(_0xc9cex1,_0xc9cex2,_0xc9cex3){_0x1e60[0];Object[_0x1e60[2]](_0xc9cex3,_0x1e60[1],{value:true});_0xc9cex3[_0x1e60[510]]= _0xc9cex3[_0x1e60[511]]= _0xc9cex3[_0x1e60[512]]= _0xc9cex3[_0x1e60[513]]= undefined;_0xc9cex3[_0x1e60[514]]= _0xc9cexe9;_0xc9cex3[_0x1e60[477]]= _0xc9cexf1;_0xc9cex3[_0x1e60[473]]= _0xc9cexf6;var _0xc9cexc9=_0xc9cex1(_0x1e60[464]);var _0xc9cex3d=_0xc9cex1(_0x1e60[157]);var _0xc9cexdd=void(0);var _0xc9cexe6=void(0);var _0xc9cexe7=void(0);var _0xc9cexe8=void(0);function _0xc9cexe9(){_0xc9cexdd= JSON[_0x1e60[518]](JSON[_0x1e60[517]](_0xc9cexc9.FOOD_DATA))[_0x1e60[516]](function(_0xc9cexea,_0xc9cexeb){return _0xc9cexea[_0x1e60[515]]> _0xc9cexeb[_0x1e60[515]]});_0xc9cexe6= _0xc9cexdd[_0x1e60[3]]- 1- _0xc9cexdd[_0x1e60[292]]()[_0x1e60[519]](function(_0xc9cexec){return _0xc9cexec[_0x1e60[515]]=== 1});_0xc9cexe7= _0xc9cexdd[_0x1e60[3]]- 1- _0xc9cexdd[_0x1e60[519]](function(_0xc9cexec){return _0xc9cexec[_0x1e60[515]]=== 2});_0xc9cexe8= _0xc9cexdd[_0x1e60[3]]- 1;_0xc9cexdd[_0x1e60[292]]()}var _0xc9cexed=_0xc9cex3[_0x1e60[513]]= function _0xc9cexed(){return _0xc9cexdd};var _0xc9cexee=_0xc9cex3[_0x1e60[512]]= function _0xc9cexee(){return _0xc9cexe6};var _0xc9cexef=_0xc9cex3[_0x1e60[511]]= function _0xc9cexef(){return _0xc9cexe7};var _0xc9cexf0=_0xc9cex3[_0x1e60[510]]= function _0xc9cexf0(){return _0xc9cexe8};function _0xc9cexf1(_0xc9cexcd,_0xc9cexf2){var _0xc9cexf3=(0,_0xc9cex3d[_0x1e60[520]])(_0xc9cexdd,_0xc9cexcd);_0xc9cexf3[_0x1e60[194]](function(_0xc9cexf4){_0xc9cexf4[_0x1e60[521]]= _0xc9cexc9[_0x1e60[218]][_0x1e60[522]](function(_0xc9cexec){return _0xc9cexec[_0x1e60[8]]=== _0xc9cexf4[_0x1e60[8]]})[_0x1e60[521]]* _0xc9cexf2});_0xc9cexdd= _0xc9cexdd[_0x1e60[523]](function(_0xc9cexec){var _0xc9cexf5=_0xc9cexf3[_0x1e60[519]](function(_0xc9cexf4){return _0xc9cexf4[_0x1e60[8]]=== _0xc9cexec[_0x1e60[8]]});if(_0xc9cexf5===  -1){return _0xc9cexec};return _0xc9cexf3[_0xc9cexf5]})}function _0xc9cexf6(){_0xc9cexdd[_0x1e60[194]](function(_0xc9cexec){_0xc9cexec[_0x1e60[521]]= _0xc9cexc9[_0x1e60[218]][_0x1e60[522]](function(_0xc9cexf7){return _0xc9cexf7[_0x1e60[8]]=== _0xc9cexec[_0x1e60[8]]})[_0x1e60[521]]})}},{"\x2E\x2E\x2F\x63\x6F\x6E\x73\x74\x61\x6E\x74\x73\x2F\x46\x6F\x6F\x64\x43\x6F\x6E\x73\x74\x61\x6E\x74\x73":7,"\x2E\x2E\x2F\x75\x74\x69\x6C\x73\x2F\x4E\x75\x74\x72\x69\x74\x69\x6F\x6E\x55\x74\x69\x6C\x73":33}],20:[function(_0xc9cex1,_0xc9cex2,_0xc9cex3){_0x1e60[0];Object[_0x1e60[2]](_0xc9cex3,_0x1e60[1],{value:true});var _0xc9cex4=function(){function _0xc9cex5(_0xc9cex6,_0xc9cex7){for(var _0xc9cex8=0;_0xc9cex8< _0xc9cex7[_0x1e60[3]];_0xc9cex8++){var _0xc9cex9=_0xc9cex7[_0xc9cex8];_0xc9cex9[_0x1e60[4]]= _0xc9cex9[_0x1e60[4]]|| false;_0xc9cex9[_0x1e60[5]]= true;if(_0x1e60[6] in  _0xc9cex9){_0xc9cex9[_0x1e60[7]]= true};Object[_0x1e60[2]](_0xc9cex6,_0xc9cex9[_0x1e60[8]],_0xc9cex9)}}return function(_0xc9cexa,_0xc9cexb,_0xc9cexc){if(_0xc9cexb){_0xc9cex5(_0xc9cexa[_0x1e60[9]],_0xc9cexb)};if(_0xc9cexc){_0xc9cex5(_0xc9cexa,_0xc9cexc)};return _0xc9cexa}}();var _0xc9cexf8=_0xc9cex1(_0x1e60[524]);var _0xc9cexf9=_0xc9cex15(_0xc9cexf8);var _0xc9cexce=_0xc9cex1(_0x1e60[525]);var _0xc9cexfa=_0xc9cex1(_0x1e60[526]);var _0xc9cexc9=_0xc9cex1(_0x1e60[464]);var _0xc9cexfb=_0xc9cex1(_0x1e60[527]);var _0xc9cex11=_0xc9cex1(_0x1e60[528]);var _0xc9cexfc=_0xc9cex1(_0x1e60[529]);var _0xc9cexfd=_0xc9cex15(_0xc9cexfc);var _0xc9cex3d=_0xc9cex1(_0x1e60[157]);function _0xc9cex15(_0xc9cex16){return _0xc9cex16&& _0xc9cex16[_0x1e60[1]]?_0xc9cex16:{default:_0xc9cex16}}function _0xc9cex17(_0xc9cex18,_0xc9cexa){if(!(_0xc9cex18 instanceof  _0xc9cexa)){throw  new TypeError(_0x1e60[16])}}function _0xc9cex66(_0xc9cex67,_0xc9cex68){if(!_0xc9cex67){throw  new ReferenceError(_0x1e60[197])};return _0xc9cex68&& ( typeof _0xc9cex68=== _0x1e60[198]||  typeof _0xc9cex68=== _0x1e60[199])?_0xc9cex68:_0xc9cex67}function _0xc9cex69(_0xc9cex6a,_0xc9cex6b){if( typeof _0xc9cex6b!== _0x1e60[199]&& _0xc9cex6b!== null){throw  new TypeError(_0x1e60[200]+  typeof _0xc9cex6b)};_0xc9cex6a[_0x1e60[9]]= Object[_0x1e60[201]](_0xc9cex6b&& _0xc9cex6b[_0x1e60[9]],{constructor:{value:_0xc9cex6a,enumerable:false,writable:true,configurable:true}});if(_0xc9cex6b){Object[_0x1e60[202]]?Object[_0x1e60[202]](_0xc9cex6a,_0xc9cex6b):_0xc9cex6a[_0x1e60[203]]= _0xc9cex6b}}var _0xc9cexfe=function(_0xc9cexff){_0xc9cex69(_0xc9cexfe,_0xc9cexff);function _0xc9cexfe(_0xc9cex41){_0xc9cex17(this,_0xc9cexfe);var _0xc9cex26=_0xc9cex66(this,(_0xc9cexfe[_0x1e60[203]]|| Object[_0x1e60[204]](_0xc9cexfe))[_0x1e60[129]](this,_0xc9cex41));_0xc9cex26[_0x1e60[530]]= _0xc9cex26[_0x1e60[18]][_0x1e60[52]][_0x1e60[51]][_0x1e60[50]](_0xc9cexc9.FOOD_SPAWN_INTERVAL,_0xc9cex26[_0x1e60[531]],_0xc9cex26);_0xc9cex26[_0x1e60[482]]=  new Phaser.Signal();_0xc9cex26[_0x1e60[532]]= _0x1e60[533];_0xc9cex26[_0x1e60[534]]= (0,_0xc9cexce[_0x1e60[512]])();_0xc9cex26[_0x1e60[535]]= _0xc9cex26[_0x1e60[18]][_0x1e60[60]][_0x1e60[537]](_0x1e60[536],0.5);_0xc9cex26[_0x1e60[535]][_0x1e60[538]]= true;_0xc9cex26[_0x1e60[465]]= {carbohydrates:false,fats:false,proteins:false};var _0xc9cex100= new _0xc9cexfd[_0x1e60[45]](_0xc9cex41,_0xc9cex26[_0x1e60[465]]);_0xc9cex100[_0x1e60[468]][_0x1e60[60]](_0xc9cex26[_0x1e60[539]],_0xc9cex26);_0xc9cex26[_0x1e60[540]]=  new Phaser.Signal();return _0xc9cex26}_0xc9cex4(_0xc9cexfe,[{key:_0x1e60[201],value:function _0xc9cex101(){this[_0x1e60[531]]()}},{key:_0x1e60[531],value:function _0xc9cex102(_0xc9cex103){if(_0xc9cex103== null){_0xc9cex103= (0,_0xc9cexfa[_0x1e60[541]])((0,_0xc9cexce[_0x1e60[513]])(),this[_0x1e60[534]]+ 1);this[_0x1e60[465]][(0,_0xc9cex3d[_0x1e60[542]])(_0xc9cex103)]= true};if(this[_0x1e60[18]][_0x1e60[543]]=== false){return};var _0xc9cex104=[_0x1e60[544],_0x1e60[545],_0x1e60[546],_0x1e60[547]];var _0xc9cex105=_0xc9cex104[Math[_0x1e60[342]](Math[_0x1e60[548]]()* 4)];var _0xc9cex6e=void(0);var _0xc9cex6f=void(0);var _0xc9cex106=this[_0x1e60[18]][_0x1e60[42]][_0x1e60[57]]- _0xc9cexc9[_0x1e60[224]];var _0xc9cex107=this[_0x1e60[18]][_0x1e60[42]][_0x1e60[41]]- _0xc9cexc9[_0x1e60[223]];if(_0xc9cex105=== _0x1e60[544]|| _0xc9cex105=== _0x1e60[546]){_0xc9cex6e= _0xc9cex106/ 2+ Math[_0x1e60[548]]()* _0xc9cex106;_0xc9cex6f= _0xc9cex105=== _0x1e60[544]?-_0xc9cexc9[_0x1e60[221]]:this[_0x1e60[18]][_0x1e60[42]][_0x1e60[41]]+ _0xc9cexc9[_0x1e60[221]]}else {_0xc9cex6e= _0xc9cex105=== _0x1e60[547]?-_0xc9cexc9[_0x1e60[222]]:this[_0x1e60[18]][_0x1e60[42]][_0x1e60[57]]+ _0xc9cexc9[_0x1e60[222]];_0xc9cex6f= _0xc9cex107/ 2+ Math[_0x1e60[548]]()* _0xc9cex107};this[_0x1e60[123]]();var _0xc9cex108= new _0xc9cexf9[_0x1e60[45]](this[_0x1e60[18]],_0xc9cex6e,_0xc9cex6f,_0xc9cex103[_0x1e60[8]],_0xc9cex103[_0x1e60[549]],this[_0x1e60[482]],this[_0x1e60[551]][_0x1e60[550]](this));if(this[_0x1e60[532]]=== _0x1e60[552]){_0xc9cex108[_0x1e60[509]](_0xc9cexc9.MEDIUM_LEVEL_VELOCITY_OFFSET)}else {if(this[_0x1e60[532]]=== _0x1e60[553]){_0xc9cex108[_0x1e60[509]](_0xc9cexc9.HARD_LEVEL_VELOCITY_OFFSET)}};this[_0x1e60[554]][_0x1e60[291]](_0xc9cex108)}},{key:_0x1e60[506],value:function _0xc9cexe0(){Phaser[_0x1e60[555]][_0x1e60[9]][_0x1e60[506]][_0x1e60[129]](this)}},{key:_0x1e60[551],value:function _0xc9cex109(_0xc9cexec,_0xc9cex10a){if((0,_0xc9cex11[_0x1e60[556]])()=== true&& _0xc9cex10a){this[_0x1e60[535]][_0x1e60[557]]()};this[_0x1e60[558]](_0xc9cexec)}},{key:_0x1e60[558],value:function _0xc9cex10b(_0xc9cex10c){var _0xc9cexda=this[_0x1e60[554]][_0x1e60[559]](_0xc9cex10c);this[_0x1e60[554]][_0xc9cexda][_0x1e60[560]]();this[_0x1e60[554]][_0x1e60[561]](_0xc9cexda,1)}},{key:_0x1e60[123],value:function _0xc9cex10d(_0xc9cex10e){if(_0xc9cex10e>= _0xc9cexfb[_0x1e60[216]]&& this[_0x1e60[534]]!== (0,_0xc9cexce[_0x1e60[511]])()&& this[_0x1e60[534]]!== (0,_0xc9cexce[_0x1e60[510]])()){this[_0x1e60[534]]= (0,_0xc9cexce[_0x1e60[511]])();this[_0x1e60[532]]= _0x1e60[552];this[_0x1e60[530]][_0x1e60[562]]= _0xc9cexc9[_0x1e60[227]]- _0xc9cexc9[_0x1e60[226]];this[_0x1e60[540]][_0x1e60[125]](this[_0x1e60[532]])}else {if(_0xc9cex10e>= _0xc9cexfb[_0x1e60[217]]&& this[_0x1e60[534]]!== (0,_0xc9cexce[_0x1e60[510]])()){this[_0x1e60[534]]= (0,_0xc9cexce[_0x1e60[510]])();this[_0x1e60[532]]= _0x1e60[553];this[_0x1e60[530]][_0x1e60[562]]= _0xc9cexc9[_0x1e60[227]]- _0xc9cexc9[_0x1e60[225]];this[_0x1e60[540]][_0x1e60[125]](this[_0x1e60[532]])}}}},{key:_0x1e60[539],value:function _0xc9cex10f(_0xc9cexcd){var _0xc9cex110=(0,_0xc9cexce[_0x1e60[513]])()[_0x1e60[563]](0,this[_0x1e60[534]]+ 1);var _0xc9cex111=(0,_0xc9cex3d[_0x1e60[520]])(_0xc9cex110,_0xc9cexcd);var _0xc9cex103=(0,_0xc9cexfa[_0x1e60[541]])(_0xc9cex111);this[_0x1e60[531]](_0xc9cex103)}}]);return _0xc9cexfe}(Phaser.Group);_0xc9cex3[_0x1e60[45]]= _0xc9cexfe},{"\x2E\x2E\x2F\x63\x6F\x6E\x73\x74\x61\x6E\x74\x73\x2F\x44\x69\x66\x66\x69\x63\x75\x6C\x74\x79\x4C\x65\x76\x65\x6C\x49\x6E\x74\x65\x72\x76\x61\x6C\x73\x2E\x6A\x73":6,"\x2E\x2E\x2F\x63\x6F\x6E\x73\x74\x61\x6E\x74\x73\x2F\x46\x6F\x6F\x64\x43\x6F\x6E\x73\x74\x61\x6E\x74\x73":7,"\x2E\x2E\x2F\x75\x74\x69\x6C\x73\x2F\x41\x75\x64\x69\x6F\x4D\x61\x6E\x61\x67\x65\x72\x2E\x6A\x73":30,"\x2E\x2E\x2F\x75\x74\x69\x6C\x73\x2F\x4D\x61\x74\x68\x55\x74\x69\x6C\x73\x2E\x6A\x73":32,"\x2E\x2E\x2F\x75\x74\x69\x6C\x73\x2F\x4E\x75\x74\x72\x69\x74\x69\x6F\x6E\x55\x74\x69\x6C\x73":33,"\x2E\x2F\x41\x64\x64\x69\x74\x69\x6F\x6E\x61\x6C\x46\x6F\x6F\x64\x53\x70\x61\x77\x6E\x65\x72":16,"\x2E\x2F\x46\x6F\x6F\x64":18,"\x2E\x2F\x46\x6F\x6F\x64\x44\x61\x74\x61\x4D\x61\x6E\x61\x67\x65\x72":19}],21:[function(_0xc9cex1,_0xc9cex2,_0xc9cex3){_0x1e60[0];Object[_0x1e60[2]](_0xc9cex3,_0x1e60[1],{value:true});var _0xc9cex4=function(){function _0xc9cex5(_0xc9cex6,_0xc9cex7){for(var _0xc9cex8=0;_0xc9cex8< _0xc9cex7[_0x1e60[3]];_0xc9cex8++){var _0xc9cex9=_0xc9cex7[_0xc9cex8];_0xc9cex9[_0x1e60[4]]= _0xc9cex9[_0x1e60[4]]|| false;_0xc9cex9[_0x1e60[5]]= true;if(_0x1e60[6] in  _0xc9cex9){_0xc9cex9[_0x1e60[7]]= true};Object[_0x1e60[2]](_0xc9cex6,_0xc9cex9[_0x1e60[8]],_0xc9cex9)}}return function(_0xc9cexa,_0xc9cexb,_0xc9cexc){if(_0xc9cexb){_0xc9cex5(_0xc9cexa[_0x1e60[9]],_0xc9cexb)};if(_0xc9cexc){_0xc9cex5(_0xc9cexa,_0xc9cexc)};return _0xc9cexa}}();function _0xc9cex17(_0xc9cex18,_0xc9cexa){if(!(_0xc9cex18 instanceof  _0xc9cexa)){throw  new TypeError(_0x1e60[16])}}var _0xc9cex112=7.25;var _0xc9cex113=2000;var _0xc9cex114=function(){function _0xc9cex114(){_0xc9cex17(this,_0xc9cex114);this[_0x1e60[564]]= 100;this[_0x1e60[565]]= false;this[_0x1e60[566]]= 1;this[_0x1e60[567]]= true;this[_0x1e60[568]]=  new Phaser.Signal()}_0xc9cex4(_0xc9cex114,[{key:_0x1e60[569],value:function _0xc9cex115(_0xc9cex116,_0xc9cex117){this[_0x1e60[565]]= _0xc9cex116;this[_0x1e60[566]]= _0xc9cex117?2:1}},{key:_0x1e60[570],value:function _0xc9cex118(){var _0xc9cex26=this;if(this[_0x1e60[565]]=== false|| this[_0x1e60[567]]=== false){return};this[_0x1e60[564]]-= _0xc9cex112* this[_0x1e60[566]];this[_0x1e60[567]]= false;window[_0x1e60[571]](function(){return _0xc9cex26[_0x1e60[567]]= true},_0xc9cex113);this[_0x1e60[568]][_0x1e60[125]](this[_0x1e60[564]])}}]);return _0xc9cex114}();_0xc9cex3[_0x1e60[45]]= _0xc9cex114},{}],22:[function(_0xc9cex1,_0xc9cex2,_0xc9cex3){_0x1e60[0];Object[_0x1e60[2]](_0xc9cex3,_0x1e60[1],{value:true});var _0xc9cex4=function(){function _0xc9cex5(_0xc9cex6,_0xc9cex7){for(var _0xc9cex8=0;_0xc9cex8< _0xc9cex7[_0x1e60[3]];_0xc9cex8++){var _0xc9cex9=_0xc9cex7[_0xc9cex8];_0xc9cex9[_0x1e60[4]]= _0xc9cex9[_0x1e60[4]]|| false;_0xc9cex9[_0x1e60[5]]= true;if(_0x1e60[6] in  _0xc9cex9){_0xc9cex9[_0x1e60[7]]= true};Object[_0x1e60[2]](_0xc9cex6,_0xc9cex9[_0x1e60[8]],_0xc9cex9)}}return function(_0xc9cexa,_0xc9cexb,_0xc9cexc){if(_0xc9cexb){_0xc9cex5(_0xc9cexa[_0x1e60[9]],_0xc9cexb)};if(_0xc9cexc){_0xc9cex5(_0xc9cexa,_0xc9cexc)};return _0xc9cexa}}();var _0xc9cex119=_0xc9cex1(_0x1e60[572]);var _0xc9cex11a=_0xc9cex15(_0xc9cex119);var _0xc9cex3e=_0xc9cex1(_0x1e60[158]);function _0xc9cex15(_0xc9cex16){return _0xc9cex16&& _0xc9cex16[_0x1e60[1]]?_0xc9cex16:{default:_0xc9cex16}}function _0xc9cex17(_0xc9cex18,_0xc9cexa){if(!(_0xc9cex18 instanceof  _0xc9cexa)){throw  new TypeError(_0x1e60[16])}}var _0xc9cex1c=function(){function _0xc9cex1c(_0xc9cex41){_0xc9cex17(this,_0xc9cex1c);this[_0x1e60[145]]= {carbohydrates:_0xc9cex3e[_0x1e60[257]],fats:_0xc9cex3e[_0x1e60[258]],proteins:_0xc9cex3e[_0x1e60[259]]};this[_0x1e60[22]]=  new _0xc9cex11a[_0x1e60[45]](_0xc9cex41,this);this[_0x1e60[573]]= _0xc9cex41[_0x1e60[52]][_0x1e60[51]][_0x1e60[50]](_0xc9cex3e.AMOUNT_REDUCED_INTERVAL,this[_0x1e60[574]],this)}_0xc9cex4(_0xc9cex1c,[{key:_0x1e60[574],value:function _0xc9cex11b(){this[_0x1e60[145]][_0x1e60[144]]-= _0xc9cex3e[_0x1e60[257]]* _0xc9cex3e[_0x1e60[261]];this[_0x1e60[145]][_0x1e60[146]]-= _0xc9cex3e[_0x1e60[258]]* _0xc9cex3e[_0x1e60[261]];this[_0x1e60[145]][_0x1e60[166]]-= _0xc9cex3e[_0x1e60[259]]* _0xc9cex3e[_0x1e60[261]];this[_0x1e60[145]][_0x1e60[144]]= Math[_0x1e60[575]](this[_0x1e60[145]][_0x1e60[144]]* 10)/ 10;this[_0x1e60[145]][_0x1e60[146]]= Math[_0x1e60[575]](this[_0x1e60[145]][_0x1e60[146]]* 10)/ 10;this[_0x1e60[145]][_0x1e60[166]]= Math[_0x1e60[575]](this[_0x1e60[145]][_0x1e60[166]]* 10)/ 10;this[_0x1e60[22]][_0x1e60[107]]()}},{key:_0x1e60[576],value:function _0xc9cex11c(_0xc9cexdd){this[_0x1e60[145]][_0x1e60[144]]+= _0xc9cexdd[_0x1e60[144]];this[_0x1e60[145]][_0x1e60[146]]+= _0xc9cexdd[_0x1e60[146]];this[_0x1e60[145]][_0x1e60[166]]+= _0xc9cexdd[_0x1e60[166]];this[_0x1e60[22]][_0x1e60[107]](_0xc9cexdd)}},{key:_0x1e60[577],value:function _0xc9cex11d(_0xc9cex11e){if(_0xc9cex11e=== _0x1e60[552]){this[_0x1e60[509]](_0xc9cex3e.MEDIUM_LEVEL_DELAY_OFFSET)}else {if(_0xc9cex11e=== _0x1e60[553]){this[_0x1e60[509]](_0xc9cex3e.HARD_LEVEL_DELAY_OFFSET)}}}},{key:_0x1e60[509],value:function _0xc9cexe1(_0xc9cex11f){this[_0x1e60[573]][_0x1e60[562]]= _0xc9cex3e[_0x1e60[260]]- _0xc9cex11f}}]);return _0xc9cex1c}();_0xc9cex3[_0x1e60[45]]= _0xc9cex1c},{"\x2E\x2E\x2F\x55\x49\x2F\x4E\x75\x74\x72\x69\x74\x69\x6F\x6E\x55\x49":2,"\x2E\x2E\x2F\x63\x6F\x6E\x73\x74\x61\x6E\x74\x73\x2F\x4E\x75\x74\x72\x69\x74\x69\x6F\x6E\x43\x6F\x6E\x73\x74\x61\x6E\x74\x73":8}],23:[function(_0xc9cex1,_0xc9cex2,_0xc9cex3){_0x1e60[0];Object[_0x1e60[2]](_0xc9cex3,_0x1e60[1],{value:true});var _0xc9cex4=function(){function _0xc9cex5(_0xc9cex6,_0xc9cex7){for(var _0xc9cex8=0;_0xc9cex8< _0xc9cex7[_0x1e60[3]];_0xc9cex8++){var _0xc9cex9=_0xc9cex7[_0xc9cex8];_0xc9cex9[_0x1e60[4]]= _0xc9cex9[_0x1e60[4]]|| false;_0xc9cex9[_0x1e60[5]]= true;if(_0x1e60[6] in  _0xc9cex9){_0xc9cex9[_0x1e60[7]]= true};Object[_0x1e60[2]](_0xc9cex6,_0xc9cex9[_0x1e60[8]],_0xc9cex9)}}return function(_0xc9cexa,_0xc9cexb,_0xc9cexc){if(_0xc9cexb){_0xc9cex5(_0xc9cexa[_0x1e60[9]],_0xc9cexb)};if(_0xc9cexc){_0xc9cex5(_0xc9cexa,_0xc9cexc)};return _0xc9cexa}}();function _0xc9cex17(_0xc9cex18,_0xc9cexa){if(!(_0xc9cex18 instanceof  _0xc9cexa)){throw  new TypeError(_0x1e60[16])}}function _0xc9cex66(_0xc9cex67,_0xc9cex68){if(!_0xc9cex67){throw  new ReferenceError(_0x1e60[197])};return _0xc9cex68&& ( typeof _0xc9cex68=== _0x1e60[198]||  typeof _0xc9cex68=== _0x1e60[199])?_0xc9cex68:_0xc9cex67}function _0xc9cex69(_0xc9cex6a,_0xc9cex6b){if( typeof _0xc9cex6b!== _0x1e60[199]&& _0xc9cex6b!== null){throw  new TypeError(_0x1e60[200]+  typeof _0xc9cex6b)};_0xc9cex6a[_0x1e60[9]]= Object[_0x1e60[201]](_0xc9cex6b&& _0xc9cex6b[_0x1e60[9]],{constructor:{value:_0xc9cex6a,enumerable:false,writable:true,configurable:true}});if(_0xc9cex6b){Object[_0x1e60[202]]?Object[_0x1e60[202]](_0xc9cex6a,_0xc9cex6b):_0xc9cex6a[_0x1e60[203]]= _0xc9cex6b}}var _0xc9cex120=function(_0xc9cex121){_0xc9cex69(_0xc9cex120,_0xc9cex121);function _0xc9cex120(){_0xc9cex17(this,_0xc9cex120);return _0xc9cex66(this,(_0xc9cex120[_0x1e60[203]]|| Object[_0x1e60[204]](_0xc9cex120))[_0x1e60[209]](this,arguments))}_0xc9cex4(_0xc9cex120,[{key:_0x1e60[578],value:function _0xc9cex122(){this[_0x1e60[18]][_0x1e60[580]][_0x1e60[579]]= _0x1e60[581];this[_0x1e60[18]][_0x1e60[584]][_0x1e60[479]](_0x1e60[582],_0x1e60[583]);this[_0x1e60[18]][_0x1e60[584]][_0x1e60[479]](_0x1e60[585],_0x1e60[586]);this[_0x1e60[18]][_0x1e60[584]][_0x1e60[479]](_0x1e60[587],_0x1e60[588]);this[_0x1e60[18]][_0x1e60[584]][_0x1e60[479]](_0x1e60[589],_0x1e60[590])}},{key:_0x1e60[201],value:function _0xc9cex101(){this[_0x1e60[18]][_0x1e60[63]][_0x1e60[591]]= Phaser[_0x1e60[593]][_0x1e60[592]];this[_0x1e60[18]][_0x1e60[63]][_0x1e60[594]]= true;this[_0x1e60[18]][_0x1e60[63]][_0x1e60[595]]= true;this[_0x1e60[18]][_0x1e60[17]][_0x1e60[149]](_0x1e60[296])}}]);return _0xc9cex120}(Phaser.State);_0xc9cex3[_0x1e60[45]]= _0xc9cex120},{}],24:[function(_0xc9cex1,_0xc9cex2,_0xc9cex3){_0x1e60[0];Object[_0x1e60[2]](_0xc9cex3,_0x1e60[1],{value:true});var _0xc9cex4=function(){function _0xc9cex5(_0xc9cex6,_0xc9cex7){for(var _0xc9cex8=0;_0xc9cex8< _0xc9cex7[_0x1e60[3]];_0xc9cex8++){var _0xc9cex9=_0xc9cex7[_0xc9cex8];_0xc9cex9[_0x1e60[4]]= _0xc9cex9[_0x1e60[4]]|| false;_0xc9cex9[_0x1e60[5]]= true;if(_0x1e60[6] in  _0xc9cex9){_0xc9cex9[_0x1e60[7]]= true};Object[_0x1e60[2]](_0xc9cex6,_0xc9cex9[_0x1e60[8]],_0xc9cex9)}}return function(_0xc9cexa,_0xc9cexb,_0xc9cexc){if(_0xc9cexb){_0xc9cex5(_0xc9cexa[_0x1e60[9]],_0xc9cexb)};if(_0xc9cexc){_0xc9cex5(_0xc9cexa,_0xc9cexc)};return _0xc9cexa}}();var _0xc9cexd=_0xc9cex1(_0x1e60[10]);var _0xc9cexe=_0xc9cex1(_0x1e60[11]);var _0xc9cexf=_0xc9cex15(_0xc9cexe);var _0xc9cex10=_0xc9cex1(_0x1e60[12]);var _0xc9cex11=_0xc9cex1(_0x1e60[13]);var _0xc9cex12=_0xc9cex1(_0x1e60[596]);var _0xc9cex13=_0xc9cex15(_0xc9cex12);function _0xc9cex15(_0xc9cex16){return _0xc9cex16&& _0xc9cex16[_0x1e60[1]]?_0xc9cex16:{default:_0xc9cex16}}function _0xc9cex17(_0xc9cex18,_0xc9cexa){if(!(_0xc9cex18 instanceof  _0xc9cexa)){throw  new TypeError(_0x1e60[16])}}function _0xc9cex66(_0xc9cex67,_0xc9cex68){if(!_0xc9cex67){throw  new ReferenceError(_0x1e60[197])};return _0xc9cex68&& ( typeof _0xc9cex68=== _0x1e60[198]||  typeof _0xc9cex68=== _0x1e60[199])?_0xc9cex68:_0xc9cex67}function _0xc9cex69(_0xc9cex6a,_0xc9cex6b){if( typeof _0xc9cex6b!== _0x1e60[199]&& _0xc9cex6b!== null){throw  new TypeError(_0x1e60[200]+  typeof _0xc9cex6b)};_0xc9cex6a[_0x1e60[9]]= Object[_0x1e60[201]](_0xc9cex6b&& _0xc9cex6b[_0x1e60[9]],{constructor:{value:_0xc9cex6a,enumerable:false,writable:true,configurable:true}});if(_0xc9cex6b){Object[_0x1e60[202]]?Object[_0x1e60[202]](_0xc9cex6a,_0xc9cex6b):_0xc9cex6a[_0x1e60[203]]= _0xc9cex6b}}var _0xc9cex123=function(_0xc9cex121){_0xc9cex69(_0xc9cex123,_0xc9cex121);function _0xc9cex123(){_0xc9cex17(this,_0xc9cex123);return _0xc9cex66(this,(_0xc9cex123[_0x1e60[203]]|| Object[_0x1e60[204]](_0xc9cex123))[_0x1e60[209]](this,arguments))}_0xc9cex4(_0xc9cex123,[{key:_0x1e60[201],value:function _0xc9cex101(){this[_0x1e60[60]][_0x1e60[81]](0,0,_0x1e60[582]);this[_0x1e60[196]][_0x1e60[597]]();this[_0x1e60[196]][_0x1e60[117]](0x000000,500,false);var _0xc9cex124=this[_0x1e60[60]][_0x1e60[68]](this[_0x1e60[42]][_0x1e60[57]]- _0xc9cex10[_0x1e60[65]],this[_0x1e60[18]][_0x1e60[42]][_0x1e60[41]]- _0xc9cex10[_0x1e60[65]],(0,_0xc9cexd[_0x1e60[40]])(_0x1e60[92]),this[_0x1e60[598]],this,1,0,2);_0xc9cex124[_0x1e60[62]][_0x1e60[69]](1,1);_0xc9cex124[_0x1e60[56]]= this[_0x1e60[42]][_0x1e60[57]]+ _0xc9cex124[_0x1e60[57]]+ _0xc9cex10[_0x1e60[65]];this[_0x1e60[60]][_0x1e60[76]](_0xc9cex124)[_0x1e60[75]]({x:this[_0x1e60[42]][_0x1e60[57]]- _0xc9cex10[_0x1e60[65]]},500,Phaser[_0x1e60[74]][_0x1e60[73]].Out,true);var _0xc9cex125=this[_0x1e60[18]][_0x1e60[60]][_0x1e60[78]]();var _0xc9cex126= new _0xc9cex13[_0x1e60[45]](this[_0x1e60[18]],_0x1e60[84],0,_0xc9cexf[_0x1e60[45]][_0x1e60[44]](_0x1e60[599])+ _0x1e60[600],(0,_0xc9cexd[_0x1e60[40]])(_0xc9cex10.CREDITS_TITLE_FONT));var _0xc9cex127= new _0xc9cex13[_0x1e60[45]](this[_0x1e60[18]],_0x1e60[84],0,_0xc9cexf[_0x1e60[45]][_0x1e60[44]](_0x1e60[601]),(0,_0xc9cexd[_0x1e60[40]])(_0xc9cex10.CREDITS_FONT_SMALL));var _0xc9cex128= new _0xc9cex13[_0x1e60[45]](this[_0x1e60[18]],_0x1e60[84],0,_0xc9cexf[_0x1e60[45]][_0x1e60[603]](_0x1e60[602]),(0,_0xc9cexd[_0x1e60[40]])(_0xc9cex10.CREDITS_FONT));var _0xc9cex129= new _0xc9cex13[_0x1e60[45]](this[_0x1e60[18]],_0x1e60[84],0,_0xc9cexf[_0x1e60[45]][_0x1e60[44]](_0x1e60[604]),(0,_0xc9cexd[_0x1e60[40]])(_0xc9cex10.CREDITS_FONT_SMALL));var _0xc9cex12a= new _0xc9cex13[_0x1e60[45]](this[_0x1e60[18]],_0x1e60[84],0,_0xc9cexf[_0x1e60[45]][_0x1e60[603]](_0x1e60[605]),(0,_0xc9cexd[_0x1e60[40]])(_0xc9cex10.CREDITS_FONT));var _0xc9cex12b= new _0xc9cex13[_0x1e60[45]](this[_0x1e60[18]],_0x1e60[84],0,_0xc9cexf[_0x1e60[45]][_0x1e60[603]](_0x1e60[606]+ _0xc9cexf[_0x1e60[45]][_0x1e60[44]](_0x1e60[607])+ _0x1e60[608]+ _0xc9cexf[_0x1e60[45]][_0x1e60[44]](_0x1e60[609])+ _0x1e60[610]),(0,_0xc9cexd[_0x1e60[40]])(_0xc9cex10.CREDITS_FONT_SMALL));var _0xc9cex12c= new _0xc9cex13[_0x1e60[45]](this[_0x1e60[18]],_0x1e60[84],0,_0xc9cexf[_0x1e60[45]][_0x1e60[603]](_0x1e60[606]+ _0xc9cexf[_0x1e60[45]][_0x1e60[44]](_0x1e60[611])+ _0x1e60[612]+ _0xc9cexf[_0x1e60[45]][_0x1e60[44]](_0x1e60[613])+ _0x1e60[614]+ _0xc9cexf[_0x1e60[45]][_0x1e60[44]](_0x1e60[613])+ _0x1e60[615]),(0,_0xc9cexd[_0x1e60[40]])(_0xc9cex10.CREDITS_FONT_SMALL));_0xc9cex125[_0x1e60[60]](_0xc9cex126);_0xc9cex125[_0x1e60[60]](_0xc9cex127);_0xc9cex125[_0x1e60[60]](_0xc9cex128);_0xc9cex125[_0x1e60[60]](_0xc9cex129);_0xc9cex125[_0x1e60[60]](_0xc9cex12a);_0xc9cex125[_0x1e60[60]](_0xc9cex12b);_0xc9cex125[_0x1e60[60]](_0xc9cex12c);var _0xc9cex12d=null;_0xc9cex125[_0x1e60[194]](function(_0xc9cex29){if(_0xc9cex12d){_0xc9cex29[_0x1e60[72]]= _0xc9cex12d[_0x1e60[72]]+ _0xc9cex12d[_0x1e60[41]]};_0xc9cex12d= _0xc9cex29});_0xc9cex125[_0x1e60[616]][_0x1e60[56]]= 0;_0xc9cex125[_0x1e60[616]][_0x1e60[72]]= this[_0x1e60[18]][_0x1e60[41]]/ 2- _0xc9cex125[_0x1e60[41]]/ 2}},{key:_0x1e60[598],value:function _0xc9cex12e(){var _0xc9cex28=this;(0,_0xc9cex11[_0x1e60[127]])(_0x1e60[126]);this[_0x1e60[196]][_0x1e60[617]](0x000000,200,false);this[_0x1e60[52]][_0x1e60[51]][_0x1e60[60]](200,function(){_0xc9cex28[_0x1e60[18]][_0x1e60[17]][_0x1e60[149]](_0x1e60[148])})}}]);return _0xc9cex123}(Phaser.State);_0xc9cex3[_0x1e60[45]]= _0xc9cex123},{"\x2E\x2E\x2F\x55\x49\x2F\x54\x65\x78\x74":3,"\x2E\x2E\x2F\x63\x6F\x6E\x73\x74\x61\x6E\x74\x73\x2F\x55\x49\x43\x6F\x6E\x73\x74\x61\x6E\x74\x73":9,"\x2E\x2E\x2F\x75\x74\x69\x6C\x73\x2F\x41\x75\x64\x69\x6F\x4D\x61\x6E\x61\x67\x65\x72":30,"\x2E\x2E\x2F\x75\x74\x69\x6C\x73\x2F\x53\x63\x61\x6C\x65\x4D\x61\x6E\x61\x67\x65\x72":34,"\x2E\x2E\x2F\x75\x74\x69\x6C\x73\x2F\x69\x31\x38\x6E":36}],25:[function(_0xc9cex1,_0xc9cex2,_0xc9cex3){_0x1e60[0];Object[_0x1e60[2]](_0xc9cex3,_0x1e60[1],{value:true});var _0xc9cex4=function(){function _0xc9cex5(_0xc9cex6,_0xc9cex7){for(var _0xc9cex8=0;_0xc9cex8< _0xc9cex7[_0x1e60[3]];_0xc9cex8++){var _0xc9cex9=_0xc9cex7[_0xc9cex8];_0xc9cex9[_0x1e60[4]]= _0xc9cex9[_0x1e60[4]]|| false;_0xc9cex9[_0x1e60[5]]= true;if(_0x1e60[6] in  _0xc9cex9){_0xc9cex9[_0x1e60[7]]= true};Object[_0x1e60[2]](_0xc9cex6,_0xc9cex9[_0x1e60[8]],_0xc9cex9)}}return function(_0xc9cexa,_0xc9cexb,_0xc9cexc){if(_0xc9cexb){_0xc9cex5(_0xc9cexa[_0x1e60[9]],_0xc9cexb)};if(_0xc9cexc){_0xc9cex5(_0xc9cexa,_0xc9cexc)};return _0xc9cexa}}();var _0xc9cexd=_0xc9cex1(_0x1e60[10]);var _0xc9cex12f=_0xc9cex1(_0x1e60[618]);var _0xc9cex130=_0xc9cex15(_0xc9cex12f);var _0xc9cexe=_0xc9cex1(_0x1e60[11]);var _0xc9cexf=_0xc9cex15(_0xc9cexe);var _0xc9cex131=_0xc9cex1(_0x1e60[619]);var _0xc9cex132=_0xc9cex15(_0xc9cex131);var _0xc9cex133=_0xc9cex1(_0x1e60[620]);var _0xc9cex134=_0xc9cex15(_0xc9cex133);var _0xc9cex135=_0xc9cex1(_0x1e60[621]);var _0xc9cex136=_0xc9cex15(_0xc9cex135);var _0xc9cex137=_0xc9cex1(_0x1e60[622]);var _0xc9cex138=_0xc9cex15(_0xc9cex137);var _0xc9cexce=_0xc9cex1(_0x1e60[470]);var _0xc9cex139=_0xc9cex1(_0x1e60[623]);var _0xc9cex13a=_0xc9cex13b(_0xc9cex139);var _0xc9cex7a=_0xc9cex1(_0x1e60[469]);function _0xc9cex13b(_0xc9cex16){if(_0xc9cex16&& _0xc9cex16[_0x1e60[1]]){return _0xc9cex16}else {var _0xc9cex13c={};if(_0xc9cex16!= null){for(var _0xc9cex43 in _0xc9cex16){if(Object[_0x1e60[9]][_0x1e60[624]][_0x1e60[129]](_0xc9cex16,_0xc9cex43)){_0xc9cex13c[_0xc9cex43]= _0xc9cex16[_0xc9cex43]}}};_0xc9cex13c[_0x1e60[45]]= _0xc9cex16;return _0xc9cex13c}}function _0xc9cex15(_0xc9cex16){return _0xc9cex16&& _0xc9cex16[_0x1e60[1]]?_0xc9cex16:{default:_0xc9cex16}}function _0xc9cex17(_0xc9cex18,_0xc9cexa){if(!(_0xc9cex18 instanceof  _0xc9cexa)){throw  new TypeError(_0x1e60[16])}}function _0xc9cex66(_0xc9cex67,_0xc9cex68){if(!_0xc9cex67){throw  new ReferenceError(_0x1e60[197])};return _0xc9cex68&& ( typeof _0xc9cex68=== _0x1e60[198]||  typeof _0xc9cex68=== _0x1e60[199])?_0xc9cex68:_0xc9cex67}function _0xc9cex69(_0xc9cex6a,_0xc9cex6b){if( typeof _0xc9cex6b!== _0x1e60[199]&& _0xc9cex6b!== null){throw  new TypeError(_0x1e60[200]+  typeof _0xc9cex6b)};_0xc9cex6a[_0x1e60[9]]= Object[_0x1e60[201]](_0xc9cex6b&& _0xc9cex6b[_0x1e60[9]],{constructor:{value:_0xc9cex6a,enumerable:false,writable:true,configurable:true}});if(_0xc9cex6b){Object[_0x1e60[202]]?Object[_0x1e60[202]](_0xc9cex6a,_0xc9cex6b):_0xc9cex6a[_0x1e60[203]]= _0xc9cex6b}}var _0xc9cex13d=function(_0xc9cex121){_0xc9cex69(_0xc9cex13d,_0xc9cex121);function _0xc9cex13d(){_0xc9cex17(this,_0xc9cex13d);return _0xc9cex66(this,(_0xc9cex13d[_0x1e60[203]]|| Object[_0x1e60[204]](_0xc9cex13d))[_0x1e60[209]](this,arguments))}_0xc9cex4(_0xc9cex13d,[{key:_0x1e60[201],value:function _0xc9cex101(){var _0xc9cex28=this;(0,_0xc9cexce[_0x1e60[514]])();this[_0x1e60[18]][_0x1e60[60]][_0x1e60[81]](0,0,(0,_0xc9cexd[_0x1e60[40]])(_0x1e60[625]));this[_0x1e60[124]]=  new _0xc9cex132[_0x1e60[45]](this[_0x1e60[18]],true);this[_0x1e60[626]]= this[_0x1e60[124]][_0x1e60[554]];this[_0x1e60[20]]=  new _0xc9cex136[_0x1e60[45]](this[_0x1e60[18]]);this[_0x1e60[627]]=  new _0xc9cex134[_0x1e60[45]](this[_0x1e60[18]],this[_0x1e60[42]][_0x1e60[57]]/ 2,this[_0x1e60[42]][_0x1e60[41]]- (0,_0xc9cexd[_0x1e60[40]])(_0xc9cex7a.BOB_OFFSET_Y),(0,_0xc9cexd[_0x1e60[40]])(_0x1e60[627]),this.NutritionManager);this[_0x1e60[628]]=  new _0xc9cex130[_0x1e60[45]](this,this[_0x1e60[627]],this.NutritionManager);this[_0x1e60[124]][_0x1e60[482]][_0x1e60[60]](function(){var _0xc9cex13e;return (_0xc9cex13e= _0xc9cex28[_0x1e60[20]])[_0x1e60[576]][_0x1e60[209]](_0xc9cex13e,arguments)});this[_0x1e60[124]][_0x1e60[540]][_0x1e60[60]](function(){var _0xc9cex13f;return (_0xc9cex13f= _0xc9cex28[_0x1e60[20]])[_0x1e60[577]][_0x1e60[209]](_0xc9cex13f,arguments)});this[_0x1e60[124]][_0x1e60[540]][_0x1e60[60]](function(){var _0xc9cex140;return (_0xc9cex140= _0xc9cex28[_0x1e60[628]])[_0x1e60[118]][_0x1e60[209]](_0xc9cex140,arguments)});this[_0x1e60[627]][_0x1e60[115]][_0x1e60[60]](function(){var _0xc9cex141;return (_0xc9cex141= _0xc9cex28[_0x1e60[628]])[_0x1e60[115]][_0x1e60[209]](_0xc9cex141,arguments)});var _0xc9cex142= new _0xc9cex138[_0x1e60[45]]();this[_0x1e60[627]][_0x1e60[471]][_0x1e60[60]](function(){return _0xc9cex142[_0x1e60[569]][_0x1e60[209]](_0xc9cex142,arguments)});this[_0x1e60[628]][_0x1e60[30]][_0x1e60[60]](function(){return _0xc9cex142[_0x1e60[570]]()});_0xc9cex142[_0x1e60[568]][_0x1e60[60]](function(){var _0xc9cex143;return (_0xc9cex143= _0xc9cex28[_0x1e60[628]])[_0x1e60[116]][_0x1e60[209]](_0xc9cex143,arguments)});_0xc9cex142[_0x1e60[568]][_0x1e60[60]](function(){return _0xc9cex28[_0x1e60[629]][_0x1e60[209]](_0xc9cex28,arguments)});_0xc9cex13a[_0x1e60[630]](this);this[_0x1e60[196]][_0x1e60[597]]();this[_0x1e60[196]][_0x1e60[117]](0x000000,500,false);this[_0x1e60[18]][_0x1e60[485]][_0x1e60[632]](Phaser[_0x1e60[631]].ARCADE);this[_0x1e60[18]][_0x1e60[634]][_0x1e60[60]](function(){if(_0xc9cex28[_0x1e60[628]][_0x1e60[23]]=== _0x1e60[109]|| _0xc9cex28[_0x1e60[628]][_0x1e60[23]]=== _0x1e60[111]|| _0xc9cex28[_0x1e60[628]][_0x1e60[23]]=== _0x1e60[113]){_0xc9cex28[_0x1e60[18]][_0x1e60[52]][_0x1e60[51]][_0x1e60[633]]()}});this[_0x1e60[18]][_0x1e60[543]]= true}},{key:_0x1e60[629],value:function _0xc9cex144(_0xc9cex25){if(_0xc9cex25<= 0){this[_0x1e60[628]][_0x1e60[110]](_0xc9cexf[_0x1e60[45]][_0x1e60[44]](_0x1e60[635]));this[_0x1e60[18]][_0x1e60[543]]= false}}},{key:_0x1e60[506],value:function _0xc9cexe0(){_0xc9cex13a[_0x1e60[636]](this);this[_0x1e60[628]][_0x1e60[107]]();this[_0x1e60[627]][_0x1e60[472]]()}},{key:_0x1e60[130],value:function _0xc9cex145(){this[_0x1e60[626]][_0x1e60[194]](function(_0xc9cexec){_0xc9cexec[_0x1e60[492]][_0x1e60[491]][_0x1e60[56]]= 0;_0xc9cexec[_0x1e60[492]][_0x1e60[491]][_0x1e60[72]]= 0});this[_0x1e60[18]][_0x1e60[52]][_0x1e60[51]][_0x1e60[633]]()}},{key:_0x1e60[131],value:function _0xc9cex146(){this[_0x1e60[626]][_0x1e60[194]](function(_0xc9cexec){_0xc9cexec[_0x1e60[492]][_0x1e60[491]][_0x1e60[56]]= _0xc9cexec[_0x1e60[488]];_0xc9cexec[_0x1e60[492]][_0x1e60[491]][_0x1e60[72]]= _0xc9cexec[_0x1e60[493]]});this[_0x1e60[18]][_0x1e60[52]][_0x1e60[51]][_0x1e60[147]]()}}]);return _0xc9cex13d}(Phaser.State);_0xc9cex3[_0x1e60[45]]= _0xc9cex13d},{"\x2E\x2E\x2F\x55\x49\x2F\x47\x61\x6D\x65\x55\x49":1,"\x2E\x2E\x2F\x63\x6F\x6E\x73\x74\x61\x6E\x74\x73\x2F\x42\x6F\x62\x43\x6F\x6E\x73\x74\x61\x6E\x74\x73":4,"\x2E\x2E\x2F\x6F\x62\x6A\x65\x63\x74\x73\x2F\x42\x6F\x62":17,"\x2E\x2E\x2F\x6F\x62\x6A\x65\x63\x74\x73\x2F\x46\x6F\x6F\x64\x44\x61\x74\x61\x4D\x61\x6E\x61\x67\x65\x72":19,"\x2E\x2E\x2F\x6F\x62\x6A\x65\x63\x74\x73\x2F\x46\x6F\x6F\x64\x53\x70\x61\x77\x6E\x65\x72":20,"\x2E\x2E\x2F\x6F\x62\x6A\x65\x63\x74\x73\x2F\x48\x65\x61\x6C\x74\x68\x48\x61\x6E\x64\x6C\x65\x72":21,"\x2E\x2E\x2F\x6F\x62\x6A\x65\x63\x74\x73\x2F\x4E\x75\x74\x72\x69\x74\x69\x6F\x6E\x4D\x61\x6E\x61\x67\x65\x72":22,"\x2E\x2E\x2F\x75\x74\x69\x6C\x73\x2F\x43\x6C\x6F\x63\x6B\x55\x74\x69\x6C\x73":31,"\x2E\x2E\x2F\x75\x74\x69\x6C\x73\x2F\x53\x63\x61\x6C\x65\x4D\x61\x6E\x61\x67\x65\x72":34,"\x2E\x2E\x2F\x75\x74\x69\x6C\x73\x2F\x69\x31\x38\x6E":36}],26:[function(_0xc9cex1,_0xc9cex2,_0xc9cex3){_0x1e60[0];Object[_0x1e60[2]](_0xc9cex3,_0x1e60[1],{value:true});var _0xc9cex4=function(){function _0xc9cex5(_0xc9cex6,_0xc9cex7){for(var _0xc9cex8=0;_0xc9cex8< _0xc9cex7[_0x1e60[3]];_0xc9cex8++){var _0xc9cex9=_0xc9cex7[_0xc9cex8];_0xc9cex9[_0x1e60[4]]= _0xc9cex9[_0x1e60[4]]|| false;_0xc9cex9[_0x1e60[5]]= true;if(_0x1e60[6] in  _0xc9cex9){_0xc9cex9[_0x1e60[7]]= true};Object[_0x1e60[2]](_0xc9cex6,_0xc9cex9[_0x1e60[8]],_0xc9cex9)}}return function(_0xc9cexa,_0xc9cexb,_0xc9cexc){if(_0xc9cexb){_0xc9cex5(_0xc9cexa[_0x1e60[9]],_0xc9cexb)};if(_0xc9cexc){_0xc9cex5(_0xc9cexa,_0xc9cexc)};return _0xc9cexa}}();var _0xc9cexd=_0xc9cex1(_0x1e60[10]);var _0xc9cexe=_0xc9cex1(_0x1e60[11]);var _0xc9cexf=_0xc9cex15(_0xc9cexe);var _0xc9cex11=_0xc9cex1(_0x1e60[13]);var _0xc9cex14=_0xc9cex1(_0x1e60[15]);var _0xc9cex12=_0xc9cex1(_0x1e60[596]);var _0xc9cex13=_0xc9cex15(_0xc9cex12);var _0xc9cex139=_0xc9cex1(_0x1e60[623]);var _0xc9cex13a=_0xc9cex13b(_0xc9cex139);var _0xc9cex10=_0xc9cex1(_0x1e60[12]);function _0xc9cex13b(_0xc9cex16){if(_0xc9cex16&& _0xc9cex16[_0x1e60[1]]){return _0xc9cex16}else {var _0xc9cex13c={};if(_0xc9cex16!= null){for(var _0xc9cex43 in _0xc9cex16){if(Object[_0x1e60[9]][_0x1e60[624]][_0x1e60[129]](_0xc9cex16,_0xc9cex43)){_0xc9cex13c[_0xc9cex43]= _0xc9cex16[_0xc9cex43]}}};_0xc9cex13c[_0x1e60[45]]= _0xc9cex16;return _0xc9cex13c}}function _0xc9cex15(_0xc9cex16){return _0xc9cex16&& _0xc9cex16[_0x1e60[1]]?_0xc9cex16:{default:_0xc9cex16}}function _0xc9cex17(_0xc9cex18,_0xc9cexa){if(!(_0xc9cex18 instanceof  _0xc9cexa)){throw  new TypeError(_0x1e60[16])}}function _0xc9cex66(_0xc9cex67,_0xc9cex68){if(!_0xc9cex67){throw  new ReferenceError(_0x1e60[197])};return _0xc9cex68&& ( typeof _0xc9cex68=== _0x1e60[198]||  typeof _0xc9cex68=== _0x1e60[199])?_0xc9cex68:_0xc9cex67}function _0xc9cex69(_0xc9cex6a,_0xc9cex6b){if( typeof _0xc9cex6b!== _0x1e60[199]&& _0xc9cex6b!== null){throw  new TypeError(_0x1e60[200]+  typeof _0xc9cex6b)};_0xc9cex6a[_0x1e60[9]]= Object[_0x1e60[201]](_0xc9cex6b&& _0xc9cex6b[_0x1e60[9]],{constructor:{value:_0xc9cex6a,enumerable:false,writable:true,configurable:true}});if(_0xc9cex6b){Object[_0x1e60[202]]?Object[_0x1e60[202]](_0xc9cex6a,_0xc9cex6b):_0xc9cex6a[_0x1e60[203]]= _0xc9cex6b}}var _0xc9cex147=function(_0xc9cex121){_0xc9cex69(_0xc9cex147,_0xc9cex121);function _0xc9cex147(){_0xc9cex17(this,_0xc9cex147);return _0xc9cex66(this,(_0xc9cex147[_0x1e60[203]]|| Object[_0x1e60[204]](_0xc9cex147))[_0x1e60[209]](this,arguments))}_0xc9cex4(_0xc9cex147,[{key:_0x1e60[201],value:function _0xc9cex101(){this[_0x1e60[18]][_0x1e60[60]][_0x1e60[81]](0,0,(0,_0xc9cexd[_0x1e60[40]])(_0x1e60[625]));_0xc9cex13a[_0x1e60[630]](this);var _0xc9cex148=this[_0x1e60[60]][_0x1e60[81]](this[_0x1e60[42]][_0x1e60[57]]* 0.5,(this[_0x1e60[42]][_0x1e60[41]]- (0,_0xc9cexd[_0x1e60[40]])(_0xc9cex10.TITLE_OFFSET_Y))* 0.5,(0,_0xc9cexd[_0x1e60[40]])(_0x1e60[637]));_0xc9cex148[_0x1e60[62]][_0x1e60[69]](0.5);_0xc9cex14[_0x1e60[37]][_0x1e60[638]](_0x1e60[151],0);var _0xc9cex149=_0xc9cex14[_0x1e60[37]][_0x1e60[36]](_0x1e60[151])|| 0;var _0xc9cex14a=this[_0x1e60[60]][_0x1e60[68]](_0xc9cex10.MENU_BUTTON_OFFSET,_0xc9cex10.MENU_BUTTON_OFFSET,(0,_0xc9cexd[_0x1e60[40]])(_0x1e60[639]),this[_0x1e60[640]],this);var _0xc9cex14b=this[_0x1e60[60]][_0x1e60[68]](this[_0x1e60[42]][_0x1e60[57]]- _0xc9cex10[_0x1e60[65]],this[_0x1e60[42]][_0x1e60[41]]- _0xc9cex10[_0x1e60[65]],(0,_0xc9cexd[_0x1e60[40]])(_0x1e60[641]),this[_0x1e60[642]],this,1,0,2);_0xc9cex14b[_0x1e60[62]][_0x1e60[69]](1);var _0xc9cex14c=this[_0x1e60[60]][_0x1e60[68]](_0xc9cex10.MENU_BUTTON_OFFSET,this[_0x1e60[42]][_0x1e60[41]]- _0xc9cex10[_0x1e60[65]],(0,_0xc9cexd[_0x1e60[40]])(_0x1e60[643]),this[_0x1e60[644]],this,1,0,2);_0xc9cex14c[_0x1e60[62]][_0x1e60[69]](0,1);var _0xc9cex14d= new _0xc9cex13[_0x1e60[45]](this[_0x1e60[18]],_0x1e60[84],this[_0x1e60[42]][_0x1e60[41]]- (0,_0xc9cexd[_0x1e60[40]])(50),_0xc9cexf[_0x1e60[45]][_0x1e60[44]](_0x1e60[645])+ _0x1e60[46]+ _0xc9cex149,(0,_0xc9cexd[_0x1e60[40]])(_0xc9cex10.MENU_HIGHSCORE_FONT),[null,1]);_0xc9cex14d[_0x1e60[646]][_0x1e60[69]](0,15);this[_0x1e60[647]]();this[_0x1e60[648]]();(0,_0xc9cex11[_0x1e60[156]])(_0x1e60[649],this);if((0,_0xc9cex11[_0x1e60[556]])()!== true){(0,_0xc9cex11[_0x1e60[156]])(_0x1e60[650],this)};_0xc9cex14b[_0x1e60[56]]= this[_0x1e60[42]][_0x1e60[57]]+ _0xc9cex14b[_0x1e60[57]]+ _0xc9cex10[_0x1e60[65]];this[_0x1e60[60]][_0x1e60[76]](_0xc9cex14b)[_0x1e60[75]]({x:this[_0x1e60[42]][_0x1e60[57]]- _0xc9cex10[_0x1e60[65]]},500,Phaser[_0x1e60[74]][_0x1e60[73]].Out,true);this[_0x1e60[651]][_0x1e60[72]]= -this[_0x1e60[651]][_0x1e60[41]]- _0xc9cex10[_0x1e60[65]];this[_0x1e60[60]][_0x1e60[76]](this[_0x1e60[651]])[_0x1e60[75]]({y:_0xc9cex10[_0x1e60[65]]},500,Phaser[_0x1e60[74]][_0x1e60[73]].Out,true);this[_0x1e60[652]][_0x1e60[72]]= -this[_0x1e60[651]][_0x1e60[41]]- _0xc9cex10[_0x1e60[65]];this[_0x1e60[60]][_0x1e60[76]](this[_0x1e60[652]])[_0x1e60[75]]({y:_0xc9cex10[_0x1e60[65]]},500,Phaser[_0x1e60[74]][_0x1e60[73]].Out,true);_0xc9cex14a[_0x1e60[56]]= -_0xc9cex14a[_0x1e60[57]]- _0xc9cex10[_0x1e60[65]];this[_0x1e60[60]][_0x1e60[76]](_0xc9cex14a)[_0x1e60[75]]({x:_0xc9cex10[_0x1e60[65]]},500,Phaser[_0x1e60[74]][_0x1e60[73]].Out,true);_0xc9cex14c[_0x1e60[72]]= this[_0x1e60[42]][_0x1e60[41]]+ _0xc9cex14c[_0x1e60[41]]+ _0xc9cex10[_0x1e60[65]];this[_0x1e60[60]][_0x1e60[76]](_0xc9cex14c)[_0x1e60[75]]({y:this[_0x1e60[42]][_0x1e60[41]]- _0xc9cex10[_0x1e60[65]]},500,Phaser[_0x1e60[74]][_0x1e60[73]].Out,true);this[_0x1e60[196]][_0x1e60[117]](0x000000,500,false)}},{key:_0x1e60[647],value:function _0xc9cex14e(){this[_0x1e60[653]]= [];this[_0x1e60[654]]= false;this[_0x1e60[651]]= this[_0x1e60[60]][_0x1e60[68]](this[_0x1e60[42]][_0x1e60[57]]- _0xc9cex10[_0x1e60[65]],_0xc9cex10.MENU_BUTTON_OFFSET,(0,_0xc9cexd[_0x1e60[40]])(_0x1e60[655]),this[_0x1e60[656]],this,1,0,2);this[_0x1e60[651]][_0x1e60[56]]-= this[_0x1e60[651]][_0x1e60[57]]+ _0xc9cex10[_0x1e60[65]];this[_0x1e60[651]][_0x1e60[62]][_0x1e60[69]](1,0);this[_0x1e60[86]]= this[_0x1e60[60]][_0x1e60[68]](this[_0x1e60[651]][_0x1e60[56]],_0xc9cex10.MENU_BUTTON_OFFSET,(0,_0xc9cexd[_0x1e60[40]])(_0x1e60[87]),this[_0x1e60[88]],this,1,0,2);this[_0x1e60[86]][_0x1e60[62]][_0x1e60[69]](1,0);this[_0x1e60[86]][_0x1e60[97]]= false;this[_0x1e60[653]][_0x1e60[291]](this[_0x1e60[86]]);this[_0x1e60[657]]= this[_0x1e60[60]][_0x1e60[68]](this[_0x1e60[651]][_0x1e60[56]],_0xc9cex10.MENU_BUTTON_OFFSET,(0,_0xc9cexd[_0x1e60[40]])(_0xc9cexf[_0x1e60[45]][_0x1e60[479]](_0x1e60[658])),this[_0x1e60[659]],this,1,0,2);this[_0x1e60[657]][_0x1e60[62]][_0x1e60[69]](1,0);this[_0x1e60[657]][_0x1e60[97]]= false;this[_0x1e60[653]][_0x1e60[291]](this[_0x1e60[657]]);this[_0x1e60[660]]= this[_0x1e60[60]][_0x1e60[68]](this[_0x1e60[651]][_0x1e60[56]],_0xc9cex10.MENU_BUTTON_OFFSET,(0,_0xc9cexd[_0x1e60[40]])(_0x1e60[661]),this[_0x1e60[662]],this,1,0,2);this[_0x1e60[660]][_0x1e60[62]][_0x1e60[69]](1,0);this[_0x1e60[660]][_0x1e60[97]]= false;this[_0x1e60[653]][_0x1e60[291]](this[_0x1e60[660]]);this[_0x1e60[663]]= this[_0x1e60[60]][_0x1e60[68]](this[_0x1e60[651]][_0x1e60[56]],_0xc9cex10.MENU_BUTTON_OFFSET,(0,_0xc9cexd[_0x1e60[40]])(_0x1e60[664]),this[_0x1e60[665]],this,1,0,2);this[_0x1e60[663]][_0x1e60[62]][_0x1e60[69]](1,0);this[_0x1e60[663]][_0x1e60[97]]= false;this[_0x1e60[653]][_0x1e60[291]](this[_0x1e60[663]]);this[_0x1e60[18]][_0x1e60[42]][_0x1e60[128]](this[_0x1e60[651]])}},{key:_0x1e60[656],value:function _0xc9cex14f(){(0,_0xc9cex11[_0x1e60[127]])(_0x1e60[126]);this[_0x1e60[666]]();if(this[_0x1e60[654]]){this[_0x1e60[667]]()}else {this[_0x1e60[668]]()}}},{key:_0x1e60[668],value:function _0xc9cex150(){var _0xc9cex28=this;this[_0x1e60[654]]= true;var _0xc9cex151=0;this[_0x1e60[653]][_0x1e60[194]](function(_0xc9cex152,_0xc9cex8){_0xc9cex152[_0x1e60[97]]= true;_0xc9cex28[_0x1e60[60]][_0x1e60[76]](_0xc9cex152[_0x1e60[616]])[_0x1e60[75]]({x:_0xc9cex28[_0x1e60[42]][_0x1e60[57]]- _0xc9cex152[_0x1e60[57]]- _0xc9cex151- (0,_0xc9cexd[_0x1e60[40]])(_0xc9cex10.MENU_BUTTON_OFFSET)* (_0xc9cex8+ 1)- _0xc9cex10[_0x1e60[65]]* 2- _0xc9cex28[_0x1e60[651]][_0x1e60[57]]},500,Phaser[_0x1e60[74]][_0x1e60[73]].Out,true);_0xc9cex151+= _0xc9cex152[_0x1e60[57]]})}},{key:_0x1e60[667],value:function _0xc9cex153(){var _0xc9cex33=this;this[_0x1e60[654]]= false;this[_0x1e60[653]][_0x1e60[194]](function(_0xc9cex152){var _0xc9cex34=_0xc9cex33[_0x1e60[60]][_0x1e60[76]](_0xc9cex152[_0x1e60[616]])[_0x1e60[75]]({x:_0xc9cex33[_0x1e60[651]][_0x1e60[56]]},500,Phaser[_0x1e60[74]][_0x1e60[73]].Out,true);_0xc9cex34[_0x1e60[121]][_0x1e60[60]](function(){if(!_0xc9cex33[_0x1e60[654]]){_0xc9cex152[_0x1e60[97]]= false}})})}},{key:_0x1e60[648],value:function _0xc9cex154(){var _0xc9cex155=this;this[_0x1e60[669]]= [];var _0xc9cex156=_0xc9cexf[_0x1e60[45]][_0x1e60[36]]();var _0xc9cex157=[_0x1e60[670],_0x1e60[671],_0x1e60[672]];this[_0x1e60[673]]= false;this[_0x1e60[652]]= this[_0x1e60[60]][_0x1e60[68]](this[_0x1e60[42]][_0x1e60[57]]- _0xc9cex10[_0x1e60[65]],_0xc9cex10.MENU_BUTTON_OFFSET,(0,_0xc9cexd[_0x1e60[40]])(_0x1e60[674]+ _0xc9cex156),this[_0x1e60[675]],this,1,0,2);this[_0x1e60[652]][_0x1e60[62]][_0x1e60[69]](1,0);_0xc9cex157[_0x1e60[194]](function(_0xc9cex158){if(_0xc9cex158!== _0xc9cex156){var _0xc9cex152=_0xc9cex155[_0x1e60[60]][_0x1e60[68]](_0xc9cex155[_0x1e60[42]][_0x1e60[57]]- _0xc9cex10[_0x1e60[65]],_0xc9cex10.MENU_BUTTON_OFFSET,(0,_0xc9cexd[_0x1e60[40]])(_0x1e60[674]+ _0xc9cex158),function(){return _0xc9cex155[_0x1e60[676]](_0xc9cex158)},_0xc9cex155,1,0,2);_0xc9cex152[_0x1e60[62]][_0x1e60[69]](1,0);_0xc9cex152[_0x1e60[97]]= false;_0xc9cex155[_0x1e60[669]][_0x1e60[291]](_0xc9cex152)}});this[_0x1e60[18]][_0x1e60[42]][_0x1e60[128]](this[_0x1e60[652]])}},{key:_0x1e60[675],value:function _0xc9cex159(){(0,_0xc9cex11[_0x1e60[127]])(_0x1e60[126]);this[_0x1e60[667]]();if(this[_0x1e60[673]]){this[_0x1e60[666]]()}else {this[_0x1e60[677]]()}}},{key:_0x1e60[677],value:function _0xc9cex15a(){var _0xc9cex15b=this;this[_0x1e60[673]]= true;var _0xc9cex15c=0;this[_0x1e60[669]][_0x1e60[194]](function(_0xc9cex152,_0xc9cex8){_0xc9cex152[_0x1e60[97]]= true;_0xc9cex15b[_0x1e60[60]][_0x1e60[76]](_0xc9cex152[_0x1e60[616]])[_0x1e60[75]]({y:_0xc9cex152[_0x1e60[41]]+ _0xc9cex15c+ (0,_0xc9cexd[_0x1e60[40]])(_0xc9cex10.MENU_BUTTON_OFFSET)* (_0xc9cex8+ 1)+ _0xc9cex10[_0x1e60[65]]},500,Phaser[_0x1e60[74]][_0x1e60[73]].Out,true);_0xc9cex15c+= _0xc9cex152[_0x1e60[57]]})}},{key:_0x1e60[666],value:function _0xc9cex15d(){var _0xc9cex15e=this;this[_0x1e60[673]]= false;this[_0x1e60[669]][_0x1e60[194]](function(_0xc9cex152){var _0xc9cex34=_0xc9cex15e[_0x1e60[60]][_0x1e60[76]](_0xc9cex152[_0x1e60[616]])[_0x1e60[75]]({y:_0xc9cex15e[_0x1e60[652]][_0x1e60[72]]},500,Phaser[_0x1e60[74]][_0x1e60[73]].Out,true);_0xc9cex34[_0x1e60[121]][_0x1e60[60]](function(){if(!_0xc9cex15e[_0x1e60[673]]){_0xc9cex152[_0x1e60[97]]= false}})})}},{key:_0x1e60[88],value:function _0xc9cex3c(){(0,_0xc9cex11[_0x1e60[127]])(_0x1e60[126]);(0,_0xc9cex11[_0x1e60[156]])(_0x1e60[155],this)}},{key:_0x1e60[640],value:function _0xc9cex15f(){(0,_0xc9cex11[_0x1e60[127]])(_0x1e60[126]);window[_0x1e60[680]][_0x1e60[679]][_0x1e60[678]]= _0x1e60[681]}},{key:_0x1e60[665],value:function _0xc9cex160(){(0,_0xc9cex11[_0x1e60[127]])(_0x1e60[126]);if(_0xc9cexd[_0x1e60[682]]=== 1){_0xc9cexd[_0x1e60[683]][_0x1e60[129]](this,0.5);_0xc9cex14[_0x1e60[37]][_0x1e60[69]](_0x1e60[684],0.5)}else {_0xc9cexd[_0x1e60[683]][_0x1e60[129]](this,1);_0xc9cex14[_0x1e60[37]][_0x1e60[69]](_0x1e60[684],1)}}},{key:_0x1e60[676],value:function _0xc9cex161(){var _0xc9cex158=arguments[_0x1e60[3]]> 0&& arguments[0]!== undefined?arguments[0]:_0x1e60[685];(0,_0xc9cex11[_0x1e60[127]])(_0x1e60[126]);_0xc9cexf[_0x1e60[45]][_0x1e60[69]](_0xc9cex158);_0xc9cex14[_0x1e60[37]][_0x1e60[69]](_0x1e60[686],_0xc9cex158);this[_0x1e60[18]][_0x1e60[17]][_0x1e60[149]](this[_0x1e60[17]][_0x1e60[687]])}},{key:_0x1e60[642],value:function _0xc9cex162(){var _0xc9cex163=this;(0,_0xc9cex11[_0x1e60[127]])(_0x1e60[126]);this[_0x1e60[196]][_0x1e60[617]](0x000000,200,false);this[_0x1e60[52]][_0x1e60[51]][_0x1e60[60]](200,function(){_0xc9cex163[_0x1e60[18]][_0x1e60[17]][_0x1e60[149]](_0x1e60[298])})}},{key:_0x1e60[662],value:function _0xc9cex164(){var _0xc9cex165=this;(0,_0xc9cex11[_0x1e60[127]])(_0x1e60[126]);this[_0x1e60[196]][_0x1e60[617]](0x000000,200,false);_0xc9cex14[_0x1e60[37]][_0x1e60[69]](_0x1e60[35],false);this[_0x1e60[52]][_0x1e60[51]][_0x1e60[60]](200,function(){_0xc9cex165[_0x1e60[18]][_0x1e60[17]][_0x1e60[149]](_0x1e60[298])})}},{key:_0x1e60[644],value:function _0xc9cex166(){var _0xc9cex167=this;(0,_0xc9cex11[_0x1e60[127]])(_0x1e60[126]);this[_0x1e60[196]][_0x1e60[617]](0x000000,200,false);this[_0x1e60[196]][_0x1e60[688]][_0x1e60[60]](function(){_0xc9cex167[_0x1e60[18]][_0x1e60[17]][_0x1e60[149]](_0x1e60[297])},this)}},{key:_0x1e60[659],value:function _0xc9cex168(){var _0xc9cex169=this;(0,_0xc9cex11[_0x1e60[127]])(_0x1e60[126]);this[_0x1e60[196]][_0x1e60[617]](0x000000,200,false);this[_0x1e60[196]][_0x1e60[688]][_0x1e60[60]](function(){_0xc9cex169[_0x1e60[18]][_0x1e60[17]][_0x1e60[149]](_0x1e60[299])},this)}},{key:_0x1e60[506],value:function _0xc9cexe0(){_0xc9cex13a[_0x1e60[636]](this)}}]);return _0xc9cex147}(Phaser.State);_0xc9cex3[_0x1e60[45]]= _0xc9cex147},{"\x2E\x2E\x2F\x55\x49\x2F\x54\x65\x78\x74":3,"\x2E\x2E\x2F\x63\x6F\x6E\x73\x74\x61\x6E\x74\x73\x2F\x55\x49\x43\x6F\x6E\x73\x74\x61\x6E\x74\x73":9,"\x2E\x2E\x2F\x75\x74\x69\x6C\x73\x2F\x41\x75\x64\x69\x6F\x4D\x61\x6E\x61\x67\x65\x72":30,"\x2E\x2E\x2F\x75\x74\x69\x6C\x73\x2F\x43\x6C\x6F\x63\x6B\x55\x74\x69\x6C\x73":31,"\x2E\x2E\x2F\x75\x74\x69\x6C\x73\x2F\x53\x63\x61\x6C\x65\x4D\x61\x6E\x61\x67\x65\x72":34,"\x2E\x2E\x2F\x75\x74\x69\x6C\x73\x2F\x53\x74\x6F\x72\x61\x67\x65\x4D\x61\x6E\x61\x67\x65\x72":35,"\x2E\x2E\x2F\x75\x74\x69\x6C\x73\x2F\x69\x31\x38\x6E":36}],27:[function(_0xc9cex1,_0xc9cex2,_0xc9cex3){_0x1e60[0];Object[_0x1e60[2]](_0xc9cex3,_0x1e60[1],{value:true});var _0xc9cex4=function(){function _0xc9cex5(_0xc9cex6,_0xc9cex7){for(var _0xc9cex8=0;_0xc9cex8< _0xc9cex7[_0x1e60[3]];_0xc9cex8++){var _0xc9cex9=_0xc9cex7[_0xc9cex8];_0xc9cex9[_0x1e60[4]]= _0xc9cex9[_0x1e60[4]]|| false;_0xc9cex9[_0x1e60[5]]= true;if(_0x1e60[6] in  _0xc9cex9){_0xc9cex9[_0x1e60[7]]= true};Object[_0x1e60[2]](_0xc9cex6,_0xc9cex9[_0x1e60[8]],_0xc9cex9)}}return function(_0xc9cexa,_0xc9cexb,_0xc9cexc){if(_0xc9cexb){_0xc9cex5(_0xc9cexa[_0x1e60[9]],_0xc9cexb)};if(_0xc9cexc){_0xc9cex5(_0xc9cexa,_0xc9cexc)};return _0xc9cexa}}();var _0xc9cexd=_0xc9cex1(_0x1e60[10]);var _0xc9cexe=_0xc9cex1(_0x1e60[11]);var _0xc9cexf=_0xc9cex15(_0xc9cexe);var _0xc9cex14=_0xc9cex1(_0x1e60[15]);function _0xc9cex15(_0xc9cex16){return _0xc9cex16&& _0xc9cex16[_0x1e60[1]]?_0xc9cex16:{default:_0xc9cex16}}function _0xc9cex17(_0xc9cex18,_0xc9cexa){if(!(_0xc9cex18 instanceof  _0xc9cexa)){throw  new TypeError(_0x1e60[16])}}function _0xc9cex66(_0xc9cex67,_0xc9cex68){if(!_0xc9cex67){throw  new ReferenceError(_0x1e60[197])};return _0xc9cex68&& ( typeof _0xc9cex68=== _0x1e60[198]||  typeof _0xc9cex68=== _0x1e60[199])?_0xc9cex68:_0xc9cex67}function _0xc9cex69(_0xc9cex6a,_0xc9cex6b){if( typeof _0xc9cex6b!== _0x1e60[199]&& _0xc9cex6b!== null){throw  new TypeError(_0x1e60[200]+  typeof _0xc9cex6b)};_0xc9cex6a[_0x1e60[9]]= Object[_0x1e60[201]](_0xc9cex6b&& _0xc9cex6b[_0x1e60[9]],{constructor:{value:_0xc9cex6a,enumerable:false,writable:true,configurable:true}});if(_0xc9cex6b){Object[_0x1e60[202]]?Object[_0x1e60[202]](_0xc9cex6a,_0xc9cex6b):_0xc9cex6a[_0x1e60[203]]= _0xc9cex6b}}var _0xc9cex16a={"\x69\x6D\x61\x67\x65":[[_0x1e60[625],_0x1e60[689]],[_0x1e60[637],_0x1e60[690]],[_0x1e60[639],_0x1e60[691]],[_0x1e60[80],_0x1e60[692]],[_0x1e60[693],_0x1e60[694]],[_0x1e60[695],_0x1e60[696]],[_0x1e60[697],_0x1e60[698]],[_0x1e60[187],_0x1e60[699]],[_0x1e60[190],_0x1e60[700]],[_0x1e60[58],_0x1e60[701]]],"\x73\x70\x72\x69\x74\x65\x73\x68\x65\x65\x74":[[_0x1e60[641],_0x1e60[702],320,320],[_0x1e60[95],_0x1e60[702],320,320],[_0x1e60[92],_0x1e60[703],160,160],[_0x1e60[104],_0x1e60[704],160,160],[_0x1e60[655],_0x1e60[705],160,160],[_0x1e60[706],_0x1e60[707],160,160],[_0x1e60[708],_0x1e60[709],160,160],[_0x1e60[710],_0x1e60[709],160,160],[_0x1e60[661],_0x1e60[711],160,160],[_0x1e60[643],_0x1e60[712],160,160],[_0x1e60[66],_0x1e60[713],160,160],[_0x1e60[87],_0x1e60[714],160,160],[_0x1e60[715],_0x1e60[716],160,170],[_0x1e60[717],_0x1e60[718],160,170],[_0x1e60[719],_0x1e60[720],160,160],[_0x1e60[721],_0x1e60[722],160,160],[_0x1e60[723],_0x1e60[724],160,160],[_0x1e60[627],_0x1e60[725],458,989],[_0x1e60[192],_0x1e60[726],680,56],[_0x1e60[727],_0x1e60[728],200,150],[_0x1e60[729],_0x1e60[730],200,150],[_0x1e60[731],_0x1e60[732],200,150],[_0x1e60[664],_0x1e60[733],160,160]],"\x61\x75\x64\x69\x6F":[[_0x1e60[734],[_0x1e60[735],_0x1e60[736]]],[_0x1e60[737],[_0x1e60[738],_0x1e60[739],_0x1e60[740]]],[_0x1e60[536],[_0x1e60[741],_0x1e60[742]]]]};var _0xc9cex16b=function(_0xc9cex121){_0xc9cex69(_0xc9cex16b,_0xc9cex121);function _0xc9cex16b(){_0xc9cex17(this,_0xc9cex16b);return _0xc9cex66(this,(_0xc9cex16b[_0x1e60[203]]|| Object[_0x1e60[204]](_0xc9cex16b))[_0x1e60[209]](this,arguments))}_0xc9cex4(_0xc9cex16b,[{key:_0x1e60[578],value:function _0xc9cex122(){this[_0x1e60[60]][_0x1e60[81]](0,0,_0x1e60[582]);this[_0x1e60[60]][_0x1e60[81]]((this[_0x1e60[42]][_0x1e60[57]]- 580)* 0.5,(this[_0x1e60[42]][_0x1e60[41]]+ 150)* 0.5,_0x1e60[587]);var _0xc9cex16c=this[_0x1e60[60]][_0x1e60[81]]((this[_0x1e60[42]][_0x1e60[57]]- 540)* 0.5,(this[_0x1e60[42]][_0x1e60[41]]+ 170)* 0.5,_0x1e60[589]);this[_0x1e60[584]][_0x1e60[743]](_0xc9cex16c);this._preloadResources()}},{key:_0x1e60[744],value:function _0xc9cex16d(){var _0xc9cex28=this;this[_0x1e60[745]]= document[_0x1e60[746]](_0x1e60[745]);this[_0x1e60[745]][_0x1e60[747]]= _0x1e60[748];this[_0x1e60[745]][_0x1e60[750]](_0x1e60[498],_0x1e60[749]);document[_0x1e60[492]][_0x1e60[751]](this[_0x1e60[745]]);this[_0x1e60[752]]= this[_0x1e60[745]][_0x1e60[753]];this[_0x1e60[745]][_0x1e60[498]][_0x1e60[754]]= _0x1e60[755];var _0xc9cex16e=function _0xc9cex16e(_0xc9cex16f){_0xc9cex16a[_0xc9cex16f][_0x1e60[194]](function(_0xc9cexbc){var _0xc9cex170=_0xc9cex28[_0x1e60[584]][_0xc9cex16f];if(_0xc9cex16f=== _0x1e60[479]|| _0xc9cex16f=== _0x1e60[756]){var _0xc9cex171=_0xc9cexbc[_0x1e60[757]]();_0xc9cex171[0]+= _0x1e60[758];_0xc9cex171[1]= _0xc9cex171[1][_0x1e60[761]](_0x1e60[759],_0x1e60[760]);_0xc9cex171[2]/= 2;_0xc9cex171[3]/= 2;_0xc9cex170&& _0xc9cex170[_0x1e60[209]](_0xc9cex28[_0x1e60[584]],_0xc9cex171)};_0xc9cex170&& _0xc9cex170[_0x1e60[209]](_0xc9cex28[_0x1e60[584]],_0xc9cexbc)},_0xc9cex28)};for(var _0xc9cex16f in _0xc9cex16a){_0xc9cex16e(_0xc9cex16f)}}},{key:_0x1e60[506],value:function _0xc9cexe0(){if(this[_0x1e60[752]]!== this[_0x1e60[745]][_0x1e60[753]]){(0,_0xc9cex14[_0x1e60[764]])(this[_0x1e60[18]][_0x1e60[763]][_0x1e60[60]](Phaser[_0x1e60[762]].Storage));if(_0xc9cex14[_0x1e60[37]][_0x1e60[36]](_0x1e60[684])=== 0.5){_0xc9cexd[_0x1e60[683]][_0x1e60[129]](this,0.5)};for(var _0xc9cex6e=0;_0xc9cex6e< navigator[_0x1e60[765]][_0x1e60[3]];_0xc9cex6e++){var _0xc9cex158=navigator[_0x1e60[765]][_0xc9cex6e];if(_0xc9cex158[_0x1e60[767]]()[_0x1e60[559]](_0x1e60[766])>= 0){_0xc9cexf[_0x1e60[45]][_0x1e60[69]](_0x1e60[670]);break};if(_0xc9cex158[_0x1e60[767]]()[_0x1e60[559]](_0x1e60[768])>= 0){_0xc9cexf[_0x1e60[45]][_0x1e60[69]](_0x1e60[671]);break};if(_0xc9cex158[_0x1e60[767]]()[_0x1e60[559]](_0x1e60[769])>= 0){_0xc9cexf[_0x1e60[45]][_0x1e60[69]](_0x1e60[672]);break}};if(_0xc9cex14[_0x1e60[37]][_0x1e60[36]](_0x1e60[686])){_0xc9cexf[_0x1e60[45]][_0x1e60[69]](_0xc9cex14[_0x1e60[37]][_0x1e60[36]](_0x1e60[686]))};document[_0x1e60[492]][_0x1e60[558]](this[_0x1e60[745]]);this[_0x1e60[17]][_0x1e60[149]](_0x1e60[148])}}}]);return _0xc9cex16b}(Phaser.State);_0xc9cex3[_0x1e60[45]]= _0xc9cex16b},{"\x2E\x2E\x2F\x75\x74\x69\x6C\x73\x2F\x53\x63\x61\x6C\x65\x4D\x61\x6E\x61\x67\x65\x72":34,"\x2E\x2E\x2F\x75\x74\x69\x6C\x73\x2F\x53\x74\x6F\x72\x61\x67\x65\x4D\x61\x6E\x61\x67\x65\x72":35,"\x2E\x2E\x2F\x75\x74\x69\x6C\x73\x2F\x69\x31\x38\x6E":36}],28:[function(_0xc9cex1,_0xc9cex2,_0xc9cex3){_0x1e60[0];Object[_0x1e60[2]](_0xc9cex3,_0x1e60[1],{value:true});var _0xc9cex4=function(){function _0xc9cex5(_0xc9cex6,_0xc9cex7){for(var _0xc9cex8=0;_0xc9cex8< _0xc9cex7[_0x1e60[3]];_0xc9cex8++){var _0xc9cex9=_0xc9cex7[_0xc9cex8];_0xc9cex9[_0x1e60[4]]= _0xc9cex9[_0x1e60[4]]|| false;_0xc9cex9[_0x1e60[5]]= true;if(_0x1e60[6] in  _0xc9cex9){_0xc9cex9[_0x1e60[7]]= true};Object[_0x1e60[2]](_0xc9cex6,_0xc9cex9[_0x1e60[8]],_0xc9cex9)}}return function(_0xc9cexa,_0xc9cexb,_0xc9cexc){if(_0xc9cexb){_0xc9cex5(_0xc9cexa[_0x1e60[9]],_0xc9cexb)};if(_0xc9cexc){_0xc9cex5(_0xc9cexa,_0xc9cexc)};return _0xc9cexa}}();var _0xc9cexd=_0xc9cex1(_0x1e60[10]);var _0xc9cexe=_0xc9cex1(_0x1e60[11]);var _0xc9cexf=_0xc9cex15(_0xc9cexe);var _0xc9cex11=_0xc9cex1(_0x1e60[13]);var _0xc9cexc9=_0xc9cex1(_0x1e60[464]);var _0xc9cex10=_0xc9cex1(_0x1e60[12]);var _0xc9cex12=_0xc9cex1(_0x1e60[596]);var _0xc9cex13=_0xc9cex15(_0xc9cex12);function _0xc9cex15(_0xc9cex16){return _0xc9cex16&& _0xc9cex16[_0x1e60[1]]?_0xc9cex16:{default:_0xc9cex16}}function _0xc9cex17(_0xc9cex18,_0xc9cexa){if(!(_0xc9cex18 instanceof  _0xc9cexa)){throw  new TypeError(_0x1e60[16])}}function _0xc9cex66(_0xc9cex67,_0xc9cex68){if(!_0xc9cex67){throw  new ReferenceError(_0x1e60[197])};return _0xc9cex68&& ( typeof _0xc9cex68=== _0x1e60[198]||  typeof _0xc9cex68=== _0x1e60[199])?_0xc9cex68:_0xc9cex67}function _0xc9cex69(_0xc9cex6a,_0xc9cex6b){if( typeof _0xc9cex6b!== _0x1e60[199]&& _0xc9cex6b!== null){throw  new TypeError(_0x1e60[200]+  typeof _0xc9cex6b)};_0xc9cex6a[_0x1e60[9]]= Object[_0x1e60[201]](_0xc9cex6b&& _0xc9cex6b[_0x1e60[9]],{constructor:{value:_0xc9cex6a,enumerable:false,writable:true,configurable:true}});if(_0xc9cex6b){Object[_0x1e60[202]]?Object[_0x1e60[202]](_0xc9cex6a,_0xc9cex6b):_0xc9cex6a[_0x1e60[203]]= _0xc9cex6b}}var _0xc9cex123=function(_0xc9cex121){_0xc9cex69(_0xc9cex123,_0xc9cex121);function _0xc9cex123(){_0xc9cex17(this,_0xc9cex123);return _0xc9cex66(this,(_0xc9cex123[_0x1e60[203]]|| Object[_0x1e60[204]](_0xc9cex123))[_0x1e60[209]](this,arguments))}_0xc9cex4(_0xc9cex123,[{key:_0x1e60[201],value:function _0xc9cex101(){this[_0x1e60[60]][_0x1e60[81]](0,0,(0,_0xc9cexd[_0x1e60[40]])(_0x1e60[582]));this[_0x1e60[196]][_0x1e60[117]](0x000000,500,false);this[_0x1e60[770]]= this[_0x1e60[60]][_0x1e60[78]]();var _0xc9cex124=this[_0x1e60[60]][_0x1e60[68]](this[_0x1e60[42]][_0x1e60[57]]- _0xc9cex10[_0x1e60[65]],this[_0x1e60[18]][_0x1e60[42]][_0x1e60[41]]- _0xc9cex10[_0x1e60[65]],(0,_0xc9cexd[_0x1e60[40]])(_0x1e60[92]),this[_0x1e60[598]],this,1,0,2);_0xc9cex124[_0x1e60[62]][_0x1e60[69]](1,1);_0xc9cex124[_0x1e60[56]]= this[_0x1e60[42]][_0x1e60[57]]+ _0xc9cex124[_0x1e60[57]]+ _0xc9cex10[_0x1e60[65]];this[_0x1e60[60]][_0x1e60[76]](_0xc9cex124)[_0x1e60[75]]({x:this[_0x1e60[42]][_0x1e60[57]]- _0xc9cex10[_0x1e60[65]]},500,Phaser[_0x1e60[74]][_0x1e60[73]].Out,true);this[_0x1e60[771]]= this[_0x1e60[60]][_0x1e60[68]](0,this[_0x1e60[42]][_0x1e60[41]]/ 2,(0,_0xc9cexd[_0x1e60[40]])(_0x1e60[717]),this[_0x1e60[772]],this,1,0,2);this[_0x1e60[771]][_0x1e60[56]]= this[_0x1e60[42]][_0x1e60[57]]- 64;this[_0x1e60[771]][_0x1e60[62]][_0x1e60[61]](1,0.5);this[_0x1e60[773]]= this[_0x1e60[60]][_0x1e60[68]](64,this[_0x1e60[42]][_0x1e60[41]]/ 2,(0,_0xc9cexd[_0x1e60[40]])(_0x1e60[715]),this[_0x1e60[774]],this,1,0,2);this[_0x1e60[773]][_0x1e60[62]][_0x1e60[61]](0,0.5);this[_0x1e60[770]][_0x1e60[60]](_0xc9cex124);this[_0x1e60[770]][_0x1e60[60]](this[_0x1e60[771]]);this[_0x1e60[770]][_0x1e60[60]](this[_0x1e60[773]]);this[_0x1e60[775]]= [];var _0xc9cex172=this[_0x1e60[60]][_0x1e60[78]]();this[_0x1e60[776]](_0xc9cex172,_0xc9cexc9[_0x1e60[218]][_0x1e60[3]]- 1);this[_0x1e60[775]][_0x1e60[291]](_0xc9cex172);_0xc9cex172[_0x1e60[616]][_0x1e60[72]]= this[_0x1e60[42]][_0x1e60[41]]/ 2- _0xc9cex172[_0x1e60[41]]/ 2;_0xc9cex172[_0x1e60[616]][_0x1e60[56]]-= this[_0x1e60[42]][_0x1e60[57]];var _0xc9cex173=this[_0x1e60[60]][_0x1e60[78]]();this[_0x1e60[776]](_0xc9cex173,0);this[_0x1e60[775]][_0x1e60[291]](_0xc9cex173);_0xc9cex173[_0x1e60[616]][_0x1e60[72]]= this[_0x1e60[42]][_0x1e60[41]]/ 2- _0xc9cex173[_0x1e60[41]]/ 2;var _0xc9cex174=this[_0x1e60[60]][_0x1e60[78]]();this[_0x1e60[776]](_0xc9cex174,1);this[_0x1e60[775]][_0x1e60[291]](_0xc9cex174);_0xc9cex174[_0x1e60[616]][_0x1e60[72]]= this[_0x1e60[42]][_0x1e60[41]]/ 2- _0xc9cex174[_0x1e60[41]]/ 2;_0xc9cex174[_0x1e60[616]][_0x1e60[56]]+= this[_0x1e60[42]][_0x1e60[57]]}},{key:_0x1e60[776],value:function _0xc9cex175(_0xc9cex176,_0xc9cexda){_0xc9cex176[_0x1e60[777]]= _0xc9cexda;_0xc9cex176[_0x1e60[778]](true);var _0xc9cex177=this[_0x1e60[60]][_0x1e60[81]](this[_0x1e60[18]][_0x1e60[57]]/ 2,0,(0,_0xc9cexd[_0x1e60[40]])(_0x1e60[693]));_0xc9cex177[_0x1e60[62]][_0x1e60[61]](0.5,0);var _0xc9cex46=function _0xc9cex46(_0xc9cex29){return _0xc9cex29[_0x1e60[169]](0,1)[_0x1e60[168]]()+ _0xc9cex29[_0x1e60[169]](1)};var _0xc9cex148= new _0xc9cex13[_0x1e60[45]](this[_0x1e60[18]],_0x1e60[84],(0,_0xc9cexd[_0x1e60[40]])(220),_0x1e60[141]+ _0xc9cex46(_0xc9cexf[_0x1e60[45]][_0x1e60[44]](_0xc9cexc9[_0x1e60[218]][_0xc9cexda][_0x1e60[476]])),(0,_0xc9cexd[_0x1e60[40]])(_0xc9cex10.WIKI_TITLE_FONT),[null,1]);var _0xc9cex64=this[_0x1e60[60]][_0x1e60[81]](this[_0x1e60[18]][_0x1e60[57]]/ 2,(0,_0xc9cexd[_0x1e60[40]])(380),(0,_0xc9cexd[_0x1e60[40]])(_0xc9cexf[_0x1e60[45]][_0x1e60[479]](_0x1e60[478])),_0xc9cexc9[_0x1e60[218]][_0xc9cexda][_0x1e60[8]]);_0xc9cex64[_0x1e60[63]][_0x1e60[61]](1.5);_0xc9cex64[_0x1e60[62]][_0x1e60[61]](0.5);var _0xc9cex178=function _0xc9cex178(_0xc9cexbc){return _0xc9cexf[_0x1e60[45]][_0x1e60[44]](_0xc9cexbc[0],_0xc9cexbc[1])};var _0xc9cex179= new _0xc9cex13[_0x1e60[45]](this[_0x1e60[18]],_0x1e60[84],(0,_0xc9cexd[_0x1e60[40]])(600),_0xc9cex46(_0xc9cexf[_0x1e60[45]][_0x1e60[44]](_0x1e60[170]))+ _0x1e60[46]+ _0xc9cexc9[_0x1e60[218]][_0xc9cexda][_0x1e60[549]][_0x1e60[144]]+ _0x1e60[779],(0,_0xc9cexd[_0x1e60[40]])(_0xc9cex10.WIKI_FONT),[null,1]);var _0xc9cex17a= new _0xc9cex13[_0x1e60[45]](this[_0x1e60[18]],_0x1e60[84],(0,_0xc9cexd[_0x1e60[40]])(714),_0xc9cex46(_0xc9cexf[_0x1e60[45]][_0x1e60[44]](_0x1e60[172]))+ _0x1e60[46]+ _0xc9cexc9[_0x1e60[218]][_0xc9cexda][_0x1e60[549]][_0x1e60[146]]+ _0x1e60[779],(0,_0xc9cexd[_0x1e60[40]])(_0xc9cex10.WIKI_FONT),[null,1]);var _0xc9cex17b= new _0xc9cex13[_0x1e60[45]](this[_0x1e60[18]],_0x1e60[84],(0,_0xc9cexd[_0x1e60[40]])(828),_0xc9cex46(_0xc9cexf[_0x1e60[45]][_0x1e60[44]](_0x1e60[173]))+ _0x1e60[46]+ _0xc9cexc9[_0x1e60[218]][_0xc9cexda][_0x1e60[549]][_0x1e60[166]]+ _0x1e60[779],(0,_0xc9cexd[_0x1e60[40]])(_0xc9cex10.WIKI_FONT),[null,1]);var _0xc9cexbd= new _0xc9cex13[_0x1e60[45]](this[_0x1e60[18]],_0x1e60[84],(0,_0xc9cexd[_0x1e60[40]])(943),_0xc9cex46(_0xc9cexf[_0x1e60[45]][_0x1e60[44]](_0x1e60[780]))+ _0x1e60[46]+ _0xc9cex178(_0xc9cexc9[_0x1e60[218]][_0xc9cexda][_0x1e60[356]]),(0,_0xc9cexd[_0x1e60[40]])(_0xc9cex10.WIKI_FONT),[null,1]);_0xc9cex176[_0x1e60[60]](_0xc9cex177);_0xc9cex176[_0x1e60[60]](_0xc9cex148);_0xc9cex176[_0x1e60[60]](_0xc9cex64);_0xc9cex176[_0x1e60[60]](_0xc9cex179);_0xc9cex176[_0x1e60[60]](_0xc9cex17a);_0xc9cex176[_0x1e60[60]](_0xc9cex17b);_0xc9cex176[_0x1e60[60]](_0xc9cexbd)}},{key:_0x1e60[774],value:function _0xc9cex17c(){var _0xc9cex28=this;this[_0x1e60[60]][_0x1e60[76]](this[_0x1e60[775]][1][_0x1e60[616]])[_0x1e60[75]]({x:this[_0x1e60[42]][_0x1e60[57]]},250,Phaser[_0x1e60[74]][_0x1e60[120]].In,true);var _0xc9cex17d=this[_0x1e60[60]][_0x1e60[76]](this[_0x1e60[775]][0][_0x1e60[616]])[_0x1e60[75]]({x:0},250,Phaser[_0x1e60[74]][_0x1e60[120]].Out,true);this[_0x1e60[18]][_0x1e60[42]][_0x1e60[128]](this[_0x1e60[770]]);this[_0x1e60[773]][_0x1e60[82]]= false;_0xc9cex17d[_0x1e60[121]][_0x1e60[60]](function(){_0xc9cex28[_0x1e60[773]][_0x1e60[82]]= true;_0xc9cex28[_0x1e60[775]][0][_0x1e60[616]][_0x1e60[56]]= 0;var _0xc9cex17e=_0xc9cex28[_0x1e60[775]][0][_0x1e60[777]]- 1;if(_0xc9cex17e< 0){_0xc9cex17e= _0xc9cexc9[_0x1e60[218]][_0x1e60[3]]- 1;_0xc9cex28[_0x1e60[781]]= _0xc9cexc9[_0x1e60[218]][_0x1e60[3]]- 1};var _0xc9cex172=_0xc9cex28[_0x1e60[60]][_0x1e60[78]]();_0xc9cex28[_0x1e60[776]](_0xc9cex172,_0xc9cex17e);_0xc9cex172[_0x1e60[616]][_0x1e60[72]]= _0xc9cex28[_0x1e60[42]][_0x1e60[41]]/ 2- _0xc9cex172[_0x1e60[41]]/ 2;_0xc9cex172[_0x1e60[616]][_0x1e60[56]]= _0xc9cex28[_0x1e60[42]][_0x1e60[57]]*  -1;_0xc9cex28[_0x1e60[775]][_0x1e60[782]]();_0xc9cex28[_0x1e60[775]][_0x1e60[783]](_0xc9cex172)})}},{key:_0x1e60[772],value:function _0xc9cex17f(){var _0xc9cex33=this;this[_0x1e60[60]][_0x1e60[76]](this[_0x1e60[775]][1][_0x1e60[616]])[_0x1e60[75]]({x:this[_0x1e60[42]][_0x1e60[57]]*  -1},250,Phaser[_0x1e60[74]][_0x1e60[120]].In,true);var _0xc9cex17d=this[_0x1e60[60]][_0x1e60[76]](this[_0x1e60[775]][2][_0x1e60[616]])[_0x1e60[75]]({x:0},250,Phaser[_0x1e60[74]][_0x1e60[120]].Out,true);this[_0x1e60[18]][_0x1e60[42]][_0x1e60[128]](this[_0x1e60[770]]);this[_0x1e60[771]][_0x1e60[82]]= false;_0xc9cex17d[_0x1e60[121]][_0x1e60[60]](function(){_0xc9cex33[_0x1e60[771]][_0x1e60[82]]= true;_0xc9cex33[_0x1e60[775]][2][_0x1e60[616]][_0x1e60[56]]= 0;var _0xc9cex17e=_0xc9cex33[_0x1e60[775]][2][_0x1e60[777]]+ 1;if(_0xc9cex17e>= _0xc9cexc9[_0x1e60[218]][_0x1e60[3]]){_0xc9cex17e= 0;_0xc9cex33[_0x1e60[781]]= 0};var _0xc9cex174=_0xc9cex33[_0x1e60[60]][_0x1e60[78]]();_0xc9cex33[_0x1e60[776]](_0xc9cex174,_0xc9cex17e);_0xc9cex174[_0x1e60[616]][_0x1e60[72]]= _0xc9cex33[_0x1e60[42]][_0x1e60[41]]/ 2- _0xc9cex174[_0x1e60[41]]/ 2;_0xc9cex174[_0x1e60[616]][_0x1e60[56]]= _0xc9cex33[_0x1e60[42]][_0x1e60[57]];_0xc9cex33[_0x1e60[775]][_0x1e60[784]]();_0xc9cex33[_0x1e60[775]][_0x1e60[291]](_0xc9cex174)})}},{key:_0x1e60[598],value:function _0xc9cex12e(){var _0xc9cex155=this;(0,_0xc9cex11[_0x1e60[127]])(_0x1e60[126]);this[_0x1e60[196]][_0x1e60[617]](0x000000,200,false);this[_0x1e60[196]][_0x1e60[688]][_0x1e60[60]](function(){_0xc9cex155[_0x1e60[18]][_0x1e60[17]][_0x1e60[149]](_0x1e60[148])},this)}}]);return _0xc9cex123}(Phaser.State);_0xc9cex3[_0x1e60[45]]= _0xc9cex123},{"\x2E\x2E\x2F\x55\x49\x2F\x54\x65\x78\x74":3,"\x2E\x2E\x2F\x63\x6F\x6E\x73\x74\x61\x6E\x74\x73\x2F\x46\x6F\x6F\x64\x43\x6F\x6E\x73\x74\x61\x6E\x74\x73":7,"\x2E\x2E\x2F\x63\x6F\x6E\x73\x74\x61\x6E\x74\x73\x2F\x55\x49\x43\x6F\x6E\x73\x74\x61\x6E\x74\x73":9,"\x2E\x2E\x2F\x75\x74\x69\x6C\x73\x2F\x41\x75\x64\x69\x6F\x4D\x61\x6E\x61\x67\x65\x72":30,"\x2E\x2E\x2F\x75\x74\x69\x6C\x73\x2F\x53\x63\x61\x6C\x65\x4D\x61\x6E\x61\x67\x65\x72":34,"\x2E\x2E\x2F\x75\x74\x69\x6C\x73\x2F\x69\x31\x38\x6E":36}],29:[function(_0xc9cex1,_0xc9cex2,_0xc9cex3){_0x1e60[0];Object[_0x1e60[2]](_0xc9cex3,_0x1e60[1],{value:true});var _0xc9cex180=_0xc9cex1(_0x1e60[785]);var _0xc9cex181=_0xc9cex15(_0xc9cex180);var _0xc9cex182=_0xc9cex1(_0x1e60[786]);var _0xc9cex183=_0xc9cex15(_0xc9cex182);var _0xc9cex184=_0xc9cex1(_0x1e60[787]);var _0xc9cex185=_0xc9cex15(_0xc9cex184);var _0xc9cex186=_0xc9cex1(_0x1e60[788]);var _0xc9cex187=_0xc9cex15(_0xc9cex186);var _0xc9cex188=_0xc9cex1(_0x1e60[789]);var _0xc9cex189=_0xc9cex15(_0xc9cex188);var _0xc9cex18a=_0xc9cex1(_0x1e60[790]);var _0xc9cex18b=_0xc9cex15(_0xc9cex18a);function _0xc9cex15(_0xc9cex16){return _0xc9cex16&& _0xc9cex16[_0x1e60[1]]?_0xc9cex16:{default:_0xc9cex16}}_0xc9cex3[_0x1e60[45]]= {Wiki:_0xc9cex181[_0x1e60[45]],Boot:_0xc9cex183[_0x1e60[45]],Game:_0xc9cex185[_0x1e60[45]],MainMenu:_0xc9cex187[_0x1e60[45]],Preloader:_0xc9cex189[_0x1e60[45]],Credits:_0xc9cex18b[_0x1e60[45]]}},{"\x2E\x2F\x42\x6F\x6F\x74":23,"\x2E\x2F\x43\x72\x65\x64\x69\x74\x73":24,"\x2E\x2F\x47\x61\x6D\x65":25,"\x2E\x2F\x4D\x61\x69\x6E\x4D\x65\x6E\x75":26,"\x2E\x2F\x50\x72\x65\x6C\x6F\x61\x64\x65\x72":27,"\x2E\x2F\x57\x69\x6B\x69":28}],30:[function(_0xc9cex1,_0xc9cex2,_0xc9cex3){_0x1e60[0];Object[_0x1e60[2]](_0xc9cex3,_0x1e60[1],{value:true});_0xc9cex3[_0x1e60[89]]= undefined;_0xc9cex3[_0x1e60[156]]= _0xc9cex190;_0xc9cex3[_0x1e60[127]]= _0xc9cex192;_0xc9cex3[_0x1e60[556]]= _0xc9cex194;var _0xc9cex14=_0xc9cex1(_0x1e60[791]);var _0xc9cex18c=void(0);var _0xc9cex18d=void(0);var _0xc9cex18e=void(0);var _0xc9cex18f=void(0);function _0xc9cex190(_0xc9cex191,_0xc9cex41){switch(_0xc9cex191){case _0x1e60[649]:{_0xc9cex14[_0x1e60[37]][_0x1e60[638]](_0x1e60[792],true);_0xc9cex18c= _0xc9cex14[_0x1e60[37]][_0x1e60[36]](_0x1e60[792]);_0xc9cex18d= [];_0xc9cex18d[_0x1e60[126]]= _0xc9cex41[_0x1e60[60]][_0x1e60[793]](_0x1e60[734]);if(!_0xc9cex18e){_0xc9cex18e= _0xc9cex41[_0x1e60[60]][_0x1e60[793]](_0x1e60[737],1,true);_0xc9cex18e[_0x1e60[794]]= 0.5};break};case _0x1e60[795]:{_0xc9cex18c= true;break};case _0x1e60[650]:{_0xc9cex18c= false;break};case _0x1e60[155]:{_0xc9cex18c=  !_0xc9cex18c;break}};if(_0xc9cex18c){_0xc9cex18f= 0;if(_0xc9cex18e){if(!_0xc9cex18e[_0x1e60[796]]){_0xc9cex18e[_0x1e60[557]](_0x1e60[141],0,1,true)}}}else {_0xc9cex18f= 4;if(_0xc9cex18e){_0xc9cex18e[_0x1e60[797]]()}};_0xc9cex14[_0x1e60[37]][_0x1e60[69]](_0x1e60[792],_0xc9cex18c);_0xc9cex41[_0x1e60[86]][_0x1e60[90]](_0xc9cex18f+ 1,_0xc9cex18f+ 0,_0xc9cex18f+ 2)}function _0xc9cex192(_0xc9cex193){if(_0xc9cex18c){if(_0xc9cex18d&& _0xc9cex18d[_0xc9cex193]){_0xc9cex18d[_0xc9cex193][_0x1e60[557]]()}}}function _0xc9cex194(){return _0xc9cex18c}var _0xc9cex195=_0xc9cex3[_0x1e60[89]]= function _0xc9cex195(){return _0xc9cex18f}},{"\x2E\x2F\x53\x74\x6F\x72\x61\x67\x65\x4D\x61\x6E\x61\x67\x65\x72":35}],31:[function(_0xc9cex1,_0xc9cex2,_0xc9cex3){_0x1e60[0];Object[_0x1e60[2]](_0xc9cex3,_0x1e60[1],{value:true});_0xc9cex3[_0x1e60[630]]= _0xc9cex196;_0xc9cex3[_0x1e60[636]]= _0xc9cex198;var _0xc9cexd=_0xc9cex1(_0x1e60[798]);function _0xc9cex196(_0xc9cex1a){var _0xc9cex197= new Date();_0xc9cex1a[_0x1e60[799]]= {};_0xc9cex1a[_0x1e60[799]][_0x1e60[800]]= _0xc9cex1a[_0x1e60[18]][_0x1e60[60]][_0x1e60[81]]((0,_0xc9cexd[_0x1e60[40]])(847),(0,_0xc9cexd[_0x1e60[40]])(243),(0,_0xc9cexd[_0x1e60[40]])(_0x1e60[695]));_0xc9cex1a[_0x1e60[799]][_0x1e60[800]][_0x1e60[62]][_0x1e60[61]](0.5,1);_0xc9cex1a[_0x1e60[799]][_0x1e60[800]][_0x1e60[801]]= _0xc9cex197[_0x1e60[802]]()/ 60* 360;_0xc9cex1a[_0x1e60[799]][_0x1e60[803]]= _0xc9cex1a[_0x1e60[18]][_0x1e60[60]][_0x1e60[81]]((0,_0xc9cexd[_0x1e60[40]])(847),(0,_0xc9cexd[_0x1e60[40]])(243),(0,_0xc9cexd[_0x1e60[40]])(_0x1e60[697]));_0xc9cex1a[_0x1e60[799]][_0x1e60[803]][_0x1e60[62]][_0x1e60[61]](0.5,1);_0xc9cex1a[_0x1e60[799]][_0x1e60[803]][_0x1e60[801]]= _0xc9cex197[_0x1e60[804]]()% 12/ 12* 360+ _0xc9cex197[_0x1e60[802]]()/ 60* 30}function _0xc9cex198(_0xc9cex1a){var _0xc9cex197= new Date();_0xc9cex1a[_0x1e60[799]][_0x1e60[800]][_0x1e60[801]]= _0xc9cex197[_0x1e60[802]]()/ 60* 360;_0xc9cex1a[_0x1e60[799]][_0x1e60[803]][_0x1e60[801]]= _0xc9cex197[_0x1e60[804]]()% 12/ 12* 360+ _0xc9cex197[_0x1e60[802]]()/ 60* 30}},{"\x2E\x2F\x53\x63\x61\x6C\x65\x4D\x61\x6E\x61\x67\x65\x72":34}],32:[function(_0xc9cex1,_0xc9cex2,_0xc9cex3){_0x1e60[0];Object[_0x1e60[2]](_0xc9cex3,_0x1e60[1],{value:true});var _0xc9cex199=_0xc9cex3[_0x1e60[541]]= function _0xc9cex199(_0xc9cex19a){var _0xc9cex19b=arguments[_0x1e60[3]]> 1&& arguments[1]!== undefined?arguments[1]:_0xc9cex19a[_0x1e60[3]];var _0xc9cex19c=_0xc9cex19a[_0x1e60[563]](0,_0xc9cex19b)[_0x1e60[523]](function(_0xc9cexd9){return _0xc9cexd9[_0x1e60[521]]});var _0xc9cex19d=_0xc9cex19c[_0x1e60[805]](function(_0xc9cex19e,_0xc9cex19f){return _0xc9cex19e+ _0xc9cex19f});_0xc9cex19c= _0xc9cex19c[_0x1e60[523]](function(_0xc9cexd9){return _0xc9cexd9* (1/ _0xc9cex19d)});var _0xc9cex1a0=Math[_0x1e60[548]]();var _0xc9cex1a1=0;for(var _0xc9cex8=0;_0xc9cex8< _0xc9cex19b;_0xc9cex8++){_0xc9cex1a1+= _0xc9cex19c[_0xc9cex8];if(_0xc9cex1a0<= _0xc9cex1a1){return _0xc9cex19a[_0xc9cex8]}}}},{}],33:[function(_0xc9cex1,_0xc9cex2,_0xc9cex3){_0x1e60[0];Object[_0x1e60[2]](_0xc9cex3,_0x1e60[1],{value:true});_0xc9cex3[_0x1e60[175]]= _0xc9cex1a2;_0xc9cex3[_0x1e60[520]]= _0xc9cex1a3;_0xc9cex3[_0x1e60[806]]= _0xc9cex1a4;_0xc9cex3[_0x1e60[542]]= _0xc9cex1a6;var _0xc9cex3f=_0xc9cex1(_0x1e60[159]);function _0xc9cex1a2(_0xc9cex44,_0xc9cex4f){for(var _0xc9cex8=0;_0xc9cex8< _0xc9cex3f[_0x1e60[191]][_0x1e60[3]];_0xc9cex8++){if(_0xc9cex44> _0xc9cex4f* _0xc9cex3f[_0x1e60[191]][_0xc9cex8]){return _0xc9cex3f[_0x1e60[191]][_0x1e60[3]]- _0xc9cex8+ 8}};for(var _0xc9cexb5=0;_0xc9cexb5< _0xc9cex3f[_0x1e60[189]][_0x1e60[3]];_0xc9cexb5++){if(_0xc9cex44< _0xc9cex4f* _0xc9cex3f[_0x1e60[189]][_0xc9cexb5]){return _0xc9cexb5}};return 8}function _0xc9cex1a3(_0xc9cex111,_0xc9cexcd){return _0xc9cex111[_0x1e60[807]](function(_0xc9cexec){return _0xc9cex1a4(_0xc9cexec)=== _0xc9cexec[_0x1e60[549]][_0xc9cexcd]})}function _0xc9cex1a4(_0xc9cexec){var _0xc9cex1a5=_0xc9cexec[_0x1e60[549]];return Math[_0x1e60[181]](_0xc9cex1a5[_0x1e60[144]],_0xc9cex1a5[_0x1e60[146]],_0xc9cex1a5[_0x1e60[166]])}function _0xc9cex1a6(_0xc9cexec){var _0xc9cex1a7=_0xc9cex1a4(_0xc9cexec);var _0xc9cex1a5=_0xc9cexec[_0x1e60[549]];for(var _0xc9cexcd in _0xc9cexec[_0x1e60[549]]){if(_0xc9cex1a5[_0xc9cexcd]=== _0xc9cex1a7){return _0xc9cexcd}}}},{"\x2E\x2E\x2F\x63\x6F\x6E\x73\x74\x61\x6E\x74\x73\x2F\x57\x65\x69\x67\x68\x74\x42\x72\x65\x61\x6B\x70\x6F\x69\x6E\x74\x73":10}],34:[function(_0xc9cex1,_0xc9cex2,_0xc9cex3){_0x1e60[0];Object[_0x1e60[2]](_0xc9cex3,_0x1e60[1],{value:true});_0xc9cex3[_0x1e60[682]]= undefined;var _0xc9cex1a8= typeof Symbol=== _0x1e60[199]&&  typeof Symbol[_0x1e60[808]]=== _0x1e60[809]?function(_0xc9cex16){return  typeof _0xc9cex16}:function(_0xc9cex16){return _0xc9cex16&&  typeof Symbol=== _0x1e60[199]&& _0xc9cex16[_0x1e60[810]]=== Symbol&& _0xc9cex16!== Symbol[_0x1e60[9]]?_0x1e60[809]: typeof _0xc9cex16};_0xc9cex3[_0x1e60[40]]= _0xc9cex1aa;_0xc9cex3[_0x1e60[683]]= _0xc9cex1ae;var _0xc9cexb8=_0xc9cex1(_0x1e60[811]);var _0xc9cex1a9=_0xc9cex3[_0x1e60[682]]= 1;function _0xc9cex1aa(_0xc9cex44,_0xc9cex1ab){var _0xc9cex1ac= typeof _0xc9cex44=== _0x1e60[812]?_0x1e60[812]:_0xc9cex1a8(_0xc9cex44);if(_0xc9cex1ac=== _0x1e60[813]){if(_0xc9cex1ab){if(_0xc9cex1ab=== _0xc9cex1a9){return _0xc9cex44};return _0x1e60[141]};if(_0xc9cex1a9!== 1){return _0xc9cex44+ _0x1e60[814]+ _0xc9cex1a9* 100};return _0x1e60[141]+ _0xc9cex44}else {if(_0xc9cex1ac=== _0x1e60[815]){if(_0xc9cex1ab){if(_0xc9cex1ab=== _0xc9cex1a9){return _0xc9cex44};return 0};return _0xc9cex44* _0xc9cex1a9}else {if(_0xc9cex1ac=== _0x1e60[198]&& _0xc9cex44[_0x1e60[816]]){var _0xc9cex1ad=Object[_0x1e60[817]]({},_0xc9cex44);_0xc9cex1ad[_0x1e60[816]]= _0xc9cex1aa(_0xc9cex1ad[_0x1e60[816]]);return _0xc9cex1ad}}}}function _0xc9cex1ae(_0xc9cex1af){_0xc9cex3[_0x1e60[682]]= _0xc9cex1a9= _0xc9cex1af;this[_0x1e60[18]][_0x1e60[63]][_0x1e60[818]](_0xc9cex1aa(_0xc9cexb8.CANVAS_WIDTH),_0xc9cex1aa(_0xc9cexb8.CANVAS_HEIGHT));this[_0x1e60[18]][_0x1e60[17]][_0x1e60[149]](this[_0x1e60[17]][_0x1e60[687]])}},{"\x2E\x2E\x2F\x63\x6F\x6E\x73\x74\x61\x6E\x74\x73\x2F\x43\x61\x6E\x76\x61\x73\x43\x6F\x6E\x73\x74\x61\x6E\x74\x73":5}],35:[function(_0xc9cex1,_0xc9cex2,_0xc9cex3){_0x1e60[0];Object[_0x1e60[2]](_0xc9cex3,_0x1e60[1],{value:true});_0xc9cex3[_0x1e60[764]]= _0xc9cex1b1;var _0xc9cex1b0=_0xc9cex3[_0x1e60[37]]= void(0);function _0xc9cex1b1(_0xc9cex1b2){_0xc9cex3[_0x1e60[37]]= _0xc9cex1b0= _0xc9cex1b2}},{}],36:[function(_0xc9cex1,_0xc9cex2,_0xc9cex3){_0x1e60[0];Object[_0x1e60[2]](_0xc9cex3,_0x1e60[1],{value:true});var _0xc9cex4=function(){function _0xc9cex5(_0xc9cex6,_0xc9cex7){for(var _0xc9cex8=0;_0xc9cex8< _0xc9cex7[_0x1e60[3]];_0xc9cex8++){var _0xc9cex9=_0xc9cex7[_0xc9cex8];_0xc9cex9[_0x1e60[4]]= _0xc9cex9[_0x1e60[4]]|| false;_0xc9cex9[_0x1e60[5]]= true;if(_0x1e60[6] in  _0xc9cex9){_0xc9cex9[_0x1e60[7]]= true};Object[_0x1e60[2]](_0xc9cex6,_0xc9cex9[_0x1e60[8]],_0xc9cex9)}}return function(_0xc9cexa,_0xc9cexb,_0xc9cexc){if(_0xc9cexb){_0xc9cex5(_0xc9cexa[_0x1e60[9]],_0xc9cexb)};if(_0xc9cexc){_0xc9cex5(_0xc9cexa,_0xc9cexc)};return _0xc9cexa}}();var _0xc9cex1b3=_0xc9cex1(_0x1e60[819]);var _0xc9cex1b4=_0xc9cex15(_0xc9cex1b3);function _0xc9cex15(_0xc9cex16){return _0xc9cex16&& _0xc9cex16[_0x1e60[1]]?_0xc9cex16:{default:_0xc9cex16}}function _0xc9cex17(_0xc9cex18,_0xc9cexa){if(!(_0xc9cex18 instanceof  _0xc9cexa)){throw  new TypeError(_0x1e60[16])}}var _0xc9cex1b5=_0x1e60[670];var _0xc9cex1b6=function(){function _0xc9cex1b6(){_0xc9cex17(this,_0xc9cex1b6)}_0xc9cex4(_0xc9cex1b6,[{key:_0x1e60[44],value:function _0xc9cex29(_0xc9cex1b7){for(var _0xc9cex1b8=arguments[_0x1e60[3]],_0xc9cexbc=Array(_0xc9cex1b8> 1?_0xc9cex1b8- 1:0),_0xc9cex1b9=1;_0xc9cex1b9< _0xc9cex1b8;_0xc9cex1b9++){_0xc9cexbc[_0xc9cex1b9- 1]= arguments[_0xc9cex1b9]};if(_0xc9cexbc[_0x1e60[3]]> 0){return _0xc9cex1b4[_0x1e60[45]][_0xc9cex1b5][_0xc9cex1b7][_0x1e60[44]](_0xc9cexbc)|| _0x1e60[141]};return _0xc9cex1b4[_0x1e60[45]][_0xc9cex1b5][_0xc9cex1b7][_0x1e60[44]]|| _0x1e60[141]}},{key:_0x1e60[603],value:function _0xc9cex1ba(_0xc9cex29){var _0xc9cex1bb={opening:_0x1e60[301],closing:_0x1e60[301]};if(_0xc9cex1b4[_0x1e60[45]][_0xc9cex1b5]&& _0xc9cex1b4[_0x1e60[45]][_0xc9cex1b5][_0x1e60[820]]){_0xc9cex1bb= _0xc9cex1b4[_0x1e60[45]][_0xc9cex1b5][_0x1e60[820]]};return _0xc9cex29[_0x1e60[761]](/„/g,_0xc9cex1bb[_0x1e60[822]])[_0x1e60[761]](/”/g,_0xc9cex1bb[_0x1e60[821]])}},{key:_0x1e60[69],value:function _0xc9cex1bc(_0xc9cex158){if(_0xc9cex1b4[_0x1e60[45]][_0xc9cex158]){_0xc9cex1b5= _0xc9cex158}}},{key:_0x1e60[36],value:function _0xc9cex1bd(){return _0xc9cex1b5}},{key:_0x1e60[479],value:function _0xc9cex1be(_0xc9cex1bf){return _0xc9cex1bf+ _0x1e60[814]+ _0xc9cex1b5}}]);return _0xc9cex1b6}();_0xc9cex3[_0x1e60[45]]=  new _0xc9cex1b6()},{"\x2E\x2E\x2F\x6C\x6F\x63\x61\x6C\x65\x73\x2F":14}]},{},[11])
+(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () {
+  function defineProperties(target, props) {
+    for (var i = 0; i < props.length; i++) {
+      var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);
+    }
+  }return function (Constructor, protoProps, staticProps) {
+    if (protoProps) defineProperties(Constructor.prototype, protoProps);if (staticProps) defineProperties(Constructor, staticProps);return Constructor;
+  };
+}();
+
+var _ScaleManager = require('../utils/ScaleManager');
+
+var _i18n = require('../utils/i18n');
+
+var _i18n2 = _interopRequireDefault(_i18n);
+
+var _UIConstants = require('../constants/UIConstants');
+
+var _AudioManager = require('../utils/AudioManager');
+
+var _Text = require('./Text');
+
+var _Text2 = _interopRequireDefault(_Text);
+
+var _StorageManager = require('../utils/StorageManager');
+
+function _interopRequireDefault(obj) {
+  return obj && obj.__esModule ? obj : { default: obj };
+}
+
+function _classCallCheck(instance, Constructor) {
+  if (!(instance instanceof Constructor)) {
+    throw new TypeError("Cannot call a class as a function");
+  }
+}
+
+var GameUI = function () {
+  function GameUI(state, Bob, NutritionManager) {
+    _classCallCheck(this, GameUI);
+
+    this.state = state;
+    this.game = state.game;
+
+    this.Bob = Bob;
+    this.NutritionManager = NutritionManager;
+    this.NutritionUI = NutritionManager.UI;
+
+    this.stateStatus = 'playing';
+
+    this.score = 0;
+    this.timePassed = 0;
+    this.runOnce = false;
+    this.gamePaused = false;
+
+    this.scoreValue = 3;
+
+    this.timeAdvance = new Phaser.Signal();
+
+    this.initScore();
+    this.initHealthBar();
+    this.initPauseScreen();
+    this.initGameoverScreen();
+
+    if (_StorageManager.PPTStorage.get('PPT-tutorial') !== true) {
+      this.startTutorial();
+    }
+  }
+
+  _createClass(GameUI, [{
+    key: 'initScore',
+    value: function initScore() {
+      this.textScore = new _Text2.default(this.game, (0, _ScaleManager.$)(30), this.game.world.height - (0, _ScaleManager.$)(20), _i18n2.default.text('game_score') + ': ' + this.score, (0, _ScaleManager.$)(_UIConstants.SCORE_FONT), [0, 1]);
+
+      this.game.time.events.loop(Phaser.Timer.SECOND * 1, this.handlePointsAddition, this);
+    }
+  }, {
+    key: 'initHealthBar',
+    value: function initHealthBar() {
+      this.healthBarText = new _Text2.default(this.game, (0, _ScaleManager.$)(30), this.game.world.height - (0, _ScaleManager.$)(100), _i18n2.default.text('game_health') + ': ', (0, _ScaleManager.$)(_UIConstants.SCORE_FONT), [0, 1]);
+
+      this.healthBar = this.game.add.tileSprite(this.healthBarText.x + this.healthBarText.width, this.game.world.height - (0, _ScaleManager.$)(120), (0, _ScaleManager.$)(300), (0, _ScaleManager.$)(50), (0, _ScaleManager.$)('heart'));
+      this.healthBar.anchor.setTo(0, 1);
+      this.healthBar.scale.setTo(1.25);
+    }
+  }, {
+    key: 'initPauseScreen',
+    value: function initPauseScreen() {
+      this.buttonPause = this.game.add.button(this.game.world.width - _UIConstants.MENU_BUTTON_OFFSET, _UIConstants.MENU_BUTTON_OFFSET, (0, _ScaleManager.$)('button-pause'), this.managePause, this, 1, 0, 2);
+      this.buttonPause.anchor.set(1, 0);
+      this.buttonPause.input.priorityID = 0;
+
+      this.buttonPause.y = -this.buttonPause.height - _UIConstants.MENU_BUTTON_OFFSET;
+      this.game.add.tween(this.buttonPause).to({ y: _UIConstants.MENU_BUTTON_OFFSET }, 1000, Phaser.Easing.Exponential.Out, true);
+
+      this.screenPausedGroup = this.game.add.group();
+      this.screenPausedBg = this.game.add.sprite(0, 0, (0, _ScaleManager.$)('overlay'));
+      this.screenPausedBg.scale.setTo(2);
+      this.screenPausedBg.inputEnabled = true;
+      this.screenPausedBg.input.priorityID = 1;
+
+      this.screenPausedText = new _Text2.default(this.game, 'center', 'center', _i18n2.default.text('game_paused'), (0, _ScaleManager.$)(_UIConstants.PAUSE_TITLE_FONT));
+
+      this.buttonAudio = this.game.add.button(this.game.world.width - _UIConstants.MENU_BUTTON_OFFSET, _UIConstants.MENU_BUTTON_OFFSET, (0, _ScaleManager.$)('button-audio'), this.clickAudio, this, 1, 0, 2);
+      this.buttonAudio.anchor.set(1, 0);
+      this.buttonAudio.setFrames((0, _AudioManager.getAudioOffset)() + 1, (0, _AudioManager.getAudioOffset)() + 0, (0, _AudioManager.getAudioOffset)() + 2);
+      this.buttonAudio.input.priorityID = 1;
+
+      this.screenPausedBack = this.game.add.button(_UIConstants.MENU_BUTTON_OFFSET, this.game.world.height - _UIConstants.MENU_BUTTON_OFFSET, (0, _ScaleManager.$)('button-mainmenu'), this.stateBack, this, 1, 0, 2);
+      this.screenPausedBack.anchor.set(0, 1);
+      this.screenPausedBack.input.priorityID = 1;
+
+      this.screenPausedContinue = this.game.add.button(this.game.world.width - _UIConstants.MENU_BUTTON_OFFSET, this.game.world.height - _UIConstants.MENU_BUTTON_OFFSET, (0, _ScaleManager.$)('button-continue'), this.managePause, this, 1, 0, 2);
+      this.screenPausedContinue.anchor.set(1, 1);
+      this.screenPausedContinue.scale.set(0.5);
+      this.screenPausedContinue.input.priorityID = 1;
+
+      this.screenPausedGroup.add(this.screenPausedBg);
+      this.screenPausedGroup.add(this.screenPausedText);
+      this.screenPausedGroup.add(this.buttonAudio);
+      this.screenPausedGroup.add(this.screenPausedBack);
+      this.screenPausedGroup.add(this.screenPausedContinue);
+      this.screenPausedGroup.alpha = 0;
+      this.screenPausedGroup.visible = false;
+    }
+  }, {
+    key: 'initGameoverScreen',
+    value: function initGameoverScreen() {
+      this.screenGameoverGroup = this.game.add.group();
+
+      this.screenGameoverBg = this.game.add.sprite(0, 0, (0, _ScaleManager.$)('overlay'));
+      this.screenGameoverBg.scale.setTo(2);
+      this.screenGameoverBg.inputEnabled = true;
+      this.screenGameoverBg.input.priorityID = 2;
+
+      this.screenGameoverText = new _Text2.default(this.game, 'center', (0, _ScaleManager.$)(100), _i18n2.default.text('game_over'), (0, _ScaleManager.$)(_UIConstants.GAMEOVER_TITLE_FONT));
+
+      this.screenGameoverBack = this.game.add.button((0, _ScaleManager.$)(150), this.game.world.height - (0, _ScaleManager.$)(100), (0, _ScaleManager.$)('button-mainmenu'), this.stateBack, this, 1, 0, 2);
+      this.screenGameoverBack.anchor.set(0, 1);
+      this.screenGameoverBack.input.priorityID = 2;
+
+      this.screenGameoverRestart = this.game.add.button(this.game.world.width - (0, _ScaleManager.$)(150), this.game.world.height - (0, _ScaleManager.$)(100), (0, _ScaleManager.$)('button-restart'), this.stateRestart, this, 1, 0, 2);
+      this.screenGameoverRestart.anchor.set(1, 1);
+      this.screenGameoverRestart.input.priorityID = 2;
+
+      this.screenGameoverScore = new _Text2.default(this.game, 'center', 'center', _i18n2.default.text('game_score') + ': ' + this.score, (0, _ScaleManager.$)(_UIConstants.GAMEOVER_SCORE_FONT));
+
+      this.screenGameoverGroup.add(this.screenGameoverBg);
+      this.screenGameoverGroup.add(this.screenGameoverText);
+      this.screenGameoverGroup.add(this.screenGameoverBack);
+      this.screenGameoverGroup.add(this.screenGameoverRestart);
+      this.screenGameoverGroup.add(this.screenGameoverScore);
+      this.screenGameoverGroup.alpha = 0;
+      this.screenGameoverGroup.visible = false;
+    }
+  }, {
+    key: 'updateUI',
+    value: function updateUI() {
+      switch (this.stateStatus) {
+        case 'paused':
+          {
+            if (!this.runOnce) {
+              this.statePaused();
+              this.runOnce = true;
+            }
+            break;
+          }
+        case 'gameover':
+          {
+            if (!this.runOnce) {
+              this.stateGameover();
+              this.runOnce = true;
+            }
+            break;
+          }
+        case 'tutorial':
+          {
+            if (!this.runOnce) {
+              this.stateTutorial();
+              this.runOnce = true;
+            }
+            break;
+          }
+        case 'playing':
+          {
+            if (!this.runOnce) {
+              this.statePlaying();
+              this.runOnce = true;
+            }
+          }
+      }
+    }
+  }, {
+    key: 'onScoreValueChange',
+    value: function onScoreValueChange(scoreValue) {
+      this.scoreValue = scoreValue;
+    }
+  }, {
+    key: 'updateHealthBarValue',
+    value: function updateHealthBarValue(health) {
+      var _this = this;
+
+      if (health > 0) {
+        this.NutritionUI.flash(function () {
+          _this.healthBar.width = (0, _ScaleManager.$)(_UIConstants.HEALTHBAR_WIDTH) * (health / 100);
+        });
+      }
+    }
+  }, {
+    key: 'difficultyChange',
+    value: function difficultyChange() {
+      var _this2 = this;
+
+      var text = new _Text2.default(this.game, 'center', (0, _ScaleManager.$)(100), _i18n2.default.text('game_level_up'), (0, _ScaleManager.$)(_UIConstants.LEVEL_CHANGE_FONT));
+      text.alpha = 0;
+      var done = false;
+      var textTween = this.game.add.tween(text);
+      textTween.to({ alpha: 1 }, 200, Phaser.Easing.Linear.InOut, true);
+      textTween.onComplete.add(function () {
+        if (!done) {
+          _this2.game.time.events.add(Phaser.Timer.SECOND * 4, function () {
+            textTween.to({ alpha: 0 }, 200, Phaser.Easing.Linear.InOut, true);
+          });
+        }
+        done = true;
+      }, this);
+    }
+  }, {
+    key: 'handlePointsAddition',
+    value: function handlePointsAddition() {
+      this.timePassed++;
+      this.score += this.scoreValue;
+      this.textScore.setText(_i18n2.default.text('game_score') + ': ' + this.score);
+      this.state.foodSpawner.tryDifficultyLevelUp(this.timePassed);
+      this.timeAdvance.dispatch();
+    }
+  }, {
+    key: 'managePause',
+    value: function managePause() {
+      this.gamePaused = !this.gamePaused;
+      (0, _AudioManager.playAudio)('click');
+      if (this.gamePaused) {
+        this.game.world.bringToTop(this.screenPausedGroup);
+        this.stateStatus = 'paused';
+        this.runOnce = false;
+        this.state.stopMovingFood.call(this.state);
+      } else {
+        this.stateStatus = 'playing';
+        this.runOnce = false;
+        this.state.restoreFoodMovement.call(this.state);
+      }
+    }
+  }, {
+    key: 'startTutorial',
+    value: function startTutorial() {
+      this.gamePaused = !this.gamePaused;
+      this.state.stopMovingFood.call(this.state);
+      this.stateStatus = 'tutorial';
+      this.runOnce = false;
+
+      this.tutorialStep = 0;
+      this.drawOverlay();
+    }
+  }, {
+    key: 'furtherTutorial',
+    value: function furtherTutorial() {
+      this.tutorialStep += 1;
+      this.runOnce = false;
+    }
+  }, {
+    key: 'drawOverlay',
+    value: function drawOverlay() {
+      this.tutorialOverlay = this.game.add.group();
+
+      this.graphics = this.game.add.graphics(0, 0);
+      this.graphics.beginFill(0x000000, 0.5);
+      this.graphics.lineTo(this.game.world.width, 0);
+      this.graphics.lineTo(this.game.world.width, this.game.world.height);
+      this.graphics.lineTo(0, this.game.world.height);
+      this.graphics.endFill();
+      this.graphics.inputEnabled = true;
+      this.graphics.input.priorityID = 10;
+
+      this.tutorialText = new _Text2.default(this.game, 'center', (0, _ScaleManager.$)(200), '', (0, _ScaleManager.$)(_UIConstants.TUTORIAL_FONT));
+
+      this.continueTutorial = this.game.add.button(this.game.world.width - _UIConstants.MENU_BUTTON_OFFSET, _UIConstants.MENU_BUTTON_OFFSET, (0, _ScaleManager.$)('button-continue'), this.furtherTutorial, this, 1, 0, 2);
+      this.continueTutorial.anchor.set(1, 0);
+      this.continueTutorial.scale.set(0.5);
+
+      this.continueTutorial.y = -this.continueTutorial.height - _UIConstants.MENU_BUTTON_OFFSET;
+      this.game.add.tween(this.continueTutorial).to({ y: _UIConstants.MENU_BUTTON_OFFSET }, 1000, Phaser.Easing.Exponential.Out, true);
+
+      this.continueTutorial.input.priorityID = 11;
+
+      this.tutorialOverlay.add(this.graphics);
+      this.tutorialOverlay.add(this.continueTutorial);
+    }
+  }, {
+    key: 'stateTutorial',
+    value: function stateTutorial() {
+      switch (this.tutorialStep) {
+        case 0:
+          {
+            this.tutorialText.setText(_i18n2.default.text('tutorial_step_' + this.tutorialStep));
+
+            this.game.world.bringToTop(this.tutorialOverlay);
+            this.game.world.bringToTop(this.Bob);
+            this.game.world.bringToTop(this.tutorialText);
+
+            break;
+          }
+        case 1:
+          {
+            this.tutorialText.setText(_i18n2.default.text('tutorial_step_' + this.tutorialStep));
+
+            this.game.world.bringToTop(this.tutorialOverlay);
+            this.game.world.bringToTop(this.NutritionUI.NutritionBarsGroup);
+            this.game.world.bringToTop(this.tutorialText);
+
+            break;
+          }
+        case 2:
+          {
+            this.tutorialText.setText(_i18n2.default.text('tutorial_step_' + this.tutorialStep));
+
+            this.game.world.bringToTop(this.tutorialOverlay);
+            this.game.world.bringToTop(this.NutritionUI.NutritionBarsGroup);
+            this.game.world.bringToTop(this.tutorialText);
+
+            this.NutritionManager.nutrition.carbohydrates = 200;
+            this.NutritionManager.nutrition.fats = 30;
+            this.NutritionUI.updateUI();
+
+            break;
+          }
+        case 3:
+          {
+            this.tutorialText.setText(_i18n2.default.text('tutorial_step_' + this.tutorialStep));
+
+            this.game.world.bringToTop(this.tutorialOverlay);
+            this.game.world.bringToTop(this.textScore);
+            this.game.world.bringToTop(this.healthBar);
+            this.game.world.bringToTop(this.healthBar);
+            this.game.world.bringToTop(this.healthBarText);
+            this.game.world.bringToTop(this.tutorialText);
+            break;
+          }
+        case 4:
+          {
+            this.tutorialText.setText(_i18n2.default.text('tutorial_step_' + this.tutorialStep));
+
+            this.game.world.bringToTop(this.tutorialOverlay);
+            this.game.world.bringToTop(this.tutorialText);
+            break;
+          }
+        case 5:
+          {
+            this.tutorialText.setText(_i18n2.default.text('tutorial_step_' + this.tutorialStep));
+
+            this.game.world.bringToTop(this.tutorialOverlay);
+            this.game.world.bringToTop(this.tutorialText);
+            break;
+          }
+        case 6:
+          {
+            _StorageManager.PPTStorage.set('PPT-tutorial', true);
+            this.stateRestart();
+            break;
+          }
+      }
+    }
+  }, {
+    key: 'statePlaying',
+    value: function statePlaying() {
+      var _this3 = this;
+
+      var tween = this.game.add.tween(this.screenPausedGroup);
+      tween.to({ alpha: 0 }, 100, Phaser.Easing.Linear.None, true);
+      tween.onComplete.add(function () {
+        if (_this3.screenPausedGroup.visible) {
+          _this3.screenPausedGroup.visible = false;
+        }
+      }, this);
+    }
+  }, {
+    key: 'statePaused',
+    value: function statePaused() {
+      this.screenPausedGroup.visible = true;
+      var tween = this.game.add.tween(this.screenPausedGroup);
+      tween.to({ alpha: 1 }, 100, Phaser.Easing.Linear.None, true);
+    }
+  }, {
+    key: 'stateBack',
+    value: function stateBack() {
+      (0, _AudioManager.playAudio)('click');
+      this.screenGameoverGroup.visible = false;
+      this.gamePaused = false;
+      this.runOnce = false;
+      this.stateStatus = 'playing';
+      this.game.time.events.resume();
+      this.state.state.start('MainMenu');
+    }
+  }, {
+    key: 'stateGameover',
+    value: function stateGameover(msg) {
+      this.state.stopMovingFood.call(this.state);
+      this.game.world.bringToTop(this.screenGameoverGroup);
+      this.screenGameoverScore.setText(_i18n2.default.text('game_score') + ': ' + this.score);
+      this.gameoverScoreTween(msg);
+
+      this.screenGameoverGroup.visible = true;
+      var tween = this.game.add.tween(this.screenGameoverGroup);
+      tween.to({ alpha: 1 }, 100, Phaser.Easing.Linear.None, true);
+
+      _StorageManager.PPTStorage.setHighscore('PPT-highscore', this.score);
+    }
+  }, {
+    key: 'stateRestart',
+    value: function stateRestart() {
+      (0, _AudioManager.playAudio)('click');
+      this.screenGameoverGroup.visible = false;
+      this.gamePaused = false;
+      this.runOnce = false;
+      this.stateStatus = 'playing';
+      this.state.restoreFoodMovement.call(this.state);
+      this.state.state.restart(true);
+    }
+  }, {
+    key: 'gameoverScoreTween',
+    value: function gameoverScoreTween() {
+      var deathmsg = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+
+      this.screenGameoverScore.setText('');
+
+      this.screenGameoverScore.setText(_i18n2.default.text('game_over_text', this.score, deathmsg));
+    }
+  }, {
+    key: 'clickAudio',
+    value: function clickAudio() {
+      (0, _AudioManager.playAudio)('click');
+      (0, _AudioManager.manageAudio)('switch', this);
+    }
+  }]);
+
+  return GameUI;
+}();
+
+exports.default = GameUI;
+
+},{"../constants/UIConstants":9,"../utils/AudioManager":30,"../utils/ScaleManager":34,"../utils/StorageManager":35,"../utils/i18n":36,"./Text":3}],2:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () {
+  function defineProperties(target, props) {
+    for (var i = 0; i < props.length; i++) {
+      var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);
+    }
+  }return function (Constructor, protoProps, staticProps) {
+    if (protoProps) defineProperties(Constructor.prototype, protoProps);if (staticProps) defineProperties(Constructor, staticProps);return Constructor;
+  };
+}();
+
+var _ScaleManager = require('../utils/ScaleManager');
+
+var _i18n = require('../utils/i18n');
+
+var _i18n2 = _interopRequireDefault(_i18n);
+
+var _NutritionUtils = require('../utils/NutritionUtils');
+
+var _NutritionConstants = require('../constants/NutritionConstants');
+
+var _WeightBreakpoints = require('../constants/WeightBreakpoints');
+
+var _UIConstants = require('../constants/UIConstants');
+
+var _Text = require('./Text');
+
+var _Text2 = _interopRequireDefault(_Text);
+
+function _interopRequireDefault(obj) {
+  return obj && obj.__esModule ? obj : { default: obj };
+}
+
+function _classCallCheck(instance, Constructor) {
+  if (!(instance instanceof Constructor)) {
+    throw new TypeError("Cannot call a class as a function");
+  }
+}
+
+var NutritionUI = function () {
+  function NutritionUI(game, NutritionManager) {
+    _classCallCheck(this, NutritionUI);
+
+    this.game = game;
+
+    this.nutrition = NutritionManager.nutrition;
+
+    this.NutritionBars = [];
+    this.NutritionMasks = [];
+    this.NutritionTexts = [];
+
+    this.NutritionBarsGroup = this.game.add.group();
+
+    this.drawAllBars();
+  }
+
+  _createClass(NutritionUI, [{
+    key: 'updateUI',
+    value: function updateUI(updatedValues) {
+      this.updateBar(this.nutrition.carbohydrates, _NutritionConstants.GOOD_AMOUNT_OF_CARBOHYDRATES, 2);
+      this.updateBar(this.nutrition.fats, _NutritionConstants.GOOD_AMOUNT_OF_FATS, 1);
+      this.updateBar(this.nutrition.proteins, _NutritionConstants.GOOD_AMOUNT_OF_PROTEINS, 0);
+
+      if (updatedValues) {
+        for (var key in updatedValues) {
+          var value = updatedValues[key];
+          if (value !== 0) {
+            this.displayAddition(key, value);
+          }
+        }
+      }
+    }
+  }, {
+    key: 'drawAllBars',
+    value: function drawAllBars() {
+      var capitalise = function capitalise(text) {
+        return text.substring(0, 1).toUpperCase() + text.substring(1);
+      };
+
+      this.drawBar(this.nutrition.carbohydrates, _NutritionConstants.GOOD_AMOUNT_OF_CARBOHYDRATES, 2, capitalise(_i18n2.default.text('carbohydrates_name')));
+      this.drawBar(this.nutrition.fats, _NutritionConstants.GOOD_AMOUNT_OF_FATS, 1, capitalise(_i18n2.default.text('fats_name')));
+      this.drawBar(this.nutrition.proteins, _NutritionConstants.GOOD_AMOUNT_OF_PROTEINS, 0, capitalise(_i18n2.default.text('proteins_name')));
+    }
+  }, {
+    key: 'displayAddition',
+    value: function displayAddition(key, val) {
+      var i = 0;
+
+      switch (key) {
+        case 'carbohydrates':
+          i = 2;
+          break;
+        case 'fats':
+          i = 1;
+          break;
+        case 'proteins':
+          i = 0;
+          break;
+        // no default
+      }
+
+      var height = (0, _ScaleManager.$)(_UIConstants.NUTRITION_BAR_HEIGHT);
+      var offset = i * ((0, _ScaleManager.$)(_UIConstants.NUTRITION_BAR_OFFSET) + height);
+
+      var textX = this.game.width - (0, _ScaleManager.$)(_UIConstants.NUTRITION_BAR_X_FROM_LEFT) - (0, _ScaleManager.$)(_UIConstants.NUTRITION_BAR_TEXT_OFFSET_X) - (0, _ScaleManager.$)(10, 0.5);
+      var textY = this.game.height - (0, _ScaleManager.$)(_UIConstants.NUTRITION_BAR_Y_FROM_BOTTOM) - (0, _ScaleManager.$)(_UIConstants.NUTRITION_BAR_TEXT_OFFSET_Y) - offset;
+      var nutritionAdded = new _Text2.default(this.game, textX, textY, '+' + val, (0, _ScaleManager.$)(_UIConstants.NUTRITION_NUTRITION_ADDED_FONT), [1, 1]);
+      this.game.add.tween(nutritionAdded).to({ alpha: 0, y: textY - (0, _ScaleManager.$)(100) }, (0, _ScaleManager.$)(1000), Phaser.Easing.Linear.None, true);
+    }
+  }, {
+    key: 'updateBar',
+    value: function updateBar(value, goodAmount, i) {
+      var width = (0, _ScaleManager.$)(_UIConstants.NUTRITION_BAR_WIDTH);
+      var height = (0, _ScaleManager.$)(_UIConstants.NUTRITION_BAR_HEIGHT);
+      var offset = i * ((0, _ScaleManager.$)(_UIConstants.NUTRITION_BAR_OFFSET) + height);
+      var doubleOfGoodAmount = goodAmount * 2;
+
+      var status = this.NutritionBars[i];
+      var bobStatus = (0, _NutritionUtils.getStatus)(value, goodAmount);
+
+      if (bobStatus <= _WeightBreakpoints.SUPER_THIN_BREAKPOINT || bobStatus >= _WeightBreakpoints.SUPER_FAT_BREAKPOINT) {
+        status.frame = 2;
+      } else if (bobStatus <= _WeightBreakpoints.THIN_BREAKPOINT || bobStatus >= _WeightBreakpoints.FAT_BREAKPOINT) {
+        status.frame = 1;
+      } else {
+        status.frame = 0;
+      }
+
+      var NutritionBarValue = Math.min(Math.max(value / doubleOfGoodAmount, 0), 1);
+
+      var mask = this.NutritionMasks[i];
+      mask.clear();
+      mask.beginFill(0x000000);
+      mask.drawRect(this.game.width - _UIConstants.NUTRITION_BAR_X_FROM_LEFT - width + width * (1 - NutritionBarValue), this.game.height - (0, _ScaleManager.$)(_UIConstants.NUTRITION_BAR_Y_FROM_BOTTOM) - offset - height, width * NutritionBarValue, height);
+      mask.endFill();
+
+      var statusText = this.NutritionTexts[i];
+      statusText.setText(parseInt(Math.max(value, 0)) + ' / ' + goodAmount);
+    }
+  }, {
+    key: 'drawBar',
+    value: function drawBar(value, goodAmount, i, text) {
+      var width = (0, _ScaleManager.$)(_UIConstants.NUTRITION_BAR_WIDTH);
+      var height = (0, _ScaleManager.$)(_UIConstants.NUTRITION_BAR_HEIGHT);
+      var offset = i * ((0, _ScaleManager.$)(_UIConstants.NUTRITION_BAR_OFFSET) + height);
+      var doubleOfGoodAmount = goodAmount * 2;
+
+      var NutritionBarValue = Math.min(Math.max(value / doubleOfGoodAmount, 0), 1);
+
+      var background = this.game.add.sprite(this.game.width - _UIConstants.NUTRITION_BAR_X_FROM_LEFT, this.game.height - (0, _ScaleManager.$)(_UIConstants.NUTRITION_BAR_Y_FROM_BOTTOM) - offset, (0, _ScaleManager.$)('nutrition-bar-background'));
+      background.anchor.setTo(1, 1);
+
+      var indicators = this.game.add.group();
+
+      var backgroundNeutralX = background.x - background.width + _UIConstants.NUTRITION_BAR_BORDER_WIDTH;
+      var backgroundNeutralY = background.y - background.height + _UIConstants.NUTRITION_BAR_BORDER_WIDTH;
+
+      var superThinIndicator = this.game.add.sprite(background.width / 2 / _WeightBreakpoints.THINNESS_LEVELS.length * (_WeightBreakpoints.THINNESS_LEVELS.length - _WeightBreakpoints.SUPER_THIN_BREAKPOINT) + background.width / 2 + backgroundNeutralX, backgroundNeutralY, (0, _ScaleManager.$)('nutrition-bar-indicator'));
+      superThinIndicator.anchor.setTo(0.5, 0);
+
+      var thinIndicator = this.game.add.sprite(background.width / 2 / _WeightBreakpoints.THINNESS_LEVELS.length * (_WeightBreakpoints.THINNESS_LEVELS.length - _WeightBreakpoints.THIN_BREAKPOINT) + background.width / 2 + backgroundNeutralX, backgroundNeutralY, (0, _ScaleManager.$)('nutrition-bar-indicator'));
+      thinIndicator.anchor.setTo(0.5, 0);
+
+      var superFatIndicator = this.game.add.sprite(background.width / 2 / _WeightBreakpoints.FATNESS_LEVELS.length * (_WeightBreakpoints.THINNESS_LEVELS.length + _WeightBreakpoints.FATNESS_LEVELS.length - _WeightBreakpoints.SUPER_FAT_BREAKPOINT) + backgroundNeutralX, backgroundNeutralY, (0, _ScaleManager.$)('nutrition-bar-indicator'));
+      superFatIndicator.anchor.setTo(0.5, 0);
+
+      var fatIndicator = this.game.add.sprite(background.width / 2 / _WeightBreakpoints.FATNESS_LEVELS.length * (_WeightBreakpoints.THINNESS_LEVELS.length + _WeightBreakpoints.FATNESS_LEVELS.length - _WeightBreakpoints.FAT_BREAKPOINT) + backgroundNeutralX, backgroundNeutralY, (0, _ScaleManager.$)('nutrition-bar-indicator'));
+      fatIndicator.anchor.setTo(0.5, 0);
+
+      indicators.add(superThinIndicator);
+      indicators.add(thinIndicator);
+      indicators.add(superFatIndicator);
+      indicators.add(fatIndicator);
+
+      var mask = this.game.add.graphics(0, 0);
+      mask.beginFill(0x000000);
+      mask.drawRect(this.game.width - _UIConstants.NUTRITION_BAR_X_FROM_LEFT - width + width * (1 - NutritionBarValue), this.game.height - (0, _ScaleManager.$)(_UIConstants.NUTRITION_BAR_Y_FROM_BOTTOM) - offset - height, width * NutritionBarValue, height);
+      mask.endFill();
+
+      this.NutritionMasks[i] = mask;
+
+      var status = this.game.add.sprite(this.game.width - _UIConstants.NUTRITION_BAR_X_FROM_LEFT, this.game.height - (0, _ScaleManager.$)(_UIConstants.NUTRITION_BAR_Y_FROM_BOTTOM) - offset, (0, _ScaleManager.$)('nutrition-bar'), 0);
+      status.anchor.setTo(1, 1);
+      status.mask = mask;
+
+      this.NutritionBars[i] = status;
+
+      var descText = new _Text2.default(this.game, this.game.width - (0, _ScaleManager.$)(_UIConstants.NUTRITION_BAR_X_FROM_LEFT) + (0, _ScaleManager.$)(_UIConstants.NUTRITION_BAR_TEXT_OFFSET_X) - width - (0, _ScaleManager.$)(10, 0.5), this.game.height - (0, _ScaleManager.$)(_UIConstants.NUTRITION_BAR_Y_FROM_BOTTOM) - offset - (0, _ScaleManager.$)(_UIConstants.NUTRITION_BAR_TEXT_OFFSET_Y) + (0, _ScaleManager.$)(3, 0.5), text, (0, _ScaleManager.$)(_UIConstants.NUTRITION_BAR_INFO_FONT), [0, 1]);
+
+      var statusText = new _Text2.default(this.game, this.game.width - (0, _ScaleManager.$)(_UIConstants.NUTRITION_BAR_X_FROM_LEFT) - (0, _ScaleManager.$)(_UIConstants.NUTRITION_BAR_TEXT_OFFSET_X) - (0, _ScaleManager.$)(10, 0.5), this.game.height - (0, _ScaleManager.$)(_UIConstants.NUTRITION_BAR_Y_FROM_BOTTOM) - offset - (0, _ScaleManager.$)(_UIConstants.NUTRITION_BAR_TEXT_OFFSET_Y) + (0, _ScaleManager.$)(3, 0.5), Math.max(parseInt(value), 0) + ' / ' + goodAmount, (0, _ScaleManager.$)(_UIConstants.NUTRITION_BAR_INFO_FONT), [1, 1]);
+
+      this.NutritionTexts[i] = statusText;
+
+      this.NutritionBarsGroup.add(background);
+      this.NutritionBarsGroup.add(indicators);
+      this.NutritionBarsGroup.add(mask);
+      this.NutritionBarsGroup.add(status);
+      this.NutritionBarsGroup.add(statusText);
+      this.NutritionBarsGroup.add(descText);
+    }
+  }, {
+    key: 'flash',
+    value: function flash(callback) {
+      var flashLength = 100;
+      var status = 0;
+      this.NutritionBars.forEach(function (sprite) {
+        status = Math.max(sprite.frame, status);
+      });
+
+      var flash = this.game.add.graphics(0, 0);
+      if (status === 2) {
+        this.game.camera.shake(0.002, 200);
+        flash.beginFill(0xc50000, 0.8);
+      } else if (status === 1) {
+        this.game.camera.shake(0.001, 200);
+        flash.beginFill(0xf1d137, 0.75);
+      }
+
+      flash.drawRect(0, 0, this.game.world.width, this.game.world.height);
+      flash.alpha = 0;
+      var done = false;
+      var flashTween = this.game.add.tween(flash);
+      flashTween.to({ alpha: 1 }, flashLength / 2, Phaser.Easing.Linear.In, true);
+      flashTween.onComplete.add(function () {
+        if (!done) {
+          callback();
+          flashTween.to({ alpha: 0 }, flashLength / 2, Phaser.Easing.Linear.Out, true);
+          done = true;
+        }
+      }, this);
+    }
+  }]);
+
+  return NutritionUI;
+}();
+
+exports.default = NutritionUI;
+
+},{"../constants/NutritionConstants":8,"../constants/UIConstants":9,"../constants/WeightBreakpoints":10,"../utils/NutritionUtils":33,"../utils/ScaleManager":34,"../utils/i18n":36,"./Text":3}],3:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+function _classCallCheck(instance, Constructor) {
+  if (!(instance instanceof Constructor)) {
+    throw new TypeError("Cannot call a class as a function");
+  }
+}
+
+function _possibleConstructorReturn(self, call) {
+  if (!self) {
+    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+  }return call && (typeof call === "object" || typeof call === "function") ? call : self;
+}
+
+function _inherits(subClass, superClass) {
+  if (typeof superClass !== "function" && superClass !== null) {
+    throw new TypeError("Super expression must either be null or a function, not " + typeof superClass);
+  }subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } });if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
+}
+
+var Text = function (_Phaser$Text) {
+  _inherits(Text, _Phaser$Text);
+
+  function Text(game) {
+    var x = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
+    var y = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 0;
+    var text = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : '';
+    var style = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : {};
+    var anchor = arguments.length > 5 && arguments[5] !== undefined ? arguments[5] : [0, 0];
+
+    _classCallCheck(this, Text);
+
+    var _this = _possibleConstructorReturn(this, (Text.__proto__ || Object.getPrototypeOf(Text)).call(this, game, x, y, text, style));
+
+    var newAnchor = anchor;
+
+    if (x === 'center') {
+      _this.x = game.world.centerX;
+      newAnchor[0] = newAnchor[0] || 0.5;
+    }
+
+    if (y === 'center') {
+      _this.y = game.world.centerY;
+      newAnchor[1] = newAnchor[1] || 0.5;
+    }
+
+    if (style.shadow) {
+      var shadow = style.shadow.match(/rgba\(.+\)|[^ ]+/g);
+      _this.setShadow.apply(_this, shadow);
+    }
+
+    _this.anchor.setTo(newAnchor[0], newAnchor[1]);
+    game.add.existing(_this);
+    return _this;
+  }
+
+  return Text;
+}(Phaser.Text);
+
+exports.default = Text;
+
+},{}],4:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var BOB_OFFSET_Y = exports.BOB_OFFSET_Y = 10;
+var BOB_SCALE = exports.BOB_SCALE = 0.75;
+
+},{}],5:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var CANVAS_WIDTH = exports.CANVAS_WIDTH = 1920;
+var CANVAS_HEIGHT = exports.CANVAS_HEIGHT = 1280;
+
+},{}],6:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var TIME_TO_REACH_MEDIUM_LEVEL = exports.TIME_TO_REACH_MEDIUM_LEVEL = 30;
+var TIME_TO_REACH_HARD_LEVEL = exports.TIME_TO_REACH_HARD_LEVEL = 60;
+
+},{}],7:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.FOOD_DATA = exports.FOOD_HIT_AREA_DIAMETER = exports.ADDITIONAL_FOOD_SPAWN_INTERVAL = exports.FOOD_HEIGHT = exports.FOOD_WIDTH = exports.FOOD_SPAWN_BOUNDS_HEIGHT_MARGIN = exports.FOOD_SPAWN_BOUNDS_WIDTH_MARGIN = exports.HARD_LEVEL_FOOD_SPAWN_DELAY_OFFSET = exports.MEDIUM_LEVEL_FOOD_SPAWN_DELAY_OFFSET = exports.FOOD_SPAWN_INTERVAL = exports.FOOD_TWEEN_Y = exports.FOOD_TWEEN_X = exports.FOOD_TWEEN_SCALE = exports.FOOD_TWEEN_SPEED = exports.FOOD_SCALE = exports.HARD_LEVEL_VELOCITY_OFFSET = exports.MEDIUM_LEVEL_VELOCITY_OFFSET = exports.MAX_FOOD_VELOCITY = exports.MIN_FOOD_VELOCITY = undefined;
+
+var _BobConstants = require('./BobConstants');
+
+var MIN_FOOD_VELOCITY = exports.MIN_FOOD_VELOCITY = 190;
+var MAX_FOOD_VELOCITY = exports.MAX_FOOD_VELOCITY = 230;
+
+var MEDIUM_LEVEL_VELOCITY_OFFSET = exports.MEDIUM_LEVEL_VELOCITY_OFFSET = 60;
+var HARD_LEVEL_VELOCITY_OFFSET = exports.HARD_LEVEL_VELOCITY_OFFSET = 120;
+
+var FOOD_SCALE = exports.FOOD_SCALE = 1;
+
+var FOOD_TWEEN_SPEED = exports.FOOD_TWEEN_SPEED = 500;
+var FOOD_TWEEN_SCALE = exports.FOOD_TWEEN_SCALE = 0.75;
+var FOOD_TWEEN_X = exports.FOOD_TWEEN_X = 0;
+var FOOD_TWEEN_Y = exports.FOOD_TWEEN_Y = 560 * _BobConstants.BOB_SCALE + _BobConstants.BOB_OFFSET_Y;
+
+var FOOD_SPAWN_INTERVAL = exports.FOOD_SPAWN_INTERVAL = 1.2 * Phaser.Timer.SECOND;
+var MEDIUM_LEVEL_FOOD_SPAWN_DELAY_OFFSET = exports.MEDIUM_LEVEL_FOOD_SPAWN_DELAY_OFFSET = 0.2 * Phaser.Timer.SECOND;
+var HARD_LEVEL_FOOD_SPAWN_DELAY_OFFSET = exports.HARD_LEVEL_FOOD_SPAWN_DELAY_OFFSET = 0.6 * Phaser.Timer.SECOND;
+var FOOD_SPAWN_BOUNDS_WIDTH_MARGIN = exports.FOOD_SPAWN_BOUNDS_WIDTH_MARGIN = 200;
+var FOOD_SPAWN_BOUNDS_HEIGHT_MARGIN = exports.FOOD_SPAWN_BOUNDS_HEIGHT_MARGIN = 100;
+
+var FOOD_WIDTH = exports.FOOD_WIDTH = 100;
+var FOOD_HEIGHT = exports.FOOD_HEIGHT = 75;
+
+var ADDITIONAL_FOOD_SPAWN_INTERVAL = exports.ADDITIONAL_FOOD_SPAWN_INTERVAL = 5 * FOOD_SPAWN_INTERVAL;
+
+var FOOD_HIT_AREA_DIAMETER = exports.FOOD_HIT_AREA_DIAMETER = 250;
+
+var FOOD_DATA = exports.FOOD_DATA = Object.freeze([
+// Complexity lv. 1
+{ 'key': 0, 'name': 'products_apple', 'nutritionFacts': { 'carbohydrates': 18, 'fats': 0, 'proteins': 0 }, 'complexityLevel': 1, 'probability': 2, 'quantity': ['products_quantity_big_apple', 1] }, { 'key': 4, 'name': 'products_butter', 'nutritionFacts': { 'carbohydrates': 0, 'fats': 20, 'proteins': 0 }, 'complexityLevel': 1, 'probability': 1, 'quantity': ['products_quantity_spoon', 2] }, { 'key': 7, 'name': 'products_strawberry_jam', 'nutritionFacts': { 'carbohydrates': 30, 'fats': 0, 'proteins': 0 }, 'complexityLevel': 1, 'probability': 1.5, 'quantity': ['products_quantity_spoon', 3] }, { 'key': 2, 'name': 'products_chicken', 'nutritionFacts': { 'carbohydrates': 0, 'fats': 3, 'proteins': 15 }, 'complexityLevel': 1, 'probability': 1, 'quantity': ['products_quantity_gram', 50] },
+
+// Complexity lv. 2
+{ 'key': 5, 'name': 'products_donut', 'nutritionFacts': { 'carbohydrates': 25, 'fats': 12, 'proteins': 2 }, 'complexityLevel': 2, 'probability': 1, 'quantity': ['products_quantity_donut', 1] }, { 'key': 1, 'name': 'products_banana', 'nutritionFacts': { 'carbohydrates': 30, 'fats': 2, 'proteins': 0 }, 'complexityLevel': 2, 'probability': 1.5, 'quantity': ['products_quantity_banana', 1] }, { 'key': 9, 'name': 'products_eggs', 'nutritionFacts': { 'carbohydrates': 1, 'fats': 16, 'proteins': 15 }, 'complexityLevel': 2, 'probability': 1, 'quantity': ['products_quantity_egg', 2] },
+
+// Complexity lv. 3
+{ 'key': 3, 'name': 'products_hamburger', 'nutritionFacts': { 'carbohydrates': 30, 'fats': 13, 'proteins': 16 }, 'complexityLevel': 3, 'probability': 1, 'quantity': ['products_quantity_hamburger', 1] }, { 'key': 8, 'name': 'products_peanut_butter', 'nutritionFacts': { 'carbohydrates': 6, 'fats': 16, 'proteins': 8 }, 'complexityLevel': 3, 'probability': 1, 'quantity': ['products_quantity_spoon', 2] }, { 'key': 6, 'name': 'products_milk', 'nutritionFacts': { 'carbohydrates': 12, 'fats': 8, 'proteins': 8 }, 'complexityLevel': 3, 'probability': 1, 'quantity': ['products_quantity_cup', 1] }]);
+
+},{"./BobConstants":4}],8:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var GOOD_AMOUNT_OF_CARBOHYDRATES = exports.GOOD_AMOUNT_OF_CARBOHYDRATES = 270;
+var GOOD_AMOUNT_OF_FATS = exports.GOOD_AMOUNT_OF_FATS = 70;
+var GOOD_AMOUNT_OF_PROTEINS = exports.GOOD_AMOUNT_OF_PROTEINS = 50;
+
+var AMOUNT_REDUCED_INTERVAL = exports.AMOUNT_REDUCED_INTERVAL = Phaser.Timer.SECOND;
+var AMOUNT_REDUCED_PERCENT = exports.AMOUNT_REDUCED_PERCENT = 0.03;
+
+var MEDIUM_LEVEL_DELAY_OFFSET = exports.MEDIUM_LEVEL_DELAY_OFFSET = 0.2 * Phaser.Timer.SECOND;
+var HARD_LEVEL_DELAY_OFFSET = exports.HARD_LEVEL_DELAY_OFFSET = 0.4 * Phaser.Timer.SECOND;
+
+},{}],9:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var NUTRITION_BAR_WIDTH = exports.NUTRITION_BAR_WIDTH = 680;
+var NUTRITION_BAR_HEIGHT = exports.NUTRITION_BAR_HEIGHT = 56;
+var NUTRITION_BAR_OFFSET = exports.NUTRITION_BAR_OFFSET = 24;
+var NUTRITION_BAR_TEXT_OFFSET_X = exports.NUTRITION_BAR_TEXT_OFFSET_X = 24;
+var NUTRITION_BAR_TEXT_OFFSET_Y = exports.NUTRITION_BAR_TEXT_OFFSET_Y = 4;
+var NUTRITION_BAR_X_FROM_LEFT = exports.NUTRITION_BAR_X_FROM_LEFT = 24;
+var NUTRITION_BAR_Y_FROM_BOTTOM = exports.NUTRITION_BAR_Y_FROM_BOTTOM = 24;
+var NUTRITION_BAR_BORDER_WIDTH = exports.NUTRITION_BAR_BORDER_WIDTH = 2;
+
+var HEALTHBAR_WIDTH = exports.HEALTHBAR_WIDTH = 300;
+
+var NUTRITION_BAR_INFO_FONT = exports.NUTRITION_BAR_INFO_FONT = { font: 'Bromine', fontSize: 32, fill: '#fff', shadow: '0 0 rgba(0, 0, 0, 0.5) 10' };
+var NUTRITION_NUTRITION_ADDED_FONT = exports.NUTRITION_NUTRITION_ADDED_FONT = { font: 'Bromine', fontSize: 40, fill: '#fff', stroke: '#000', strokeThickness: 6, shadow: '0 0 rgba(0, 0, 0, 0.5) 10' };
+
+var SCORE_FONT = exports.SCORE_FONT = { font: 'Bromine', fontSize: 64, fill: '#fff', stroke: '#000', strokeThickness: 6, shadow: '0 0 rgba(0, 0, 0, 0.5) 10' };
+
+var PAUSE_TITLE_FONT = exports.PAUSE_TITLE_FONT = { font: 'Bromine', fontSize: 112, fill: '#fff', shadow: '0 0 rgba(0, 0, 0, 0.5) 30' };
+
+var GAMEOVER_TITLE_FONT = exports.GAMEOVER_TITLE_FONT = { font: 'Bromine', fontSize: 112, fill: '#fff', shadow: '0 0 rgba(0, 0, 0, 0.5) 10' };
+var GAMEOVER_SCORE_FONT = exports.GAMEOVER_SCORE_FONT = { font: 'Bromine', fontSize: 64, fill: '#fff', align: 'center', shadow: '0 0 rgba(0, 0, 0, 0.5) 10' };
+
+var MENU_HIGHSCORE_FONT = exports.MENU_HIGHSCORE_FONT = { font: 'Bromine', fontSize: 56, fill: '#fff', stroke: '#000', strokeThickness: 3, align: 'center', shadow: '0 0 rgba(0, 0, 0, 0.5) 10' };
+var TITLE_OFFSET_Y = exports.TITLE_OFFSET_Y = 100;
+var MENU_BUTTON_OFFSET = exports.MENU_BUTTON_OFFSET = 20;
+
+var WIKI_TITLE_FONT = exports.WIKI_TITLE_FONT = { font: 'Bromine', fontSize: 96, fill: '#000', align: 'center' };
+var WIKI_FONT = exports.WIKI_FONT = { font: 'Bromine', fontSize: 56, fill: '#000', align: 'center' };
+
+var CREDITS_TITLE_FONT = exports.CREDITS_TITLE_FONT = { font: 'Bromine', fontSize: 104, fill: '#fff', align: 'center', shadow: '0 0 rgba(0, 0, 0, 0.5) 10', stroke: '#000', strokeThickness: 3 };
+var CREDITS_FONT = exports.CREDITS_FONT = { font: 'Bromine', fontSize: 56, fill: '#fff', align: 'center', shadow: '0 0 rgba(0, 0, 0, 0.5) 10', stroke: '#000', strokeThickness: 3 };
+var CREDITS_FONT_SMALL = exports.CREDITS_FONT_SMALL = { font: 'Bromine', fontSize: 36, fill: '#fff', align: 'center', shadow: '0 0 rgba(0, 0, 0, 0.5) 10', stroke: '#000', strokeThickness: 3 };
+
+var TUTORIAL_FONT = exports.TUTORIAL_FONT = { font: 'Bromine', fontSize: 56, fill: '#fff', align: 'center', shadow: '0 0 rgba(0, 0, 0, 0.5) 10', stroke: '#000', strokeThickness: 3 };
+
+var LEVEL_CHANGE_FONT = exports.LEVEL_CHANGE_FONT = { font: 'Bromine', fontSize: 80, fill: '#fff', align: 'center', shadow: '0 0 rgba(0, 0, 0, 0.5) 10', stroke: '#000', strokeThickness: 3 };
+
+},{}],10:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var SUPER_THIN_BREAKPOINT = exports.SUPER_THIN_BREAKPOINT = 4;
+var THIN_BREAKPOINT = exports.THIN_BREAKPOINT = 6;
+var FAT_BREAKPOINT = exports.FAT_BREAKPOINT = 10;
+var SUPER_FAT_BREAKPOINT = exports.SUPER_FAT_BREAKPOINT = 12;
+
+var THINNESS_LEVELS = exports.THINNESS_LEVELS = [];
+var d = 0;
+for (var i = 0; i < 8; i++) {
+  THINNESS_LEVELS.push(d++ / 8);
+}
+
+var FATNESS_LEVELS = exports.FATNESS_LEVELS = [];
+d = 7;
+for (var _i = 0; _i < 6; _i++) {
+  FATNESS_LEVELS.push(d++ / 6);
+}
+FATNESS_LEVELS.reverse();
+
+},{}],11:[function(require,module,exports){
+'use strict';
+
+var _states = require('./states');
+
+var _states2 = _interopRequireDefault(_states);
+
+var _CanvasConstants = require('./constants/CanvasConstants');
+
+function _interopRequireDefault(obj) {
+  return obj && obj.__esModule ? obj : { default: obj };
+}
+
+var game = new Phaser.Game(_CanvasConstants.CANVAS_WIDTH, _CanvasConstants.CANVAS_HEIGHT, Phaser.AUTO);
+var states = {
+  'Boot': _states2.default.Boot,
+  'Preloader': _states2.default.Preloader,
+  'MainMenu': _states2.default.MainMenu,
+  'Wiki': _states2.default.Wiki,
+  'Game': _states2.default.Game,
+  'Credits': _states2.default.Credits
+};
+for (var stateName in states) {
+  game.state.add(stateName, states[stateName]);
+}
+game.state.start('Boot');
+
+},{"./constants/CanvasConstants":5,"./states":29}],12:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var de_de = {
+  quote_types: {
+    opening: '„',
+    closing: '”'
+  },
+  main_menu_highscore: {
+    text: 'Bestes Ergebnis'
+  },
+  carbohydrates_name: {
+    text: 'Kohlenhydrate'
+  },
+  fats_name: {
+    text: 'Fette'
+  },
+  proteins_name: {
+    text: 'Proteine'
+  },
+  wiki_quantity: {
+    text: 'Menge'
+  },
+
+  products_apple: {
+    text: 'Apfel'
+  },
+  products_butter: {
+    text: 'Butter'
+  },
+  products_strawberry_jam: {
+    text: 'Erdbeermarmelade'
+  },
+  products_chicken: {
+    text: 'Chicken'
+  },
+  products_donut: {
+    text: 'Donut'
+  },
+  products_banana: {
+    text: 'Banane'
+  },
+  products_eggs: {
+    text: 'Eier'
+  },
+  products_hamburger: {
+    text: 'Hamburger'
+  },
+  products_peanut_butter: {
+    text: 'Nuss-Nugat-Creme'
+  },
+  products_milk: {
+    text: 'Milch'
+  },
+  products_quantity_big_apple: {
+    text: function text(args) {
+      var quantity = args[0];
+      if (quantity === 1) {
+        return quantity + ' ein gro\xDFer Apfel';
+      } else if (quantity < 5) {
+        return quantity + ' gro\xDFe Apfel';
+      } else {
+        return quantity + ' gro\xDFe Apfel';
+      }
+    }
+  },
+  products_quantity_spoon: {
+    text: function text(args) {
+      var quantity = args[0];
+      if (quantity === 1) {
+        return quantity + ' L\xF6ffel';
+      } else if (quantity < 5) {
+        return quantity + ' L\xF6ffel';
+      } else {
+        return quantity + ' L\xF6ffel';
+      }
+    }
+  },
+  products_quantity_gram: {
+    text: function text(args) {
+      var quantity = args[0];
+      if (quantity === 1) {
+        return quantity + ' Gramm';
+      } else if (quantity < 5) {
+        return quantity + ' Gramm';
+      } else {
+        return quantity + ' Gramm';
+      }
+    }
+  },
+  products_quantity_donut: {
+    text: function text(args) {
+      var quantity = args[0];
+      if (quantity === 1) {
+        return quantity + ' Donat';
+      } else if (quantity < 5) {
+        return quantity + ' Donats';
+      } else {
+        return quantity + ' Donats';
+      }
+    }
+  },
+  products_quantity_banana: {
+    text: function text(args) {
+      var quantity = args[0];
+      if (quantity === 1) {
+        return quantity + ' Banane';
+      } else if (quantity < 5) {
+        return quantity + ' Bananen';
+      } else {
+        return quantity + ' Bananen';
+      }
+    }
+  },
+  products_quantity_egg: {
+    text: function text(args) {
+      var quantity = args[0];
+      if (quantity === 1) {
+        return quantity + ' Ei';
+      } else if (quantity < 5) {
+        return quantity + ' Eier';
+      } else {
+        return quantity + ' Eier';
+      }
+    }
+  },
+  products_quantity_hamburger: {
+    text: function text(args) {
+      var quantity = args[0];
+      if (quantity === 1) {
+        return quantity + ' Hamburger';
+      } else if (quantity < 5) {
+        return quantity + ' Hamburger';
+      } else {
+        return quantity + ' Hamburger';
+      }
+    }
+  },
+  products_quantity_cup: {
+    text: function text(args) {
+      var quantity = args[0];
+      if (quantity === 1) {
+        return quantity + ' Glas';
+      } else if (quantity < 5) {
+        return quantity + ' Gl\xE4ser';
+      } else {
+        return quantity + ' Gl\xE4ser';
+      }
+    }
+  },
+
+  tutorial_step_0: {
+    text: 'Das ist Bob.\nHelf ihm dabei sein Körpergewicht zu halten. '
+  },
+  tutorial_step_1: {
+    text: 'Das sind die Nährstoffanzeiger von Bob.\nWenn der Hintergrund der Anzeige grün ist,\ndann ist Bob gesund und du bekommst Punkte'
+  },
+  tutorial_step_2: {
+    text: 'Die Anzeige wird gelb,\nwenn Bob zu wenige oder zu viele Nährstoffe bekommt.\nWenn du dann nicht handelst, verliert Bob leben und die\nAnzeige kann auf rot wechseln!'
+  },
+  tutorial_step_3: {
+    text: 'Bob hat einen Lebensgürtel.\nEr verliert Energie, wenn du auf gelde und\nrote Makroelemente-Felder kommst.'
+  },
+  tutorial_step_4: {
+    text: 'Jedes Essen hat bestimmte Eingeschafte,\ndie in der "Encyklopädie" im Hauptmenü zu fonden sind.\nWenn du die Eigenschaften des Essens kennst,\nweißt du wie du Bob füttern musst.'
+  },
+  tutorial_step_5: {
+    text: 'Das war das Tutorial, jetzt kannst du endlich anfangen zu spielen!'
+  },
+
+  game_health: {
+    text: 'Leben'
+  },
+  game_score: {
+    text: 'Ergebnis'
+  },
+  game_paused: {
+    text: 'Pause'
+  },
+  game_level_up: {
+    text: 'Es geht dir jedes mal besser!,\ndas Spiel wird schwieriger!'
+  },
+  game_over: {
+    text: 'Game Over'
+  },
+  game_over_text: {
+    text: function text(args) {
+      var secondNumberSuffix = function secondNumberSuffix(time) {
+        return time > 1 ? 'e' : '';
+      };
+
+      return 'Du hast ' + Math.floor(args[0]) + 'eereicht punkt' + secondNumberSuffix(args[0]) + '\nund Du bist wegen: ' + args[1] + 'gestorben.';
+    }
+  },
+  game_deathtype_dangerous_nutrition_style: {
+    text: 'Gefährlicher Ernährungstil'
+  },
+
+  credits_title: {
+    text: 'Autoren'
+  },
+  credits_code: {
+    text: 'Code'
+  },
+  credits_graphics: {
+    text: 'Grafik'
+  },
+  credits_sound: {
+    text: 'Sound'
+  },
+  credits_translators: {
+    text: 'Übersetzung'
+  },
+  credits_lang_de: {
+    text: 'Deutsch'
+  },
+
+  credits_by: {
+    text: 'von'
+  }
+};
+
+exports.default = de_de;
+
+},{}],13:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var en_gb = {
+  quote_types: {
+    opening: '’',
+    closing: '’'
+  },
+  main_menu_highscore: {
+    text: 'Highscore'
+  },
+  carbohydrates_name: {
+    text: 'carbohydrates'
+  },
+  fats_name: {
+    text: 'fats'
+  },
+  proteins_name: {
+    text: 'proteins'
+  },
+  wiki_quantity: {
+    text: 'quantity'
+  },
+
+  products_apple: {
+    text: 'apple'
+  },
+  products_butter: {
+    text: 'butter'
+  },
+  products_strawberry_jam: {
+    text: 'strawberry jam'
+  },
+  products_chicken: {
+    text: 'chicken'
+  },
+  products_donut: {
+    text: 'donut'
+  },
+  products_banana: {
+    text: 'banana'
+  },
+  products_eggs: {
+    text: 'eggs'
+  },
+  products_hamburger: {
+    text: 'hamburger'
+  },
+  products_peanut_butter: {
+    text: 'peanut butter'
+  },
+  products_milk: {
+    text: 'milk'
+  },
+  products_quantity_big_apple: {
+    text: function text(args) {
+      var quantity = args[0];
+      if (quantity === 1) {
+        return quantity + ' big apple';
+      } else {
+        return quantity + ' big apples';
+      }
+    }
+  },
+  products_quantity_spoon: {
+    text: function text(args) {
+      var quantity = args[0];
+      if (quantity === 1) {
+        return quantity + ' spoon';
+      } else {
+        return quantity + ' spoons';
+      }
+    }
+  },
+  products_quantity_gram: {
+    text: function text(args) {
+      var quantity = args[0];
+      if (quantity === 1) {
+        return quantity + ' gram';
+      } else {
+        return quantity + ' grams';
+      }
+    }
+  },
+  products_quantity_donut: {
+    text: function text(args) {
+      var quantity = args[0];
+      if (quantity === 1) {
+        return quantity + ' donut';
+      } else {
+        return quantity + ' donuts';
+      }
+    }
+  },
+  products_quantity_banana: {
+    text: function text(args) {
+      var quantity = args[0];
+      if (quantity === 1) {
+        return quantity + ' banana';
+      } else {
+        return quantity + ' bananas';
+      }
+    }
+  },
+  products_quantity_egg: {
+    text: function text(args) {
+      var quantity = args[0];
+      if (quantity === 1) {
+        return quantity + ' egg';
+      } else {
+        return quantity + ' eggs';
+      }
+    }
+  },
+  products_quantity_hamburger: {
+    text: function text(args) {
+      var quantity = args[0];
+      if (quantity === 1) {
+        return quantity + ' hamburger';
+      } else {
+        return quantity + ' hamburgers';
+      }
+    }
+  },
+  products_quantity_cup: {
+    text: function text(args) {
+      var quantity = args[0];
+      if (quantity === 1) {
+        return quantity + ' cup';
+      } else {
+        return quantity + ' cups';
+      }
+    }
+  },
+
+  tutorial_step_0: {
+    text: 'This is Bob.\nYour job is to help him\nmaintain his current weight.'
+  },
+  tutorial_step_1: {
+    text: 'These are Bob’s current macroelements indicators.\nBy keeping them green you keep Bob healthy and score points.'
+  },
+  tutorial_step_2: {
+    text: 'Bob’s macroelements indicators will turn\nyellow and eventually red if you overfeed\nhim with a certain type of macroelement\nor if you dont’t feed him with it.'
+  },
+  tutorial_step_3: {
+    text: 'Bob has his own health bar,\nits value drops when you enter yellow\nor red zone on macroelement indicator.'
+  },
+  tutorial_step_4: {
+    text: 'Every food has its own nutrition\ninfo in Wiki section availible from the menu.\nKnowing what macroelements food consists of,\nyou can be sure that you will feed Bob properly.'
+  },
+  tutorial_step_5: {
+    text: 'This is the end of tutorial. You can now enjoy the game!'
+  },
+
+  game_health: {
+    text: 'Health'
+  },
+  game_score: {
+    text: 'Score'
+  },
+  game_paused: {
+    text: 'Paused'
+  },
+  game_level_up: {
+    text: 'You are getting better!\nSo game is gonna become harder!'
+  },
+  game_over: {
+    text: 'Game over'
+  },
+
+  game_over_text: {
+    text: function text(args) {
+      // args[ 0 ] => score
+      // args[ 1 ] => deathtype
+
+      var secondNumberSuffix = function secondNumberSuffix(time) {
+        return time === 1 ? '' : 's';
+      };
+
+      return 'You have scored ' + Math.floor(args[0]) + ' point' + secondNumberSuffix(args[0]) + '\nand died from ' + args[1];
+    }
+  },
+  game_deathtype_dangerous_nutrition_style: {
+    text: 'dangerous nutrition style'
+  },
+
+  credits_title: {
+    text: 'Credits'
+  },
+  credits_code: {
+    text: 'Coding'
+  },
+  credits_graphics: {
+    text: 'Graphics'
+  },
+  credits_sound: {
+    text: 'Sounds'
+  },
+  credits_translators: {
+    text: 'Translators'
+  },
+  credits_lang_de: {
+    text: 'German'
+  },
+  credits_by: {
+    text: 'by'
+  }
+};
+
+exports.default = en_gb;
+
+},{}],14:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _en_gb = require('./en_gb.js');
+
+var _en_gb2 = _interopRequireDefault(_en_gb);
+
+var _pl_pl = require('./pl_pl.js');
+
+var _pl_pl2 = _interopRequireDefault(_pl_pl);
+
+var _de_de = require('./de_de.js');
+
+var _de_de2 = _interopRequireDefault(_de_de);
+
+function _interopRequireDefault(obj) {
+  return obj && obj.__esModule ? obj : { default: obj };
+}
+
+var langFile = {
+  en_gb: _en_gb2.default,
+  pl_pl: _pl_pl2.default,
+  de_de: _de_de2.default
+};
+
+exports.default = langFile;
+
+},{"./de_de.js":12,"./en_gb.js":13,"./pl_pl.js":15}],15:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var pl_pl = {
+  quote_types: {
+    opening: '„',
+    closing: '”'
+  },
+  main_menu_highscore: {
+    text: 'Najwyższy wynik'
+  },
+  carbohydrates_name: {
+    text: 'węglowodany'
+  },
+  fats_name: {
+    text: 'tłuszcze'
+  },
+  proteins_name: {
+    text: 'białko'
+  },
+  wiki_quantity: {
+    text: 'ilość'
+  },
+
+  products_apple: {
+    text: 'jabłko'
+  },
+  products_butter: {
+    text: 'masło'
+  },
+  products_strawberry_jam: {
+    text: 'dżem truskawkowy'
+  },
+  products_chicken: {
+    text: 'kurczak'
+  },
+  products_donut: {
+    text: 'donut'
+  },
+  products_banana: {
+    text: 'banan'
+  },
+  products_eggs: {
+    text: 'jajka'
+  },
+  products_hamburger: {
+    text: 'hamburger'
+  },
+  products_peanut_butter: {
+    text: 'masło orzechowe'
+  },
+  products_milk: {
+    text: 'mleko'
+  },
+  products_quantity_big_apple: {
+    text: function text(args) {
+      var quantity = args[0];
+      if (quantity === 1) {
+        return quantity + ' du\u017Ce jab\u0142ko';
+      } else if (quantity < 5) {
+        return quantity + ' du\u017Ce jab\u0142ka';
+      } else {
+        return quantity + ' du\u017Cych jab\u0142ek';
+      }
+    }
+  },
+  products_quantity_spoon: {
+    text: function text(args) {
+      var quantity = args[0];
+      if (quantity === 1) {
+        return quantity + ' \u0142y\u017Cka';
+      } else if (quantity < 5) {
+        return quantity + ' \u0142y\u017Cki';
+      } else {
+        return quantity + ' \u0142y\u017Cek';
+      }
+    }
+  },
+  products_quantity_gram: {
+    text: function text(args) {
+      var quantity = args[0];
+      if (quantity === 1) {
+        return quantity + ' gram';
+      } else if (quantity < 5) {
+        return quantity + ' gramy';
+      } else {
+        return quantity + ' gram\xF3w';
+      }
+    }
+  },
+  products_quantity_donut: {
+    text: function text(args) {
+      var quantity = args[0];
+      if (quantity === 1) {
+        return quantity + ' donut';
+      } else if (quantity < 5) {
+        return quantity + ' donuty';
+      } else {
+        return quantity + ' donut\xF3w';
+      }
+    }
+  },
+  products_quantity_banana: {
+    text: function text(args) {
+      var quantity = args[0];
+      if (quantity === 1) {
+        return quantity + ' banan';
+      } else if (quantity < 5) {
+        return quantity + ' banany';
+      } else {
+        return quantity + ' banan\xF3w';
+      }
+    }
+  },
+  products_quantity_egg: {
+    text: function text(args) {
+      var quantity = args[0];
+      if (quantity === 1) {
+        return quantity + ' jajko';
+      } else if (quantity < 5) {
+        return quantity + ' jajka';
+      } else {
+        return quantity + ' jajek';
+      }
+    }
+  },
+  products_quantity_hamburger: {
+    text: function text(args) {
+      var quantity = args[0];
+      if (quantity === 1) {
+        return quantity + ' hamburger';
+      } else if (quantity < 5) {
+        return quantity + ' hamburgery';
+      } else {
+        return quantity + ' hamburger\xF3w';
+      }
+    }
+  },
+  products_quantity_cup: {
+    text: function text(args) {
+      var quantity = args[0];
+      if (quantity === 1) {
+        return quantity + ' szklanka';
+      } else if (quantity < 5) {
+        return quantity + ' szklanki';
+      } else {
+        return quantity + ' szklanek';
+      }
+    }
+  },
+
+  tutorial_step_0: {
+    text: 'To jest Bob.\nTwoim zadaniem jest pomóc mu\nutrzymać jego obecną wagę.'
+  },
+  tutorial_step_1: {
+    text: 'To są wskaźniki stanu makroelementów Boba.\nPoprzez utrzymywanie ich na zielonym tle Bob jest zdrowy,\na ty dostajesz punkty.'
+  },
+  tutorial_step_2: {
+    text: 'Wskaźnik makroelementów zmieni kolor na żółty,\na w końcu na czerwony jeśli przekramisz Boba\nmakroelementami lub gdy go nie będziesz nimi karmił.'
+  },
+  tutorial_step_3: {
+    text: 'Bob ma swój własny pasek życia.\nJego wartość spada gdy wkroczysz na żółte\n lub czerowne pole na wskaźniku makroelementów.'
+  },
+  tutorial_step_4: {
+    text: 'Każde jedzenie ma swoje właściwości\nopisane w sekcji „Encyklopedia” w menu głównym.\nZnając jakie makroelementy dane jedzenie posiada\nmożesz być pewien, że nakarmisz Boba poprawnie.'
+  },
+  tutorial_step_5: {
+    text: 'To koniec samouczka.\nMożesz teraz cieszyć się grą!'
+  },
+
+  game_health: {
+    text: 'Życie'
+  },
+  game_score: {
+    text: 'Wynik'
+  },
+  game_paused: {
+    text: 'Pauza'
+  },
+  game_level_up: {
+    text: 'Idzie ci coraz lepiej!\nWięc gra staje się trudniejsza!'
+  },
+  game_over: {
+    text: 'Koniec gry'
+  },
+  game_over_text: {
+    text: function text(args) {
+      // args[ 0 ] => wynik
+      // args[ 1 ] => sposób śmierci
+
+      var secondNumberSuffix = function secondNumberSuffix(time) {
+        var char = +String(time).charAt(String(time).length - 1);
+
+        if (char === 0 || char >= 5 || time >= 11 && time <= 21) {
+          return 'ów';
+        } else if (char !== 1) {
+          return 'y';
+        }
+
+        return '';
+      };
+
+      return 'Zdoby\u0142e\u015B ' + Math.floor(args[0]) + ' punkt' + secondNumberSuffix(args[0]) + '\ni umar\u0142e\u015B od ' + args[1];
+    }
+  },
+
+  game_deathtype_dangerous_nutrition_style: {
+    text: 'niebezpiecznego stylu żywienia'
+  },
+
+  credits_title: {
+    text: 'Autorzy'
+  },
+  credits_code: {
+    text: 'Kod'
+  },
+  credits_graphics: {
+    text: 'Grafika'
+  },
+  credits_sound: {
+    text: 'Dźwięki'
+  },
+  credits_translators: {
+    text: 'Tłumaczenie'
+  },
+  credits_lang_de: {
+    text: 'niemiecki'
+  },
+  credits_by: {
+    text: 'przez'
+  }
+};
+
+exports.default = pl_pl;
+
+},{}],16:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () {
+  function defineProperties(target, props) {
+    for (var i = 0; i < props.length; i++) {
+      var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);
+    }
+  }return function (Constructor, protoProps, staticProps) {
+    if (protoProps) defineProperties(Constructor.prototype, protoProps);if (staticProps) defineProperties(Constructor, staticProps);return Constructor;
+  };
+}();
+
+var _FoodConstants = require('../constants/FoodConstants');
+
+function _classCallCheck(instance, Constructor) {
+  if (!(instance instanceof Constructor)) {
+    throw new TypeError("Cannot call a class as a function");
+  }
+}
+
+var AdditionalFoodSpawner = function () {
+  function AdditionalFoodSpawner(game, hasMacrosSpawnedData) {
+    _classCallCheck(this, AdditionalFoodSpawner);
+
+    this.hasMacrosSpawnedData = hasMacrosSpawnedData;
+
+    this.checkIfShouldSpawnTimer = game.time.events.loop(_FoodConstants.ADDITIONAL_FOOD_SPAWN_INTERVAL, this.checkIfShouldSpawn, this);
+
+    this.onSpawnNeed = new Phaser.Signal();
+  }
+
+  _createClass(AdditionalFoodSpawner, [{
+    key: 'checkIfShouldSpawn',
+    value: function checkIfShouldSpawn() {
+      for (var macroKey in this.hasMacrosSpawnedData) {
+        if (this.hasMacrosSpawnedData[macroKey] === false) {
+          this.onSpawnNeed.dispatch(macroKey);
+        }
+        this.hasMacrosSpawnedData[macroKey] = false;
+      }
+    }
+  }]);
+
+  return AdditionalFoodSpawner;
+}();
+
+exports.default = AdditionalFoodSpawner;
+
+},{"../constants/FoodConstants":7}],17:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () {
+  function defineProperties(target, props) {
+    for (var i = 0; i < props.length; i++) {
+      var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);
+    }
+  }return function (Constructor, protoProps, staticProps) {
+    if (protoProps) defineProperties(Constructor.prototype, protoProps);if (staticProps) defineProperties(Constructor, staticProps);return Constructor;
+  };
+}();
+
+var _NutritionConstants = require('../constants/NutritionConstants');
+
+var _BobConstants = require('../constants/BobConstants');
+
+var _NutritionUtils = require('../utils/NutritionUtils');
+
+var _WeightBreakpoints = require('../constants/WeightBreakpoints');
+
+var _FoodDataManager = require('../objects/FoodDataManager');
+
+function _classCallCheck(instance, Constructor) {
+  if (!(instance instanceof Constructor)) {
+    throw new TypeError("Cannot call a class as a function");
+  }
+}
+
+function _possibleConstructorReturn(self, call) {
+  if (!self) {
+    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+  }return call && (typeof call === "object" || typeof call === "function") ? call : self;
+}
+
+function _inherits(subClass, superClass) {
+  if (typeof superClass !== "function" && superClass !== null) {
+    throw new TypeError("Super expression must either be null or a function, not " + typeof superClass);
+  }subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } });if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
+}
+
+var Bob = function (_Phaser$Sprite) {
+  _inherits(Bob, _Phaser$Sprite);
+
+  function Bob(game, x, y, imageKey, NutritionManager) {
+    _classCallCheck(this, Bob);
+
+    var _this = _possibleConstructorReturn(this, (Bob.__proto__ || Object.getPrototypeOf(Bob)).call(this, game, x, y, imageKey));
+
+    _this.NutritionManager = NutritionManager;
+
+    _this.anchor.setTo(0.5, 1);
+    _this.scale.setTo(_BobConstants.BOB_SCALE);
+
+    _this.game.world.add(_this);
+
+    _this.scoreValue = 0;
+
+    _this.onScoreValueChange = new Phaser.Signal();
+
+    _this.onWeightChange = new Phaser.Signal();
+    return _this;
+  }
+
+  _createClass(Bob, [{
+    key: 'handleWeightChange',
+    value: function handleWeightChange() {
+      var nutrition = this.NutritionManager.nutrition;
+
+      var nutritionStatuses = [(0, _NutritionUtils.getStatus)(nutrition.carbohydrates, _NutritionConstants.GOOD_AMOUNT_OF_CARBOHYDRATES), (0, _NutritionUtils.getStatus)(nutrition.fats, _NutritionConstants.GOOD_AMOUNT_OF_FATS), (0, _NutritionUtils.getStatus)(nutrition.proteins, _NutritionConstants.GOOD_AMOUNT_OF_PROTEINS)];
+
+      var scoreValue = 0;
+
+      var makeProbabilityHigher = [{ name: 'carbohydrates', makeHigher: false, makeSuperHigher: false }, { name: 'fats', makeHigher: false, makeSuperHigher: false }, { name: 'proteins', makeHigher: false, makeSuperHigher: false }];
+
+      (0, _FoodDataManager.resetFoodSpawnProbability)();
+
+      var isSuperThin = false;
+      var isThin = false;
+      var isFat = false;
+      var isSuperFat = false;
+
+      nutritionStatuses.forEach(function (v, index) {
+        if (v <= _WeightBreakpoints.THIN_BREAKPOINT) {
+          isThin = true;
+          makeProbabilityHigher[index].makeHigher = true;
+        }
+
+        if (v <= _WeightBreakpoints.SUPER_THIN_BREAKPOINT) {
+          isSuperThin = true;
+          makeProbabilityHigher[index].makeSuperHigher = true;
+        }
+
+        if (v >= _WeightBreakpoints.FAT_BREAKPOINT) {
+          isFat = true;
+        }
+
+        if (v >= _WeightBreakpoints.SUPER_FAT_BREAKPOINT) {
+          isSuperFat = true;
+        }
+      });
+
+      makeProbabilityHigher.forEach(function (macro) {
+        if (macro.makeHigher === true) {
+          (0, _FoodDataManager.makeKeySpawnMoreFrequently)(macro.name, 3);
+        } else if (macro.makeSuperHigher === true) {
+          (0, _FoodDataManager.makeKeySpawnMoreFrequently)(macro.name, 5);
+        }
+      });
+
+      this.onWeightChange.dispatch(isThin || isFat, isSuperThin || isSuperFat);
+
+      if (!isSuperThin && !isThin && !isFat && !isSuperFat) {
+        scoreValue++;
+      }
+
+      var status = 8;
+      if (isFat) {
+        status = Math.max.apply(null, nutritionStatuses);
+      } else if (isThin) {
+        nutritionStatuses.forEach(function (v) {
+          if (v < 8) {
+            status = Math.min(status, v);
+          }
+        });
+      }
+
+      this.frame = status;
+
+      if (this.scoreValue !== scoreValue) {
+        this.scoreValue = scoreValue;
+        this.onScoreValueChange.dispatch(scoreValue);
+      }
+    }
+  }]);
+
+  return Bob;
+}(Phaser.Sprite);
+
+exports.default = Bob;
+
+},{"../constants/BobConstants":4,"../constants/NutritionConstants":8,"../constants/WeightBreakpoints":10,"../objects/FoodDataManager":19,"../utils/NutritionUtils":33}],18:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () {
+  function defineProperties(target, props) {
+    for (var i = 0; i < props.length; i++) {
+      var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);
+    }
+  }return function (Constructor, protoProps, staticProps) {
+    if (protoProps) defineProperties(Constructor.prototype, protoProps);if (staticProps) defineProperties(Constructor, staticProps);return Constructor;
+  };
+}();
+
+var _ScaleManager = require('../utils/ScaleManager');
+
+var _i18n = require('../utils/i18n');
+
+var _i18n2 = _interopRequireDefault(_i18n);
+
+var _FoodConstants = require('../constants/FoodConstants');
+
+function _interopRequireDefault(obj) {
+  return obj && obj.__esModule ? obj : { default: obj };
+}
+
+function _classCallCheck(instance, Constructor) {
+  if (!(instance instanceof Constructor)) {
+    throw new TypeError("Cannot call a class as a function");
+  }
+}
+
+function _possibleConstructorReturn(self, call) {
+  if (!self) {
+    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+  }return call && (typeof call === "object" || typeof call === "function") ? call : self;
+}
+
+function _inherits(subClass, superClass) {
+  if (typeof superClass !== "function" && superClass !== null) {
+    throw new TypeError("Super expression must either be null or a function, not " + typeof superClass);
+  }subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } });if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
+}
+
+var Food = function (_Phaser$Sprite) {
+  _inherits(Food, _Phaser$Sprite);
+
+  function Food(game, x, y, key, data, updateStatsSignal, onDestroy) {
+    _classCallCheck(this, Food);
+
+    var _this = _possibleConstructorReturn(this, (Food.__proto__ || Object.getPrototypeOf(Food)).call(this, game, x, y, (0, _ScaleManager.$)(_i18n2.default.image('products')), key));
+
+    _this.onDestroy = onDestroy;
+    _this.data = data;
+    _this.updateStatsSignal = updateStatsSignal;
+    _this.scale.setTo(_FoodConstants.FOOD_SCALE);
+    _this.anchor.setTo(0.5, 0.5);
+
+    _this.hitArea = new Phaser.Circle().setTo(0, 0, _FoodConstants.FOOD_HIT_AREA_DIAMETER);
+
+    _this.game.physics.enable(_this);
+
+    _this.directionX = x > _this.game.world.centerX ? -1 : 1;
+    _this.directionY = y > _this.game.world.centerY ? -1 : 1;
+
+    _this.velocityX = _this.directionX * _this.game.rnd.integerInRange((0, _ScaleManager.$)(_FoodConstants.MIN_FOOD_VELOCITY), (0, _ScaleManager.$)(_FoodConstants.MAX_FOOD_VELOCITY));
+
+    _this.body.velocity.x = _this.velocityX;
+
+    _this.velocityY = _this.directionY * _this.game.rnd.integerInRange(Math.max((0, _ScaleManager.$)(_FoodConstants.MIN_FOOD_VELOCITY), Math.abs(_this.velocityX) - 10), Math.min(Math.abs(_this.velocityX) + 10, (0, _ScaleManager.$)(_FoodConstants.MAX_FOOD_VELOCITY)));
+
+    _this.body.velocity.y = _this.velocityY;
+
+    _this.inputEnabled = true;
+    _this.events.onInputDown.add(_this.handleClick, _this);
+
+    _this.events.onInputOver.add(function () {
+      game.canvas.style.cursor = 'pointer';
+    });
+
+    _this.events.onInputOut.add(function () {
+      game.canvas.style.cursor = 'default';
+    });
+    _this.hasEnteredScreen = false;
+    _this.checkWorldBounds = true;
+
+    _this.events.onOutOfBounds.add(function () {
+      if (_this.hasEnteredScreen) {
+        _this.onDestroy(_this, false);
+      }
+    });
+
+    _this.game.world.add(_this);
+    return _this;
+  }
+
+  _createClass(Food, [{
+    key: 'update',
+    value: function update() {
+      if (!this.hasEnteredScreen && this.game.world.bounds.intersects(this._bounds)) {
+        this.hasEnteredScreen = true;
+      }
+    }
+  }, {
+    key: 'speedUp',
+    value: function speedUp(speedOffset) {
+      this.body.velocity.x += speedOffset * this.directionX;
+      this.body.velocity.y += speedOffset * this.directionY;
+    }
+  }, {
+    key: 'handleClick',
+    value: function handleClick() {
+      var _this2 = this;
+
+      var tween = this.game.add.tween(this);
+      var tweenScale = this.game.add.tween(this.scale);
+      var tweenSpin = this.game.add.tween(this);
+      tween.to({ x: this.game.world.centerX - (0, _ScaleManager.$)(_FoodConstants.FOOD_TWEEN_X), y: this.game.world.height - (0, _ScaleManager.$)(_FoodConstants.FOOD_TWEEN_Y) }, _FoodConstants.FOOD_TWEEN_SPEED, Phaser.Easing.Linear.None, true);
+      tweenScale.to({ x: (0, _ScaleManager.$)(_FoodConstants.FOOD_TWEEN_SCALE), y: (0, _ScaleManager.$)(_FoodConstants.FOOD_TWEEN_SCALE) }, _FoodConstants.FOOD_TWEEN_SPEED, Phaser.Easing.Linear.None, true);
+      tweenSpin.to({ angle: 360 }, _FoodConstants.FOOD_TWEEN_SPEED, Phaser.Easing.Linear.None, true);
+
+      tween.onComplete.add(function () {
+        _this2.updateStatsSignal.dispatch(_this2.data);
+        _this2.onDestroy(_this2, true);
+      });
+    }
+  }]);
+
+  return Food;
+}(Phaser.Sprite);
+
+exports.default = Food;
+
+},{"../constants/FoodConstants":7,"../utils/ScaleManager":34,"../utils/i18n":36}],19:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.getHardLevelLastIndex = exports.getMediumLevelLastIndex = exports.getEasyLevelLastIndex = exports.getFoodData = undefined;
+exports.initFoodDataManager = initFoodDataManager;
+exports.makeKeySpawnMoreFrequently = makeKeySpawnMoreFrequently;
+exports.resetFoodSpawnProbability = resetFoodSpawnProbability;
+
+var _FoodConstants = require('../constants/FoodConstants');
+
+var _NutritionUtils = require('../utils/NutritionUtils');
+
+var data = void 0;
+var easyLevelLastIndex = void 0;
+var mediumLevelLastIndex = void 0;
+var hardLevelLastIndex = void 0;
+
+function initFoodDataManager() {
+  data = JSON.parse(JSON.stringify(_FoodConstants.FOOD_DATA)).sort(function (food1, food2) {
+    return food1.complexityLevel > food2.complexityLevel;
+  });
+
+  easyLevelLastIndex = data.length - 1 - data.reverse().findIndex(function (food) {
+    return food.complexityLevel === 1;
+  });
+  mediumLevelLastIndex = data.length - 1 - data.findIndex(function (food) {
+    return food.complexityLevel === 2;
+  });
+  hardLevelLastIndex = data.length - 1;
+
+  data.reverse();
+}
+
+var getFoodData = exports.getFoodData = function getFoodData() {
+  return data;
+};
+var getEasyLevelLastIndex = exports.getEasyLevelLastIndex = function getEasyLevelLastIndex() {
+  return easyLevelLastIndex;
+};
+var getMediumLevelLastIndex = exports.getMediumLevelLastIndex = function getMediumLevelLastIndex() {
+  return mediumLevelLastIndex;
+};
+var getHardLevelLastIndex = exports.getHardLevelLastIndex = function getHardLevelLastIndex() {
+  return hardLevelLastIndex;
+};
+
+function makeKeySpawnMoreFrequently(macroKey, multiplier) {
+  var keyMacros = (0, _NutritionUtils.getFoodWithParticularMacros)(data, macroKey);
+
+  keyMacros.forEach(function (keyFood) {
+    keyFood.probability = _FoodConstants.FOOD_DATA.find(function (food) {
+      return food.key === keyFood.key;
+    }).probability * multiplier;
+  });
+
+  data = data.map(function (food) {
+    var indexOfFoodInKeyMacros = keyMacros.findIndex(function (keyFood) {
+      return keyFood.key === food.key;
+    });
+
+    if (indexOfFoodInKeyMacros === -1) {
+      return food;
+    }
+
+    return keyMacros[indexOfFoodInKeyMacros];
+  });
+}
+
+function resetFoodSpawnProbability() {
+  data.forEach(function (food) {
+    food.probability = _FoodConstants.FOOD_DATA.find(function (originalFood) {
+      return originalFood.key === food.key;
+    }).probability;
+  });
+}
+
+},{"../constants/FoodConstants":7,"../utils/NutritionUtils":33}],20:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () {
+  function defineProperties(target, props) {
+    for (var i = 0; i < props.length; i++) {
+      var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);
+    }
+  }return function (Constructor, protoProps, staticProps) {
+    if (protoProps) defineProperties(Constructor.prototype, protoProps);if (staticProps) defineProperties(Constructor, staticProps);return Constructor;
+  };
+}();
+
+var _Food = require('./Food');
+
+var _Food2 = _interopRequireDefault(_Food);
+
+var _FoodDataManager = require('./FoodDataManager');
+
+var _MathUtils = require('../utils/MathUtils.js');
+
+var _FoodConstants = require('../constants/FoodConstants');
+
+var _DifficultyLevelIntervals = require('../constants/DifficultyLevelIntervals.js');
+
+var _AudioManager = require('../utils/AudioManager.js');
+
+var _AdditionalFoodSpawner = require('./AdditionalFoodSpawner');
+
+var _AdditionalFoodSpawner2 = _interopRequireDefault(_AdditionalFoodSpawner);
+
+var _NutritionUtils = require('../utils/NutritionUtils');
+
+function _interopRequireDefault(obj) {
+  return obj && obj.__esModule ? obj : { default: obj };
+}
+
+function _classCallCheck(instance, Constructor) {
+  if (!(instance instanceof Constructor)) {
+    throw new TypeError("Cannot call a class as a function");
+  }
+}
+
+function _possibleConstructorReturn(self, call) {
+  if (!self) {
+    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+  }return call && (typeof call === "object" || typeof call === "function") ? call : self;
+}
+
+function _inherits(subClass, superClass) {
+  if (typeof superClass !== "function" && superClass !== null) {
+    throw new TypeError("Super expression must either be null or a function, not " + typeof superClass);
+  }subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } });if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
+}
+
+var FoodSpawner = function (_Phaser$Group) {
+  _inherits(FoodSpawner, _Phaser$Group);
+
+  function FoodSpawner(game) {
+    _classCallCheck(this, FoodSpawner);
+
+    var _this = _possibleConstructorReturn(this, (FoodSpawner.__proto__ || Object.getPrototypeOf(FoodSpawner)).call(this, game));
+
+    _this.timer = _this.game.time.events.loop(_FoodConstants.FOOD_SPAWN_INTERVAL, _this.spawnFood, _this);
+
+    _this.updateStatsSignal = new Phaser.Signal();
+
+    _this.currentDifficultyLevel = 'EASY';
+    _this.currentDifficultyLevelLastIndex = (0, _FoodDataManager.getEasyLevelLastIndex)();
+
+    _this.biteSound = _this.game.add.sound('audio-bite', 0.5);
+    _this.biteSound.allowMultiple = true;
+
+    _this.hasMacrosSpawnedData = {
+      carbohydrates: false,
+      fats: false,
+      proteins: false
+    };
+
+    var additionalFoodSpawner = new _AdditionalFoodSpawner2.default(game, _this.hasMacrosSpawnedData);
+    additionalFoodSpawner.onSpawnNeed.add(_this.spawnFoodWithParticularMacro, _this);
+
+    _this.onDifficultyLevelUp = new Phaser.Signal();
+    return _this;
+  }
+
+  _createClass(FoodSpawner, [{
+    key: 'create',
+    value: function create() {
+      this.spawnFood();
+    }
+  }, {
+    key: 'spawnFood',
+    value: function spawnFood(foodType) {
+      if (foodType == null) {
+        foodType = (0, _MathUtils.getRandomWithWeight)((0, _FoodDataManager.getFoodData)(), this.currentDifficultyLevelLastIndex + 1);
+        this.hasMacrosSpawnedData[(0, _NutritionUtils.getDominatingMacro)(foodType)] = true;
+      }
+
+      if (this.game.veryBadGlobalFlagToMakeAHotFixSorryButIHaveToUseIt === false) {
+        // I really don't know how to handle this differently, I'll ask on Slack or smth...
+        return;
+      }
+      var sides = ['NORTH', 'EAST', 'SOUTH', 'WEST'];
+      var spawnSide = sides[Math.floor(Math.random() * 4)];
+      var x = void 0;
+      var y = void 0;
+      var spawnWidth = this.game.world.width - _FoodConstants.FOOD_SPAWN_BOUNDS_WIDTH_MARGIN;
+      var spawnHeight = this.game.world.height - _FoodConstants.FOOD_SPAWN_BOUNDS_HEIGHT_MARGIN;
+      if (spawnSide === 'NORTH' || spawnSide === 'SOUTH') {
+        x = spawnWidth / 2 + Math.random() * spawnWidth;
+        y = spawnSide === 'NORTH' ? -_FoodConstants.FOOD_HEIGHT : this.game.world.height + _FoodConstants.FOOD_HEIGHT;
+      } else {
+        x = spawnSide === 'WEST' ? -_FoodConstants.FOOD_WIDTH : this.game.world.width + _FoodConstants.FOOD_WIDTH;
+        y = spawnHeight / 2 + Math.random() * spawnHeight;
+      }
+
+      this.tryDifficultyLevelUp();
+
+      var newFood = new _Food2.default(this.game, x, y, foodType.key, foodType.nutritionFacts, this.updateStatsSignal, this.onFoodConsumption.bind(this));
+
+      if (this.currentDifficultyLevel === 'MEDIUM') {
+        newFood.speedUp(_FoodConstants.MEDIUM_LEVEL_VELOCITY_OFFSET);
+      } else if (this.currentDifficultyLevel === 'HARD') {
+        newFood.speedUp(_FoodConstants.HARD_LEVEL_VELOCITY_OFFSET);
+      }
+
+      this.children.push(newFood);
+    }
+  }, {
+    key: 'update',
+    value: function update() {
+      Phaser.Group.prototype.update.call(this);
+    }
+  }, {
+    key: 'onFoodConsumption',
+    value: function onFoodConsumption(food, wasEaten) {
+      if ((0, _AudioManager.getStatusAudio)() === true && wasEaten) {
+        this.biteSound.play();
+      }
+      this.removeChild(food);
+    }
+  }, {
+    key: 'removeChild',
+    value: function removeChild(child) {
+      var index = this.children.indexOf(child);
+      this.children[index].destroy();
+      this.children.splice(index, 1);
+    }
+    // this method should be called from a callback that counts points
+
+  }, {
+    key: 'tryDifficultyLevelUp',
+    value: function tryDifficultyLevelUp(score) {
+      if (score >= _DifficultyLevelIntervals.TIME_TO_REACH_MEDIUM_LEVEL && this.currentDifficultyLevelLastIndex !== (0, _FoodDataManager.getMediumLevelLastIndex)() && this.currentDifficultyLevelLastIndex !== (0, _FoodDataManager.getHardLevelLastIndex)()) {
+        this.currentDifficultyLevelLastIndex = (0, _FoodDataManager.getMediumLevelLastIndex)();
+        this.currentDifficultyLevel = 'MEDIUM';
+        this.timer.delay = _FoodConstants.FOOD_SPAWN_INTERVAL - _FoodConstants.MEDIUM_LEVEL_FOOD_SPAWN_DELAY_OFFSET;
+        this.onDifficultyLevelUp.dispatch(this.currentDifficultyLevel);
+      } else if (score >= _DifficultyLevelIntervals.TIME_TO_REACH_HARD_LEVEL && this.currentDifficultyLevelLastIndex !== (0, _FoodDataManager.getHardLevelLastIndex)()) {
+        this.currentDifficultyLevelLastIndex = (0, _FoodDataManager.getHardLevelLastIndex)();
+        this.currentDifficultyLevel = 'HARD';
+        this.timer.delay = _FoodConstants.FOOD_SPAWN_INTERVAL - _FoodConstants.HARD_LEVEL_FOOD_SPAWN_DELAY_OFFSET;
+        this.onDifficultyLevelUp.dispatch(this.currentDifficultyLevel);
+      }
+    }
+  }, {
+    key: 'spawnFoodWithParticularMacro',
+    value: function spawnFoodWithParticularMacro(macroKey) {
+      var foodDataFilteredByComplexity = (0, _FoodDataManager.getFoodData)().slice(0, this.currentDifficultyLevelLastIndex + 1);
+      var foodData = (0, _NutritionUtils.getFoodWithParticularMacros)(foodDataFilteredByComplexity, macroKey);
+      var foodType = (0, _MathUtils.getRandomWithWeight)(foodData);
+
+      this.spawnFood(foodType);
+    }
+  }]);
+
+  return FoodSpawner;
+}(Phaser.Group);
+
+exports.default = FoodSpawner;
+
+},{"../constants/DifficultyLevelIntervals.js":6,"../constants/FoodConstants":7,"../utils/AudioManager.js":30,"../utils/MathUtils.js":32,"../utils/NutritionUtils":33,"./AdditionalFoodSpawner":16,"./Food":18,"./FoodDataManager":19}],21:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () {
+  function defineProperties(target, props) {
+    for (var i = 0; i < props.length; i++) {
+      var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);
+    }
+  }return function (Constructor, protoProps, staticProps) {
+    if (protoProps) defineProperties(Constructor.prototype, protoProps);if (staticProps) defineProperties(Constructor, staticProps);return Constructor;
+  };
+}();
+
+function _classCallCheck(instance, Constructor) {
+  if (!(instance instanceof Constructor)) {
+    throw new TypeError("Cannot call a class as a function");
+  }
+}
+
+var DAMAGE_VALUE_PER_TICK = 7.25;
+var CAN_BE_HARMED_REFRESH_INTERVAL = 2000;
+
+var HealthHandler = function () {
+  function HealthHandler() {
+    _classCallCheck(this, HealthHandler);
+
+    this.health = 100;
+    this.shouldBobBeHarmed = false;
+    this.punishementMultiplier = 1;
+    this.canBeHarmed = true;
+
+    this.onHealthUpdate = new Phaser.Signal();
+  }
+
+  _createClass(HealthHandler, [{
+    key: "setShouldBobBeHarmed",
+    value: function setShouldBobBeHarmed(shouldHeBeHarmed, shouldDoubleThePunishement) {
+      this.shouldBobBeHarmed = shouldHeBeHarmed;
+      this.punishementMultiplier = shouldDoubleThePunishement ? 2 : 1;
+    }
+  }, {
+    key: "doHarmToBob",
+    value: function doHarmToBob() {
+      var _this = this;
+
+      if (this.shouldBobBeHarmed === false || this.canBeHarmed === false) {
+        return;
+      }
+      this.health -= DAMAGE_VALUE_PER_TICK * this.punishementMultiplier;
+      this.canBeHarmed = false;
+      window.setTimeout(function () {
+        return _this.canBeHarmed = true;
+      }, CAN_BE_HARMED_REFRESH_INTERVAL);
+      this.onHealthUpdate.dispatch(this.health);
+    }
+  }]);
+
+  return HealthHandler;
+}();
+
+exports.default = HealthHandler;
+
+},{}],22:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () {
+  function defineProperties(target, props) {
+    for (var i = 0; i < props.length; i++) {
+      var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);
+    }
+  }return function (Constructor, protoProps, staticProps) {
+    if (protoProps) defineProperties(Constructor.prototype, protoProps);if (staticProps) defineProperties(Constructor, staticProps);return Constructor;
+  };
+}();
+
+var _NutritionUI = require('../UI/NutritionUI');
+
+var _NutritionUI2 = _interopRequireDefault(_NutritionUI);
+
+var _NutritionConstants = require('../constants/NutritionConstants');
+
+function _interopRequireDefault(obj) {
+  return obj && obj.__esModule ? obj : { default: obj };
+}
+
+function _classCallCheck(instance, Constructor) {
+  if (!(instance instanceof Constructor)) {
+    throw new TypeError("Cannot call a class as a function");
+  }
+}
+
+var NutritionManager = function () {
+  function NutritionManager(game) {
+    _classCallCheck(this, NutritionManager);
+
+    this.nutrition = {
+      carbohydrates: _NutritionConstants.GOOD_AMOUNT_OF_CARBOHYDRATES,
+      fats: _NutritionConstants.GOOD_AMOUNT_OF_FATS,
+      proteins: _NutritionConstants.GOOD_AMOUNT_OF_PROTEINS
+    };
+
+    this.UI = new _NutritionUI2.default(game, this);
+
+    this.updateTimer = game.time.events.loop(_NutritionConstants.AMOUNT_REDUCED_INTERVAL, this.reduceNutrition, this);
+  }
+
+  _createClass(NutritionManager, [{
+    key: 'reduceNutrition',
+    value: function reduceNutrition() {
+      this.nutrition.carbohydrates -= _NutritionConstants.GOOD_AMOUNT_OF_CARBOHYDRATES * _NutritionConstants.AMOUNT_REDUCED_PERCENT;
+      this.nutrition.fats -= _NutritionConstants.GOOD_AMOUNT_OF_FATS * _NutritionConstants.AMOUNT_REDUCED_PERCENT;
+      this.nutrition.proteins -= _NutritionConstants.GOOD_AMOUNT_OF_PROTEINS * _NutritionConstants.AMOUNT_REDUCED_PERCENT;
+
+      this.nutrition.carbohydrates = Math.round(this.nutrition.carbohydrates * 10) / 10;
+      this.nutrition.fats = Math.round(this.nutrition.fats * 10) / 10;
+      this.nutrition.proteins = Math.round(this.nutrition.proteins * 10) / 10;
+
+      this.UI.updateUI();
+    }
+  }, {
+    key: 'updateStats',
+    value: function updateStats(data) {
+      this.nutrition.carbohydrates += data.carbohydrates;
+      this.nutrition.fats += data.fats;
+      this.nutrition.proteins += data.proteins;
+
+      this.UI.updateUI(data);
+    }
+  }, {
+    key: 'growDifficulty',
+    value: function growDifficulty(level) {
+      if (level === 'MEDIUM') {
+        this.speedUp(_NutritionConstants.MEDIUM_LEVEL_DELAY_OFFSET);
+      } else if (level === 'HARD') {
+        this.speedUp(_NutritionConstants.HARD_LEVEL_DELAY_OFFSET);
+      }
+    }
+  }, {
+    key: 'speedUp',
+    value: function speedUp(delayOffset) {
+      this.updateTimer.delay = _NutritionConstants.AMOUNT_REDUCED_INTERVAL - delayOffset;
+    }
+  }]);
+
+  return NutritionManager;
+}();
+
+exports.default = NutritionManager;
+
+},{"../UI/NutritionUI":2,"../constants/NutritionConstants":8}],23:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () {
+  function defineProperties(target, props) {
+    for (var i = 0; i < props.length; i++) {
+      var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);
+    }
+  }return function (Constructor, protoProps, staticProps) {
+    if (protoProps) defineProperties(Constructor.prototype, protoProps);if (staticProps) defineProperties(Constructor, staticProps);return Constructor;
+  };
+}();
+
+function _classCallCheck(instance, Constructor) {
+  if (!(instance instanceof Constructor)) {
+    throw new TypeError("Cannot call a class as a function");
+  }
+}
+
+function _possibleConstructorReturn(self, call) {
+  if (!self) {
+    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+  }return call && (typeof call === "object" || typeof call === "function") ? call : self;
+}
+
+function _inherits(subClass, superClass) {
+  if (typeof superClass !== "function" && superClass !== null) {
+    throw new TypeError("Super expression must either be null or a function, not " + typeof superClass);
+  }subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } });if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
+}
+
+var Boot = function (_Phaser$State) {
+  _inherits(Boot, _Phaser$State);
+
+  function Boot() {
+    _classCallCheck(this, Boot);
+
+    return _possibleConstructorReturn(this, (Boot.__proto__ || Object.getPrototypeOf(Boot)).apply(this, arguments));
+  }
+
+  _createClass(Boot, [{
+    key: 'preload',
+    value: function preload() {
+      this.game.stage.backgroundColor = '#dba74b';
+      this.game.load.image('loadingbg', 'img/loadingbg.png');
+      this.game.load.image('loadingbg-50', 'img50/loadingbg.png');
+      this.game.load.image('loading-background', 'img/loading-background.png');
+      this.game.load.image('loading-progress', 'img/loading-progress.png');
+    }
+  }, {
+    key: 'create',
+    value: function create() {
+      this.game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
+      this.game.scale.pageAlignHorizontally = true;
+      this.game.scale.pageAlignVertically = true;
+      this.game.state.start('Preloader');
+    }
+  }]);
+
+  return Boot;
+}(Phaser.State);
+
+exports.default = Boot;
+
+},{}],24:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () {
+  function defineProperties(target, props) {
+    for (var i = 0; i < props.length; i++) {
+      var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);
+    }
+  }return function (Constructor, protoProps, staticProps) {
+    if (protoProps) defineProperties(Constructor.prototype, protoProps);if (staticProps) defineProperties(Constructor, staticProps);return Constructor;
+  };
+}();
+
+var _ScaleManager = require('../utils/ScaleManager');
+
+var _i18n = require('../utils/i18n');
+
+var _i18n2 = _interopRequireDefault(_i18n);
+
+var _UIConstants = require('../constants/UIConstants');
+
+var _AudioManager = require('../utils/AudioManager');
+
+var _Text = require('../UI/Text');
+
+var _Text2 = _interopRequireDefault(_Text);
+
+function _interopRequireDefault(obj) {
+  return obj && obj.__esModule ? obj : { default: obj };
+}
+
+function _classCallCheck(instance, Constructor) {
+  if (!(instance instanceof Constructor)) {
+    throw new TypeError("Cannot call a class as a function");
+  }
+}
+
+function _possibleConstructorReturn(self, call) {
+  if (!self) {
+    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+  }return call && (typeof call === "object" || typeof call === "function") ? call : self;
+}
+
+function _inherits(subClass, superClass) {
+  if (typeof superClass !== "function" && superClass !== null) {
+    throw new TypeError("Super expression must either be null or a function, not " + typeof superClass);
+  }subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } });if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
+}
+
+var Wiki = function (_Phaser$State) {
+  _inherits(Wiki, _Phaser$State);
+
+  function Wiki() {
+    _classCallCheck(this, Wiki);
+
+    return _possibleConstructorReturn(this, (Wiki.__proto__ || Object.getPrototypeOf(Wiki)).apply(this, arguments));
+  }
+
+  _createClass(Wiki, [{
+    key: 'create',
+    value: function create() {
+      this.add.sprite(0, 0, 'loadingbg');
+      this.camera.resetFX();
+      this.camera.flash(0x000000, 500, false);
+
+      var buttonBack = this.add.button(this.world.width - _UIConstants.MENU_BUTTON_OFFSET, this.game.world.height - _UIConstants.MENU_BUTTON_OFFSET, (0, _ScaleManager.$)('button-mainmenu'), this.clickBack, this, 1, 0, 2);
+      buttonBack.anchor.set(1, 1);
+      buttonBack.x = this.world.width + buttonBack.width + _UIConstants.MENU_BUTTON_OFFSET;
+      this.add.tween(buttonBack).to({ x: this.world.width - _UIConstants.MENU_BUTTON_OFFSET }, 500, Phaser.Easing.Exponential.Out, true);
+
+      var textGroup = this.game.add.group();
+
+      var creditsTitle = new _Text2.default(this.game, 'center', 0, _i18n2.default.text('credits_title') + ':', (0, _ScaleManager.$)(_UIConstants.CREDITS_TITLE_FONT));
+      var creditsCodingTitle = new _Text2.default(this.game, 'center', 0, _i18n2.default.text('credits_code'), (0, _ScaleManager.$)(_UIConstants.CREDITS_FONT_SMALL));
+      var creditsCoding = new _Text2.default(this.game, 'center', 0, _i18n2.default.quotes('Bartek „bibixx” Legięć\nKacper Pietrzak'), (0, _ScaleManager.$)(_UIConstants.CREDITS_FONT));
+      var creditsGraphicsTitle = new _Text2.default(this.game, 'center', 0, _i18n2.default.text('credits_graphics'), (0, _ScaleManager.$)(_UIConstants.CREDITS_FONT_SMALL));
+      var creditsGraphics = new _Text2.default(this.game, 'center', 0, _i18n2.default.quotes('Magda „Enna” Nowak'), (0, _ScaleManager.$)(_UIConstants.CREDITS_FONT));
+      var creditsTextTranslate = new _Text2.default(this.game, 'center', 0, _i18n2.default.quotes('\n' + _i18n2.default.text('credits_translators') + '\nKrystian Kwiatkowski (' + _i18n2.default.text('credits_lang_de') + ')'), (0, _ScaleManager.$)(_UIConstants.CREDITS_FONT_SMALL));
+      var creditsTextSound = new _Text2.default(this.game, 'center', 0, _i18n2.default.quotes('\n' + _i18n2.default.text('credits_sound') + '\n\u201EFarty McSty\u201D\n' + _i18n2.default.text('credits_by') + ' Eric Matyas (www.soundimage.org)\n\n\u201EClick2 Sound\u201D\n' + _i18n2.default.text('credits_by') + ' Sebastian (www.soundbible.com)'), (0, _ScaleManager.$)(_UIConstants.CREDITS_FONT_SMALL));
+
+      textGroup.add(creditsTitle);
+      textGroup.add(creditsCodingTitle);
+      textGroup.add(creditsCoding);
+      textGroup.add(creditsGraphicsTitle);
+      textGroup.add(creditsGraphics);
+      textGroup.add(creditsTextTranslate);
+      textGroup.add(creditsTextSound);
+
+      var prevText = null;
+      textGroup.forEach(function (text) {
+        if (prevText) {
+          text.y = prevText.y + prevText.height;
+        }
+
+        prevText = text;
+      });
+
+      textGroup.position.x = 0;
+      textGroup.position.y = this.game.height / 2 - textGroup.height / 2;
+    }
+  }, {
+    key: 'clickBack',
+    value: function clickBack() {
+      var _this2 = this;
+
+      (0, _AudioManager.playAudio)('click');
+      this.camera.fade(0x000000, 200, false);
+      this.time.events.add(200, function () {
+        _this2.game.state.start('MainMenu');
+      });
+    }
+  }]);
+
+  return Wiki;
+}(Phaser.State);
+
+exports.default = Wiki;
+
+},{"../UI/Text":3,"../constants/UIConstants":9,"../utils/AudioManager":30,"../utils/ScaleManager":34,"../utils/i18n":36}],25:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () {
+  function defineProperties(target, props) {
+    for (var i = 0; i < props.length; i++) {
+      var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);
+    }
+  }return function (Constructor, protoProps, staticProps) {
+    if (protoProps) defineProperties(Constructor.prototype, protoProps);if (staticProps) defineProperties(Constructor, staticProps);return Constructor;
+  };
+}();
+
+var _ScaleManager = require('../utils/ScaleManager');
+
+var _GameUI = require('../UI/GameUI');
+
+var _GameUI2 = _interopRequireDefault(_GameUI);
+
+var _i18n = require('../utils/i18n');
+
+var _i18n2 = _interopRequireDefault(_i18n);
+
+var _FoodSpawner = require('../objects/FoodSpawner');
+
+var _FoodSpawner2 = _interopRequireDefault(_FoodSpawner);
+
+var _Bob = require('../objects/Bob');
+
+var _Bob2 = _interopRequireDefault(_Bob);
+
+var _NutritionManager3 = require('../objects/NutritionManager');
+
+var _NutritionManager4 = _interopRequireDefault(_NutritionManager3);
+
+var _HealthHandler = require('../objects/HealthHandler');
+
+var _HealthHandler2 = _interopRequireDefault(_HealthHandler);
+
+var _FoodDataManager = require('../objects/FoodDataManager');
+
+var _ClockUtils = require('../utils/ClockUtils');
+
+var Clock = _interopRequireWildcard(_ClockUtils);
+
+var _BobConstants = require('../constants/BobConstants');
+
+function _interopRequireWildcard(obj) {
+  if (obj && obj.__esModule) {
+    return obj;
+  } else {
+    var newObj = {};if (obj != null) {
+      for (var key in obj) {
+        if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key];
+      }
+    }newObj.default = obj;return newObj;
+  }
+}
+
+function _interopRequireDefault(obj) {
+  return obj && obj.__esModule ? obj : { default: obj };
+}
+
+function _classCallCheck(instance, Constructor) {
+  if (!(instance instanceof Constructor)) {
+    throw new TypeError("Cannot call a class as a function");
+  }
+}
+
+function _possibleConstructorReturn(self, call) {
+  if (!self) {
+    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+  }return call && (typeof call === "object" || typeof call === "function") ? call : self;
+}
+
+function _inherits(subClass, superClass) {
+  if (typeof superClass !== "function" && superClass !== null) {
+    throw new TypeError("Super expression must either be null or a function, not " + typeof superClass);
+  }subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } });if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
+}
+
+var Game = function (_Phaser$State) {
+  _inherits(Game, _Phaser$State);
+
+  function Game() {
+    _classCallCheck(this, Game);
+
+    return _possibleConstructorReturn(this, (Game.__proto__ || Object.getPrototypeOf(Game)).apply(this, arguments));
+  }
+
+  _createClass(Game, [{
+    key: 'create',
+    value: function create() {
+      var _this2 = this;
+
+      (0, _FoodDataManager.initFoodDataManager)();
+
+      this.game.add.sprite(0, 0, (0, _ScaleManager.$)('background'));
+      this.foodSpawner = new _FoodSpawner2.default(this.game, true);
+      this.foodContainer = this.foodSpawner.children;
+
+      this.NutritionManager = new _NutritionManager4.default(this.game);
+      this.bob = new _Bob2.default(this.game, this.world.width / 2, this.world.height - (0, _ScaleManager.$)(_BobConstants.BOB_OFFSET_Y), (0, _ScaleManager.$)('bob'), this.NutritionManager);
+      this.gameUI = new _GameUI2.default(this, this.bob, this.NutritionManager);
+
+      this.foodSpawner.updateStatsSignal.add(function () {
+        var _NutritionManager;
+
+        return (_NutritionManager = _this2.NutritionManager).updateStats.apply(_NutritionManager, arguments);
+      });
+      this.foodSpawner.onDifficultyLevelUp.add(function () {
+        var _NutritionManager2;
+
+        return (_NutritionManager2 = _this2.NutritionManager).growDifficulty.apply(_NutritionManager2, arguments);
+      });
+      this.foodSpawner.onDifficultyLevelUp.add(function () {
+        var _gameUI;
+
+        return (_gameUI = _this2.gameUI).difficultyChange.apply(_gameUI, arguments);
+      });
+
+      this.bob.onScoreValueChange.add(function () {
+        var _gameUI2;
+
+        return (_gameUI2 = _this2.gameUI).onScoreValueChange.apply(_gameUI2, arguments);
+      });
+
+      var healthHandler = new _HealthHandler2.default();
+      this.bob.onWeightChange.add(function () {
+        return healthHandler.setShouldBobBeHarmed.apply(healthHandler, arguments);
+      });
+      this.gameUI.timeAdvance.add(function () {
+        return healthHandler.doHarmToBob();
+      });
+      healthHandler.onHealthUpdate.add(function () {
+        var _gameUI3;
+
+        return (_gameUI3 = _this2.gameUI).updateHealthBarValue.apply(_gameUI3, arguments);
+      });
+      healthHandler.onHealthUpdate.add(function () {
+        return _this2.checkForDeath.apply(_this2, arguments);
+      });
+
+      Clock.initClock(this);
+
+      this.camera.resetFX();
+      this.camera.flash(0x000000, 500, false);
+
+      this.game.physics.startSystem(Phaser.Physics.ARCADE);
+
+      this.game.onResume.add(function () {
+        if (_this2.gameUI.stateStatus === 'paused' || _this2.gameUI.stateStatus === 'gameover' || _this2.gameUI.stateStatus === 'tutorial') {
+          _this2.game.time.events.pause();
+        }
+      });
+
+      // don't bother it's just a hot fix, or not...
+      this.game.veryBadGlobalFlagToMakeAHotFixSorryButIHaveToUseIt = true;
+    }
+  }, {
+    key: 'checkForDeath',
+    value: function checkForDeath(health) {
+      if (health <= 0) {
+        this.gameUI.stateGameover(_i18n2.default.text('game_deathtype_dangerous_nutrition_style'));
+        this.game.veryBadGlobalFlagToMakeAHotFixSorryButIHaveToUseIt = false;
+      }
+    }
+  }, {
+    key: 'update',
+    value: function update() {
+      Clock.updateClock(this);
+      this.gameUI.updateUI();
+      this.bob.handleWeightChange();
+    }
+  }, {
+    key: 'stopMovingFood',
+    value: function stopMovingFood() {
+      this.foodContainer.forEach(function (food) {
+        food.body.velocity.x = 0;
+        food.body.velocity.y = 0;
+      });
+      this.game.time.events.pause();
+    }
+  }, {
+    key: 'restoreFoodMovement',
+    value: function restoreFoodMovement() {
+      this.foodContainer.forEach(function (food) {
+        food.body.velocity.x = food.velocityX;
+        food.body.velocity.y = food.velocityY;
+      });
+      this.game.time.events.resume();
+    }
+  }]);
+
+  return Game;
+}(Phaser.State);
+
+exports.default = Game;
+
+},{"../UI/GameUI":1,"../constants/BobConstants":4,"../objects/Bob":17,"../objects/FoodDataManager":19,"../objects/FoodSpawner":20,"../objects/HealthHandler":21,"../objects/NutritionManager":22,"../utils/ClockUtils":31,"../utils/ScaleManager":34,"../utils/i18n":36}],26:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () {
+  function defineProperties(target, props) {
+    for (var i = 0; i < props.length; i++) {
+      var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);
+    }
+  }return function (Constructor, protoProps, staticProps) {
+    if (protoProps) defineProperties(Constructor.prototype, protoProps);if (staticProps) defineProperties(Constructor, staticProps);return Constructor;
+  };
+}();
+
+var _ScaleManager = require('../utils/ScaleManager');
+
+var _i18n = require('../utils/i18n');
+
+var _i18n2 = _interopRequireDefault(_i18n);
+
+var _AudioManager = require('../utils/AudioManager');
+
+var _StorageManager = require('../utils/StorageManager');
+
+var _Text = require('../UI/Text');
+
+var _Text2 = _interopRequireDefault(_Text);
+
+var _ClockUtils = require('../utils/ClockUtils');
+
+var Clock = _interopRequireWildcard(_ClockUtils);
+
+var _UIConstants = require('../constants/UIConstants');
+
+function _interopRequireWildcard(obj) {
+  if (obj && obj.__esModule) {
+    return obj;
+  } else {
+    var newObj = {};if (obj != null) {
+      for (var key in obj) {
+        if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key];
+      }
+    }newObj.default = obj;return newObj;
+  }
+}
+
+function _interopRequireDefault(obj) {
+  return obj && obj.__esModule ? obj : { default: obj };
+}
+
+function _classCallCheck(instance, Constructor) {
+  if (!(instance instanceof Constructor)) {
+    throw new TypeError("Cannot call a class as a function");
+  }
+}
+
+function _possibleConstructorReturn(self, call) {
+  if (!self) {
+    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+  }return call && (typeof call === "object" || typeof call === "function") ? call : self;
+}
+
+function _inherits(subClass, superClass) {
+  if (typeof superClass !== "function" && superClass !== null) {
+    throw new TypeError("Super expression must either be null or a function, not " + typeof superClass);
+  }subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } });if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
+}
+
+var MainMenu = function (_Phaser$State) {
+  _inherits(MainMenu, _Phaser$State);
+
+  function MainMenu() {
+    _classCallCheck(this, MainMenu);
+
+    return _possibleConstructorReturn(this, (MainMenu.__proto__ || Object.getPrototypeOf(MainMenu)).apply(this, arguments));
+  }
+
+  _createClass(MainMenu, [{
+    key: 'create',
+    value: function create() {
+      this.game.add.sprite(0, 0, (0, _ScaleManager.$)('background'));
+      Clock.initClock(this);
+
+      var title = this.add.sprite(this.world.width * 0.5, (this.world.height - (0, _ScaleManager.$)(_UIConstants.TITLE_OFFSET_Y)) * 0.5, (0, _ScaleManager.$)('title'));
+      title.anchor.set(0.5);
+
+      _StorageManager.PPTStorage.initUnset('PPT-highscore', 0);
+      var highscore = _StorageManager.PPTStorage.get('PPT-highscore') || 0;
+
+      var buttonPigames = this.add.button(_UIConstants.MENU_BUTTON_OFFSET, _UIConstants.MENU_BUTTON_OFFSET, (0, _ScaleManager.$)('logo-pigames'), this.clickPiGames, this);
+      var buttonStart = this.add.button(this.world.width - _UIConstants.MENU_BUTTON_OFFSET, this.world.height - _UIConstants.MENU_BUTTON_OFFSET, (0, _ScaleManager.$)('button-start'), this.clickStart, this, 1, 0, 2);
+      buttonStart.anchor.set(1);
+
+      var buttonWiki = this.add.button(_UIConstants.MENU_BUTTON_OFFSET, this.world.height - _UIConstants.MENU_BUTTON_OFFSET, (0, _ScaleManager.$)('button-wiki'), this.clickWiki, this, 1, 0, 2);
+      buttonWiki.anchor.set(0, 1);
+
+      var highscoreText = new _Text2.default(this.game, 'center', this.world.height - (0, _ScaleManager.$)(50), _i18n2.default.text('main_menu_highscore') + ': ' + highscore, (0, _ScaleManager.$)(_UIConstants.MENU_HIGHSCORE_FONT), [null, 1]);
+      highscoreText.padding.set(0, 15);
+
+      this.initOptions();
+      this.initLang();
+
+      (0, _AudioManager.manageAudio)('init', this);
+
+      if ((0, _AudioManager.getStatusAudio)() !== true) {
+        (0, _AudioManager.manageAudio)('off', this);
+      }
+
+      buttonStart.x = this.world.width + buttonStart.width + _UIConstants.MENU_BUTTON_OFFSET;
+      this.add.tween(buttonStart).to({ x: this.world.width - _UIConstants.MENU_BUTTON_OFFSET }, 500, Phaser.Easing.Exponential.Out, true);
+      this.buttonOptions.y = -this.buttonOptions.height - _UIConstants.MENU_BUTTON_OFFSET;
+      this.add.tween(this.buttonOptions).to({ y: _UIConstants.MENU_BUTTON_OFFSET }, 500, Phaser.Easing.Exponential.Out, true);
+      this.buttonLangs.y = -this.buttonOptions.height - _UIConstants.MENU_BUTTON_OFFSET;
+      this.add.tween(this.buttonLangs).to({ y: _UIConstants.MENU_BUTTON_OFFSET }, 500, Phaser.Easing.Exponential.Out, true);
+      buttonPigames.x = -buttonPigames.width - _UIConstants.MENU_BUTTON_OFFSET;
+      this.add.tween(buttonPigames).to({ x: _UIConstants.MENU_BUTTON_OFFSET }, 500, Phaser.Easing.Exponential.Out, true);
+      buttonWiki.y = this.world.height + buttonWiki.height + _UIConstants.MENU_BUTTON_OFFSET;
+      this.add.tween(buttonWiki).to({ y: this.world.height - _UIConstants.MENU_BUTTON_OFFSET }, 500, Phaser.Easing.Exponential.Out, true);
+
+      this.camera.flash(0x000000, 500, false);
+    }
+  }, {
+    key: 'initOptions',
+    value: function initOptions() {
+      this.optionsUI = [];
+
+      this.optionsExpanded = false;
+      this.buttonOptions = this.add.button(this.world.width - _UIConstants.MENU_BUTTON_OFFSET, _UIConstants.MENU_BUTTON_OFFSET, (0, _ScaleManager.$)('button-options'), this.clickOptions, this, 1, 0, 2);
+      this.buttonOptions.x -= this.buttonOptions.width + _UIConstants.MENU_BUTTON_OFFSET;
+      this.buttonOptions.anchor.set(1, 0);
+
+      this.buttonAudio = this.add.button(this.buttonOptions.x, _UIConstants.MENU_BUTTON_OFFSET, (0, _ScaleManager.$)('button-audio'), this.clickAudio, this, 1, 0, 2);
+      this.buttonAudio.anchor.set(1, 0);
+      this.buttonAudio.visible = false;
+      this.optionsUI.push(this.buttonAudio);
+
+      this.buttonCredits = this.add.button(this.buttonOptions.x, _UIConstants.MENU_BUTTON_OFFSET, (0, _ScaleManager.$)(_i18n2.default.image('button-credits')), this.clickCredits, this, 1, 0, 2);
+      this.buttonCredits.anchor.set(1, 0);
+      this.buttonCredits.visible = false;
+      this.optionsUI.push(this.buttonCredits);
+
+      this.buttonHelp = this.add.button(this.buttonOptions.x, _UIConstants.MENU_BUTTON_OFFSET, (0, _ScaleManager.$)('button-help'), this.clickHelp, this, 1, 0, 2);
+      this.buttonHelp.anchor.set(1, 0);
+      this.buttonHelp.visible = false;
+      this.optionsUI.push(this.buttonHelp);
+
+      this.buttonQuality = this.add.button(this.buttonOptions.x, _UIConstants.MENU_BUTTON_OFFSET, (0, _ScaleManager.$)('button-quality'), this.clickQuality, this, 1, 0, 2);
+      this.buttonQuality.anchor.set(1, 0);
+      this.buttonQuality.visible = false;
+      this.optionsUI.push(this.buttonQuality);
+
+      this.game.world.bringToTop(this.buttonOptions);
+    }
+  }, {
+    key: 'clickOptions',
+    value: function clickOptions() {
+      (0, _AudioManager.playAudio)('click');
+      this.contractLang();
+      if (this.optionsExpanded) {
+        this.contractOptions();
+      } else {
+        this.expandOptions();
+      }
+    }
+  }, {
+    key: 'expandOptions',
+    value: function expandOptions() {
+      var _this2 = this;
+
+      this.optionsExpanded = true;
+      var prevX = 0;
+
+      this.optionsUI.forEach(function (button, i) {
+        button.visible = true;
+        _this2.add.tween(button.position).to({ x: _this2.world.width - button.width - prevX - (0, _ScaleManager.$)(_UIConstants.MENU_BUTTON_OFFSET) * (i + 1) - _UIConstants.MENU_BUTTON_OFFSET * 2 - _this2.buttonOptions.width }, 500, Phaser.Easing.Exponential.Out, true);
+        prevX += button.width;
+      });
+    }
+  }, {
+    key: 'contractOptions',
+    value: function contractOptions() {
+      var _this3 = this;
+
+      this.optionsExpanded = false;
+
+      this.optionsUI.forEach(function (button) {
+        var tween = _this3.add.tween(button.position).to({ x: _this3.buttonOptions.x }, 500, Phaser.Easing.Exponential.Out, true);
+
+        tween.onComplete.add(function () {
+          if (!_this3.optionsExpanded) {
+            button.visible = false;
+          }
+        });
+      });
+    }
+  }, {
+    key: 'initLang',
+    value: function initLang() {
+      var _this4 = this;
+
+      this.langUI = [];
+      var currentLang = _i18n2.default.get();
+      var langs = ['en_gb', 'pl_pl', 'de_de'];
+
+      this.langsExpanded = false;
+      this.buttonLangs = this.add.button(this.world.width - _UIConstants.MENU_BUTTON_OFFSET, _UIConstants.MENU_BUTTON_OFFSET, (0, _ScaleManager.$)('button-lang-' + currentLang), this.clickLangOpen, this, 1, 0, 2);
+      this.buttonLangs.anchor.set(1, 0);
+
+      langs.forEach(function (lang) {
+        if (lang !== currentLang) {
+          var button = _this4.add.button(_this4.world.width - _UIConstants.MENU_BUTTON_OFFSET, _UIConstants.MENU_BUTTON_OFFSET, (0, _ScaleManager.$)('button-lang-' + lang), function () {
+            return _this4.clickLang(lang);
+          }, _this4, 1, 0, 2);
+          button.anchor.set(1, 0);
+          button.visible = false;
+          _this4.langUI.push(button);
+        }
+      });
+
+      this.game.world.bringToTop(this.buttonLangs);
+    }
+  }, {
+    key: 'clickLangOpen',
+    value: function clickLangOpen() {
+      (0, _AudioManager.playAudio)('click');
+      this.contractOptions();
+      if (this.langsExpanded) {
+        this.contractLang();
+      } else {
+        this.expandLang();
+      }
+    }
+  }, {
+    key: 'expandLang',
+    value: function expandLang() {
+      var _this5 = this;
+
+      this.langsExpanded = true;
+      var prevY = 0;
+
+      this.langUI.forEach(function (button, i) {
+        button.visible = true;
+        _this5.add.tween(button.position).to({ y: button.height + prevY + (0, _ScaleManager.$)(_UIConstants.MENU_BUTTON_OFFSET) * (i + 1) + _UIConstants.MENU_BUTTON_OFFSET }, 500, Phaser.Easing.Exponential.Out, true);
+        prevY += button.width;
+      });
+    }
+  }, {
+    key: 'contractLang',
+    value: function contractLang() {
+      var _this6 = this;
+
+      this.langsExpanded = false;
+
+      this.langUI.forEach(function (button) {
+        var tween = _this6.add.tween(button.position).to({ y: _this6.buttonLangs.y }, 500, Phaser.Easing.Exponential.Out, true);
+
+        tween.onComplete.add(function () {
+          if (!_this6.langsExpanded) {
+            button.visible = false;
+          }
+        });
+      });
+    }
+  }, {
+    key: 'clickAudio',
+    value: function clickAudio() {
+      (0, _AudioManager.playAudio)('click');
+      (0, _AudioManager.manageAudio)('switch', this);
+    }
+  }, {
+    key: 'clickPiGames',
+    value: function clickPiGames() {
+      (0, _AudioManager.playAudio)('click');
+      window.top.location.href = 'http://pigam.es/';
+    }
+  }, {
+    key: 'clickQuality',
+    value: function clickQuality() {
+      (0, _AudioManager.playAudio)('click');
+      if (_ScaleManager.scaleFactor === 1) {
+        _ScaleManager.$set.call(this, 0.5);
+        _StorageManager.PPTStorage.set('PPT-quality', 0.5);
+      } else {
+        _ScaleManager.$set.call(this, 1);
+        _StorageManager.PPTStorage.set('PPT-quality', 1);
+      }
+    }
+  }, {
+    key: 'clickLang',
+    value: function clickLang() {
+      var lang = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'en_en';
+
+      (0, _AudioManager.playAudio)('click');
+      _i18n2.default.set(lang);
+      _StorageManager.PPTStorage.set('PPT-lang', lang);
+      this.game.state.start(this.state.current);
+    }
+  }, {
+    key: 'clickStart',
+    value: function clickStart() {
+      var _this7 = this;
+
+      (0, _AudioManager.playAudio)('click');
+      this.camera.fade(0x000000, 200, false);
+      this.time.events.add(200, function () {
+        _this7.game.state.start('Game');
+      });
+    }
+  }, {
+    key: 'clickHelp',
+    value: function clickHelp() {
+      var _this8 = this;
+
+      (0, _AudioManager.playAudio)('click');
+      this.camera.fade(0x000000, 200, false);
+      _StorageManager.PPTStorage.set('PPT-tutorial', false);
+      this.time.events.add(200, function () {
+        _this8.game.state.start('Game');
+      });
+    }
+  }, {
+    key: 'clickWiki',
+    value: function clickWiki() {
+      var _this9 = this;
+
+      (0, _AudioManager.playAudio)('click');
+      this.camera.fade(0x000000, 200, false);
+      this.camera.onFadeComplete.add(function () {
+        _this9.game.state.start('Wiki');
+      }, this);
+    }
+  }, {
+    key: 'clickCredits',
+    value: function clickCredits() {
+      var _this10 = this;
+
+      (0, _AudioManager.playAudio)('click');
+      this.camera.fade(0x000000, 200, false);
+      this.camera.onFadeComplete.add(function () {
+        _this10.game.state.start('Credits');
+      }, this);
+    }
+  }, {
+    key: 'update',
+    value: function update() {
+      Clock.updateClock(this);
+    }
+  }]);
+
+  return MainMenu;
+}(Phaser.State);
+
+exports.default = MainMenu;
+
+},{"../UI/Text":3,"../constants/UIConstants":9,"../utils/AudioManager":30,"../utils/ClockUtils":31,"../utils/ScaleManager":34,"../utils/StorageManager":35,"../utils/i18n":36}],27:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () {
+  function defineProperties(target, props) {
+    for (var i = 0; i < props.length; i++) {
+      var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);
+    }
+  }return function (Constructor, protoProps, staticProps) {
+    if (protoProps) defineProperties(Constructor.prototype, protoProps);if (staticProps) defineProperties(Constructor, staticProps);return Constructor;
+  };
+}();
+
+var _ScaleManager = require('../utils/ScaleManager');
+
+var _i18n = require('../utils/i18n');
+
+var _i18n2 = _interopRequireDefault(_i18n);
+
+var _StorageManager = require('../utils/StorageManager');
+
+function _interopRequireDefault(obj) {
+  return obj && obj.__esModule ? obj : { default: obj };
+}
+
+function _classCallCheck(instance, Constructor) {
+  if (!(instance instanceof Constructor)) {
+    throw new TypeError("Cannot call a class as a function");
+  }
+}
+
+function _possibleConstructorReturn(self, call) {
+  if (!self) {
+    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+  }return call && (typeof call === "object" || typeof call === "function") ? call : self;
+}
+
+function _inherits(subClass, superClass) {
+  if (typeof superClass !== "function" && superClass !== null) {
+    throw new TypeError("Super expression must either be null or a function, not " + typeof superClass);
+  }subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } });if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
+}
+
+var resources = {
+  'image': [['background', 'img/background.png'], ['title', 'img/title.png'], ['logo-pigames', 'img/logo-pigames.png'], ['overlay', 'img/ui/overlay.png'], ['sheet', 'img/ui/sheet.png'], ['minute-dial', 'img/assets/minute-dial.png'], ['hour-dial', 'img/assets/hour-dial.png'], ['nutrition-bar-background', 'img/ui/nutrition-bar-background.png'], ['nutrition-bar-indicator', 'img/ui/nutrition-bar-indicator.png'], ['heart', 'img/assets/heart.png']],
+  'spritesheet': [['button-start', 'img/ui/button-start.png', 320, 320], ['button-continue', 'img/ui/button-start.png', 320, 320], ['button-mainmenu', 'img/ui/button-mainmenu.png', 160, 160], ['button-restart', 'img/ui/button-tryagain.png', 160, 160], ['button-options', 'img/ui/button-options.png', 160, 160], ['button-credits-en_gb', 'img/ui/button-credits-en_gb.png', 160, 160], ['button-credits-pl_pl', 'img/ui/button-credits-pl_pl.png', 160, 160], ['button-credits-de_de', 'img/ui/button-credits-pl_pl.png', 160, 160], ['button-help', 'img/ui/button-help.png', 160, 160], ['button-wiki', 'img/ui/button-wiki.png', 160, 160], ['button-pause', 'img/ui/button-pause.png', 160, 160], ['button-audio', 'img/ui/button-sound.png', 160, 160], ['button-back', 'img/ui/button-back.png', 160, 170], ['button-next', 'img/ui/button-next.png', 160, 170], ['button-lang-en_gb', 'img/ui/button-lang-en_gb.png', 160, 160], ['button-lang-pl_pl', 'img/ui/button-lang-pl_pl.png', 160, 160], ['button-lang-de_de', 'img/ui/button-lang-de_de.png', 160, 160], ['bob', 'img/assets/bob.png', 458, 989], ['nutrition-bar', 'img/ui/nutrition-bar.png', 680, 56], ['products-en_gb', 'img/assets/products-en_gb.png', 200, 150], ['products-pl_pl', 'img/assets/products-pl_pl.png', 200, 150], ['products-de_de', 'img/assets/products-de_de.png', 200, 150], ['button-quality', 'img/ui/button-quality.png', 160, 160]],
+  'audio': [['audio-click', ['sfx/click.mp3', 'sfx/click.ogg']], ['audio-theme', ['sfx/farty-mcsty.m4a', 'sfx/farty-mcsty.mp3', 'sfx/farty-mcsty.ogg']], ['audio-bite', ['sfx/bite.mp3', 'sfx/bite.ogg']]]
+};
+
+var Preloader = function (_Phaser$State) {
+  _inherits(Preloader, _Phaser$State);
+
+  function Preloader() {
+    _classCallCheck(this, Preloader);
+
+    return _possibleConstructorReturn(this, (Preloader.__proto__ || Object.getPrototypeOf(Preloader)).apply(this, arguments));
+  }
+
+  _createClass(Preloader, [{
+    key: 'preload',
+    value: function preload() {
+      this.add.sprite(0, 0, 'loadingbg');
+      this.add.sprite((this.world.width - 580) * 0.5, (this.world.height + 150) * 0.5, 'loading-background');
+      var preloadProgress = this.add.sprite((this.world.width - 540) * 0.5, (this.world.height + 170) * 0.5, 'loading-progress');
+      this.load.setPreloadSprite(preloadProgress);
+
+      this._preloadResources();
+    }
+  }, {
+    key: '_preloadResources',
+    value: function _preloadResources() {
+      var _this2 = this;
+
+      this.span = document.createElement('span');
+      this.span.innerHTML = 'Zażółć';
+      this.span.setAttribute('style', 'position: absolute; font-family: Arial,  monospace; font-size: 300px; top: -99999px; left: -99999px; opacity: 0;');
+      document.body.appendChild(this.span);
+      this.initialFontSize = this.span.clientHeight;
+      this.span.style.fontFamily = '"Bromine"';
+
+      var _loop = function _loop(method) {
+        resources[method].forEach(function (args) {
+          var loader = _this2.load[method];
+          if (method === 'image' || method === 'spritesheet') {
+            var args50 = args.concat();
+            args50[0] += '-50';
+            args50[1] = args50[1].replace('img/', 'img50/');
+            args50[2] /= 2;
+            args50[3] /= 2;
+
+            loader && loader.apply(_this2.load, args50);
+          }
+
+          loader && loader.apply(_this2.load, args);
+        }, _this2);
+      };
+
+      for (var method in resources) {
+        _loop(method);
+      }
+    }
+  }, {
+    key: 'update',
+    value: function update() {
+      if (this.initialFontSize !== this.span.clientHeight) {
+        (0, _StorageManager.setStorage)(this.game.plugins.add(Phaser.Plugin.Storage));
+
+        if (_StorageManager.PPTStorage.get('PPT-quality') === 0.5) {
+          _ScaleManager.$set.call(this, 0.5);
+        }
+
+        for (var x = 0; x < navigator.languages.length; x++) {
+          var lang = navigator.languages[x];
+          if (lang.toLowerCase().indexOf('en') >= 0) {
+            _i18n2.default.set('en_gb');
+            break;
+          }
+
+          if (lang.toLowerCase().indexOf('pl') >= 0) {
+            _i18n2.default.set('pl_pl');
+            break;
+          }
+
+          if (lang.toLowerCase().indexOf('de') >= 0) {
+            _i18n2.default.set('de_de');
+            break;
+          }
+        }
+
+        if (_StorageManager.PPTStorage.get('PPT-lang')) {
+          _i18n2.default.set(_StorageManager.PPTStorage.get('PPT-lang'));
+        }
+
+        document.body.removeChild(this.span);
+        this.state.start('MainMenu');
+        // this.state.start( 'Game' );
+      }
+    }
+  }]);
+
+  return Preloader;
+}(Phaser.State);
+
+exports.default = Preloader;
+
+},{"../utils/ScaleManager":34,"../utils/StorageManager":35,"../utils/i18n":36}],28:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () {
+  function defineProperties(target, props) {
+    for (var i = 0; i < props.length; i++) {
+      var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);
+    }
+  }return function (Constructor, protoProps, staticProps) {
+    if (protoProps) defineProperties(Constructor.prototype, protoProps);if (staticProps) defineProperties(Constructor, staticProps);return Constructor;
+  };
+}();
+
+var _ScaleManager = require('../utils/ScaleManager');
+
+var _i18n = require('../utils/i18n');
+
+var _i18n2 = _interopRequireDefault(_i18n);
+
+var _AudioManager = require('../utils/AudioManager');
+
+var _FoodConstants = require('../constants/FoodConstants');
+
+var _UIConstants = require('../constants/UIConstants');
+
+var _Text = require('../UI/Text');
+
+var _Text2 = _interopRequireDefault(_Text);
+
+function _interopRequireDefault(obj) {
+  return obj && obj.__esModule ? obj : { default: obj };
+}
+
+function _classCallCheck(instance, Constructor) {
+  if (!(instance instanceof Constructor)) {
+    throw new TypeError("Cannot call a class as a function");
+  }
+}
+
+function _possibleConstructorReturn(self, call) {
+  if (!self) {
+    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+  }return call && (typeof call === "object" || typeof call === "function") ? call : self;
+}
+
+function _inherits(subClass, superClass) {
+  if (typeof superClass !== "function" && superClass !== null) {
+    throw new TypeError("Super expression must either be null or a function, not " + typeof superClass);
+  }subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } });if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
+}
+
+var Wiki = function (_Phaser$State) {
+  _inherits(Wiki, _Phaser$State);
+
+  function Wiki() {
+    _classCallCheck(this, Wiki);
+
+    return _possibleConstructorReturn(this, (Wiki.__proto__ || Object.getPrototypeOf(Wiki)).apply(this, arguments));
+  }
+
+  _createClass(Wiki, [{
+    key: 'create',
+    value: function create() {
+      this.add.sprite(0, 0, (0, _ScaleManager.$)('loadingbg'));
+      this.camera.flash(0x000000, 500, false);
+
+      this.ui = this.add.group();
+
+      var buttonBack = this.add.button(this.world.width - _UIConstants.MENU_BUTTON_OFFSET, this.game.world.height - _UIConstants.MENU_BUTTON_OFFSET, (0, _ScaleManager.$)('button-mainmenu'), this.clickBack, this, 1, 0, 2);
+      buttonBack.anchor.set(1, 1);
+      buttonBack.x = this.world.width + buttonBack.width + _UIConstants.MENU_BUTTON_OFFSET;
+      this.add.tween(buttonBack).to({ x: this.world.width - _UIConstants.MENU_BUTTON_OFFSET }, 500, Phaser.Easing.Exponential.Out, true);
+
+      this.buttonNext = this.add.button(0, this.world.height / 2, (0, _ScaleManager.$)('button-next'), this.goToNextWikiPage, this, 1, 0, 2);
+      this.buttonNext.x = this.world.width - 64;
+      this.buttonNext.anchor.setTo(1, 0.5);
+
+      this.buttonPrev = this.add.button(64, this.world.height / 2, (0, _ScaleManager.$)('button-back'), this.goToPrevWikiPage, this, 1, 0, 2);
+      this.buttonPrev.anchor.setTo(0, 0.5);
+
+      this.ui.add(buttonBack);
+      this.ui.add(this.buttonNext);
+      this.ui.add(this.buttonPrev);
+
+      this.pages = [];
+      var prevPage = this.add.group();
+      this.fillGroupWithFoodData(prevPage, _FoodConstants.FOOD_DATA.length - 1);
+      this.pages.push(prevPage);
+
+      prevPage.position.y = this.world.height / 2 - prevPage.height / 2;
+      prevPage.position.x -= this.world.width;
+
+      var currentPage = this.add.group();
+      this.fillGroupWithFoodData(currentPage, 0);
+      this.pages.push(currentPage);
+
+      currentPage.position.y = this.world.height / 2 - currentPage.height / 2;
+
+      var nextPage = this.add.group();
+      this.fillGroupWithFoodData(nextPage, 1);
+      this.pages.push(nextPage);
+
+      nextPage.position.y = this.world.height / 2 - nextPage.height / 2;
+      nextPage.position.x += this.world.width;
+    }
+  }, {
+    key: 'fillGroupWithFoodData',
+    value: function fillGroupWithFoodData(group, index) {
+      group.index = index;
+      group.removeAll(true);
+
+      var sheet = this.add.sprite(this.game.width / 2, 0, (0, _ScaleManager.$)('sheet'));
+      sheet.anchor.setTo(0.5, 0);
+
+      var capitalise = function capitalise(text) {
+        return text.substring(0, 1).toUpperCase() + text.substring(1);
+      };
+
+      var title = new _Text2.default(this.game, 'center', (0, _ScaleManager.$)(220), '' + capitalise(_i18n2.default.text(_FoodConstants.FOOD_DATA[index].name)), (0, _ScaleManager.$)(_UIConstants.WIKI_TITLE_FONT), [null, 1]);
+
+      var sprite = this.add.sprite(this.game.width / 2, (0, _ScaleManager.$)(380), (0, _ScaleManager.$)(_i18n2.default.image('products')), _FoodConstants.FOOD_DATA[index].key);
+      sprite.scale.setTo(1.5);
+      sprite.anchor.setTo(0.5);
+
+      var iQuantity = function iQuantity(args) {
+        return _i18n2.default.text(args[0], args[1]);
+      };
+
+      var carbohydrates = new _Text2.default(this.game, 'center', (0, _ScaleManager.$)(600), capitalise(_i18n2.default.text('carbohydrates_name')) + ': ' + _FoodConstants.FOOD_DATA[index].nutritionFacts.carbohydrates + 'g', (0, _ScaleManager.$)(_UIConstants.WIKI_FONT), [null, 1]);
+      var fats = new _Text2.default(this.game, 'center', (0, _ScaleManager.$)(714), capitalise(_i18n2.default.text('fats_name')) + ': ' + _FoodConstants.FOOD_DATA[index].nutritionFacts.fats + 'g', (0, _ScaleManager.$)(_UIConstants.WIKI_FONT), [null, 1]);
+      var proteins = new _Text2.default(this.game, 'center', (0, _ScaleManager.$)(828), capitalise(_i18n2.default.text('proteins_name')) + ': ' + _FoodConstants.FOOD_DATA[index].nutritionFacts.proteins + 'g', (0, _ScaleManager.$)(_UIConstants.WIKI_FONT), [null, 1]);
+      var quantity = new _Text2.default(this.game, 'center', (0, _ScaleManager.$)(943), capitalise(_i18n2.default.text('wiki_quantity')) + ': ' + iQuantity(_FoodConstants.FOOD_DATA[index].quantity), (0, _ScaleManager.$)(_UIConstants.WIKI_FONT), [null, 1]);
+
+      group.add(sheet);
+      group.add(title);
+      group.add(sprite);
+      group.add(carbohydrates);
+      group.add(fats);
+      group.add(proteins);
+      group.add(quantity);
+    }
+  }, {
+    key: 'goToPrevWikiPage',
+    value: function goToPrevWikiPage() {
+      var _this2 = this;
+
+      this.add.tween(this.pages[1].position).to({ x: this.world.width }, 250, Phaser.Easing.Linear.In, true);
+      var tweenIn = this.add.tween(this.pages[0].position).to({ x: 0 }, 250, Phaser.Easing.Linear.Out, true);
+      this.game.world.bringToTop(this.ui);
+
+      this.buttonPrev.inputEnabled = false;
+
+      tweenIn.onComplete.add(function () {
+        _this2.buttonPrev.inputEnabled = true;
+        _this2.pages[0].position.x = 0;
+
+        var currentIndex = _this2.pages[0].index - 1;
+
+        if (currentIndex < 0) {
+          currentIndex = _FoodConstants.FOOD_DATA.length - 1;
+          _this2.currentPageIndex = _FoodConstants.FOOD_DATA.length - 1;
+        }
+
+        var prevPage = _this2.add.group();
+        _this2.fillGroupWithFoodData(prevPage, currentIndex);
+        prevPage.position.y = _this2.world.height / 2 - prevPage.height / 2;
+        prevPage.position.x = _this2.world.width * -1;
+
+        _this2.pages.pop();
+        _this2.pages.unshift(prevPage);
+      });
+    }
+  }, {
+    key: 'goToNextWikiPage',
+    value: function goToNextWikiPage() {
+      var _this3 = this;
+
+      this.add.tween(this.pages[1].position).to({ x: this.world.width * -1 }, 250, Phaser.Easing.Linear.In, true);
+      var tweenIn = this.add.tween(this.pages[2].position).to({ x: 0 }, 250, Phaser.Easing.Linear.Out, true);
+      this.game.world.bringToTop(this.ui);
+      this.buttonNext.inputEnabled = false;
+
+      tweenIn.onComplete.add(function () {
+        _this3.buttonNext.inputEnabled = true;
+        _this3.pages[2].position.x = 0;
+
+        var currentIndex = _this3.pages[2].index + 1;
+
+        if (currentIndex >= _FoodConstants.FOOD_DATA.length) {
+          currentIndex = 0;
+          _this3.currentPageIndex = 0;
+        }
+
+        var nextPage = _this3.add.group();
+        _this3.fillGroupWithFoodData(nextPage, currentIndex);
+        nextPage.position.y = _this3.world.height / 2 - nextPage.height / 2;
+        nextPage.position.x = _this3.world.width;
+
+        _this3.pages.shift();
+        _this3.pages.push(nextPage);
+      });
+    }
+  }, {
+    key: 'clickBack',
+    value: function clickBack() {
+      var _this4 = this;
+
+      (0, _AudioManager.playAudio)('click');
+      this.camera.fade(0x000000, 200, false);
+      this.camera.onFadeComplete.add(function () {
+        _this4.game.state.start('MainMenu');
+      }, this);
+    }
+  }]);
+
+  return Wiki;
+}(Phaser.State);
+
+exports.default = Wiki;
+
+},{"../UI/Text":3,"../constants/FoodConstants":7,"../constants/UIConstants":9,"../utils/AudioManager":30,"../utils/ScaleManager":34,"../utils/i18n":36}],29:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _Wiki = require('./Wiki');
+
+var _Wiki2 = _interopRequireDefault(_Wiki);
+
+var _Boot = require('./Boot');
+
+var _Boot2 = _interopRequireDefault(_Boot);
+
+var _Game = require('./Game');
+
+var _Game2 = _interopRequireDefault(_Game);
+
+var _MainMenu = require('./MainMenu');
+
+var _MainMenu2 = _interopRequireDefault(_MainMenu);
+
+var _Preloader = require('./Preloader');
+
+var _Preloader2 = _interopRequireDefault(_Preloader);
+
+var _Credits = require('./Credits');
+
+var _Credits2 = _interopRequireDefault(_Credits);
+
+function _interopRequireDefault(obj) {
+  return obj && obj.__esModule ? obj : { default: obj };
+}
+
+exports.default = {
+  Wiki: _Wiki2.default, Boot: _Boot2.default, Game: _Game2.default, MainMenu: _MainMenu2.default, Preloader: _Preloader2.default, Credits: _Credits2.default
+};
+
+},{"./Boot":23,"./Credits":24,"./Game":25,"./MainMenu":26,"./Preloader":27,"./Wiki":28}],30:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.getAudioOffset = undefined;
+exports.manageAudio = manageAudio;
+exports.playAudio = playAudio;
+exports.getStatusAudio = getStatusAudio;
+
+var _StorageManager = require('./StorageManager');
+
+var _audioStatus = void 0;
+var _sound = void 0;
+var _soundMusic = void 0;
+var _audioOffset = void 0;
+
+function manageAudio(mode, game) {
+  switch (mode) {
+    case 'init':
+      {
+        _StorageManager.PPTStorage.initUnset('PPT-audio', true);
+        _audioStatus = _StorageManager.PPTStorage.get('PPT-audio');
+        // PPT._soundClick = game.add.audio('audio-click');
+        _sound = [];
+        _sound['click'] = game.add.audio('audio-click');
+        if (!_soundMusic) {
+          _soundMusic = game.add.audio('audio-theme', 1, true);
+          _soundMusic.volume = 0.5;
+        }
+        break;
+      }
+    case 'on':
+      {
+        _audioStatus = true;
+        break;
+      }
+    case 'off':
+      {
+        _audioStatus = false;
+        break;
+      }
+    case 'switch':
+      {
+        _audioStatus = !_audioStatus;
+        break;
+      }
+  }
+  if (_audioStatus) {
+    _audioOffset = 0;
+    if (_soundMusic) {
+      if (!_soundMusic.isPlaying) {
+        _soundMusic.play('', 0, 1, true);
+      }
+    }
+  } else {
+    _audioOffset = 4;
+    if (_soundMusic) {
+      _soundMusic.stop();
+    }
+  }
+  _StorageManager.PPTStorage.set('PPT-audio', _audioStatus);
+  game.buttonAudio.setFrames(_audioOffset + 1, _audioOffset + 0, _audioOffset + 2);
+}
+function playAudio(sound) {
+  if (_audioStatus) {
+    if (_sound && _sound[sound]) {
+      _sound[sound].play();
+    }
+  }
+}
+
+function getStatusAudio() {
+  return _audioStatus;
+}
+
+var getAudioOffset = exports.getAudioOffset = function getAudioOffset() {
+  return _audioOffset;
+};
+
+},{"./StorageManager":35}],31:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.initClock = initClock;
+exports.updateClock = updateClock;
+
+var _ScaleManager = require('./ScaleManager');
+
+function initClock(state) {
+  var now = new Date();
+  state.Clock = {};
+  state.Clock.minuteDial = state.game.add.sprite((0, _ScaleManager.$)(847), (0, _ScaleManager.$)(243), (0, _ScaleManager.$)('minute-dial'));
+  state.Clock.minuteDial.anchor.setTo(0.5, 1);
+  state.Clock.minuteDial.angle = now.getMinutes() / 60 * 360;
+
+  state.Clock.hourDial = state.game.add.sprite((0, _ScaleManager.$)(847), (0, _ScaleManager.$)(243), (0, _ScaleManager.$)('hour-dial'));
+  state.Clock.hourDial.anchor.setTo(0.5, 1);
+  state.Clock.hourDial.angle = now.getHours() % 12 / 12 * 360 + now.getMinutes() / 60 * 30;
+}
+
+function updateClock(state) {
+  var now = new Date();
+  state.Clock.minuteDial.angle = now.getMinutes() / 60 * 360;
+
+  state.Clock.hourDial.angle = now.getHours() % 12 / 12 * 360 + now.getMinutes() / 60 * 30;
+}
+
+},{"./ScaleManager":34}],32:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var getRandomWithWeight = exports.getRandomWithWeight = function getRandomWithWeight(array) {
+  var length = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : array.length;
+
+  var probs = array.slice(0, length).map(function (v) {
+    return v.probability;
+  });
+  var probsSum = probs.reduce(function (a, b) {
+    return a + b;
+  });
+  probs = probs.map(function (v) {
+    return v * (1 / probsSum);
+  });
+
+  var random = Math.random();
+  var sum = 0;
+  for (var i = 0; i < length; i++) {
+    sum += probs[i];
+    if (random <= sum) {
+      return array[i];
+    }
+  }
+};
+
+},{}],33:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.getStatus = getStatus;
+exports.getFoodWithParticularMacros = getFoodWithParticularMacros;
+exports.getDominatingMacroValue = getDominatingMacroValue;
+exports.getDominatingMacro = getDominatingMacro;
+
+var _WeightBreakpoints = require('../constants/WeightBreakpoints');
+
+function getStatus(value, goodAmount) {
+  for (var i = 0; i < _WeightBreakpoints.FATNESS_LEVELS.length; i++) {
+    if (value > goodAmount * _WeightBreakpoints.FATNESS_LEVELS[i]) {
+      return _WeightBreakpoints.FATNESS_LEVELS.length - i + 8;
+    }
+  }
+
+  for (var _i = 0; _i < _WeightBreakpoints.THINNESS_LEVELS.length; _i++) {
+    if (value < goodAmount * _WeightBreakpoints.THINNESS_LEVELS[_i]) {
+      return _i;
+    }
+  }
+
+  return 8;
+}
+
+function getFoodWithParticularMacros(foodData, macroKey) {
+  return foodData.filter(function (food) {
+    return getDominatingMacroValue(food) === food.nutritionFacts[macroKey];
+  });
+}
+
+function getDominatingMacroValue(food) {
+  var macros = food.nutritionFacts;
+  return Math.max(macros.carbohydrates, macros.fats, macros.proteins);
+}
+
+function getDominatingMacro(food) {
+  var dominatingValue = getDominatingMacroValue(food);
+  var macros = food.nutritionFacts;
+  for (var macroKey in food.nutritionFacts) {
+    if (macros[macroKey] === dominatingValue) {
+      return macroKey;
+    }
+  }
+}
+
+},{"../constants/WeightBreakpoints":10}],34:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.scaleFactor = undefined;
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) {
+  return typeof obj;
+} : function (obj) {
+  return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
+};
+
+exports.$ = $;
+exports.$set = $set;
+
+var _CanvasConstants = require('../constants/CanvasConstants');
+
+var scaleFactor = exports.scaleFactor = 1;
+
+/**
+  This magic function handles scaling of game assets.
+
+  // Using on numbers
+  @param {number} value
+  @returns {number} - value multiplied by scaleFactor
+
+  // Using on sprite keys
+  @param {string} value
+  @returns {string} - value with added suffix for sprite naming
+
+  // Using with onScale
+  @param {string|number} value
+  @param {number} onScale
+  @returns {string=''|number=0} - returns value only if onScale equlas scaleFactor
+
+  // Using with text styles
+  @param {object} value
+  @returns {object} - multiplies fontSize by scaleFactor
+ */
+
+function $(value, onScale) {
+  var typeofVal = typeof value === 'undefined' ? 'undefined' : _typeof(value);
+
+  if (typeofVal === 'string') {
+    if (onScale) {
+      if (onScale === scaleFactor) {
+        return value;
+      }
+
+      return '';
+    }
+
+    if (scaleFactor !== 1) {
+      return value + '-' + scaleFactor * 100;
+    }
+
+    return '' + value;
+  } else if (typeofVal === 'number') {
+    if (onScale) {
+      if (onScale === scaleFactor) {
+        return value;
+      }
+
+      return 0;
+    }
+
+    return value * scaleFactor;
+  } else if (typeofVal === 'object' && value.fontSize) {
+    var styles = Object.assign({}, value);
+    styles.fontSize = $(styles.fontSize);
+
+    return styles;
+  }
+}
+
+function $set(newScaleFactor) {
+  exports.scaleFactor = scaleFactor = newScaleFactor;
+
+  this.game.scale.setGameSize($(_CanvasConstants.CANVAS_WIDTH), $(_CanvasConstants.CANVAS_HEIGHT));
+  this.game.state.start(this.state.current);
+}
+
+},{"../constants/CanvasConstants":5}],35:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.setStorage = setStorage;
+var PPTStorage = exports.PPTStorage = void 0;
+
+function setStorage(storage) {
+  exports.PPTStorage = PPTStorage = storage;
+}
+
+},{}],36:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () {
+  function defineProperties(target, props) {
+    for (var i = 0; i < props.length; i++) {
+      var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);
+    }
+  }return function (Constructor, protoProps, staticProps) {
+    if (protoProps) defineProperties(Constructor.prototype, protoProps);if (staticProps) defineProperties(Constructor, staticProps);return Constructor;
+  };
+}();
+
+var _locales = require('../locales/');
+
+var _locales2 = _interopRequireDefault(_locales);
+
+function _interopRequireDefault(obj) {
+  return obj && obj.__esModule ? obj : { default: obj };
+}
+
+function _classCallCheck(instance, Constructor) {
+  if (!(instance instanceof Constructor)) {
+    throw new TypeError("Cannot call a class as a function");
+  }
+}
+
+var CURRENT_LANG = 'en_gb';
+
+var i18n = function () {
+  function i18n() {
+    _classCallCheck(this, i18n);
+  }
+
+  _createClass(i18n, [{
+    key: 'text',
+    value: function text(id) {
+      for (var _len = arguments.length, args = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+        args[_key - 1] = arguments[_key];
+      }
+
+      if (args.length > 0) {
+        return _locales2.default[CURRENT_LANG][id].text(args) || '';
+      }
+      return _locales2.default[CURRENT_LANG][id].text || '';
+    }
+  }, {
+    key: 'quotes',
+    value: function quotes(text) {
+      var quoteTypes = {
+        opening: '”',
+        closing: '”'
+      };
+
+      if (_locales2.default[CURRENT_LANG] && _locales2.default[CURRENT_LANG]['quote_types']) {
+        quoteTypes = _locales2.default[CURRENT_LANG]['quote_types'];
+      }
+
+      return text.replace(/„/g, quoteTypes.opening).replace(/”/g, quoteTypes.closing);
+    }
+  }, {
+    key: 'set',
+    value: function set(lang) {
+      if (_locales2.default[lang]) {
+        CURRENT_LANG = lang;
+      }
+    }
+  }, {
+    key: 'get',
+    value: function get() {
+      return CURRENT_LANG;
+    }
+  }, {
+    key: 'image',
+    value: function image(name) {
+      return name + '-' + CURRENT_LANG;
+    }
+  }]);
+
+  return i18n;
+}();
+
+exports.default = new i18n();
+
+},{"../locales/":14}]},{},[11])
+//# sourceMappingURL=game.js.map
