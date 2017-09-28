@@ -150,13 +150,16 @@ const de_de = {
     text: 'Das ist Bob.\nHelf ihm dabei sein Körpergewicht zu halten. ',
   },
   tutorial_step_1: {
-    text: 'Das sind die Nährstoffanzeiger von Bob.\nWenn der Hintergrund der Anzeige grün ist, dann ist Bob gesund und du bekommst Punkte',
+    text: 'Das sind die Nährstoffanzeiger von Bob.\nWenn der Hintergrund der Anzeige grün ist,\ndann ist Bob gesund und du bekommst Punkte',
   },
   tutorial_step_2: {
-    text: 'Die Anzeige wird gelb, wenn Bob zu wenige oder zu viele Nährstoffe bekommt. Wenn du dann nicht handelst, verliert Bob leben und die Anzeige kann auf rot wechseln!',
+    text: 'Die Anzeige wird gelb,\nwenn Bob zu wenige oder zu viele Nährstoffe bekommt.\nWenn du dann nicht handelst, verliert Bob leben und die\nAnzeige kann auf rot wechseln!',
+  },
+  tutorial_step_3: {
+    text: 'Bob hat einen Lebensgürtel.\nEr verliert Energie, wenn du auf gelde und\nrote Makroelemente-Felder kommst.',
   },
   tutorial_step_4: {
-    text: 'Jedes Essen hat bestimmte Eingeschafte,\ndie in der "Encyklopädie" im Hauptmenü zu fonden sind.\nWenn du die Eigenschaften des Essens kennst, weißt du wie du Bob füttern musst.',
+    text: 'Jedes Essen hat bestimmte Eingeschafte,\ndie in der "Encyklopädie" im Hauptmenü zu fonden sind.\nWenn du die Eigenschaften des Essens kennst,\nweißt du wie du Bob füttern musst.',
   },
   tutorial_step_5: {
     text: 'Das war das Tutorial, jetzt kannst du endlich anfangen zu spielen!',
@@ -172,19 +175,16 @@ const de_de = {
     text: 'Pause',
   },
   game_level_up: {
-    text: 'Es geht dir jedes mal besser!\n, das Spiel wird schwieriger!',
+    text: 'Es geht dir jedes mal besser!,\ndas Spiel wird schwieriger!',
   },
   game_over: {
     text: 'Game Over',
   },
   game_over_text: {
     text: ( args ) => {
-      // args[ 0 ] => wynik //Ergebnis
-      // args[ 1 ] => sposób śmierci  //Ursache des Todes
+      const secondNumberSuffix = time => ( time > 1 ) ? 'e' : '';
 
-      const secondNumberSuffix = time => ( time > 5 ) ? 'y' : 'ów';
-
-      return `Du hast ${Math.floor( args[ 0 ] )}eereicht  punkt${secondNumberSuffix( args[ 0 ] )}\ni Du bist wegen: ${args[ 1 ]}gestorben.`;
+      return `Du hast ${Math.floor( args[ 0 ] )}eereicht punkt${secondNumberSuffix( args[ 0 ] )}\nund Du bist wegen: ${args[ 1 ]}gestorben.`;
     },
   },
   game_deathtype_dangerous_nutrition_style: {

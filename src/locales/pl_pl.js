@@ -185,13 +185,24 @@ const pl_pl = {
       // args[ 0 ] => wynik
       // args[ 1 ] => sposób śmierci
 
-      const secondNumberSuffix = time => ( time > 5 ) ? 'y' : 'ów';
+      const secondNumberSuffix = time => {
+        const char = +String( time ).charAt( String( time ).length - 1 );
+
+        if ( char === 0 || char >= 5 || ( time >= 11 && time <= 21 ) ) {
+          return 'ów';
+        } else if ( char !== 1 ) {
+          return 'y';
+        }
+
+        return '';
+      };
 
       return `Zdobyłeś ${Math.floor( args[ 0 ] )} punkt${secondNumberSuffix( args[ 0 ] )}\ni umarłeś od ${args[ 1 ]}`;
     },
   },
+
   game_deathtype_dangerous_nutrition_style: {
-    text: 'niebezipecznego stylu żywienia',
+    text: 'niebezpiecznego stylu żywienia',
   },
 
   credits_title: {
